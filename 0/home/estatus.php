@@ -20,8 +20,12 @@
                 <?php
                 require_once '../../system/class.php';
 
+
+
+
+
                 $laboratorios = new laboratorio();
-                $reg=$laboratorios-> cEstatus($mysqli);
+                $reg=$laboratorios-> cEstatus($mysqli,$estatus);
 
  
                 
@@ -29,13 +33,13 @@
                 ?>
             <form class="contact_form" action="" method="POST" >
 
-                <table border=0 align="center">
+                <table border=0 align="center" class="testatus">
 
                 <?php 
                 $v=0;
                 while ($res1 = $reg->fetch_array()) {?>
                     <tr>
-                        <td><input type="checkbox" name="laboratorio[]" value="<?php echo $res1['estatus']?>" <?php if($res1['estatus']=='On'){ echo 'checked';}?> /><?php echo $res1[1]; ?></td>
+                        <th><?php echo $res1[1]; ?></th><td><input type="checkbox" name="laboratorio[]" value="<?php echo $res1['estatus']?>" <?php if($res1['estatus']=='On'){ echo 'checked';}?> /></td>
                     </tr>
                         <?php 
                         $v++;
@@ -44,7 +48,7 @@
 
                         while($res2 = $reg2->fetch_array()){?>
                             <tr>
-                                <td><input type="checkbox" name="analisis[]" value=""/><?php echo $res2[1]; ?></td>
+                                <td><?php echo $res2[1]; ?></td><td><input type="checkbox" name="analisis[]" value="" <?php if($res2['estatus']=='On'){ echo 'checked';}?> />
                             </tr>
 
                 <?php }} ?>
