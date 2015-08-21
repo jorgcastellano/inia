@@ -1,0 +1,23 @@
+table{
+    margin: auto;
+	background-color: #ededed;
+}
+table tr td, table tr th{
+    
+    /*border: 1px solid green;*/
+    width: 270px;
+    height: 25px;
+    padding-left: 30px;
+    text-align: left;
+}
+table tr:nth-child(odd){
+    background-color: #dbdbdb;
+    margin: 0px;
+}
+
+.tcliente tr th{
+    width: 200px;
+}
+.tcliente tr td{
+    width: 340px;
+}

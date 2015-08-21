@@ -34,7 +34,7 @@
 
 		public function cerrar_sesion(){
 			$menuh = new menu();
-			$menuh->cargarElemento("fa-reorder", "cerrar_sesion", "");
+			$menuh->cargarElemento("fa-reorder", "../home/cerrar_sesion", "");
             return $menuh->mostrar();
 		}
 
@@ -52,7 +52,8 @@
 			switch ($xa) {
 				case 0:
 					$subElementos->cargarElemento("fa-check-square-o", "#", " Activar/Desactivar");
-					$subElementos->cargarElemento("fa-flask", "#", " Laboratorios");
+					$subElementos->cargarElemento("fa-flask", "../../0/laboratorio/index", " Laboratorios");
+					$subElementos->cargarElemento("fa-flask", "../../0/analisis/index", " Analisis");
 					return $subElementos->mostrar();
 					break;
 				case 1:
@@ -64,8 +65,8 @@
 				case 3:
 					$subElementos->cargarElemento("fa-user", "#", " Aceptación de usuarios");
 					$subElementos->cargarElemento("fa-list", "#", " Gestion de usuarios");
-					$subElementos->cargarElemento("fa-cloud-upload", "#", " Respaldar");
-					$subElementos->cargarElemento("fa-cloud-download", "#", " Restaurar");
+					$subElementos->cargarElemento("fa-cloud-download", "#", " Respaldar");
+					$subElementos->cargarElemento("fa-cloud-upload", "#", " Restaurar");
 					return $subElementos->mostrar();
 					break;
 			}

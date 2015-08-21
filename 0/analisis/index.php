@@ -1,18 +1,22 @@
+<?php
+    session_start();
+    include_once '../../system/check.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Registrar analisis</title>
+        <title>Registro de análisis</title>
         <?php include '../../layouts/head.php' ?>
     </head>
     <body>
-        <?php include '../../layouts/navegacion.php' ?>
+        <?php include '../../system/menu.php' ?>
         <section class="bloque">
             <div>
-                <?php include '../../layouts/logo.php' ?>
-				<hgroup>
-					<h1>Registrar analisis</h1>
-				</hgroup>
-			</div>
+                <?php include '../../layouts/cabecera-body.php' ?>
+            <hgroup>
+                <h1>Registro de análisis</h1>
+            </hgroup>
+        </div>
 
                 <form class="contact_form" action="insert" method="post">
                     </br>
@@ -33,8 +37,7 @@
                         <button class="boton" type="submit" name="submit">Siguiente –></button> 
 
                 </form>
-
-                <?php include '../../layouts/layout_p.php' ?>
+            <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>
 </html>

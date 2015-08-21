@@ -21,7 +21,7 @@
 	        ?>
 	        <?php  	else :
 	            	echo $arreglo1[0]."</li>"; ?>
-	            	<form method="POST" action="../cliente/select">
+	            	<form method="POST" action="../cliente/resultados">
 		                <li><input type="text" name="Ced_cliente" placeholder="Busqueda por cédula" pattern="\d{6,8}"></li>
 		                <div><li><button class="botonmenu" type="submit" name="button"><i class="fa fa-search"></i></button></li></div>
 		            </form>

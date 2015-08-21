@@ -1,18 +1,23 @@
+<?php
+    session_start();
+    include_once '../../system/check.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Registrar analisis</title>
+        <title>Cliente</title>
         <?php include '../../layouts/head.php' ?>
     </head>
     <body>
-        <?php include '../../layouts/navegacion.php' ?>
+        <?php include '../../system/menu.php' ?>
         <section class="bloque">
             <div>
                 <?php include '../../layouts/cabecera-body.php' ?>
-				<hgroup>
-					<h1>Registrar analisis</h1>
-				</hgroup>
-			</div>
+            <hgroup>
+                <h1>Cliente</h1>
+            </hgroup>
+        </div>
+
                 <?php
                 extract($_POST);
                 require_once '../../system/class.php';
@@ -20,8 +25,8 @@
                 for ($i=0;$i<count($Tipo);$i++){ $Tipo=$Tipo[$i]; }
 
                 $ana = new analisis();
-                $ana -> registrar_analisis($conex,$Nom_ana,$Precio_ana,$Tipo);
-                $reg = $ana->consultar_analisis($conex,$Nom_ana);                
+                $ana -> registrar_analisis($mysqli,$Nom_ana,$Precio_ana,$Tipo);
+                $reg = $ana->consultar_analisis($mysqli,$Nom_ana);                
 
                 ?>
 
@@ -48,7 +53,7 @@
           
             </form>
 
-                <?php include '../../layouts/layout_p.php' ?>
+             <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>
 </html>

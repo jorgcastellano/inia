@@ -24,7 +24,7 @@
                 <p><b>Misión:</b> Impulsar la innovación tecnológica agroalimentaria para optimizar la función producción en el sistema agroalimentario nacional, bajo la estructura social  comunal, en el marco del modelo agrario socialista (INIA,  2011).</p>
                 <p><b>Objetivo:</b> El Instituto Nacional de Investigaciones Agrícolas (INIA) es un organismo público descentralizado del Ministerio de Agricultura y Tierras, cuyo objetivo prioritario es contribuir a la tecnificación del agro-nacional promoviendo el aumento de su rentabilidad, bajo condiciones de competitividad; con la participación de los sectores público y privado, nacional e internacional.</p>
             </article> <!-- FINALIZACION DEL CUERPO O CONTENEDOR DE LA PAGINA -->
-            <button style="margin-left: 75%" class="boton" type="button" onclick="location.href='registro'" name="registro"> Registrese aquí –></button>
+            <button style="margin-left: 75%" class="boton" type="button" onclick="location.href='registro'" name="registro"> Registrese aquí <i class="fa fa-arrow-right"></i></button>
             <?php include_once '../../layouts/layout_p.php' ?>
         </section>
     </body>
