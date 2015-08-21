@@ -42,48 +42,49 @@
 
                 else : ?>
                     
-                <center><h3>Datos del cliente</h3></center></br>
+                <h3>Datos del cliente</h3>
 
                     <form class="contact_form" method="post" action="index"  id="">
-                        <table border=0 align="center">
+                        <table class="tcliente">
                             <tr>
-                                <th>CI:</th>
+                                <th>Cédula de identidad</th>
                                 <td><?php echo $reg[1]?></td>
                             </tr>
                             <tr>
-                                <th>Nombre:</th>
+                                <th>Nombres</th>
                                 <td><?php echo $reg[2]?></td>
                             </tr>
                             <tr>
-                                <th>Apellido:</th>
+                                <th>Apellidos</th>
                                 <td><?php echo $reg[3]?></td>
                             </tr>
                             <tr>
-                                <th>Contacto:</th>
+                                <th>Persona de contacto</th>
                                 <td><?php echo $reg[4]?></td>
                             </tr>
                             <tr>
-                                <th>Telefono:</th>
+                                <th>Teléfono</th>
                                 <td><?php echo $reg[5]?></td>
                             </tr>
                             <tr>
-                                <th>Direccion:</th>
+                                <th>Domicilio</th>
                                 <td><?php echo $reg[6]?></td>
                             </tr>
                             <tr>
-						       <th>Finca:</th>
+						       <th>Nombre de la finca</th>
 						       <td><?php echo $reg2[2]?></td>
 					        </tr>
+                            <tr><th>Dirección: <th></tr>
                             <tr>
-						       <th>Estado:</th>
+						       <th>Estado</th>
 						       <td><?php echo $reg2[3]?></td>
 					        </tr>
                             <tr>
-						       <th>Municipio:</th>
+						       <th>Municipio</th>
 						       <td><?php echo $reg2[4]?></td>
 					        </tr>
                             <tr>
-						       <th>Direccion finca:</th>
+						       <th>Parroquia</th>
 						       <td><?php echo $reg2[5]?></td>
 					        </tr>
 

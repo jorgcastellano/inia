@@ -1,5 +1,7 @@
 table{
     margin: auto;
+    margin-top: 20px;
+    /*margin-bottom: 30px;*/
 	background-color: #ededed;
 }
 table tr td, table tr th{
@@ -15,15 +17,17 @@ table tr:nth-child(odd){
     margin: 0px;
 }
 
+
 .tcliente tr th{
     width: 200px;
 }
 .tcliente tr td{
     width: 340px;
 }
-.tstatus tr th{
-	margin: 400px;
+
+.tstatus tr th, .tstatus tr td{
+    width: 40px;
 }
-.tstatus tr td:first-child{
-	margin: 400px;
+ .tstatus tr th:first-child, .tstatus tr td:first-child{
+	width: 500px;
 }

@@ -31,15 +31,15 @@
                 
 
                 ?>
-            <form class="contact_form" action="" method="POST" >
-
-                <table border=0 align="center" class="testatus">
+            <form class="contact_form" action="" method="POST">
 
                 <?php 
                 $v=0;
                 while ($res1 = $reg->fetch_array()) {?>
+                    <table class="tstatus">
                     <tr>
-                        <th><?php echo $res1[1]; ?></th><td><input type="checkbox" name="laboratorio[]" value="<?php echo $res1['estatus']?>" <?php if($res1['estatus']=='On'){ echo 'checked';}?> /></td>
+                        <th><?php echo $res1[1]; ?></th>
+                        <td><input type="checkbox" name="laboratorio[]" value="<?php echo $res1['estatus']?>" <?php if($res1['estatus']=='On'){ echo 'checked';}?> /></td>
                     </tr>
                         <?php 
                         $v++;
@@ -48,13 +48,14 @@
 
                         while($res2 = $reg2->fetch_array()){?>
                             <tr>
-                                <td><?php echo $res2[1]; ?></td><td><input type="checkbox" name="analisis[]" value="" <?php if($res2['estatus']=='On'){ echo 'checked';}?> />
+                                <td><?php echo $res2[1]; ?></td>
+                                <td><input type="checkbox" name="analisis[]" value="" <?php if($res2['estatus']=='On'){ echo 'checked';}?> />
                             </tr>
 
-                <?php }} ?>
-                </table>
-
-
+                <?php }
+                    echo "</table>";
+                } ?>
+                    
             </form>
             
             <?php include '../../layouts/layout_p.php' ?>
