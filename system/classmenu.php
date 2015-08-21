@@ -51,7 +51,7 @@
 			$subElementos = new menu();
 			switch ($xa) {
 				case 0:
-					$subElementos->cargarElemento("fa-check-square-o", "../../home/estatus", " Activar/Desactivar");
+					$subElementos->cargarElemento("fa-check-square-o", "../../0/home/estatus", " Activar/Desactivar");
 					$subElementos->cargarElemento("fa-flask", "../../0/laboratorio/index", " Laboratorios");
 					$subElementos->cargarElemento("fa-flask", "../../0/analisis/index", " Analisis");
 					return $subElementos->mostrar();
