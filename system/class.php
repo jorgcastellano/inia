@@ -41,9 +41,7 @@ class laboratorio {
     {
 
       $sql="SELECT * FROM laboratorio";
-      $res = $mysqli->query($sql);
-      return $res->fetch_array();
-
+      return $mysqli->query($sql);
     }
 }
 
@@ -74,10 +72,15 @@ class analisis {
     {
       $sql="SELECT * FROM analisis WHERE analisis.Nom_ana ='$Nom_ana'";
       $res= $mysqli->query($sql);
-      return $this -> reg = mysqli_fetch_array($res);
+      return $res->fetch_array();
 
     }
 
+    public function cEstatus($mysqli,$v)
+    {
+      $sql="SELECT * FROM analisis WHERE Tipo ='$v'";
+      return $mysqli->query($sql);
+    }
 
 }
 
