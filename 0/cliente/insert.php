@@ -37,47 +37,47 @@
 				?>
 
             <form class="contact_form" method="post" action="index"  id="">
-				<table>
-                    <tr>
-                        <td>CI:</td>
-                        <td><?php echo $reg[1]?></td>
-                    </tr>
-                    <tr>
-                        <td>Nombre:</td>
-                        <td><?php echo $reg[2]?></td>
-                    </tr>
-                    <tr>
-                        <td>Apellido:</td>
-                        <td><?php echo $reg[3]?></td>
-                    </tr>
-                    <tr>
-                        <td>Contacto:</td>
-                        <td><?php echo $reg[4]?></td>
-                    </tr>
-                    <tr>
-                        <td>Telefono:</td>
-                        <td><?php echo $reg[5]?></td>
-                    </tr>
-                    <tr>
-                        <td>Direccion:</td>
-                        <td><?php echo $reg[6]?></td>
-                    </tr>
-                    <tr>
-                        <td>Finca:</td>
-                        <td><?php echo $reg2[2]?></td>
-                    </tr>
-                    <tr>
-                        <td>Estado:</td>
-                        <td><?php echo $reg2[3]?></td>
-                    </tr>
-                    <tr>
-                        <td>Municipio:</td>
-                        <td><?php echo $reg2[4]?></td>
-                    </tr>
-                    <tr>
-                        <td>Direccion finca:</td>
-                        <td><?php echo $reg2[5]?></td>
-                    </tr>
+				<table border=0 align="center">
+								<tr>
+									<th>CI:</th>
+									<td><?php echo $reg[1]?></td>
+								</tr>
+								<tr>
+									<th>Nombre:</th>
+									<td><?php echo $reg[2]?></td>
+								</tr>
+								<tr>
+									<th>Apellido:</th>
+									<td><?php echo $reg[3]?></td>
+								</tr>
+								<tr>
+									<th>Contacto:</th>
+									<td><?php echo $reg[4]?></td>
+								</tr>
+								<tr>
+									<th>Telefono:</th>
+									<td><?php echo $reg[5]?></td>
+								</tr>
+								<tr>
+									<th>Direccion:</th>
+									<td><?php echo $reg[6]?></td>
+								</tr>
+                                <tr>
+									<th>Finca:</th>
+									<td><?php echo $reg2[2]?></td>
+								</tr>
+                                <tr>
+									<th>Estado:</th>
+									<td><?php echo $reg2[3]?></td>
+								</tr>
+                                <tr>
+									<th>Municipio:</th>
+									<td><?php echo $reg2[4]?></td>
+								</tr>
+                                <tr>
+									<th>Direccion finca:</th>
+									<td><?php echo $reg2[5]?></td>
+								</tr>
 
 				</table>
               

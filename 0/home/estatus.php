@@ -18,18 +18,37 @@
                 </hgroup>
             </div>
                 <?php
+                require_once '../../system/class.php';
 
                 $laboratorios = new laboratorio();
                 $reg=$laboratorios-> cEstatus($mysqli);
 
-                $analisis = new analisis();
-                $reg=$analisis->consultar_analisis($mysqli);
-
-
-
+ 
+                
 
                 ?>
             <form class="contact_form" action="" method="POST" >
+
+                <table border=0 align="center">
+
+                <?php 
+                $v=0;
+                while ($res1 = $reg->fetch_array()) {?>
+                    <tr>
+                        <td><input type="checkbox" name="laboratorio[]" value="<?php echo $res1['estatus']?>" <?php if($res1['estatus']=='On'){ echo 'checked';}?> /><?php echo $res1[1]; ?></td>
+                    </tr>
+                        <?php 
+                        $v++;
+                        $analisis = new analisis();
+                        $reg2=$analisis->cEstatus($mysqli,$v);
+
+                        while($res2 = $reg2->fetch_array()){?>
+                            <tr>
+                                <td><input type="checkbox" name="analisis[]" value=""/><?php echo $res2[1]; ?></td>
+                            </tr>
+
+                <?php }} ?>
+                </table>
 
 
             </form>
