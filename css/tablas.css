@@ -21,3 +21,9 @@ table tr:nth-child(odd){
 .tcliente tr td{
     width: 340px;
 }
+.tstatus tr th{
+	margin: 400px;
+}
+.tstatus tr td:first-child{
+	margin: 400px;
+}
