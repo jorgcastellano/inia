@@ -193,6 +193,42 @@ class solicitud {
     }
 }
 
+class ayudante
+{
+
+    public function consultar_ayudante($mysqli)
+    {
+      $sql="SELECT * FROM ayudante";
+      $res=$mysqli->query($sql);
+      return  $res->fetch_array();
+
+    }
+
+    public function actualizar_sol($mysqli,$sol)
+    {
+    $sql="UPDATE ayudante SET aiso='$sol'";
+    $res=$mysqli->query($sql);
+    include_once 'error_update.php';
+
+    }
+    public function actualizar_sue($mysqli,$sue)
+    {
+    $sql="UPDATE ayudante SET aims='$sue'";
+    $res=$mysqli->query($sql);
+    include_once 'error_update.php';
+
+    }
+    public function actualizar_fito($mysqli,$fit)
+    {
+    $sql="UPDATE ayudante SET aimf='$fit'";
+    $res=$mysqli->query($sql);
+    include_once 'error_update.php';
+
+    }
+
+
+}
+
 
 
 
@@ -237,19 +273,21 @@ class solicitud_analisis {
 
 
 
-    public function registrar_solicitud_analisis($mysqli,$Cod_sol,$cas,$Cod_suelo,$Cod_fito)
+    public function registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_suelo,$Cod_fito)
     {
 
 
-      $sql="INSERT INTO solicitud_analisis (Cod_sol,Cod_ana,Cod_suelo,Cod_fito)
-            VALUES ('$Cod_sol','$cas','$Cod_suelo','$Cod_fito')";
-      $res=$mysqli_query($mysqli,$sql);
+      $sql="INSERT INTO `proyecto3`.`solicitud_analisis` (`Id_sa`, `Cod_sol`, `Cod_ana`, `Cod_suelo`, `Cod_fito`) VALUES (NULL, '$Cod_sol', '$Cod_ana', '$Cod_suelo', NULL)";
+      $res=$mysqli->query($sql);
+      //$res=$mysqli_query($mysqli,$sql);
       include_once 'error_insert.php';
 
       
     }
 
   }
+
+
 
 
 class fito {
