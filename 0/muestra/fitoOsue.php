@@ -18,11 +18,12 @@
 				</hgroup>
 			</div>
 
-            <form class="contact_form" method="post" action="index.php"  id="">
+            <?php  extract($_POST); ?>
+            <form class="contact_form" method="post" action="index"  id="">
                 
-             <p>El Sistema de procesos internos del INIA Mérida le recuerda que una vez registradas las muestras solo se..... </p>       
+             <p>El Sistema de procesos internos del INIA Mérida le recuerda que una vez registradas las muestras solo se..... </p>     
                     
-                    <input type="hidden" name="Ced_cliente" value="<?php echo $_GET[Ced_cliente]; ?>" />
+                    <input type="hidden" name="Ced_cliente" value="<?php echo $RegistrarM; ?>" />
                     <button type="submit" class="boton" name="RegistrarS" value="RegistrarS" ><i class="fa fa-plus"></i> Muestra de Suelo</button>
                     <button type="submit" name="RegistrarF" value="RegistrarF" class="boton" ><i class="fa fa-plus"></i> Muestra de Fitopatologia</button>
             </form>

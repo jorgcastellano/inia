@@ -1,5 +1,6 @@
 <?php
 
+
 	class gcodigo{
 		private $formatoSolicitud = "SSS-MER-";
 		private $formatoSuelo = "SUE-MER-";
@@ -32,7 +33,7 @@
 				exit();
 			}
 			else {
-				include '../includes/conexion_bd.php';
+				include '../../includes/conexion_bd.php';
 				$anonew = date("Y");
 				$result = $mysqli->query("UPDATE ayudante SET aiso=0, aims=0, aimf=0, ano='$anonew' WHERE 1");
 
@@ -41,24 +42,25 @@
 			}
 		}
 	}
+	
 
 	class controllerCodigo{
 		private function consultaAno(){
-			include '../includes/conexion_bd.php';
+			include '../../includes/conexion_bd.php';
 			$result = $mysqli->query("SELECT ano FROM ayudante LIMIT 1");
 			$ano = $result->fetch_array();
 			$mysqli->close();
 			return $ano[0];
 		}
 		private function consultaSolicitud(){
-			include '../includes/conexion_bd.php';
+			include '../../includes/conexion_bd.php';
 			$result = $mysqli->query("SELECT aiso FROM ayudante LIMIT 1");
 			$aiso = $result->fetch_array();
 			$mysqli->close();
 			return $aiso[0];
 		}
 		private function consultaSuelo(){
-			include '../includes/conexion_bd.php';
+			include '../../includes/conexion_bd.php';
 			$result = $mysqli->query("SELECT aims FROM ayudante LIMIT 1");
 			$aiso = $result->fetch_array();
 			$mysqli->close();
@@ -66,7 +68,7 @@
 		}
 
 		private function consultaFito(){
-			include '../includes/conexion_bd.php';
+			include '../../includes/conexion_bd.php';
 			$result = $mysqli->query("SELECT aimf FROM ayudante LIMIT 1");
 			$aiso = $result->fetch_array();
 			$mysqli->close();
@@ -108,6 +110,6 @@
 		}
 	}
 
-	$prueba = new controllerCodigo();
-	echo $prueba->generarCodigo(3);
+	
+
 ?>

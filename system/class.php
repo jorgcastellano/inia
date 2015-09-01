@@ -1,9 +1,6 @@
-<?php       
-		
-
+ <?php       
 
 require_once '../../includes/conexion_bd.php';
-
 
 class laboratorio {
 
@@ -43,15 +40,24 @@ class laboratorio {
       $sql="SELECT * FROM laboratorio";
       return $mysqli->query($sql);
     }
-}
+
+    public function modificar_estatus_laboratorio($mysqli,$off,$var)
+    {
+        $sql = "UPDATE laboratorio SET estatus='$off' WHERE Cod_lab='$var'";
+        $mysqli->query($sql);
+        require_once 'error_update.php';
+    }
+        
+    }
+
 
 class analisis {
 
     public function registrar_analisis($mysqli,$Nom_ana,$Precio_ana,$Tipo)
     {
 
-      $sql="INSERT INTO analisis (Nom_ana,Precio_ana,Tipo)
-            VALUES ('$Nom_ana','$Precio_ana','$Tipo')";
+      $sql="INSERT INTO analisis (Nom_ana,Precio_ana,Tipo, estatus)
+            VALUES ('$Nom_ana','$Precio_ana','$Tipo', 'On')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
       if($mysqli->affected_rows>0){echo "El nuevo analisis se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo analisis";}
@@ -76,47 +82,31 @@ class analisis {
 
     }
 
-    public function cEstatus($mysqli,$v)
+    public function cEstatus($mysqli, $v)
     {
-      $sql="SELECT * FROM analisis WHERE Tipo ='$v'";
+      $sql="SELECT * FROM analisis WHERE Tipo = '$v' ORDER BY Nom_ana ASC";
       return $mysqli->query($sql);
     }
 
+    public function consultar_estatus_analisis($mysqli){
+        $sql = "SELECT Cod_ana, estatus FROM analisis ORDER BY Tipo ASC, Nom_ana ASC";
+        return $mysqli->query($sql);
+    }
+
+    public function modificar_estatus_analisis($mysqli, $variable, $variable1) {
+        $sql = "UPDATE analisis SET estatus='$variable' WHERE Cod_ana='$variable1'";
+        $mysqli->query($sql);
+        require_once 'error_update.php';
+    }
+
+    public function desactive_all($mysqli,$off,$var)
+    {
+       $sql = "UPDATE analisis SET estatus='$off' WHERE Tipo='$var'";
+        $mysqli->query($sql);
+        require_once 'error_update.php'; 
+    }
+
 }
-
-/*class usuario {
-
-  public function registrar_usuario($mysqli,$username,$email,$password,$salt,$pregunta,$respuesta)
-  {
-
-    $sql="INSERT INTO miembros (usuario,email,password,salt,pregunta,respuesta)
-          VALUES ('$usuario','$email','$password','$salt','$pregunta','$respuesta')";
-    $res=$mysqli->query($sql);
-    include_once 'error_insert.php';
-
-  }
-
-  public function consultar_usuario($mysqli,$var)
-  {
-
-    $sql="SELECT * FROM miembros ";
-    $res=$mysqli->query($sql);
-    include_once 'error_select.php';
-
-  }
-
-  public function modificar_usuario($mysqli,$username,$email,$password,$salt,$pregunta,$respuesta)
-  {
-
-    $sql="";
-    $res=$mysqli->query($sql);
-    include_once 'error_update.php';
-
-  }
-
-}*/
-
-
 
 class cliente {
 
@@ -128,7 +118,7 @@ class cliente {
                VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente')";
          $mysqli->query($sql);
          include_once 'error_insert.php';
-         if($mysqli->affected_rows>0){echo "<center>El nuevo cliente se ha registrado con éxito</br></br><b>DATOS INTRODUCIDOS:</b></br></br><center>";} else { echo "<centar>No se ha podido registrar el nuevo cliente</center>";}
+         if($mysqli->affected_rows>0){echo "El nuevo cliente se ha registrado con éxito<br />";} else { echo "No se ha podido registrar el nuevo cliente<br />";}
 
 
       }
@@ -148,7 +138,7 @@ class cliente {
       $sql="UPDATE cliente SET cliente.Ced_cliente='$Ced_cliente',cliente.Nom_cliente='$Nom_cliente',cliente.Apelli_cliente='$Apelli_cliente',cliente.Contacto='$Contacto',cliente.Telf_cliente='$Telf_cliente',cliente.Dire_cliente='$Dire_cliente' WHERE cliente.Id_cliente='$Id_cliente'";
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
-      if($mysqli->affected_rows>0){echo "<center>El cliente se ha modificado con éxito!!<center>";} else { echo "<center>No se realizó ningún cambio en el cliente</center>";}
+      if($mysqli->affected_rows>0){echo "El cliente se ha modificado con éxito!!";} else { echo "No se realizó ningún cambio en el cliente";}
 
 
       }
@@ -161,14 +151,14 @@ class finca {
   
     private $reg;
 
-    public function registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Direccion)
+    public function registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia)
     {
 
-      $sql="INSERT INTO finca (Ced_cliente,Nom_fin,Estado,Municipio,Direccion)
-            VALUES ('$Ced_cliente','$Nom_fin','$Estado','$Municipio','$Direccion')";
+      $sql="INSERT INTO finca (Ced_cliente,Nom_fin,Estado,Municipio,Parroquia)
+            VALUES ('$Ced_cliente','$Nom_fin','$Estado','$Municipio','$Parroquia')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
-       if($mysqli->affected_rows>0){ echo "se ha registrado la nueva finca";} else { echo "no se ha podido registrar la nueva finca";}
+       if($mysqli->affected_rows>0){ echo "La nueva finca se ha registrado con éxito";} else { echo "no se ha podido registrar la nueva finca";}
 
     }
    
@@ -177,20 +167,16 @@ class finca {
 
       $sql="SELECT * FROM finca WHERE finca.Ced_cliente ='$Ced_cliente'";
       $res=$mysqli->query($sql);
-      return $this -> reg = mysqli_fetch_array($res);
+      return  $res->fetch_array();
 
     }
-    public function modificar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Direccion2)
+    public function modificar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia)
     {
 
-      $sql="UPDATE finca SET finca.Nom_fin='$Nom_fin',finca.Estado='$Estado',finca.Municipio='$Municipio',finca.Direccion='$Direccion2'  WHERE finca.Ced_cliente='$Ced_cliente'";
+      $sql="UPDATE finca SET finca.Nom_fin='$Nom_fin',finca.Estado='$Estado',finca.Municipio='$Municipio',finca.Parroquia='$Parroquia'  WHERE finca.Ced_cliente='$Ced_cliente'";
       $res=$mysqli->query($sql);
-      if($mysqli->affected_rows>0){echo "<center>La finca se modifico con exito<center>";} else { echo "<center>No se realizó ningún cambio a la finca</center>";}
+      if($mysqli->affected_rows>0){echo "La finca se modifico con exito";} else { echo "No se realizó ningún cambio a la finca";}
     }
-
-
-
-
 
 
 }
@@ -199,11 +185,11 @@ class solicitud {
 
     public function registrar_solicitud($mysqli,$Cod_sol,$Ced_cliente)
     {
-      $sql="INSERT INTO solicitud (Cod_sol,Ced_cliente)
+      $sql="INSERT INTO solicitud (Cod_sol,Cod_cliente)
             VALUES ('$Cod_sol','$Ced_cliente')";
       $res=$mysqli->query($sql);
       require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "<center></center>";}
+      if($mysqli->affected_rows>0){echo "";}
     }
 }
 
@@ -251,13 +237,14 @@ class solicitud_analisis {
 
 
 
-    public function registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_suelo,$Cod_fito)
+    public function registrar_solicitud_analisis($mysqli,$Cod_sol,$cas,$Cod_suelo,$Cod_fito)
     {
 
 
       $sql="INSERT INTO solicitud_analisis (Cod_sol,Cod_ana,Cod_suelo,Cod_fito)
-            VALUES ('$Cod_sol','$Cod_ana','$Cod_suelo','$Cod_fito')";
-      $mysqli->query($sql);
+            VALUES ('$Cod_sol','$cas','$Cod_suelo','$Cod_fito')";
+      $res=$mysqli_query($mysqli,$sql);
+      include_once 'error_insert.php';
 
       
     }

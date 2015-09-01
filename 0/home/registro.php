@@ -60,7 +60,7 @@
                         <option value="9">¿Dónde cursó el primer año escolar?</option>
                     </select>
                     <input required type="text" name="resp" id="resp" placeholder="Respuesta" /><br />
-                    <button class="boton" type="buttom" onclick="location.href='index'" ><– Página principal</button>
+                    <button class="boton" type="buttom" onclick=location="index" ><i class="fa fa-arrow-left"></i> Página principal</button>
                     <button class="boton" type="submit">Registrarse</button>
                 </div>
             </form>

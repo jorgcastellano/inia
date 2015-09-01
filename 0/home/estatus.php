@@ -20,42 +20,37 @@
                 <?php
                 require_once '../../system/class.php';
 
-
-
-
-
                 $laboratorios = new laboratorio();
                 $reg=$laboratorios-> cEstatus($mysqli,$estatus);
 
- 
-                
-
                 ?>
-            <form class="contact_form" action="" method="POST">
+            <form class="contact_form" action="cambioestado" method="POST">
 
                 <?php 
                 $v=0;
-                while ($res1 = $reg->fetch_array()) {?>
+                while ($lab = $reg->fetch_array()) {?>
                     <table class="tstatus">
-                    <tr>
-                        <th><?php echo $res1[1]; ?></th>
-                        <td><input type="checkbox" name="laboratorio[]" value="<?php echo $res1['estatus']?>" <?php if($res1['estatus']=='On'){ echo 'checked';}?> /></td>
-                    </tr>
-                        <?php 
-                        $v++;
-                        $analisis = new analisis();
-                        $reg2=$analisis->cEstatus($mysqli,$v);
+                        <tr>
+                            <th><i class="fa fa-chevron-circle-right"></i> <?php echo $lab[1]; ?></th>
+                            <td><input type="checkbox" name="laboratorio[]" value="<?php echo $lab[2]?>" <?php if($lab[2]=='On'){ echo 'checked';}?> /></td>
+                        </tr>
+                        <?php
+                            $v++;
+                            $analisis = new analisis(); 
+                            $reg2=$analisis->cEstatus($mysqli,$v);
 
-                        while($res2 = $reg2->fetch_array()){?>
-                            <tr>
-                                <td><?php echo $res2[1]; ?></td>
-                                <td><input type="checkbox" name="analisis[]" value="" <?php if($res2['estatus']=='On'){ echo 'checked';}?> />
-                            </tr>
-
-                <?php }
+                            while($ana = $reg2->fetch_array())
+                                if ($ana[3] == $lab[0]) {
+                                ?>  <tr>
+                                        <td><?php echo $ana[1]; ?></td>
+                                        <td><input type="checkbox" name="analisis[]" <?php echo "value='$ana[0]'"; if($ana['estatus']=='On') echo 'checked'; ?> />
+                                    </tr>
+                        <?php   }
                     echo "</table>";
-                } ?>
-                    
+                }
+                $mysqli->close();?>
+                <button type="button" name="Regresar atras" class="boton" onclick=location="inicio"><i class="fa fa-arrow-left"></i> Página principal</button>
+                <button type="submit" name="ActualizarEstado" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
             </form>
             
             <?php include '../../layouts/layout_p.php' ?>

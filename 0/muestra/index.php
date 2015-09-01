@@ -18,13 +18,10 @@
 				</hgroup>
 			</div>
 				<?php
+
+					
                     require_once '../../system/class.php';
                     extract($_POST);
-
-
-                    if(isset($_POST['facturar'])){
-                    header('Location: imprimir/factura.php');
-                    }
 
 //####################################################################################################################################################
 //###########################  #  # ## # __ #  __#     # __ #### #######  __# ## # __ # ####    ######################################################
@@ -35,7 +32,7 @@
                     
                     if(isset($ModificarS)) :
                     $muestra = new suelo();
-                    $reg = $muestra->consultar_suelo($conex,$Cod_suelo);
+                    $reg = $muestra->consultar_suelo($mysqli,$Cod_suelo);
 
                     $fertilizante = explode("|", $reg[17]);
                     echo $fertilizante[0];
@@ -44,24 +41,32 @@
                     
                     else:
                     $sql='SELECT * FROM analisis WHERE analisis.tipo = "1"';
-                    $res3= $conex->query($sql);
+                    $res3= $mysqli->query($sql);
 
                     endif;
                     if(isset($RegistrarS)) :
 
+                    include '../../system/gcodigo.php';
+                	$x=2;
+                	$y=1;
+                    $generar = new controllerCodigo();
+                    $code1=$generar->generarCodigo($x);
+                    $code2=$generar->generarCodigo($y);
+
 					include_once '../../includes/conexion_bd.php';
+					
 					$sql='SELECT * FROM laboratorio';
-					$res= $conex->query($sql);
+					$res= $mysqli->query($sql);
 				?>
 
 				<form class="contact_form" method="POST" action="insert"  id="f_suelo">
 				
 					<label for="Codigo">Codigo Suelo</label>
-							<input type="text" name="Codigo" value="aa-aa-aa<?php echo $reg[0] ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/>
+							<input type="text" name="Codigo" value="<?php echo $code1; ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/>
                             
 							</br></br>
 					<label for="Cod_lab" title="Selecione el laboratorio al que asignara esta muestra">Laboratorio</label>
-							<select name="Cod_lab[]" title="Selecione el laboratorio al que asignara esta muestra">
+							<select name="Cod_lab" title="Selecione el laboratorio al que asignara esta muestra">
 								<option value="">Seleccione</option>
 								<?php while ($reg1 = $res->fetch_array(MYSQLI_ASSOC)) { ?>
 								<option value="<?php echo $reg1["Cod_lab"]; ?>"<?php /*if($reg[1]=='$reg1["Cod_lab"]'){ echo 'selected'; }*/ ?>><?php echo $reg1["Nom_lab"]; ?></option>
@@ -78,7 +83,7 @@
 							<span class="form_hint">Debe ingresar de forma numrica la profundidad de la cual tomo la muestra"</span><br />
                             </br></br>	
 					<label for="Carac_terreno" title="Selecione que caracteristica tiene el terreno">Caracteristicas del Terreno</label>
-							<select name="Carac_terreno[]" title="Selecione que caracteristica tiene el terreno">
+							<select name="Carac_terreno" title="Selecione que caracteristica tiene el terreno">
 								<option value="">Seleccione</option>
 								<option value="p"<?php if($reg[4]=='p'){ echo 'selected'; } ?>>Plano</option>
 								<option value="s"<?php if($reg[4]=='s'){ echo 'selected'; } ?>>Semi plano</option>
@@ -97,19 +102,19 @@
 							<label for="cual">¿cual?</label> <input type="text" name="Criego" value="<?php echo $reg[7] ?>" id="Riego" title="Indique que tipo de riego se le aplica al terreno" maxlength="40" placeholder="" >
 							</br></br>
 					<label for="F_toma">Fecha de toma de la muestra</label>
-							<select name="Dia[]" title="Dia">
+							<select name="Dia" title="Dia">
 								<option value="">Dia</option>
 								<?php for($i=01;$i<32;$i++) { ?>
 									<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
 								<?php } ?>
 							</select>
-							<select name="Mes[]" title="Mes">
+							<select name="Mes" title="Mes">
 								<option value="">Mes</option>
 								<?php for($i=01;$i<13;$i++) { ?>
 									<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
 								<?php } ?>
 							</select>
-							<select name="Ano[]" title="Año">
+							<select name="Ano" title="Año">
 								<option value="">Año</option>
 								<?php for($i=1990;$i<2051;$i++) { ?>
 									<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -165,11 +170,11 @@
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
 						<?php } ?>
 
-
+<?php echo $code2; ?>
                         </br></br>
-						<input type="hidden" name="Cod_sol" value="SOL-MER-00-000" />
+						<input type="hidden" name="Cod_sol" value="<?php echo $code2; ?>" />
                         <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
-						<input type="hidden" name="Cod_suelo" value="SUE-MER-000" />
+						<input type="hidden" name="Cod_suelo" value="<?php echo $code1; ?>" />
 						<button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
 						<button class="boton" type="submit" value="RegistrarS" name="RegistrarS"><i class="fa fa-check"></i> Registrar</button>					
 				</form>
@@ -186,11 +191,11 @@
                     //$reg = $muestra->consultar_muestra($conex,$Cod_fito);
               
                     $sql='SELECT * FROM analisis WHERE analisis.tipo = "1"';
-                    $res3= $conex->query($sql);
+                    $res3= $mysqli->query($sql);
                                    
                 ?>
                 
-
+                
                 <form class="contact_form" method="post" action="insert"  id="">
 						
 							<label for="Cod">Codigo Fitopatologia</label>
