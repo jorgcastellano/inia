@@ -13,7 +13,7 @@
         <section class="bloque">
             <div>
                 <?php include '../../layouts/cabecera-body.php'; ?>
-				<hgroup>
+				<hgroup>x
 					<h1>Registrar Finca</h1>
 				</hgroup>
 			</div>
