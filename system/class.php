@@ -2,6 +2,28 @@
 
 require_once '../../includes/conexion_bd.php';
 
+
+class producto 
+  {
+     public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ)
+      {
+        $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ)
+        VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ')";
+      $mysqli->query($sql);
+      require_once 'error_insert.php';
+      if($mysqli->affected_rows>0){echo "El nuevo producto se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo producto";}
+
+      }
+
+    public function consultar_produ($mysqli,$Nom_produ)
+    {
+      $sql="SELECT * FROM producto WHERE producto.Nom_produ ='$Nom_produ'";
+      $res= $mysqli->query($sql);
+      return $res->fetch_array();
+
+    }
+  }
+
 class laboratorio {
 
     //private $res;
