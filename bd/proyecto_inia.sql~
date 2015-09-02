@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `inicio_seguro`
 --
-
+DROP DATABASE `inicio_seguro`;
 CREATE DATABASE IF NOT EXISTS `inicio_seguro` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `inicio_seguro`;
 
@@ -82,7 +82,7 @@ ALTER TABLE `miembros`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;--
 -- Base de datos: `proyecto3`
 --
-
+DROP DATABASE `proyecto3`;
 CREATE DATABASE IF NOT EXISTS `proyecto3` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `proyecto3`;
 

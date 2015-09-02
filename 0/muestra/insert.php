@@ -32,19 +32,17 @@
                         $sol = new solicitud();
                         $sol->registrar_solicitud($mysqli,$Cod_sol,$Ced_cliente);
 
-                        /*$cas=2;
-                        $das="NULL";
-                        $sol_ana = new solicitud_analisis();
-                        $sol_ana->registrar_solicitud_analisis($mysqli,$Cod_sol,$cas,$Cod_suelo,$das);
-
                         foreach ($_POST['analisis'] as $id){
 
                         $Cod_ana=$id;
                         echo $Cod_ana;
                         $sol_ana = new solicitud_analisis();
-                        $sol_ana->registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_suelo,'NULL');
-                        }*/
-                        //if(mysqli_affected_rows($conex)>0){echo "se ha insertado un registro solicitud_analisis";} else { echo "no se ha insertado los solicitud de anlisis";}
+                        $sol_ana->registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_suelo,$Cod_fito);
+                        }
+                        
+                        $ayuda = new ayudante();
+                        $reg2=$ayuda->consultar_ayudante($mysqli);
+
                         ?>
                         <table class="tcliente">
                         <tr><th colspan="2"><i class="fa fa-edit"></i> Datos de la muestra de suelo</th></tr>
