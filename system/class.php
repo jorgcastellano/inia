@@ -1,4 +1,4 @@
- <?php       
+<?php       
 
 require_once '../../includes/conexion_bd.php';
 
@@ -87,7 +87,13 @@ class laboratorio {
         $mysqli->query($sql);
         require_once 'error_update.php';
     }
-        
+    public function modificar_estatus_laboratorio_all($mysqli)
+    {
+        $sql = "UPDATE laboratorio SET estatus='Off'";
+        $mysqli->query($sql);
+        require_once 'error_update.php';
+    }
+ 
 }
 
 
@@ -141,6 +147,12 @@ class analisis {
     public function desactive_all($mysqli,$var)
     {
        $sql = "UPDATE analisis SET estatus='Off' WHERE Tipo='$var'";
+        $mysqli->query($sql);
+        require_once 'error_update.php';
+    }
+    public function desactive_all_all($mysqli)
+    {
+       $sql = "UPDATE analisis SET estatus='Off'";
         $mysqli->query($sql);
         require_once 'error_update.php'; 
     }

@@ -1,5 +1,5 @@
  <!-- FORMATO DE TODAS LAS PAGINAS -->
-	<meta http-equiv="conten-type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="conten-type" charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="../../css/estilo.css">
 	<link rel="stylesheet" type="text/css" href="../../css/menu.css">
 	<link rel="stylesheet" type="text/css" href="../../css/formulario.css">
