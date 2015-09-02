@@ -32,7 +32,7 @@
                     <table class="tstatus">
                         <tr>
                             <th><i class="fa fa-chevron-circle-right"></i> <?php echo $lab[1]; ?></th>
-                            <td><input type="checkbox" name="laboratorio[]" value="<?php echo $lab[2]?>" <?php if($lab[2]=='On'){ echo 'checked';}?> /></td>
+                            <td><input type="checkbox" name="laboratorio[]" <?php echo "value='$lab[0]'"; if($lab[2]=='On'){ echo 'checked';}?> /></td>
                         </tr>
                         <?php
                             $v++;
