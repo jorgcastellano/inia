@@ -21,13 +21,12 @@
                 <?php
                 extract($_POST);
                 require_once '../../system/class.php';
-
                 $producto = new producto();
                 $producto -> registrar_produ($mysqli,$Nom_produ,$Existencia,$Precio_produ);
                 $reg = $producto->consultar_produ($mysqli,$Nom_produ); 
                 ?>
 
-            <form class="contact_form" method="post" action="modificar"  id="">
+            <form class="contact_form" method="post" action="index"  id="">
                 <table border=0 align="center">
                                 <tr>
                                     <th>Nombre: </th>
@@ -43,10 +42,9 @@
                                 </tr>
 
                 </table>
-                    <input type="hidden" name="Nom_produ" value="<?php echo $reg[1]?>" />
-                    <button type="submit" name="submit" class="boton" >Modificar</button>
-                    <button type='button' OnClick=location='index.php' class="boton">Nuevo laboratorio</button>
-                    <button type='button' OnClick=location='' class="boton">Pagina Principal</button>
+                  <button type="submit" name="Modificar" value="<?php echo $reg[1]?>" class="boton" >Modificar</button>
+                    <button type='button' OnClick=location='index' class="boton">Nuevo laboratorio</button>
+                <button type='button' OnClick=location='../home/inicio' class="boton">Pagina Principal</button>
           
             </form>
 

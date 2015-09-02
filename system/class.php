@@ -22,6 +22,24 @@ class producto
       return $res->fetch_array();
 
     }
+    
+
+    public function consultar_produc($mysqli)
+    {
+      $sql="SELECT * FROM producto ";
+      $res= $mysqli->query($sql);
+      return $res->fetch_array();
+
+    }
+
+      public function modificar_produ($mysqli,$Nom_produ, $Existencia, $Precio_produ)
+    {
+      $sql="UPDATE producto SET producto.Existencia='$Existencia', producto.Precio_produ='$Precio_produ' WHERE producto.Nom_produ='$Nom_produ'";
+      $mysqli->query($sql);
+      require_once 'error_update.php';
+      if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
+
+    }
   }
 
 class laboratorio {

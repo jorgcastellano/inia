@@ -57,8 +57,8 @@
 					return $subElementos->mostrar();
 					break;
 				case 1:
-					$subElementos->cargarElemento("fa-gift", "#", " Nuevos productos");
-					$subElementos->cargarElemento("fa-search", "#", " Inventario");
+					$subElementos->cargarElemento("fa-gift", "../../0/producto/index", " Nuevos productos");
+					$subElementos->cargarElemento("fa-search", "../../0/producto/inve", " Inventario");
 					return $subElementos->mostrar();
 					break;
 				
