@@ -70,7 +70,7 @@ class laboratorio {
         require_once 'error_update.php';
     }
         
-    }
+}
 
 
 class analisis {
@@ -104,8 +104,7 @@ class analisis {
 
     }
 
-    public function cEstatus($mysqli, $v)
-    {
+    public function cEstatus($mysqli, $v) {
       $sql="SELECT * FROM analisis WHERE Tipo = '$v' ORDER BY Nom_ana ASC";
       return $mysqli->query($sql);
     }
@@ -121,9 +120,9 @@ class analisis {
         require_once 'error_update.php';
     }
 
-    public function desactive_all($mysqli,$off,$var)
+    public function desactive_all($mysqli,$var)
     {
-       $sql = "UPDATE analisis SET estatus='$off' WHERE Tipo='$var'";
+       $sql = "UPDATE analisis SET estatus='Off' WHERE Tipo='$var'";
         $mysqli->query($sql);
         require_once 'error_update.php'; 
     }
