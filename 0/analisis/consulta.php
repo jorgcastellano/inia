@@ -18,13 +18,13 @@
                 </hgroup>
             </div>
 
-            <table class="">
+            <table class="anapro">
                 <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Tipo</th>
-                    <th>Estatus</th>
-                    <th>Selección</th>
+                    <td>Nombre</td>
+                    <td>Precio</td>
+                    <td>Tipo</td>
+                    <td>Estatus</td>
+                    <td>Selección</td>
                 </tr>
                 <?php
                     include_once '../../system/class.php';

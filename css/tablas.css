@@ -4,7 +4,6 @@ table{
     border-spacing: 0px; 
 }
 table tr td, table tr th{
-    
     /*border: 1px solid green;*/
     width: 270px;
     height: 25px;
@@ -21,7 +20,37 @@ table tr:last-child th:first-child {
     border-radius:0px 0px 0px 5px;
 }
 
+table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child {
+    text-align: center;
+    font-weight: bold;
+    color:#fff;
+    background-color: #444444;
+    border-bottom:1px #000000 solid;
+}
+table tr:nth-child(even){
+    background-color: #CBCBCB;
+    margin: 0px;
+}
+table tr:nth-child(odd){
+    background-color: #E3E3E3;
+}
 
+/*ESTILO PARA LOS CLIENTES*/
+table.tcliente tr th{
+    width: 200px;
+}
+table.tcliente tr td{
+    width: 365px;
+    padding-left: 5px;
+}
+
+/*ESTILO PARA ESTATUS DE LABORATORIOS Y ANALISIS*/
+table.tstatus tr th, .tstatus tr td{
+    width: 50px;
+}
+table.tstatus tr th:first-child, .tstatus tr td:first-child{
+	width: 490px;
+}
 table.tstatus tr:first-child th:first-child{
     border-radius:5px 0px 0px 0px;
 }
@@ -38,33 +67,30 @@ table.tstatus tr:last-child td:first-child{
     border-radius:0px 0px 0px 5px;
 }
 
-table.tcliente tr:first-child, table.tstatus tr:first-child {
+/*ESTILO PARA ANALISIS Y PRODUCTOS*/
+table.anapro{
+    width: 600px;
+}
+table.anapro td{
     text-align: center;
-    font-weight: bold;
-    color:#fff;
-    background-color: #444444;
-    border-bottom:1px #000000 solid;
 }
-table tr:nth-child(even){
-    background-color: #CBCBCB;
-    margin: 0px;
+table.anapro tr:first-child td:first-child{
+    border-radius: 5px 0px 0px 0px;
 }
-table tr:nth-child(odd){
-    background-color: #E3E3E3;
+table.anapro tr:first-child td:last-child{
+    border-radius: 0px 5px 0px 0px;
+}table.anapro tr:last-child td:last-child{
+    border-radius: 0px 0px 5px 0px;
 }
-
-table.tcliente tr th{
-    width: 200px;
+table.anapro tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 5px;
 }
-table.tcliente tr td{
-    width: 365px;
-    padding-left: 5px;
+table.anapro td:first-child{
+    text-align: left;
 }
-table.tstatus tr th, .tstatus tr td{
-    width: 50px;
-}
-table.tstatus tr th:first-child, .tstatus tr td:first-child{
-	width: 490px;
+table.anapro td:last-child{
+    width: 100px;
+    padding-left: 0px;
 }
 
 
