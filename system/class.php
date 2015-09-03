@@ -38,8 +38,13 @@ class producto
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
-
     }
+
+      public function consulta_completo($mysqli)
+      {
+      $sql = "SELECT * FROM producto ORDER BY Nom_produ ASC";
+      return $mysqli->query($sql);
+      }
   }
 
 class laboratorio {
