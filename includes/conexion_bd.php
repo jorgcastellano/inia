@@ -1,8 +1,8 @@
 <?php
 
-	define("HOST", "localhost");
+	define("HOST", "192.168.150.1");
  	//define("USER", "sec_user");
-  	define("USER", "root");
+  	define("USER", "P4VM800");
   	define("PASSWORD", "123456");
   	//define("PASSWORD", "AHxySPDT7U8mNTdE");
   	define("DATABASE", "proyecto3");
