@@ -96,7 +96,6 @@ class laboratorio {
  
 }
 
-
 class analisis {
 
     public function registrar_analisis($mysqli,$Nom_ana,$Precio_ana,$Tipo)
@@ -125,7 +124,6 @@ class analisis {
       $sql="SELECT * FROM analisis WHERE analisis.Nom_ana ='$Nom_ana'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
-
     }
 
     public function cEstatus($mysqli, $v) {
@@ -156,7 +154,10 @@ class analisis {
         $mysqli->query($sql);
         require_once 'error_update.php'; 
     }
-
+    public function consulta_completo($mysqli){
+      $sql = "SELECT * FROM analisis ORDER BY Tipo ASC, Nom_ana ASC";
+      return $mysqli->query($sql);
+    }
 }
 
 class cliente {

@@ -30,8 +30,7 @@
                                     <th>Precio</th>
                                 </tr>
                         <?php    ?>
-                            
-
+                        
                 </table>
 	
         <br /><br />
