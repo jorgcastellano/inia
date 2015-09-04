@@ -20,14 +20,15 @@
 
             <table class="anapro">
                 <tr>
-                    <td>Nombre</td>
+                    <td><i class="fa fa-chevron-circle-right"></i> Nombre</td>
                     <td>Precio</td>
-                    <td>Tipo</td>
+                    <td>Laboratorio</td>
                     <td>Estatus</td>
-                    <td>Selección</td>
+                    <td><i class="fa fa-check-circle"></i></td>
                 </tr>
                 <?php
                     include_once '../../system/class.php';
+                    $objlaboratorio = new laboratorio();
                     $objanalisis = new analisis();
                     $result = $objanalisis->consulta_completo($mysqli);
                     while ($resultado = $result->fetch_array()) {
