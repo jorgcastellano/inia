@@ -42,7 +42,7 @@
 	
         <br /><br />
 
-        <button type="submit" name="Modificar" formaction="index" class="boton" >Modificar</button>
+        <button type="submit" name="Modificar" value="<?php echo seleccion?>" class="boton" >Modificar</button>
         <button type='button' OnClick=location='index' class="boton">Nuevo Producto</button>
         <button type='button' OnClick=location='../home/inicio' class="boton">Pagina Principal</button>
        
