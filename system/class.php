@@ -73,7 +73,6 @@ class laboratorio {
 
     public function consultar_laboratorio($mysqli,$Nom_la)
     {
-
       $sql="SELECT * FROM laboratorio WHERE laboratorio.Nom_lab ='$Nom_la'";
       $res = $mysqli->query($sql);
       return $res->fetch_array();
@@ -81,7 +80,6 @@ class laboratorio {
 
     public function cEstatus($mysqli)
     {
-
       $sql="SELECT * FROM laboratorio";
       return $mysqli->query($sql);
     }

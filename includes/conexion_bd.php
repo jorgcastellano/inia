@@ -1,8 +1,8 @@
 <?php
 
-	define("HOST", "localhost");
+	define("HOST", "jorgcastellano.sytes.net");
  	//define("USER", "sec_user");
-  	define("USER", "root");
+  	define("USER", "P4VM800");
   	define("PASSWORD", "123456");
   	//define("PASSWORD", "AHxySPDT7U8mNTdE");
   	define("DATABASE", "proyecto3");
