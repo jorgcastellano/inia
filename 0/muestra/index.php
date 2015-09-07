@@ -35,9 +35,9 @@
                     $reg = $muestra->consultar_suelo($mysqli,$Cod_suelo);
 
                     $fertilizante = explode("|", $reg[17]);
-                    echo $fertilizante[0];
+                    /*echo $fertilizante[0];
                     echo $fertilizante[1];
-                    echo $fertilizante[2];
+                    echo $fertilizante[2];*/
                     
                     else:
                     $sql='SELECT * FROM analisis WHERE analisis.tipo = "1"';
@@ -53,7 +53,6 @@
                     $code1=$generar->generarCodigo($x);
                     $code2=$generar->generarCodigo($y);
 
-					include_once '../../includes/conexion_bd.php';
 					
 					$sql='SELECT * FROM laboratorio';
 					$res= $mysqli->query($sql);
@@ -170,7 +169,7 @@
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
 						<?php } ?>
 
-<?php echo $code2; ?>
+
                         </br></br>
 						<input type="hidden" name="Cod_sol" value="<?php echo $code2; ?>" />
                         <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
@@ -185,13 +184,30 @@
 //########################### ### #    #    #    ### ### ### # ### ###### ####     ### ###    ####################################
 //################################################################################################################################
      
-                    if(isset($RegistrarF)) :
                     
-                   // $muestra = new fito();
-                    //$reg = $muestra->consultar_muestra($conex,$Cod_fito);
-              
-                    $sql='SELECT * FROM analisis WHERE analisis.tipo = "1"';
+
+                	if(isset($ModificarF)) :
+                    $muestra = new fito();
+                    $reg = $muestra->consultar_fito($mysqli,$Cod_fito);
+
+                    $fertilizante = explode("|", $reg[17]);
+                    
+                    
+                    else:
+                    $sql='SELECT * FROM analisis WHERE analisis.tipo = "2"';
                     $res3= $mysqli->query($sql);
+
+                    endif;
+
+                    if(isset($RegistrarF)) :
+
+                   	include '../../system/gcodigo.php';
+                	$x=3;
+                	$y=1;
+                    $generar = new controllerCodigo();
+                    $code1=$generar->generarCodigo($x);
+                    $code2=$generar->generarCodigo($y);
+                    
                                    
                 ?>
                 
@@ -199,7 +215,7 @@
                 <form class="contact_form" method="post" action="insert"  id="">
 						
 							<label for="Cod">Codigo Fitopatologia</label>
-									<input type="text" name="Cod" value="<?php echo $reg[0] ?>" id="Cod_fito" title="" maxlength="" placeholder="" disabled/>
+									<input type="text" name="Cod" value="<?php echo $code1; ?>" id="Cod_fito" title="" maxlength="" placeholder="" disabled/>
 
 									</br></br>
 							<label for="Tipo_fito" title="Seleccione el tipo de muestra a registrar">Tipo de muestra</label>
@@ -248,18 +264,18 @@
 									<input type="text" name="Id_microorg" value="<?php echo $reg[0] ?>" id="Id_microorg" title="" maxlength="20" placeholder="" />
 									</br></br>
 							<label for="Sintomas">Sintomas</label>
-									<input type="checkbox" name="Sintomas[]" value="Secamiento"/>Secamiento
-									<input type="checkbox" name="Sintomas[]" value="Callos"/>Callos
-									<input type="checkbox" name="Sintomas[]" value="defoliacion"/>Defoliacion
-									<input type="checkbox" name="Sintomas[]" value="Moteado"/>Moteado
-									<input type="checkbox" name="Sintomas[]" value="Enanismo"/>Enanismo
-									<input type="checkbox" name="Sintomas[]" value="Amarillamiento"/>Amarillamiento
-									<input type="checkbox" name="Sintomas[]" value="Malformacion"/>Malformacion
-									<input type="checkbox" name="Sintomas[]" value="Mancha"/>Mancha
-									<input type="checkbox" name="Sintomas[]" value="Marchitamiento"/>Marchitamiento
-									<input type="checkbox" name="Sintomas[]" value="Muerte regresiva"/>Muerte regresiva
-									<input type="checkbox" name="Sintomas[]" value="Gomosis"/>Gomosis
-									<input type="checkbox" name="Sintomas[]" value="Otros"/>Otros
+									<input type="checkbox" name="Sintomas[]" value="1"/>Secamiento
+									<input type="checkbox" name="Sintomas[]" value="2"/>Callos
+									<input type="checkbox" name="Sintomas[]" value="3"/>Defoliacion
+									<input type="checkbox" name="Sintomas[]" value="4"/>Moteado
+									<input type="checkbox" name="Sintomas[]" value="5"/>Enanismo
+									<input type="checkbox" name="Sintomas[]" value="6"/>Amarillamiento
+									<input type="checkbox" name="Sintomas[]" value="7"/>Malformacion
+									<input type="checkbox" name="Sintomas[]" value="8"/>Mancha
+									<input type="checkbox" name="Sintomas[]" value="9"/>Marchitamiento
+									<input type="checkbox" name="Sintomas[]" value="10"/>Muerte regresiva
+									<input type="checkbox" name="Sintomas[]" value="11"/>Gomosis
+									<input type="checkbox" name="Sintomas[]" value="12"/>Otros
 									</br></br>
 							<label for="F_sintomas">Fecha de inicio de la sintomatologia</label>
 									<select name="Dia2" title="Dia">
@@ -292,9 +308,7 @@
 									<option value="3"<?php if($reg[0]==''){ echo 'selected'; } ?>>Invernadero</option>
 									<option value="4"<?php if($reg[0]==''){ echo 'selected'; } ?>>Vivero</option>
 								</select>
-									Otros
-									<input type="text" name="Otro_tipo" value="<?php echo $reg[0] ?>" id="Otro_tipo" title="" maxlength="" placeholder="" />
-									</br></br>
+									
 							<label for="Tam_lote">Tamaño de Plantacion/lote</label>
 									<input type="text" name="Tam_lote" value="<?php echo $reg[0] ?>" id="Tam_lote" title="" maxlength="11" placeholder="" />
 									</br></br>
@@ -311,9 +325,7 @@
 									<input type="radio" id="Origen_sem" name="Origen_sem" value="1"/>Artesanal
 									<input type="radio" id="Origen_sem" name="Origen_sem" value="2"/>Certificada
 								    </br></br>
-									<label for="otros">Otros</label>
-									<input type="text" name="Origen" value="<?php echo $reg[0] ?>" id="Origen" title="" maxlength="" placeholder="" />
-									</br></br>
+									
 							<label for="Pres_microorg">Presentacion del microorganismo</label>
 								<select name="Pres_microorg">
 									<option value="">Seleccione</option>
@@ -329,7 +341,7 @@
 									<option value="">Seleccione</option>
 									<option value="1"<?php if($reg[0]==''){ echo 'selected'; } ?>>Generalizado</option>
 									<option value="2"<?php if($reg[0]==''){ echo 'selected'; } ?>>Disperso</option>
-									<option value="3"<?php if($reg[0]==''){ echo 'selected'; } ?>>Sectorizaddo</option>
+									<option value="3"<?php if($reg[0]==''){ echo 'selected'; } ?>>Sectorizado</option>
 									<option value="4"<?php if($reg[0]==''){ echo 'selected'; } ?>>Zona Baja</option>
 									<option value="5"<?php if($reg[0]==''){ echo 'selected'; } ?>>Zona Alta</option>
 									<option value="6"<?php if($reg[0]==''){ echo 'selected'; } ?>>Orillas</option>
@@ -424,10 +436,16 @@
 									<textarea name="Observaciones" id="Observaciones" title="" cols="30" rows="5" maxlength="50" placeholder=""><?php echo $reg[0] ?></textarea>	 
 									</br></br>
 
+							<label for="analisis" title=""><b>Analisis disponibles</b></label></br></br>
+						<?php while ($reg2 = $res3->fetch_array(MYSQLI_ASSOC)) { ?>
+							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
+						<?php } ?>
 
-							     
+
+							     </br></br>
+								<input type="hidden" name="Cod_sol" value="<?php echo $code2; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
-                                <input type="hidden" name="Cod_fito" value="FITO-MER-000" />
+                                <input type="hidden" name="Cod_fito" value="<?php echo $code1; ?>" />
 								<button class="boton" type="reset" value="Borrar" name="reset" id="reset">Limpiar</button>
 								<button class="boton" type="submit" value="RegistrarF" name="RegistrarF" id="submit">siguiente --></button></br>						
 				</form>
