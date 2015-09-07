@@ -24,9 +24,10 @@
                     <button type="submit" class="botonmenu"><i class="fa fa-search"></i></button>
                     <br>
                     <input type="radio" name="opc" value="1" checked />Frase
-                    <input type="radio" name="opc" value="2" <?php if ($_POST['opc'] == 2) echo "checked"; ?> />Nombre completo
+                    <input type="radio" name="opc" value="2" <?php if ($_POST['opc'] == 2 AND !empty($_POST['buscador'])) echo "checked"; ?> />Nombre completo
                 </div>
             </form>
+            <form>
                 <?php
                     extract($_POST);
 
@@ -38,31 +39,32 @@
 
                         switch ($opc) {
                             case 1:
-                                $resultado = $objanalisis->consultar_analisis($mysqli, $buscador);
-                                if (empty($resultado))
+                                $result = $objanalisis->buscadorlike($mysqli, $buscador);
+                                $result = $result->fetch_array();
+                                if (empty($result))
                                     echo "No existe el análisis buscado";
                                 else {
-                                echo "
-                                    <table class='anapro'>
-                                        <tr>
-                                            <td><i class='fa fa-chevron-circle-right'></i> Nombre</td>
-                                            <td>Precio</td>
-                                            <td>Laboratorio</td>
-                                            <td>Estatus</td>
-                                            <td><i class='fa fa-check-circle'></i></td>
-                                        </tr>
-                                ";
-                                $result = $objanalisis->buscadorlike($mysqli, $buscador);
-                                while ($resultado = $result->fetch_array()) {
-                                    echo "<tr>
-                                        <td>".$resultado[1]."</td>";
-                                        echo "<td>".$resultado[2]."</td>";
-                                        echo "<td>".$resultado[3]."</td>";
-                                        echo "<td>".$resultado[4]."</td>";
-                                        echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
-                                    </tr>";
-                                }
-                                echo "</table>";
+                                    echo "
+                                        <table class='anapro'>
+                                            <tr>
+                                                <td><i class='fa fa-chevron-circle-right'></i> Nombre</td>
+                                                <td>Precio</td>
+                                                <td>Laboratorio</td>
+                                                <td>Estatus</td>
+                                                <td><i class='fa fa-check-circle'></i></td>
+                                            </tr>
+                                    ";
+                                    $result = $objanalisis->buscadorlike($mysqli, $buscador);
+                                    while ($resultado = $result->fetch_array()) {
+                                        echo "<tr>
+                                            <td>".$resultado[1]."</td>";
+                                            echo "<td>".$resultado[2]."</td>";
+                                            echo "<td>".$resultado[3]."</td>";
+                                            echo "<td>".$resultado[4]."</td>";
+                                            echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
+                                        </tr>";
+                                    }
+                                    echo "</table>";
                                 }
                                 break;
                             case 2:
@@ -118,8 +120,9 @@
                         }
                         echo "</table>";
                     }
-                ?>     
-            
+                ?>
+                <button type="button" name="insertar" value="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo análisis</button>
+            </form>
             <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>
