@@ -18,6 +18,16 @@
                 </hgroup>
             </div>
 
+            <form action="consulta" method="POST">
+                <div class="buscadores">
+                    <input type="text" name="buscador" id="buscador" placeholder="Buscar análisis" />
+                    <button type="button" class="botonmenu"><i class="fa fa-search"></i></button>
+                    <br>
+                    <input type="radio" name="1" value="1" checked />Frase
+                    <input type="radio" name="1" value="2"> Nombre completo
+                </div>
+            </form>
+
             <table class="anapro">
                 <tr>
                     <td><i class="fa fa-chevron-circle-right"></i> Nombre</td>
@@ -26,7 +36,14 @@
                     <td>Estatus</td>
                     <td><i class="fa fa-check-circle"></i></td>
                 </tr>
-                <?php
+            <?php
+                if (isset($buscador)) :
+            ?>
+                <tr>
+                    <td></td>
+                </tr>
+            <?php
+                else :
                     include_once '../../system/class.php';
                     $objlaboratorio = new laboratorio();
                     $objanalisis = new analisis();
@@ -40,6 +57,7 @@
                             echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
                         </tr>";
                     }
+                endif;
                 ?>
             </table>            
             
