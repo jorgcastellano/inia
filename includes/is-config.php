@@ -1,6 +1,6 @@
 <?php
 
-	define("HOST", "jorgcastellano.sytes.net");
+	define("HOST", "190.142.118.74");
 	//define("USER", "sec_user");
 	define("USER", "P4VM800");
 	define("PASSWORD", "123456");

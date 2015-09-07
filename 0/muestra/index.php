@@ -341,7 +341,7 @@
 									<option value="">Seleccione</option>
 									<option value="1"<?php if($reg[0]==''){ echo 'selected'; } ?>>Generalizado</option>
 									<option value="2"<?php if($reg[0]==''){ echo 'selected'; } ?>>Disperso</option>
-									<option value="3"<?php if($reg[0]==''){ echo 'selected'; } ?>>Sectorizaddo</option>
+									<option value="3"<?php if($reg[0]==''){ echo 'selected'; } ?>>Sectorizado</option>
 									<option value="4"<?php if($reg[0]==''){ echo 'selected'; } ?>>Zona Baja</option>
 									<option value="5"<?php if($reg[0]==''){ echo 'selected'; } ?>>Zona Alta</option>
 									<option value="6"<?php if($reg[0]==''){ echo 'selected'; } ?>>Orillas</option>
