@@ -37,9 +37,9 @@ class producto
       require_once 'error_update.php';
       if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
 
-<<<<<<< HEAD
+
     }
-=======
+
       public function consulta_completo($mysqli)
       {
       $sql = "SELECT * FROM producto ORDER BY Nom_produ ASC";
@@ -53,7 +53,7 @@ class producto
       }
 
    
->>>>>>> acd567f094ee60a51ad220cc7be4fe75becc1be4
+
   }
 
 class laboratorio {
@@ -170,9 +170,9 @@ class analisis {
         $mysqli->query($sql);
         require_once 'error_update.php'; 
     }
-<<<<<<< HEAD
 
-=======
+
+
     public function consulta_completo($mysqli){
       $sql = "SELECT * FROM analisis ORDER BY Tipo ASC, Nom_ana ASC";
       return $mysqli->query($sql);
@@ -181,7 +181,7 @@ class analisis {
       $sql = "SELECT * FROM analisis WHERE Nom_ana LIKE ('%$var%')";
       return $mysqli->query($sql);
     }
->>>>>>> acd567f094ee60a51ad220cc7be4fe75becc1be4
+
 }
 
 class cliente {
