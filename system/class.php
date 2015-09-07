@@ -44,13 +44,10 @@ class producto
       return $mysqli->query($sql);
       }
 
-      public function Consulta ($buscador)
-      {
-          $sql= "SELECT * producto WHERE Nom_produ LIKE '%buscador%'";
-          return $mysqli->query($sql);
-      }
-
-   
+    public function buscadorlike($mysqli, $var){
+      $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
+      return $mysqli->query($sql);
+    }
   }
 
 class laboratorio {
