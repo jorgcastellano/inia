@@ -20,46 +20,105 @@
 
             <form action="consulta" method="POST">
                 <div class="buscadores">
-                    <input type="text" name="buscador" id="buscador" placeholder="Buscar análisis" />
-                    <button type="button" class="botonmenu"><i class="fa fa-search"></i></button>
+                    <input type="text" name="buscador" id="buscador" value="<?php echo $_POST['buscador']; ?>" placeholder="Buscar análisis" />
+                    <button type="submit" class="botonmenu"><i class="fa fa-search"></i></button>
                     <br>
-                    <input type="radio" name="1" value="1" checked />Frase
-                    <input type="radio" name="1" value="2"> Nombre completo
+                    <input type="radio" name="opc" value="1" checked />Frase
+                    <input type="radio" name="opc" value="2" <?php if ($_POST['opc'] == 2) echo "checked"; ?> />Nombre completo
                 </div>
             </form>
+                <?php
+                    extract($_POST);
 
-            <table class="anapro">
-                <tr>
-                    <td><i class="fa fa-chevron-circle-right"></i> Nombre</td>
-                    <td>Precio</td>
-                    <td>Laboratorio</td>
-                    <td>Estatus</td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-            <?php
-                if (isset($buscador)) :
-            ?>
-                <tr>
-                    <td></td>
-                </tr>
-            <?php
-                else :
                     include_once '../../system/class.php';
                     $objlaboratorio = new laboratorio();
                     $objanalisis = new analisis();
-                    $result = $objanalisis->consulta_completo($mysqli);
-                    while ($resultado = $result->fetch_array()) {
-                        echo "<tr>
-                            <td>".$resultado[1]."</td>";
-                            echo "<td>".$resultado[2]."</td>";
-                            echo "<td>".$resultado[3]."</td>";
-                            echo "<td>".$resultado[4]."</td>";
-                            echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
-                        </tr>";
+
+                    if (!empty($buscador)) {
+
+                        switch ($opc) {
+                            case 1:
+                                $resultado = $objanalisis->consultar_analisis($mysqli, $buscador);
+                                if (empty($resultado))
+                                    echo "No existe el análisis buscado";
+                                else {
+                                echo "
+                                    <table class='anapro'>
+                                        <tr>
+                                            <td><i class='fa fa-chevron-circle-right'></i> Nombre</td>
+                                            <td>Precio</td>
+                                            <td>Laboratorio</td>
+                                            <td>Estatus</td>
+                                            <td><i class='fa fa-check-circle'></i></td>
+                                        </tr>
+                                ";
+                                $result = $objanalisis->buscadorlike($mysqli, $buscador);
+                                while ($resultado = $result->fetch_array()) {
+                                    echo "<tr>
+                                        <td>".$resultado[1]."</td>";
+                                        echo "<td>".$resultado[2]."</td>";
+                                        echo "<td>".$resultado[3]."</td>";
+                                        echo "<td>".$resultado[4]."</td>";
+                                        echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
+                                    </tr>";
+                                }
+                                echo "</table>";
+                                }
+                                break;
+                            case 2:
+                                $resultado = $objanalisis->consultar_analisis($mysqli, $buscador);
+                                if (empty($resultado))
+                                    echo "No existe el análisis buscado";
+                                else {
+                                    echo "
+                                        <table class='anapro'>
+                                            <tr>
+                                                <td><i class='fa fa-chevron-circle-right'></i> Nombre</td>
+                                                <td>Precio</td>
+                                                <td>Laboratorio</td>
+                                                <td>Estatus</td>
+                                                <td><i class='fa fa-check-circle'></i></td>
+                                            </tr>
+                                    ";
+                                    echo "<tr>
+                                        <td>".$resultado[1]."</td>";
+                                        echo "<td>".$resultado[2]."</td>";
+                                        echo "<td>".$resultado[3]."</td>";
+                                        echo "<td>".$resultado[4]."</td>";
+                                        echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
+                                        </tr>
+                                    </table>";
+                                }
+                                break;
+                            default:
+                                echo "Uy! existe un error";
+                                break;
+                        }
+
+                    } elseif (empty($buscador) OR !isset($buscador)) {
+                        echo "
+                                <table class='anapro'>
+                                    <tr>
+                                        <td><i class='fa fa-chevron-circle-right'></i> Nombre</td>
+                                        <td>Precio</td>
+                                        <td>Laboratorio</td>
+                                        <td>Estatus</td>
+                                        <td><i class='fa fa-check-circle'></i></td>
+                                    </tr>
+                            ";
+                        $result = $objanalisis->consulta_completo($mysqli);
+                        while ($resultado = $result->fetch_array()) {
+                            echo "<tr>
+                                    <td>".$resultado[1]."</td>";
+                                    echo "<td>".$resultado[2]."</td>";
+                                    echo "<td>".$resultado[3]."</td>";
+                                    echo "<td>".$resultado[4]."</td>";
+                                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
+                                </tr>";
+                        }
+                        echo "</table>";
                     }
-                endif;
-                ?>
-            </table>            
+                ?>     
             
             <?php include '../../layouts/layout_p.php' ?>
         </section>
