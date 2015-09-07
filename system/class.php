@@ -38,8 +38,13 @@ class producto
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
-
     }
+
+      public function consulta_completo($mysqli)
+      {
+      $sql = "SELECT * FROM producto ORDER BY Nom_produ ASC";
+      return $mysqli->query($sql);
+      }
   }
 
 class laboratorio {
@@ -68,7 +73,6 @@ class laboratorio {
 
     public function consultar_laboratorio($mysqli,$Nom_la)
     {
-
       $sql="SELECT * FROM laboratorio WHERE laboratorio.Nom_lab ='$Nom_la'";
       $res = $mysqli->query($sql);
       return $res->fetch_array();
@@ -76,7 +80,6 @@ class laboratorio {
 
     public function cEstatus($mysqli)
     {
-
       $sql="SELECT * FROM laboratorio";
       return $mysqli->query($sql);
     }
@@ -95,7 +98,6 @@ class laboratorio {
     }
  
 }
-
 
 class analisis {
 
@@ -125,7 +127,6 @@ class analisis {
       $sql="SELECT * FROM analisis WHERE analisis.Nom_ana ='$Nom_ana'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
-
     }
 
     public function cEstatus($mysqli, $v) {
@@ -156,7 +157,10 @@ class analisis {
         $mysqli->query($sql);
         require_once 'error_update.php'; 
     }
-
+    public function consulta_completo($mysqli){
+      $sql = "SELECT * FROM analisis ORDER BY Tipo ASC, Nom_ana ASC";
+      return $mysqli->query($sql);
+    }
 }
 
 class cliente {

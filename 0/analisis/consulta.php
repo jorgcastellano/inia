@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Productos</title>
+        <title>Sistema interno de gestión de productos y servicios - INIA Mérida</title>
         <?php include '../../layouts/head.php' ?>
     </head>
     <body>
@@ -13,40 +13,37 @@
         <section class="bloque">
             <div>
                 <?php include '../../layouts/cabecera-body.php' ?>
-			<hgroup>
-				<h1>Listado de Productos</h1>
-			</hgroup>
-		</div>
+                <hgroup>
+                    <h1>Listado de análisis</h1>
+                </hgroup>
+            </div>
 
-                  <table class="anapro">
+            <table class="anapro">
                 <tr>
-                    <td>Nombre</td>
-                    <td>Existencia</td>
+                    <td><i class="fa fa-chevron-circle-right"></i> Nombre</td>
                     <td>Precio</td>
-                    <td>Selección</td>
+                    <td>Laboratorio</td>
+                    <td>Estatus</td>
+                    <td><i class="fa fa-check-circle"></i></td>
                 </tr>
                 <?php
                     include_once '../../system/class.php';
-                    $objprodu = new producto();
-                    $result = $objprodu->consulta_completo($mysqli);
+                    $objlaboratorio = new laboratorio();
+                    $objanalisis = new analisis();
+                    $result = $objanalisis->consulta_completo($mysqli);
                     while ($resultado = $result->fetch_array()) {
-                            echo "<tr>
+                        echo "<tr>
                             <td>".$resultado[1]."</td>";
                             echo "<td>".$resultado[2]."</td>";
                             echo "<td>".$resultado[3]."</td>";
+                            echo "<td>".$resultado[4]."</td>";
                             echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
                         </tr>";
                     }
                 ?>
-            </table>  
-	
-        <br /><br />
-
-        <button type="submit" name="Modificar" value="<?php echo seleccion?>" class="boton" >Modificar</button>
-        <button type='button' OnClick=location='index' class="boton">Nuevo Producto</button>
-        <button type='button' OnClick=location='../home/inicio' class="boton">Pagina Principal</button>
-       
-        <?php include '../../layouts/layout_p.php' ?>
+            </table>            
+            
+            <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>
 </html>

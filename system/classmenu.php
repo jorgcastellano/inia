@@ -53,7 +53,7 @@
 				case 0:
 					$subElementos->cargarElemento("fa-check-square-o", "../../0/home/estatus", " Activar/Desactivar");
 					$subElementos->cargarElemento("fa-flask", "../../0/laboratorio/index", " Laboratorios");
-					$subElementos->cargarElemento("fa-bug", "../../0/analisis/index", " Analisis");
+					$subElementos->cargarElemento("fa-bug", "../../0/analisis/consulta", " Analisis");
 					return $subElementos->mostrar();
 					break;
 				case 1:
