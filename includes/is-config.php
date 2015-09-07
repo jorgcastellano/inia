@@ -1,6 +1,6 @@
 <?php
 
-	define("HOST", "localhost");
+	define("HOST", "jorgcastellano.sytes.net");
 	//define("USER", "sec_user");
 	define("USER", "root");
 	define("PASSWORD", "123456");
