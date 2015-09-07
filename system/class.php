@@ -45,6 +45,14 @@ class producto
       $sql = "SELECT * FROM producto ORDER BY Nom_produ ASC";
       return $mysqli->query($sql);
       }
+
+      public function Consulta ($buscador)
+      {
+          $sql= "SELECT * producto WHERE Nom_produ LIKE '%buscador%'";
+          return $mysqli->query($sql);
+      }
+
+   
   }
 
 class laboratorio {
