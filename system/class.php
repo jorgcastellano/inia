@@ -12,7 +12,6 @@ class producto
       $mysqli->query($sql);
       require_once 'error_insert.php';
       if($mysqli->affected_rows>0){echo "El nuevo producto se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo producto";}
-
       }
 
     public function consultar_produ($mysqli,$Nom_produ)
@@ -20,7 +19,6 @@ class producto
       $sql="SELECT * FROM producto WHERE producto.Nom_produ ='$Nom_produ'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
-
     }
     
 
@@ -159,6 +157,10 @@ class analisis {
     }
     public function consulta_completo($mysqli){
       $sql = "SELECT * FROM analisis ORDER BY Tipo ASC, Nom_ana ASC";
+      return $mysqli->query($sql);
+    }
+    public function buscadorlike($mysqli, $var){
+      $sql = "SELECT * FROM analisis WHERE Nom_ana LIKE ('%$var%')";
       return $mysqli->query($sql);
     }
 }
@@ -442,4 +444,4 @@ class r_fito {
 
 }
 
-?>        
+?>
