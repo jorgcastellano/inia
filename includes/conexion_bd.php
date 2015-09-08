@@ -2,7 +2,7 @@
 
 	define("HOST", "mipc.jorgcastellano.net.ve");
  	//define("USER", "sec_user");
-  	define("USER", "P4VM800");
+  	define("USER", "gproyecto");
   	define("PASSWORD", "123456");
   	//define("PASSWORD", "AHxySPDT7U8mNTdE");
   	define("DATABASE", "proyecto3");

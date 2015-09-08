@@ -24,7 +24,7 @@
                 $reg=$laboratorios-> cEstatus($mysqli,$estatus);
 
                 ?>
-            <form class="contact_form" action="cambioestado" method="POST">
+            <form action="cambioestado" method="POST">
 
                 <?php 
                 $v=0;

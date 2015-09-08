@@ -46,21 +46,17 @@ class producto
       return $mysqli->query($sql);
       }
 
-<<<<<<< HEAD
+
     public function buscadorlike($mysqli, $var){
       $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
       return $mysqli->query($sql);
     }
-=======
+
       public function Consulta ($buscador)
       {
           $sql= "SELECT * producto WHERE Nom_produ LIKE '%buscador%'";
           return $mysqli->query($sql);
       }
-
-   
-
->>>>>>> ffa607102be0c978bb4250077e3fd992f9dc7700
   }
 
 class laboratorio {
@@ -97,7 +93,6 @@ class laboratorio {
 
     public function cEstatus($mysqli)
     {
-
       $sql="SELECT * FROM laboratorio";
       return $mysqli->query($sql);
     }
@@ -141,9 +136,9 @@ class analisis {
 
     }
 
-    public function consultar_analisis($mysqli,$Nom_ana)
+    public function consultar_analisis($mysqli,$Cod)
     {
-      $sql="SELECT * FROM analisis WHERE analisis.Nom_ana ='$Nom_ana'";
+      $sql="SELECT * FROM analisis WHERE analisis.Cod_ana ='$Cod'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
 
@@ -222,12 +217,7 @@ class cliente {
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
       if($mysqli->affected_rows>0){echo "El cliente se ha modificado con éxito!!";} else { echo "No se realizó ningún cambio en el cliente";}
-
-
       }
-
-
-
 }
 
 class finca {
@@ -260,8 +250,6 @@ class finca {
       $res=$mysqli->query($sql);
       if($mysqli->affected_rows>0){echo "La finca se modifico con exito";} else { echo "No se realizó ningún cambio a la finca";}
     }
-
-
 }
 
 class solicitud {
@@ -284,7 +272,6 @@ class ayudante
       $sql="SELECT * FROM ayudante";
       $res=$mysqli->query($sql);
       return  $res->fetch_array();
-
     }
 
     public function actualizar_sol($mysqli,$sol)
@@ -308,16 +295,11 @@ class ayudante
     include_once 'error_update.php';
 
     }
-
-
 }
-
-
-
 
 class suelo {
   
-      private $reg;
+    private $reg;
 
     public function registrar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion)
     {

@@ -21,16 +21,17 @@
             <?php
                 extract($_POST);
                 require_once '../../system/class.php';
-
-                for ($i=0;$i<count($Tipo);$i++){ $Tipo=$Tipo[$i]; }
-
-                $ana = new analisis();
-                $ana -> registrar_analisis($mysqli,$Nom_ana,$Precio_ana,$Tipo);
-                $reg = $ana->consultar_analisis($mysqli,$Nom_ana);                
+                $ana = new analisis();  
+                if (isset($modificar)) :
+                    $ana -> 
+                else :
+                    $ana -> registrar_analisis($mysqli,$Nom_ana,$Precio_ana,$Tipo);
+                    $reg = $ana->consultar_analisis($mysqli,$Cod);   
+                endif;
             ?>
 
-            <form class="contact_form" method="post" action="modificar"  id="">
-                <table border=0 align="center">
+            <form method="post" action="formulario">
+                <table class="">
                     <tr>
                         <td>Nombre del análisis</td>
                         <td>Precio</td>
@@ -41,14 +42,11 @@
                         <td><?php echo $reg[2]?></td>
                         <td><?php echo $reg[3]?></td>
                     </tr>
-
                 </table>
-                <input type="hidden" name="Nom_ana" value="<?php echo $reg[1]?>" />
-                <button type="submit" name="submit" class="boton" >Modificar</button>
-                <button type='button' OnClick=location='formulario1.php' class="boton">Nuevo laboratorio</button>
-                <button type='button' OnClick=location='' class="boton">Pagina Principal</button>
+                <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
+                <button type="submit" name="ana" value="<?php echo $reg[0]?>" class="boton"><i class="fa fa-pencil"></i> Modificar</button>
+                <button type='button' OnClick=location='index' class="boton"><i class="fa fa-home"></i> Página Principal</button>
             </form>
-
              <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>
