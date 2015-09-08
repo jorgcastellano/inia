@@ -1,0 +1,15 @@
+﻿Correciones de Bugs y correciones del sistema para funcionamiento multiplataforma
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   0/analisis/index.php
+#	modified:   0/cliente/resultados.php
+#	modified:   0/home/estatus.php
+#	modified:   system/check.php
+#	modified:   system/class.php
+#	modified:   system/menu.php
+#
+

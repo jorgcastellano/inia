@@ -23,9 +23,10 @@
                         <button class="botonmenu" type="submit" name="button"><i class="fa fa-search"></i></button>
                         </br>
                         <input type='radio' name="opc" value='1' checked><label> Frase</label>
-                        <input type='radio' name="opc"  value='2'<?php if ($_POST['opc'] == 2) echo "checked"; ?>/><label> Por Nombre Completo</label>
+                        <input type='radio' name="opc"  value='2'<?php if ($_POST['opc'] == 2 AND !empty($_POST['buscador'])) echo "checked"; ?>/><label> Por Nombre Completo</label>
                     </div>  
                 </form>
+      <form method="POST" action="index">
         <?php
             extract($_POST);
             include_once '../../system/class.php';
@@ -36,6 +37,7 @@
                 switch ($opc) {
                     case 1:
                               $result=$objproducto->buscadorlike($mysqli, $buscador);
+                               $result = $result->fetch_array();
                                 if (empty($result))
                                     echo "No existe el producto buscado";
                                 else {
@@ -46,7 +48,7 @@
                                               <td>Precio</td>
                                              <td><i class='fa fa-check-circle'></i></td>
                                          </tr> ";
-                               
+                               $result = $objproducto->buscadorlike($mysqli, $buscador);
                                 while ($resultado = $result->fetch_array()) {
                                 echo "<tr>
                                 <td>".$resultado[1]."</td>";
@@ -59,7 +61,7 @@
                         break;
                     case 2:
 
-                              $resultado = $objproducto->consultar_produ($mysqli, $buscador);
+                              $resultado = $objproducto->consultar_produc($mysqli, $buscador);
                                 if (empty($resultado))
                                     echo "No existe el producto buscado";
                                 else {
@@ -105,10 +107,12 @@
                     }
                 ?>
         <br /><br />
-        <button type="submit" name="Modificar" value="<?php echo seleccion?>" class="boton" >Modificar</button>
-        <button type='button' OnClick=location='index' class="boton">Nuevo Producto</button>
-        <button type='button' OnClick=location='../home/inicio' class="boton">Pagina Principal</button>
-       
+        <div>
+         <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Productos</button>
+        <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
+        <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i>Inicio</button>
+        </div> 
+  </form>
         <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>
