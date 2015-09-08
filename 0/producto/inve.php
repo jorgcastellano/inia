@@ -61,7 +61,7 @@
                         break;
                     case 2:
 
-                              $resultado = $objproducto->consultar_produc($mysqli, $buscador);
+                              $resultado = $objproducto->Consulta($mysqli, $buscador);
                                 if (empty($resultado))
                                     echo "No existe el producto buscado";
                                 else {
@@ -108,8 +108,8 @@
                 ?>
         <br /><br />
         <div>
-         <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Productos</button>
-        <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
+             <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
+                    <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Producto</button>
         <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i>Inicio</button>
         </div> 
   </form>

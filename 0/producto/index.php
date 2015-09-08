@@ -31,7 +31,7 @@
                 elseif (isset($_POST['pro'])) :
                     $Cod = $_POST['pro'];
                     $pro = new producto();
-                    $reg = $ana->consultar_produc($mysqli,$Cod);
+                    $reg = $pro->consultar_produc($mysqli);
                 endif;
                
               ?>
@@ -45,10 +45,13 @@
                 <label for="Precio_produ"> Precio de Producto </label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="3" />
            		</br>
-                         <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-                        <?php if(isset($Modificar)): ?><button type="submit" name="Actualizar" value="Actualizar" class="boton" formaction="update" ><i class="fa fa-check"></i> Guardar cambios</button>
-                        <?php else : ?><button type="submit" name="Registrar" value="Registrar" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
-                            
+                          <button name="atras" type="button" onclick=location="index" class="boton"><i class="fa fa-arrow-left"></i> Página anterior</button>
+                <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
+                <?php if (isset($_POST['seleccion']) OR isset($_POST['ana'])) : ?>
+                    <button class="boton" type="submit" name="modificar" formaction="update"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
+                    <?php else : ?>
+                    <button class="boton" type="submit" name="submit"><i class="fa fa-floppy-o"></i> Registrar análisis</button> 
+                <?php endif; ?>
             </form>
             <?php include '../../layouts/layout_p.php' ?>
         </section>

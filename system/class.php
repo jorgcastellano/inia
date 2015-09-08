@@ -22,9 +22,9 @@ class producto
     }
     
 
-    public function consultar_produc($mysqli)
+    public function consultar_produc($mysqli, $Cod)
     {
-      $sql="SELECT * FROM producto ";
+      $sql="SELECT * FROM producto WHERE producto.Cod_produ ='$Cod'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
 
