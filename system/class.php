@@ -82,7 +82,7 @@ class laboratorio {
       if($mysqli->affected_rows > 0){echo "Los datos del laboratorio se han modificado con exito";} else { echo "No se ha podido modificar los datos del laboratorio";}
 
     }
-      public function consultar_completa($mysqli,$Nom_lab)
+      public function consultar_completa($mysqli)
     {
       $sql="SELECT * FROM laboratorio";
       return $res = $mysqli->query($sql);
