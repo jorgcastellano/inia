@@ -23,7 +23,7 @@
     		extract($_POST);
             require_once '../../system/class.php';
             $lab = new laboratorio();
-            $reg = $lab->consultar_completa($mysqli);
+            $reg = $lab->consultar_completa($mysqli, $Nom_lab);
             echo "  <table class='anapro'>
                     <tr>
                           <td>Nombre</td>

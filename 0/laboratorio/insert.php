@@ -23,7 +23,7 @@
             require_once '../../system/class.php';
             $lab = new laboratorio();
             $lab->registrar_laboratorio($mysqli,$Nom_lab);
-            $reg = $lab->consultar_laboratorio($mysqli,$Nom_lab);
+            $reg = $lab->consultar_completa($mysqli, $Nom_lab);
         ?>
 
         <form class="contact_form" method="post" action="index" id="">
