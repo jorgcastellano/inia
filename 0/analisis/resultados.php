@@ -23,10 +23,10 @@
                 require_once '../../system/class.php';
                 $ana = new analisis();  
                 if (isset($modificar)) :
-                    $ana -> 
-                else :
+                    echo "string";
+                elseif (isset($submit)) :
                     $ana -> registrar_analisis($mysqli,$Nom_ana,$Precio_ana,$Tipo);
-                    $reg = $ana->consultar_analisis($mysqli,$Cod);   
+                    $reg=$ana->consultar_analisis_Cod($mysqli, $Tipo);
                 endif;
             ?>
 

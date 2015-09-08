@@ -2,7 +2,7 @@
     session_start();
     include_once '../../system/check.php';
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
     <head>
         <title>laboratorio</title>
@@ -22,8 +22,12 @@
             extract($_POST);
             require_once '../../system/class.php';
             $lab = new laboratorio();
-            $lab->registrar_laboratorio($mysqli,$Nom_lab);
-            $reg = $lab->consultar_laboratorio($mysqli,$Nom_lab);
+            if ($Registrar)
+                $lab->registrar_laboratorio($mysqli,$Nom_lab);
+            else: 
+                $reg = $lab->modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab);
+                $reg = $lab->consultar_completa($mysqli, $Nom_lab);
+            endif;
         ?>
 
         <form class="contact_form" method="post" action="index" id="">

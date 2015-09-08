@@ -80,6 +80,7 @@ class laboratorio {
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows > 0){echo "Los datos del laboratorio se han modificado con exito";} else { echo "No se ha podido modificar los datos del laboratorio";}
+
     }
       public function consultar_completa($mysqli,$Nom_lab)
     {
@@ -139,12 +140,17 @@ class analisis {
 
     }
 
-    public function consultar_analisis($mysqli,$Cod)
-    {
-      $sql="SELECT * FROM analisis WHERE analisis.Cod_ana ='$Cod'";
+    public function consultar_analisis($mysqli,$Cod) {
+      //Buscdor por nombre exacto
+      $sql="SELECT * FROM analisis WHERE Nom_ana='$Cod'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
-
+    }
+    public function consultar_analisis_cod($mysqli,$Tipo) {
+      //Buscdor por codigo
+      $sql="SELECT * FROM analisis WHERE Cod_ana=(SELECT MAX(Cod_ana) FROM analisis WHERE Tipo='$Tipo')";
+      $res= $mysqli->query($sql);
+      return $res->fetch_array();
     }
 
     public function cEstatus($mysqli, $v) {
@@ -176,8 +182,6 @@ class analisis {
         require_once 'error_update.php'; 
     }
 
-
-
     public function consulta_completo($mysqli){
       $sql = "SELECT * FROM analisis ORDER BY Tipo ASC, Nom_ana ASC";
       return $mysqli->query($sql);
@@ -186,7 +190,6 @@ class analisis {
       $sql = "SELECT * FROM analisis WHERE Nom_ana LIKE ('%$var%')";
       return $mysqli->query($sql);
     }
-
 }
 
 class cliente {
