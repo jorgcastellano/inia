@@ -80,7 +80,6 @@ class laboratorio {
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows > 0){echo "Los datos del laboratorio se han modificado con exito";} else { echo "No se ha podido modificar los datos del laboratorio";}
-
     }
       public function consultar_completa($mysqli,$Nom_lab)
     {

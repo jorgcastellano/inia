@@ -22,7 +22,7 @@
 
                 require_once '../../system/class.php';
 
-                if ($Registrar) :
+                if (isset($Registrar)) :
                     $client = new cliente();
                     $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
                     $fin = new finca();

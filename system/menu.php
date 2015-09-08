@@ -1,4 +1,4 @@
-<?php include_once 'classmenu.php'; ?>
+<?php include 'classmenu.php'; ?>
 
 	<nav class="menu">
 		<ul class="menu-margen">
@@ -9,13 +9,13 @@
 				$menu1 = new controladorMenu();
 	            $arreglo1 = $menu1 -> menuHome();
 	            $arreglo2 = $menu1 -> cerrar_sesion();
-				if ($logeado=='Off') : ?>
+				if ($logeado == "Off") : ?>
 					<form method="POST" action="../../includes/proceso_login.php">
 		                <li class="users"><input type="email" name="correo" placeholder="Correo electrónico"></li>
 		                <li class="pass"><input type="password" name="password" placeholder="Contraseña"></li>
 		                <div><li><button class="botonmenu" type="submit" name="button">Entrar</button></li></div>
 		            </form>
-        	<?php 	elseif ($indexes=="Yes" AND $logeado=="On") :
+        	<?php 	elseif ($indexes == "Yes" AND $logeado == "On") :
 	            	echo '<div class="csesion"><li><i class="fa fa-user"></i> Usuario: '.$_SESSION['nombre'].'</li>';
 	            	echo $arreglo2[0]."</li></div>";
 	        ?>
