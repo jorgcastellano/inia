@@ -21,7 +21,7 @@
                 require_once '../../system/class.php';
 
                 $laboratorios = new laboratorio();
-                $reg=$laboratorios-> cEstatus($mysqli,$estatus);
+                $reg=$laboratorios->cEstatus($mysqli);
 
                 ?>
             <form action="cambioestado" method="POST">

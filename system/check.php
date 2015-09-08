@@ -4,4 +4,5 @@
 	else :
 		$logeado = 'Off';
 	endif;
+    $indexes = "No";
 ?>
