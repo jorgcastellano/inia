@@ -18,7 +18,7 @@
 				<h1>Laboratorios</h1>
 			</hgroup>
 		</div>
-
+ 
 		<?php
     		extract($_POST);
             require_once '../../system/class.php';
