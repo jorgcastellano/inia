@@ -3,6 +3,7 @@
 require_once '../../includes/conexion_bd.php';
 
 
+
 class producto 
   {
      public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ)
@@ -111,7 +112,6 @@ class laboratorio {
     }
  
 }
-
 
 class analisis {
 
