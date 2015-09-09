@@ -22,11 +22,12 @@
                     header('location: index');
                 require_once '../../system/class.php';
                 if (isset($_POST['seleccion'])) :
-                    echo "seleccion";
+                    //Seleccion viene desde la pagina index de analisis
                     $seleccion = $_POST['seleccion'];
                     $ana = new analisis();
                     $reg = $ana->consultar_analisis($mysqli,$seleccion);
                 elseif (isset($_POST['ana'])) :
+                    //Recibe analisis desde resultados
                     $Cod = $_POST['ana'];
                     $ana = new analisis();
                     $reg = $ana->consultar_analisis($mysqli,$Cod);
