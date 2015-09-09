@@ -24,7 +24,7 @@
                     <button type="submit" class="botonmenu"><i class="fa fa-search"></i></button>
                     <br>
                     <input type="radio" name="opc" value="1" checked />Frase
-                    <input type="radio" name="opc" value="2" <?php if (!isset($_POST['opc']) AND isset($_POST['opc'])) if ($_POST['opc'] == 2) echo "checked";?> />Nombre completo
+                    <input type="radio" name="opc" value="2" <?php if (isset($_POST['opc'])){ if ($_POST['opc'] == 2) echo "checked";}?> />Nombre completo
                 </div>
             </form>
             <form method="POST" action="formulario">
