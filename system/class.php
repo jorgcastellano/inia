@@ -71,10 +71,9 @@ class laboratorio {
       $mysqli->query($sql);
       require_once 'error_insert.php';
       if($mysqli->affected_rows>0){echo "El nuevo laboratorio se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo laboratorio";}
-
     }
 
-    public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab)
+    public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab) 
     {
       $sql="UPDATE laboratorio SET laboratorio.Nom_lab='$Nom_lab' WHERE laboratorio.Cod_lab ='$Cod_lab'";
       $mysqli->query($sql);
