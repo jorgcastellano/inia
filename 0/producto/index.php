@@ -18,12 +18,19 @@
                 </hgroup>
             </div>
             <?php
-             extract($_POST);
+                
+               if (isset($_POST['Modificar1'])) :
+                extract($_POST);
+                $Cod_produ=$Modificar1;
+                require_once '../../system/class.php';
+                $pro = new producto();  
+                $reg = $pro->consultar_produc($mysqli,$Cod_produ);
+                endif;
+        
                 if (isset($_POST['modificar']) AND empty($_POST['seleccion']))
                     header('location: inve');
-               //if(isset($Modificar)) :
-               //$Nom_produ=$Modificar;
                 require_once '../../system/class.php';
+
                 if (isset($_POST['seleccion'])) :
                     $seleccion = $_POST['seleccion'];
                     $pro = new producto();  
@@ -31,26 +38,27 @@
                 elseif (isset($_POST['pro'])) :
                     $Cod = $_POST['pro'];
                     $pro = new producto();
-                    $reg = $pro->consultar_produc($mysqli);
+                    $reg = $pro->consultar_produc($mysqli, $Cod);
                 endif;
                
               ?>
             <form  class="contact_form" method="post" action="insert">
             	<label for="Nom_produ"> Nombre del Producto </label>
-            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php echo $reg[1]; ?>" title="Introduzca el nombre del producto " maxlength="50"/>
+            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"/>
             	</br>
             	<label for="Existencia"> Cantidad de Producto </label>
-            	<input required type="num" name="Existencia" id="Existencia" value="<?php echo $reg[2]; ?>" title="Introduzca la cantidad de este producto" maxlength="3" />
+            	<input required type="num" name="Existencia" id="Existencia" value="<?php echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="3" />
                 </br>
                 <label for="Precio_produ"> Precio de Producto </label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="3" />
            		</br>
                           <button name="atras" type="button" onclick=location="index" class="boton"><i class="fa fa-arrow-left"></i> Página anterior</button>
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-                <?php if (isset($_POST['seleccion']) OR isset($_POST['ana'])) : ?>
-                    <button class="boton" type="submit" name="modificar" formaction="update"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
+               
+                <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
+                    <button class="boton" type="submit" name="modificar" value="<?php echo $reg[0] ?>" formaction="update"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
                     <?php else : ?>
-                    <button class="boton" type="submit" name="submit"><i class="fa fa-floppy-o"></i> Registrar análisis</button> 
+                    <button class="boton" type="submit" name="submit"><i class="fa fa-floppy-o"></i> Registrar Producto</button> 
                 <?php endif; ?>
             </form>
             <?php include '../../layouts/layout_p.php' ?>

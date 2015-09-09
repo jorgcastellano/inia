@@ -22,27 +22,19 @@ class producto
     }
     
 
-    public function consultar_produc($mysqli, $Cod)
+    public function consultar_produc($mysqli,$Cod_produ)
     {
-      $sql="SELECT * FROM producto WHERE producto.Cod_produ ='$Cod'";
+      $sql="SELECT * FROM producto WHERE Cod_produ ='$Cod_produ'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
 
     }
 
-      public function modificar_produ($mysqli,$Nom_produ, $Existencia, $Precio_produ)
-    {
-      $sql="UPDATE producto SET producto.Existencia='$Existencia', producto.Precio_produ='$Precio_produ' WHERE producto.Nom_produ='$Nom_produ'";
-      $mysqli->query($sql);
-      require_once 'error_update.php';
-      if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
-
-
-    }
+     
 
       public function consulta_completo($mysqli)
       {
-      $sql = "SELECT * FROM producto ORDER BY Nom_produ ASC";
+      $sql = "SELECT * FROM producto";
       return $mysqli->query($sql);
       }
 
@@ -51,12 +43,15 @@ class producto
       $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
       return $mysqli->query($sql);
     }
+ public function modificar_produ($mysqli,$Cod_produ, $Nom_produ, $Existencia, $Precio_produ)
+    {
+      $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ' WHERE Cod_produ='$Cod_produ' ";
+      $mysqli->query($sql);
+      require_once 'error_update.php';
+      if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
 
-      public function Consulta ($buscador)
-      {
-          $sql= "SELECT * producto WHERE Nom_produ LIKE '%buscador%'";
-          return $mysqli->query($sql);
-      }
+
+    }
   }
 
 class laboratorio {

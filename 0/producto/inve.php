@@ -61,7 +61,7 @@
                         break;
                     case 2:
 
-                              $resultado = $objproducto->Consulta($mysqli, $buscador);
+                              $resultado = $objproducto->consultar_produ($mysqli,$buscador);
                                 if (empty($resultado))
                                     echo "No existe el producto buscado";
                                 else {

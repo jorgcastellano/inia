@@ -26,7 +26,7 @@
                 $reg = $producto->consultar_produ($mysqli,$Nom_produ); 
                 ?>
 
-            <form class="contact_form" method="post" action="index"  id="">
+            <form class="contact_form" method="post" action="index">
                 <table border=0 align="center">
                                 <tr>
                                     <th>Nombre: </th>
@@ -42,8 +42,8 @@
                                 </tr>
 
                 </table>
-                  <button type="submit" name="Modificar" value="<?php echo $reg[1]?>" class="boton" >Modificar</button>
-                    <button type='button' OnClick=location='index' class="boton">Nuevo laboratorio</button>
+               <button type="submit" class="boton" name="Modificar1" value="<?php echo $reg[0]?>"><i class="fa fa-pencil"></i> Modificar Producto</button>
+                    <button type='button' OnClick=location='index' class="boton">Nuevo Producto</button>
                 <button type='button' OnClick=location='../home/inicio' class="boton">Pagina Principal</button>
           
             </form>

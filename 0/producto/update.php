@@ -14,15 +14,19 @@
             <div>
                 <?php include '../../layouts/cabecera-body.php' ?>
 			<hgroup>
-				<h1>Modificar Laboratorio</h1>
+				<h1>Modificar Producto</h1>
 			</hgroup>
 		</div>
 		
 		<?php
+       
+             if (isset($_POST['modificar'])) :
             extract($_POST);
+             $Cod_produ=$modificar;
             require_once '../../system/class.php';
             $producto = new producto();
-            $producto->modificar_produ($mysqli,$Nom_produ, $Existencia, $Precio_produ);
+            $producto->modificar_produ($mysqli,$Cod_produ,$Nom_produ,$Existencia,$Precio_produ);
+            endif;
         ?>
 
         <br /><br />
