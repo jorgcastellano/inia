@@ -326,10 +326,10 @@ class suelo {
     }
 
 
-    public function modificar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Cod_rsuelo,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion)
+    public function modificar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion)
     {       
 
-      $sql="";
+      $sql="UPDATE m_suelo SET Cod_lab='$Cod_lab',Tam_lote='$Tam_lote',Profundidad='$Profundidad',Carac_terreno='$Carac_terreno',Inundacion='$Inundacion',Riego='$Riego',Criego='$Criego',F_toma='$F_toma',T_vege='$T_vege',Cultivo='$Cultivo',Edad_cult='$Edad_cult',Dis_siembra='$Dis_siembra',Nro_pl='$Nro_pl',Cult_antes='$Cult_antes',Rend_cult='$Rend_cult',Restos='$Restos',Fertilizante='$fertil',Fert_cant='$Fert_cantidad',Epoca_aplic='$Epoca_aplic',Aplicacion='$Aplicacion' WHERE Cod_suelo='$Cod_suelo' ";
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
 
@@ -383,10 +383,10 @@ class fito {
 
   }
 
-  public function modificar_fito($mysqli,$Cod_fito,$Cod_lab,$Tipo_fito,$Descrip_fito,$Cult_fito,$Edad_fito,$F_coleccion,$Pobl_cercana,$Id_microorg,$sintoma,$Malformacion,$F_sintomas,$Causa,$Tipo_plant,$Tam_lote,$Nro_plant,$Nro_subm,$dist_f,$Origen_sem,$Pres_microorg,$Dist_planafect,$Part_afect,$Riego,$Topografia,$Text_sue,$Hum_sue,$Uso_quimico,$Contrl_male,$Cult_ant,$Cond_agroclima,$Obervaciones)
+  public function modificar_fito($mysqli,$Cod_fito,$Cod_lab,$Tipo_fito,$Descrip_fito,$Cult_fito,$Edad_fito,$F_coleccion,$Pobl_cercana,$Id_microorg,$sintoma,$F_sintomas,$Causa,$Tipo_plant,$Tam_lote,$Nro_plant,$Nro_subm,$dist_f,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parte,$Riego,$Topografia,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$practicas,$Produc_dosis,$control,$Produc_dosisb,$Cult_ant,$Cond_agroclima,$Observaciones)
   {       
 
-    $sql="";
+    $sql="UPDATE m_fito SET Tipo_fito='$Tipo_fito',Descrip_fito='$Descrip_fito',Cult_fito='$Cult_fito',Edad_fito='$Edad_fito',F_coleccion='$F_coleccion',Pobl_cercana='$Pobl_cercana',Id_microorg='$Id_microorg',Sintomas='$sintoma',F_sintomas='$F_sintomas',Causa='$Causa',Tipo_plant='$Tipo_plant',Tam_lote='$Tam_lote',Nro_plant='$Nro_plant',Nro_subm='$Nro_subm',dist_f='$dist_f',Origen_sem='$Origen_sem',Pres_microorg=$'Pres_microorg',Dist_planafect='$Dist_planafect',Part_afect='$Parte',Riego='$Riego',Topografia='$Topografia',Text_sue='$Text_sue',Composicion='$Composicion',Hum_sue='$Hum_sue',Drenaje='$Drenaje',Practicas='$practicas',Produc_dosis='$Produc_dosis',Control='$control',Produc_dosisb='$Produc_dosisb',Cult_ant='$Cult_ant',Cond_agroclima='$Cond_agroclima',Observaciones='$Observaciones' WHERE Cod_fito='$Cod_fito'";
     $res=$mysqli->query($sql);
     include_once 'error_update.php';
 
