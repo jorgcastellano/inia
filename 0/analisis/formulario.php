@@ -22,10 +22,12 @@
                     header('location: index');
                 require_once '../../system/class.php';
                 if (isset($_POST['seleccion'])) :
+                    //Seleccion viene desde la pagina index de analisis
                     $seleccion = $_POST['seleccion'];
                     $ana = new analisis();
                     $reg = $ana->consultar_analisis($mysqli,$seleccion);
                 elseif (isset($_POST['ana'])) :
+                    //Recibe analisis desde resultados
                     $Cod = $_POST['ana'];
                     $ana = new analisis();
                     $reg = $ana->consultar_analisis($mysqli,$Cod);
@@ -35,17 +37,16 @@
             ?>
             <form class="contact_form" action="resultados" method="post">
                 <label for="Nom_ana">Nombre del analisis</label>
-                    <input type="text" name="Nom_ana" value="<?php echo $reg[1] ?>" maxlength="" title"" />
+                    <input type="text" name="Nom_ana" value="<?php if(isset($reg)) echo $reg[1]; ?>" />
                     <br>
                 <label for="Precio_ana">Costo del analisis</label>
-                    <input type="text" name="Precio_ana" value="<?php echo $reg[2] ?>" maxlength="" title"" />
+                    <input type="text" name="Precio_ana" value="<?php if(isset($reg)) echo $reg[2]; ?>" />
                     <br>
                 <label for="Tipo">Tipo de analisis</label>
-
                 <select name="Tipo">
                     <option value="">Seleccione</option>
                     <?php while ($resultado = $reg2->fetch_array()) : ?>
-                        <option value="<?php echo $resultado[0]; ?>" <?php if ($resultado[0] == $reg[3]) echo "selected"; echo ">".$resultado[1]; ?></option>
+                        <option value="<?php echo $resultado[0]; ?>" <?php if(isset($reg)) if ($resultado[0] == $reg[3]) echo "selected"; echo ">".$resultado[1]; ?></option>
                     <?php endwhile; ?>
                 </select>
                 <br>

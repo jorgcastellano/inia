@@ -3,6 +3,7 @@
 require_once '../../includes/conexion_bd.php';
 
 
+
 class producto 
   {
      public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ)
@@ -22,9 +23,9 @@ class producto
     }
     
 
-    public function consultar_produc($mysqli)
+    public function consultar_produc($mysqli, $Cod)
     {
-      $sql="SELECT * FROM producto ";
+      $sql="SELECT * FROM producto WHERE producto.Cod_produ ='$Cod'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
 
@@ -71,15 +72,15 @@ class laboratorio {
       $mysqli->query($sql);
       require_once 'error_insert.php';
       if($mysqli->affected_rows>0){echo "El nuevo laboratorio se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo laboratorio";}
-
     }
 
-    public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab)
+    public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab) 
     {
       $sql="UPDATE laboratorio SET laboratorio.Nom_lab='$Nom_lab' WHERE laboratorio.Cod_lab ='$Cod_lab'";
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows > 0){echo "Los datos del laboratorio se han modificado con exito";} else { echo "No se ha podido modificar los datos del laboratorio";}
+
     }
       public function consultar_completa($mysqli,$Nom_lab)
     {
@@ -115,7 +116,6 @@ class laboratorio {
  
 }
 
-
 class analisis {
 
     public function registrar_analisis($mysqli,$Nom_ana,$Precio_ana,$Tipo)
@@ -139,12 +139,17 @@ class analisis {
 
     }
 
-    public function consultar_analisis($mysqli,$Cod)
-    {
-      $sql="SELECT * FROM analisis WHERE analisis.Cod_ana ='$Cod'";
+    public function consultar_analisis($mysqli,$Cod) {
+      //Buscdor por nombre exacto
+      $sql="SELECT * FROM analisis WHERE Nom_ana='$Cod'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
-
+    }
+    public function consultar_analisis_cod($mysqli,$Tipo) {
+      //Buscdor por codigo
+      $sql="SELECT * FROM analisis WHERE Cod_ana=(SELECT MAX(Cod_ana) FROM analisis WHERE Tipo='$Tipo')";
+      $res= $mysqli->query($sql);
+      return $res->fetch_array();
     }
 
     public function cEstatus($mysqli, $v) {
@@ -176,8 +181,6 @@ class analisis {
         require_once 'error_update.php'; 
     }
 
-
-
     public function consulta_completo($mysqli){
       $sql = "SELECT * FROM analisis ORDER BY Tipo ASC, Nom_ana ASC";
       return $mysqli->query($sql);
@@ -186,7 +189,6 @@ class analisis {
       $sql = "SELECT * FROM analisis WHERE Nom_ana LIKE ('%$var%')";
       return $mysqli->query($sql);
     }
-
 }
 
 class cliente {
