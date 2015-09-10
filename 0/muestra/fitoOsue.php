@@ -24,8 +24,8 @@
              <p>El Sistema de procesos internos del INIA Mérida le recuerda que una vez registradas las muestras solo se..... </p>     
                     
                     <input type="hidden" name="Ced_cliente" value="<?php echo $RegistrarM; ?>" />
-                    <button type="submit" class="boton" name="RegistrarS" value="RegistrarS" ><i class="fa fa-plus"></i> Muestra de Suelo</button>
-                    <button type="submit" name="RegistrarF" value="RegistrarF" class="boton" ><i class="fa fa-plus"></i> Muestra de Fitopatologia</button>
+                    <button type="submit" class="boton" name="RegistrarS" value="Inicio" ><i class="fa fa-plus"></i> Muestra de Suelo</button>
+                    <button type="submit" name="RegistrarF" value="Inicio" class="boton" ><i class="fa fa-plus"></i> Muestra de Fitopatologia</button>
             </form>
 
 

@@ -350,6 +350,27 @@ class solicitud_analisis {
       
     }
 
+    public function registrar_solicitud_analisis2($mysqli,$Cod_sol,$Cod_ana,$Cod_suelo,$Cod_fito)
+    {
+
+
+      $sql="INSERT INTO `proyecto3`.`solicitud_analisis` (`Id_sa`, `Cod_sol`, `Cod_ana`, `Cod_suelo`, `Cod_fito`) VALUES (NULL, '$Cod_sol', '$Cod_ana', NULL, '$Cod_fito')";
+      $res=$mysqli->query($sql);
+      //$res=$mysqli_query($mysqli,$sql);
+      include_once 'error_insert.php';
+
+      
+    }
+
+    public function consultar_sam($mysqli,$Cod)
+    {
+
+      $sql="SELECT * FROM solicitud_analisis WHERE solicitud_analisis.Cod_suelo ='$Cod'";
+      $res=$mysqli->query($sql);
+      return  $res->fetch_array();
+
+    }
+
   }
 
 
