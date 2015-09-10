@@ -31,14 +31,11 @@ class producto
 
     }
 
-     
-
       public function consulta_completo($mysqli)
       {
       $sql = "SELECT * FROM producto";
       return $mysqli->query($sql);
       }
-
 
     public function buscadorlike($mysqli, $var){
       $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
@@ -50,8 +47,6 @@ class producto
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
-
-
     }
   }
 
@@ -136,7 +131,7 @@ class analisis {
 
     public function consultar_analisis($mysqli,$Cod) {
       //Buscdor por nombre exacto
-      $sql="SELECT * FROM analisis WHERE Nom_ana='$Cod'";
+      $sql="SELECT * FROM analisis WHERE Cod_ana='$Cod'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
     }
