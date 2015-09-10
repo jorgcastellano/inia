@@ -1,27 +1,22 @@
-<?php       
+<?php
 
-require_once '../../includes/is-conexion_bd.php';
+    require_once '../../includes/is-conexion_bd.php';
 
-class miembro {
+    class inicio_seguro{
 
-    public function consultar_miembro($mysqli)
-
-
-     { 
-
-      $sql="SELECT * FROM miembros WHERE miembros.aprobacion ='$Off'";
-      $res=$mysqli->query($sql);
-      return $res->fetch_array();
+        public function consultar_miembro($mysqli) { 
+            $sql = "SELECT * FROM miembros";
+            return $mysqli->query($sql);
+        }
+        public function modificar_miembros_estatus($mysqli,$estatus,$cod) {
+            $sql = "UPDATE miembros SET aprobacion='$estatus' WHERE id='$cod'";
+            $mysqli->query($sql);
+            require_once 'error_update.php';
+        }
+        public function modificar_miembros_estatus_all($mysqli,$estatus) {
+            $sql = "UPDATE miembros SET aprobacion='$estatus'";
+            $mysqli->query($sql);
+            require_once 'error_update.php';
+        }
     }
-
-
-    public function modificar_miembros($mysqli,$Off,$var)
-    {
-        $sql = "UPDATE miembros SET estatus='$Off' WHERE id='$var'";
-        $mysqli->query($sql);
-        require_once 'error_update.php';
-    }
-   
-  }
-
-  ?>
+?>
