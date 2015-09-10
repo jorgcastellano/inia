@@ -1,6 +1,6 @@
 <?php
 
-	define("HOST", "mipc.jorgcastellano.net.ve");
+	define("HOST", "localhost");
  	//define("USER", "sec_user");
   	define("USER", "gproyecto");
   	define("PASSWORD", "123456");

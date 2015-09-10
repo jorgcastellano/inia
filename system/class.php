@@ -66,13 +66,13 @@ class laboratorio {
 
     public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab) 
     {
-      $sql="UPDATE laboratorio SET laboratorio.Nom_lab='$Nom_lab' WHERE laboratorio.Cod_lab ='$Cod_lab'";
+      $sql="UPDATE laboratorio SET Nom_lab='$Nom_lab' WHERE Cod_lab='$Cod_lab'";
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows > 0){echo "Los datos del laboratorio se han modificado con exito";} else { echo "No se ha podido modificar los datos del laboratorio";}
 
     }
-      public function consultar_completa($mysqli,$Nom_lab)
+    public function consultar_completa($mysqli)
     {
       $sql="SELECT * FROM laboratorio";
       return $res = $mysqli->query($sql);
@@ -80,7 +80,7 @@ class laboratorio {
 
     public function consultar_laboratorio($mysqli,$Cod)
     {
-      $sql="SELECT * FROM laboratorio WHERE laboratorio.Cod_lab ='$Cod'";
+      $sql="SELECT * FROM laboratorio WHERE Cod_lab ='$Cod'";
       $res = $mysqli->query($sql);
       return $res->fetch_array();
     }
