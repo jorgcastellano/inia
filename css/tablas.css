@@ -23,6 +23,7 @@ table tr:last-child th:first-child {
     border-radius:0px 0px 0px 5px;
 }
 
+/*ESTILO PARA LOS ENCABEZADOS DE TODAS LAS TABLAS*/
 table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child, table.usuario tr:first-child{
     text-align: center;
     font-weight: bold;
