@@ -44,19 +44,19 @@
               ?>
             <form  class="contact_form" method="post" action="insert">
             	<label for="Nom_produ"> Nombre del Producto </label>
-            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"/>
+            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"/>
             	</br>
             	<label for="Existencia"> Cantidad de Producto </label>
-            	<input required type="num" name="Existencia" id="Existencia" value="<?php echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="3" />
+            	<input required type="num" name="Existencia" id="Existencia" value="<?php if(isset($reg)) echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="3" />
                 </br>
                 <label for="Precio_produ"> Precio de Producto </label>
-            	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="3" />
+            	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="3" />
            		</br>
                 <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir a Inventario</button>
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                
                 <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
-                    <button class="boton" type="submit" name="modificar" value="<?php echo $reg[0] ?>" formaction="update"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
+                    <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="update"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
                     <?php else : ?>
                     <button class="boton" type="submit" name="submit"><i class="fa fa-floppy-o"></i> Registrar Producto</button> 
                 <?php endif; ?>
