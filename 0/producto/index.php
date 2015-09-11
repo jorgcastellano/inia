@@ -52,7 +52,7 @@
                 <label for="Precio_produ"> Precio de Producto </label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="3" />
            		</br>
-                <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir a Inventario</button>
+                <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                
                 <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>

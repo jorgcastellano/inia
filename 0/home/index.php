@@ -46,7 +46,7 @@
                     <td><?php echo $res[1] ?></td>
                 </tr>
                 <tr>
-                    <th>Muestras analizadas en fitopatologia</th>
+                    <th>Muestras analizadas en fitopatología</th>
                     <td><?php echo $res[2] ?></td>
                 </tr>
             </table>

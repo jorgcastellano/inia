@@ -57,7 +57,7 @@
             <div>
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                 <button type="submit" name="Modificar" class="boton" >Modificar Laboratorio</button>
-            	<button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i>Inicio</button>
+            	<button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home" ></i> Inicio</button>
             </div>
         </form>
            <?php include '../../layouts/layout_p.php' ?>
