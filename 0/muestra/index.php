@@ -189,7 +189,7 @@
                         <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
 						<input type="hidden" name="Cod_suelo" value="<?php echo $code1.$reg[0]; ?>" />
 						<button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-						<?php if(isset($ModificarS)): ?><button type="submit" name="ActualizarS" value="Actualizars" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
+						<?php if($RegistrarS=='ModificarS'): ?><button type="submit" name="ActualizarS" value="Actualizars" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
                     	<?php else : ?><button type="submit" name="RegistrarS" value="RegistrarS" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 								
 				</form>

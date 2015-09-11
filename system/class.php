@@ -357,12 +357,12 @@ class solicitud_analisis {
       
     }
 
-    public function consultar_sam($mysqli,$Cod)
+    public function consultar_sam($mysqli,$codm)
     {
 
-      $sql="SELECT * FROM solicitud_analisis WHERE solicitud_analisis.Cod_suelo ='$Cod'";
-      $res=$mysqli->query($sql);
-      return  $res->fetch_array();
+      $sql="SELECT * FROM solicitud_analisis, analisis WHERE Cod_suelo ='$codm'  AND solicitud_analisis.Cod_ana=analisis.Cod_ana OR Cod_fito ='$codm' AND solicitud_analisis.Cod_ana=analisis.Cod_ana";
+      return $mysqli->query($sql);
+      
 
     }
 

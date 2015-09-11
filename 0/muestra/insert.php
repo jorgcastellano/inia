@@ -52,7 +52,10 @@
                         $sol=$reg2[0]+1;
                         $ayuda->actualizar_sol($mysqli,$sol);
                         endif;
+
+                        $codm=$Cod_suelo;
                         include 'tabla_suelo.php';
+                        include 'tabla_analisis.php';
                         ?>
                         
                         <form action="index" method="post">
@@ -73,7 +76,9 @@
                         include 'lib_suelo.php';
                         $suelo = new suelo();
                         $suelo->modificar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion);
+                        $codm=$Cod_suelo;
                         include 'tabla_suelo.php';
+                        include 'tabla_analisis.php';
                         ?>
                         <form action="index" method="post">
                             <input type="hidden" name="Cod_suelo" value="<?php echo $Cod_suelo; ?>" />
@@ -120,7 +125,11 @@
                         $sol=$reg2[0]+1;
                         $ayuda->actualizar_sol($mysqli,$sol);
                         endif;
+
+
+                        $codm=$Cod_fito;
                         include 'tabla_fito.php';
+                        include 'tabla_analisis.php';
                         ?>
 
                         <form action="index" method="post">
@@ -143,7 +152,9 @@
 
                         $fito = new fito();
                         $fito->modificar_fito($mysqli,$Cod_fito,$Cod_lab,$Tipo_fito,$Descrip_fito,$Cult_fito,$Edad_fito,$F_coleccion,$Pobl_cercana,$Id_microorg,$sintoma,$F_sintomas,$Causa,$Tipo_plant,$Tam_lote,$Nro_plant,$Nro_subm,$dist_f,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parte,$Riego,$Topografia,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$practicas,$Produc_dosis,$control,$Produc_dosisb,$Cult_ant,$Cond_agroclima,$Observaciones);
+                        $codm=$Cod_fito;
                         include 'tabla_fito.php';
+                        include 'tabla_analisis.php';
                         ?>
 
                         <form action="index" method="post">
