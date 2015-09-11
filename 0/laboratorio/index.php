@@ -44,20 +44,20 @@
 	                     </tr> ";
                 while ($resultado = $reg->fetch_array()) {
                     echo "<tr>
-                        <td>".$resultado[1]."</td>";
-                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td></tr>";
+                        <td>".$resultado[1]." </td>";
+                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='click aquí para seleccionar y modificar un laboratorio'></td></tr>";
                 }
                 echo "</table>";
             ?>
             <br>
             <label for="Nom_lab">Nombre del laboratorio</label>
-            <input  type="text" name="Nom_lab" id="Nom_lab" value="<?php if(isset($reg1)) echo $reg1[1]?>" />
+            <input  type="text" name="Nom_lab" id="Nom_lab" value="<?php if(isset($reg1)) echo $reg1[1]?>" title="Introduzca el nombre del laboratorio para buscar o modificar" />
             <?php if(isset($Modificar)): ?><button type="submit" name="Actualizar" value="<?php if(isset($reg1)) echo $reg1[0]?>" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
             <?php else : ?><button type="submit" name="Registrar" value="Registrar" class="boton" ><i class="fa fa-check"></i> Registrar laboratorio</button><?php endif; ?>
             <div>
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-                <button type="submit" name="Modificar" class="boton" >Modificar Laboratorio</button>
-            	<button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i>Inicio</button>
+                <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar laboratorio</button>
+                <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home" ></i> Inicio</button>
             </div>
         </form>
            <?php include '../../layouts/layout_p.php' ?>

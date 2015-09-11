@@ -70,7 +70,7 @@
 
 				<form class="contact_form" method="POST" action="insert"  id="f_suelo">
 				
-					<label for="Codigo">Codigo Suelo</label>
+					<label for="Codigo">Código Suelo</label>
 							<input type="text" name="Codigo" value="<?php echo $code1.$reg[0]; ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/>
                             
 							</br></br>
@@ -84,15 +84,15 @@
                             <span class="form_hint">Debe seleccionar un laboratorio"</span><br />
 							</br></br>	
 					<label for="Tam_lote">Tamaño del lote  (Ha)</label>
-							<input type="num" name="Tam_lote" value="<?php echo $reg[2] ?>" id="Tam_lote" title="Indique el tamaño del terreno en hectareas" maxlength="12" placeholder="0000" />
-							<span class="form_hint">Debe ingresar el tamaño del lote en hectáreas de forma numerica"</span><br />
+							<input type="num" name="Tam_lote" value="<?php echo $reg[2] ?>" id="Tam_lote" title="Indique el tamaño del terreno en héctareas" maxlength="12" placeholder="0000" />
+							<span class="form_hint">Debe ingresar el tamaño del lote en héctareas de forma numerica"</span><br />
                             </br></br>
 					<label for="Profundidad" title="Indique en Centimetros a que profundidad tomo la muestra">Profundidad de la muestra  (Cm)</label>
 							<input type="num" name="Profundidad" value="<?php echo $reg[3] ?>" id="Profundidad" title="Indique en Centimetros a que profundidad tomo la muestra" maxlength="11" placeholder="" />
-							<span class="form_hint">Debe ingresar de forma numrica la profundidad de la cual tomo la muestra"</span><br />
+							<span class="form_hint">Debe ingresar de forma numerica la profundidad de la cual tomo la muestra"</span><br />
                             </br></br>	
-					<label for="Carac_terreno" title="Selecione que caracteristica tiene el terreno">Caracteristicas del Terreno</label>
-							<select name="Carac_terreno" title="Selecione que caracteristica tiene el terreno">
+					<label for="Carac_terreno" title="Selecione que característica tiene el terreno">Características del Terreno</label>
+							<select name="Carac_terreno" title="Selecione que característica tiene el terreno">
 								<option value="">Seleccione</option>
 								<option value="p"<?php if($reg[4]=='p'){ echo 'selected'; } ?>>Plano</option>
 								<option value="s"<?php if($reg[4]=='s'){ echo 'selected'; } ?>>Semi plano</option>
@@ -101,9 +101,9 @@
 							</select>
                                 <span class="form_hint">Debe seleccionar un elemento"</span><br />
 							</br></br>
-					<label for="Inundacion" title="¿Existe riesgo de inundacion para el terreno?">Riesgo de inundacion</label>
-							<input type="radio" id="Inundacion" name="Inundacion" value="1" title="Si tiene riesgo"<?php if($reg[5]=='1'){ echo 'checked'; } ?>/>Si
-							<input type="radio" id="Inundacion" name="Inundacion" value="0"title="No tiene riesgo"<?php if($reg[5]=='0'){ echo 'checked'; } ?>/>No
+					<label for="Inundacion" title="¿Existe riesgo de inundación para el terreno?">Riesgo de inundación</label>
+							<input type="radio" id="Inundacion" name="Inundación" value="1" title="Si tiene riesgo"<?php if($reg[5]=='1'){ echo 'checked'; } ?>/>Si
+							<input type="radio" id="Inundacion" name="Inundación" value="0"title="No tiene riesgo"<?php if($reg[5]=='0'){ echo 'checked'; } ?>/>No
 							</br></br>
 					<label for="Riego" title="¿Tiene riego este terreno?">Riego</label>
 							<input type="radio" name="Riego" value="1"<?php if($reg[6]=='1'){ echo 'checked'; } ?>/>Si
@@ -112,7 +112,7 @@
 							</br></br>
 					<label for="F_toma">Fecha de toma de la muestra</label>
 							<select name="Dia" title="Dia">
-								<option value="">Dia</option>
+								<option value="">Día</option>
 								<?php for($i=01;$i<32;$i++) { ?>
 									<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha[0]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
 								<?php } ?>
@@ -132,8 +132,8 @@
 
 
 							</br></br>
-					<label for="T_vege">Tipo de vegetacion</label>
-							<textarea name="T_vege" id="T_vege" title="" cols="30" rows="5" maxlength="15" title="Por Favor Especifique aqui el tipo de vegetacion" placeholder="Por Favor Especifique aqui el tipo de vegetacion"><?php echo $reg[9] ?></textarea>
+					<label for="T_vege">Tipo de vegetación</label>
+							<textarea name="T_vege" id="T_vege" title="" cols="30" rows="5" maxlength="15" title="Por Favor Especifique aquí el tipo de vegetación" placeholder="Por Favor Especifique aquí el tipo de vegetación"><?php echo $reg[9] ?></textarea>
 							</br></br>
 					<label for="Cultivo" title="Indique que cultivo tiene este terreno en la actualidad">Cultivo Actual</label>
 							<input type="text" name="Cultivo" value="<?php echo $reg[10] ?>" id="Cultivo" title="Indique que cultivo tiene este terreno en la actualidad" maxlength="15" placeholder="" />
@@ -144,13 +144,13 @@
 					<label for="Dis_siembra" title="">Distancia Siembra</label>
 							<input type="num" name="Dis_siembra" value="<?php echo $reg[12] ?>" id="Dis_siembra" title="" maxlength="11" placeholder="" />
 							</br></br>
-					<label for="Nro_pl" title="Indique el numero de plantas que tiene cultivadas">Nro de plantas</label>
-							<input type="num" name="Nro_pl" value="<?php echo $reg[13] ?>" id="Nro_pl" title="Indique el numero de plantas que tiene cultivadas" maxlength="10" placeholder="" />
+					<label for="Nro_pl" title="Indique el número de plantas que tiene cultivadas">Nro de plantas</label>
+							<input type="num" name="Nro_pl" value="<?php echo $reg[13] ?>" id="Nro_pl" title="Indique el número de plantas que tiene cultivadas" maxlength="10" placeholder="" />
 							</br></br>
 					<label for="Cult_antes" title="Indique el cultivo anterior de este terreno">Cultivo anterior</label>
 							<input type="text" name="Cult_antes" value="<?php echo $reg[14] ?>" id="Cult_antes" title="Indique el cultivo anterior de este terreno" maxlength="20" placeholder="" />
 							</br></br>
-					<label for="Rend_cult" title="¿Como fue el rendimiento BUENO, REGULAR O MALO? ">Rendimiento del cultivo</label>
+					<label for="Rend_cult" title="¿Cómo fue el rendimiento BUENO, REGULAR O MALO? ">Rendimiento del cultivo</label>
 							<input type="radio" name="Rend_cult" value="B" title="Bueno"<?php if($reg[15]=='B'){ echo 'checked'; } ?>/>Bueno
 							<input type="radio" name="Rend_cult" value="R" title="Regular"<?php if($reg[15]=='R'){ echo 'checked'; } ?>/>Regular
 							<input type="radio" name="Rend_cult" value="M" title="Malo"<?php if($reg[15]=='M'){ echo 'checked'; } ?>/>Malo
@@ -167,14 +167,14 @@
 					<label for="Fert_cantidad" title="">Cantidad de Fertilizante</label>
 							<input type="text" name="Fert_cantidad" value="<?php echo $reg[18] ?>" id="Fert_cantidad" title="" maxlength="11" placeholder="" />
 							</br></br>
-					<label for="Epoca_aplic" title="">Epoca de Aplicacion</label>
+					<label for="Epoca_aplic" title="">Época de Aplicación</label>
 							<input type="text" name="Epoca_aplic" value="<?php echo $reg[19] ?>" id="Epoca_aplic" title="" maxlength="10" placeholder="" />
 							</br></br>	
-					<label for="Aplicacion" title="">Modo de aplicacion</label>
-							<textarea name="Aplicacion" id="Aplicacion" title="" cols="30" rows="5" maxlength="30" placeholder="Por Favor Especifique aqui el modo de aplicacion del fertilizante"><?php echo $reg[20] ?></textarea>
+					<label for="Aplicacion" title="">Modo de aplicación</label>
+							<textarea name="Aplicación" id="Aplicacion" title="" cols="30" rows="5" maxlength="30" placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[20] ?></textarea>
                             </br></br>
 
-					<label for="analisis" title=""><b>Analisis disponibles</b></label></br></br>
+					<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 						<?php while ($reg2 = $res3->fetch_array(MYSQLI_ASSOC)) { ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
 						<?php } 
@@ -247,7 +247,7 @@
                 
                 <form class="contact_form" method="post" action="insert"  id="">
 						
-							<label for="Cod">Codigo Fitopatologia</label>
+							<label for="Cod">Código Fitopatología</label>
 									<input type="text" name="Cod" value="<?php echo $code1.$reg[0]; ?>" id="Cod_fito" title="" maxlength="" placeholder="" disabled/>
 
 									</br></br>
@@ -261,17 +261,17 @@
 										<option value="5"<?php if($reg[2]=='5'){ echo 'selected'; } ?>>De Insectos</option>
 									</select>
 									</br></br>
-							<label for="Descrip_fito">Descripcion</label>
+							<label for="Descrip_fito">Descripción</label>
 									<textarea name="Descrip_fito" id="Descrip_fito" title="" cols="30" rows="5" maxlength="50" placeholder="Por Favor Describa la muestra"><?php echo $reg[3] ?></textarea>	 
 									</br></br>
 							<label for="Cult_fito" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' ">Cultivo, Especie o Variedad</label>
 									<input type="text" name="Cult_fito" value="<?php echo $reg[4] ?>" id="Cult_fito" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' " maxlength="15" placeholder="" />
 									</br></br>
-							<label for="Edad_fito" title="Edad del cultivo en dias, meses o años">Edad del Cultivo</label>
-									<input type="text" name="Edad_fito" value="<?php echo $reg[5] ?>" id="Edad_fito" title="Edad del cultivo en dias, meses o años" maxlength="11" placeholder="" />
+							<label for="Edad_fito" title="Edad del cultivo en días, meses o años">Edad del Cultivo</label>
+									<input type="text" name="Edad_fito" value="<?php echo $reg[5] ?>" id="Edad_fito" title="Edad del cultivo en días, meses o años" maxlength="11" placeholder="" />
 									</br></br>
-							<label for="F_coleccion">Fecha de coleccion</label>
-									<select name="Dia" title="Dia">
+							<label for="F_coleccion">Fecha de colección</label>
+									<select name="Dia" title="Día">
 										<option value="">Dia</option>
 										<?php for($i=01;$i<32;$i++) { ?>
 											<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha1[0]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
@@ -290,13 +290,13 @@
 										<?php } ?>
 									</select>
 									</br></br>
-							<label for="Pobl_cercana" title="Indique la poblacion mas cercana al lugar del cultivo">Poblacion mas Cercana</label>
-									<input type="text" name="Pobl_cercana" value="<?php echo $reg[7] ?>" id="Pobl_cercana" title="Indique la poblacion mas cercana al lugar del cultivo" maxlength="15" placeholder="" />
+							<label for="Pobl_cercana" title="Indique la población mas cercana al lugar del cultivo">Población más Cercana</label>
+									<input type="text" name="Pobl_cercana" value="<?php echo $reg[7] ?>" id="Pobl_cercana" title="Indique la población más cercana al lugar del cultivo" maxlength="15" placeholder="" />
 									</br></br>
-							<label for="Id_microorg">Identificacion del microorganismo</label>
+							<label for="Id_microorg">Identificación del microorganismo</label>
 									<input type="text" name="Id_microorg" value="<?php echo $reg[8] ?>" id="Id_microorg" title="" maxlength="20" placeholder="" />
 									</br></br>
-							<label for="Sintomas">Sintomas</label>
+							<label for="Sintomas">Síntomas</label>
 									<input type="checkbox" name="Sintomas[]" value="1"<?php foreach($sintoma as $id){ if($id=='1'){echo 'checked';} }?>/>Secamiento
 									<input type="checkbox" name="Sintomas[]" value="2"<?php foreach($sintoma as $id){ if($id=='2'){echo 'checked';} }?>/>Callos
 									<input type="checkbox" name="Sintomas[]" value="3"<?php foreach($sintoma as $id){ if($id=='3'){echo 'checked';} }?>/>Defoliacion
@@ -310,8 +310,8 @@
 									<input type="checkbox" name="Sintomas[]" value="11"<?php foreach($sintoma as $id){ if($id=='11'){echo 'checked';} }?>/>Gomosis
 									<input type="checkbox" name="Sintomas[]" value="12"<?php foreach($sintoma as $id){ if($id=='12'){echo 'checked';} }?>/>Otros
 									</br></br>
-							<label for="F_sintomas">Fecha de inicio de la sintomatologia</label>
-									<select name="Dia2" title="Dia">
+							<label for="F_sintomas">Fecha de inicio de la sintomatología</label>
+									<select name="Dia2" title="Día">
 										<option value="">Dia</option>
 										<?php for($i=01;$i<32;$i++) { ?>
 											<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha2[0]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
@@ -333,7 +333,7 @@
 							<label for="Causa">Daños causados por</label>
 									<input type="text" name="Causa" value="<?php echo $reg[11] ?>" id="Causas" title="" maxlength="30" placeholder="" />
 									</br></br>
-							<label for="Tipo_plant">Tipo de Plantacion</label>
+							<label for="Tipo_plant">Tipo de Plantación</label>
 								<select name="Tipo_plant">
 									<option value="">Seleccione</option>
 									<option value="1"<?php if($reg[12]=='1'){ echo 'selected'; } ?>>Campo</option>
@@ -342,7 +342,7 @@
 									<option value="4"<?php if($reg[12]=='4'){ echo 'selected'; } ?>>Vivero</option>
 								</select>
 									
-							<label for="Tam_lote">Tamaño de Plantacion/lote</label>
+							<label for="Tam_lote">Tamaño de Plantación/lote</label>
 									<input type="text" name="Tam_lote" value="<?php echo $reg[13] ?>" id="Tam_lote" title="" maxlength="11" placeholder="" />
 									</br></br>
 							<label for="Nro_plant">Nro de Plantas</label>
@@ -359,17 +359,17 @@
 									<input type="radio" id="Origen_sem" name="Origen_sem" value="2"<?php if($reg[17]=='2'){ echo 'checked'; } ?>/>Certificada
 								    </br></br>
 									
-							<label for="Pres_microorg">Presentacion del microorganismo</label>
+							<label for="Pres_microorg">Presentación del microorganismo</label>
 								<select name="Pres_microorg">
 									<option value="">Seleccione</option>
-									<option value="1"<?php if($reg[18]=='1'){ echo 'selected'; } ?>>Liquido</option>
+									<option value="1"<?php if($reg[18]=='1'){ echo 'selected'; } ?>>Líquido</option>
 									<option value="2"<?php if($reg[18]=='2'){ echo 'selected'; } ?>>Biopreparado</option>
 									<option value="3"<?php if($reg[18]=='3'){ echo 'selected'; } ?>>Polvo mojable</option>
 									<option value="4"<?php if($reg[18]=='4'){ echo 'selected'; } ?>>Tubo</option>
 									<option value="5"<?php if($reg[18]=='5'){ echo 'selected'; } ?>>Caja de petri</option>
 								</select>
 									</br></br>
-							<label for="Dist_planafect">Distribucion de las plantas afectadas</label>
+							<label for="Dist_planafect">Distribución de las plantas afectadas</label>
 								<select name="Dist_planafect">
 									<option value="">Seleccione</option>
 									<option value="1"<?php if($reg[19]=='1'){ echo 'selected'; } ?>>Generalizado</option>
@@ -393,13 +393,13 @@
 							<label for="Riego">Riego</label>
 								<select name="Riego">
 									<option value="">Seleccione</option>
-									<option value="1"<?php if($reg[21]=='1'){ echo 'selected'; } ?>>Aspersion</option>
+									<option value="1"<?php if($reg[21]=='1'){ echo 'selected'; } ?>>Aspersión</option>
 									<option value="2"<?php if($reg[21]=='2'){ echo 'selected'; } ?>>Goteo</option>
 									<option value="3"<?php if($reg[21]=='3'){ echo 'selected'; } ?>>Gravedad</option>
 									<option value="4"<?php if($reg[21]=='4'){ echo 'selected'; } ?>>No tiene</option>
 								</select>
 									</br></br>
-							<label for="Topografia">Topografia del terreno</label>
+							<label for="Topografia">Topografía del terreno</label>
 								<select name="Topografia">
 									<option value="">Seleccione</option>
 									<option value="1"<?php if($reg[22]=='1'){ echo 'selected'; } ?>>Plano</option>
@@ -417,7 +417,7 @@
 									<option value="3"<?php if($reg[23]=='3'){ echo 'selected'; } ?>>Grueso</option>
 								</select>
 									</br></br>
-							<label for="Composicion">Composicion del suelo</label>
+							<label for="Composicion">Composición del suelo</label>
 								<select name="Composicion">
 									<option value="">Seleccione</option>
 									<option value="1"<?php if($reg[24]=='1'){ echo 'selected'; } ?>>Fino</option>
@@ -441,7 +441,7 @@
 									<option value="3"<?php if($reg[26]=='3'){ echo 'selected'; } ?>>Deficiente</option>
 								</select>
 									</br></br>
-							<label for="Practicas">Practicas realizadas</label>
+							<label for="Practicas">Prácticas realizadas</label>
 									<input type="checkbox" name="Practicas[]" value="1"<?php foreach($practica as $id){ if($id=='1'){echo 'checked';} }?>/>Quimico
 									<input type="checkbox" name="Practicas[]" value="2"<?php foreach($practica as $id){ if($id=='2'){echo 'checked';} }?>/>Fertilizacion
 									<input type="checkbox" name="Practicas[]" value="3"<?php foreach($practica as $id){ if($id=='3'){echo 'checked';} }?>/>Organico
@@ -462,14 +462,14 @@
 							<label for="Cult_ant" title="">Cultivo anterior</label>
 									<input type="text" name="Cult_ant" value="<?php echo $reg[31] ?>" id="Cult_ant" title="" maxlength="20" placeholder="" />
 									</br></br>
-							<label for="Cond_agroclima" title="">Condiciones Agroclimaticas</label>
+							<label for="Cond_agroclima" title="">Condiciones Agroclimáticas</label>
 									<input type="text" name="Cond_agroclima" value="<?php echo $reg[32] ?>" id="Cond_agroclima" title="" maxlength="20" placeholder="" />
 									</br></br>
 							<label for="Observaciones">Observaciones</label>
 									<textarea name="Observaciones" id="Observaciones" title="" cols="30" rows="5" maxlength="50" placeholder=""><?php echo $reg[33] ?></textarea>	 
 									</br></br>
 
-							<label for="analisis" title=""><b>Analisis disponibles</b></label></br></br>
+							<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 						<?php while ($reg2 = $res3->fetch_array(MYSQLI_ASSOC)) { ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
 						<?php } 

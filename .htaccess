@@ -10,7 +10,7 @@ RewriteRule ^([^\.]+)$ $1.php [NC,L]
 #Redirigir a 0/home al abrir la pagina web
 RewriteCond %{HTTP_HOST} ^inia.jorgcastellano.net.ve\.ve$
 RewriteRule (.*) http://inia.jorgcastellano.net.ve/$1 [R=301,L]
-RewriteRule ^$ 0/home/ [L]
+RewriteRule ^$ 0/home/index [L]
 
 #Redirigir web amigable con SEO
 Redirect 301 0/home/ http://inia.jorgcastellano.net.ve
