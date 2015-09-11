@@ -42,7 +42,7 @@
                 endif;
                
               ?>
-            <form  class="contact_form" method="post" action="insert">
+            <form  class="contact_form" method="post" action="resultado">
             	<label for="Nom_produ"> Nombre del Producto </label>
             	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"/>
             	</br>
@@ -56,7 +56,7 @@
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                
                 <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
-                    <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="update"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
+                    <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
                     <?php else : ?>
                     <button class="boton" type="submit" name="submit"><i class="fa fa-floppy-o"></i> Registrar Producto</button> 
                 <?php endif; ?>
