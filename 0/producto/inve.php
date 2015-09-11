@@ -106,21 +106,9 @@
                 }
         ?>
         <div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
              <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
              <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Producto</button>
              <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Inicio</button>
-
->>>>>>> 26fb3b57b1496fac9ed0f6f981aa4783b5e2b60e
-=======
-
->>>>>>> b542d13750fbf25360b22fa2bb126b102ce12f4f
-             <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
-             <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Producto</button>
-             <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Inicio</button>
->>>>>>> b542d13750fbf25360b22fa2bb126b102ce12f4f
         </div> 
       </form>
         <?php include '../../layouts/layout_p.php' ?>
