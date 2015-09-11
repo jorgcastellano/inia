@@ -45,7 +45,7 @@
                 while ($resultado = $reg->fetch_array()) {
                     echo "<tr>
                         <td>".$resultado[1]." </td>";
-                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='Clip aquí para seleccionar y modificar un laboratorio'></td></tr>";
+                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='click aquí para seleccionar y modificar un laboratorio'></td></tr>";
                 }
                 echo "</table>";
             ?>
@@ -56,8 +56,8 @@
             <?php else : ?><button type="submit" name="Registrar" value="Registrar" class="boton" ><i class="fa fa-check"></i> Registrar laboratorio</button><?php endif; ?>
             <div>
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-                <button type="submit" name="Modificar" class="boton" >Modificar Laboratorio</button>
-            	<button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home" ></i> Inicio</button>
+                <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar laboratorio</button>
+                <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home" ></i> Inicio</button>
             </div>
         </form>
            <?php include '../../layouts/layout_p.php' ?>
