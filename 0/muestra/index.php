@@ -29,7 +29,7 @@
 //########################### ### #    #    #    ### ### ### # ### #####    #    #    #    #    ######################################################
 //####################################################################################################################################################
 
-                    
+                    include '../../system/gcodigo.php';
                     
                     if(isset($RegistrarS)) :
 
@@ -40,19 +40,22 @@
                     $fertilizante = explode("|", $reg[17]);
 
                     $fecha = explode("-", $reg[8]);
-                    /*echo $fecha[0];
-                    echo $fecha[1];
-                    echo $fecha[2];*/
+                    else:
                     
-                    else:  
+                    if($RegistrarS=='Continue') :
 
-                    include '../../system/gcodigo.php';
+                    $x=2;
+                    $generar = new controllerCodigo();
+                    $code1=$generar->generarCodigo($x);
+                    
+                    else:
                 	$x=2;
                 	$y=1;
                     $generar = new controllerCodigo();
                     $code1=$generar->generarCodigo($x);
                     $code2=$generar->generarCodigo($y);
 
+                    endif;
                     endif;
 
                     $sql='SELECT * FROM analisis WHERE analisis.tipo = "1"';
@@ -61,6 +64,8 @@
 					
 					$sql='SELECT * FROM laboratorio';
 					$res= $mysqli->query($sql);
+
+					echo $code2.$Cod_sol;
 				?>
 
 				<form class="contact_form" method="POST" action="insert"  id="f_suelo">
@@ -172,15 +177,19 @@
 					<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 						<?php while ($reg2 = $res3->fetch_array(MYSQLI_ASSOC)) { ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
-						<?php } ?>
+						<?php } 
 
-
+   
+                        if($RegistrarS=='Inicio') : ?>
+                        <input type='hidden' name='Inicio' value='' />
+                    	<?php endif;?>
+                    	
                         </br></br>
-						<input type="hidden" name="Cod_sol" value="<?php echo $code2; ?>" />
+						<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
                         <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
 						<input type="hidden" name="Cod_suelo" value="<?php echo $code1.$reg[0]; ?>" />
 						<button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-						<?php if(isset($ModificarS)): ?><button type="submit" name="ActualizarS" value="Actualizars" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
+						<?php if($RegistrarS=='ModificarS'): ?><button type="submit" name="ActualizarS" value="Actualizars" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
                     	<?php else : ?><button type="submit" name="RegistrarS" value="RegistrarS" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 								
 				</form>
@@ -451,9 +460,11 @@
 							<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 						<?php while ($reg2 = $res3->fetch_array(MYSQLI_ASSOC)) { ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
-						<?php } ?>
+						<?php } 
 
-
+							if($RegistrarF=='Inicio') : ?>
+                        	<input type='hidden' name='Inicio' value='' />
+                    		<?php endif;?>
 							     </br></br>
 								<input type="hidden" name="Cod_sol" value="<?php echo $code2; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
