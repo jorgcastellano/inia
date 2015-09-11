@@ -23,7 +23,6 @@ include_once '../../system/check.php';
             <h3>¡Has cerrado sesión!</h3>
             <p>Si desea volver a logearse regrese al inicio</p>
             <button style="margin-left: 5%" class="boton" type="button" onclick="location.href='index'" name="index"><– Páquina principal </button>
-            <?php include 'layouts/layout_p.php' ?>
             <?php include_once '../../layouts/layout_p.php' ?>
         </section>
     </body>

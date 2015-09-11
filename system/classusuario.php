@@ -18,5 +18,17 @@
             $mysqli->query($sql);
             require_once 'error_update.php';
         }
+        public function consultar_miembro_on($mysqli) { 
+            $sql = "SELECT * FROM miembros WHERE aprobacion = 'On'";
+            return $mysqli->query($sql);
+        }
+        public function modificar_privilegios($mysqli, $privilegio) {
+            
+        }
+        public function eliminar_miembros($mysqli, $cod) {
+            $sql = "DELETE FROM miembros WHERE id = '$cod'";
+            $mysqli->query($sql);
+            require_once 'error_update.php';
+        }
     }
 ?>

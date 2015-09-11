@@ -56,7 +56,7 @@
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                
                 <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
-                    <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
+                    <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button> 
                     <?php else : ?>
                     <button class="boton" type="submit" name="submit"><i class="fa fa-floppy-o"></i> Registrar Producto</button> 
                 <?php endif; ?>

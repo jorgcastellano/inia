@@ -41,13 +41,13 @@
                   if (empty($result))
                       echo "No existe el producto buscado";
                   else {
-                  echo "  <table class='anapro'>
-                          <tr>
-                                <td>Nombre</td>
-                                <td>Existencia</td>
-                                <td>Precio</td>
-                               <td><i class='fa fa-check-circle'></i></td>
-                           </tr> ";
+                  echo "<table class='anapro'>
+                      <tr>
+                            <td>Nombre</td>
+                            <td>Existencia</td>
+                            <td>Precio</td>
+                           <td><i class='fa fa-check-circle'></i></td>
+                       </tr> ";
                  $result = $objproducto->buscadorlike($mysqli, $buscador);
                   while ($resultado = $result->fetch_array()) {
                   echo "<tr>
@@ -106,15 +106,9 @@
                 }
         ?>
         <div>
-<<<<<<< HEAD
              <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
              <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Producto</button>
              <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Inicio</button>
-=======
-          <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
-          <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Producto</button>
-          <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i>Inicio</button>
->>>>>>> a0e745d0af4813b7b98acd1facf03e1442a202dd
         </div> 
       </form>
         <?php include '../../layouts/layout_p.php' ?>

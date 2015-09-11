@@ -96,7 +96,6 @@
                                 echo "Uy! existe un error";
                                 break;
                         }
-
                     } elseif (empty($buscador) OR !isset($buscador)) {
                         echo "
                                 <table class='anapro'>
