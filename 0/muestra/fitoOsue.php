@@ -29,7 +29,7 @@
             </form>
 
 
-                <?php include 'layouts/layout_p.php'; ?>
+                <?php include '../../layouts/layout_p.php'; ?>
         </section>
     </body>
 </html>

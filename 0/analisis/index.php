@@ -23,8 +23,8 @@
                     <input type="text" name="buscador" id="buscador" value="<?php if (isset($_POST['buscador'])) echo $_POST['buscador']; ?>" placeholder="Buscar análisis" />
                     <button type="submit" class="botonmenu"><i class="fa fa-search"></i> Buscar</button>
                     <br>
-                    <input type="radio" name="opc" value="1" title="Clip aquí para seleccionar un método de busqueda" checked />Frase 
-                    <input type="radio" name="opc" value="2" title="Clip aquí para seleccionar un método de busqueda" <?php if (isset($_POST['opc'])){ if ($_POST['opc'] == 2) echo "checked";}?> />Nombre completo
+                    <input type="radio" name="opc" value="1" title="click aquí para seleccionar un método de busqueda" checked />Frase 
+                    <input type="radio" name="opc" value="2" title="click aquí para seleccionar un método de busqueda" <?php if (isset($_POST['opc'])){ if ($_POST['opc'] == 2) echo "checked";}?> />Nombre completo
                 </div>
             </form>
             <form method="POST" action="formulario">
@@ -61,7 +61,7 @@
                                             echo "<td>".$resultado[2]."</td>";
                                             echo "<td>".$resultado[3]."</td>";
                                             echo "<td>".$resultado[4]."</td>";
-                                            echo "<td><input type='radio' name='seleccion' title='Clip aquí para modificar este análisis' value='$resultado[0]'></td>
+                                            echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td>
                                         </tr>";
                                     }
                                     echo "</table>";
@@ -114,7 +114,7 @@
                                     echo "<td>".$resultado[2]."</td>";
                                     echo "<td>".$resultado[3]."</td>";
                                     echo "<td>".$resultado[4]."</td>";
-                                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='Clip aquí para modificar este análisis'></td>
+                                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='click aquí para modificar este análisis'></td>
                                 </tr>";
                         }
                         echo "</table>";

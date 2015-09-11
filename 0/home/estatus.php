@@ -32,7 +32,7 @@
                     <table class="tstatus">
                         <tr>
                             <th><i class="fa fa-chevron-circle-right"></i> <?php echo $lab[1]; ?></th>
-                            <td><input type="checkbox" name="laboratorio[]" <?php echo "value='$lab[0]'"; if($lab[2]=='On'){ echo 'checked';}?> title="Clip aquí para desactivar todos los servicios de este laboratorio" /></td>
+                            <td><input type="checkbox" name="laboratorio[]" <?php echo "value='$lab[0]'"; if($lab[2]=='On'){ echo 'checked';}?> title="click aquí para desactivar todos los servicios de este laboratorio" /></td>
                         </tr>
                         <?php
                             $v++;
@@ -43,7 +43,7 @@
                                 if ($ana[3] == $lab[0]) {
                                 ?>  <tr>
                                         <td><?php echo $ana[1]; ?></td>
-                                        <td><input type="checkbox" name="analisis[]" <?php echo "value='$ana[0]'"; if($ana['estatus']=='On') echo 'checked'; ?> title="Clip aquí para desactivar este servicio" />
+                                        <td><input type="checkbox" name="analisis[]" <?php echo "value='$ana[0]'"; if($ana['estatus']=='On') echo 'checked'; ?> title="click aquí para desactivar este servicio" />
                                     </tr>
                         <?php   }
                     echo "</table>";
