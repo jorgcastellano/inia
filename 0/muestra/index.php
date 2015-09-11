@@ -203,6 +203,7 @@
            
 
                     if(isset($RegistrarF)) :
+                    
 
                     if($RegistrarF=='ModificarF') :
                     $muestra = new fito();
@@ -214,21 +215,32 @@
                     $control = explode("|", $reg[29]);
                     $fecha1 = explode("|", $reg[6]);
                     $fecha2 = explode("|", $reg[10]);
+
+                    echo $code_analisis;
                     else:
 
-                   	include '../../system/gcodigo.php';
+                    if($RegistrarF=='Continue') :
+
+                    $x=3;
+                    $generar = new controllerCodigo();
+                    $code1=$generar->generarCodigo($x);
+                    
+                    else:
+                    
                 	$x=3;
                 	$y=1;
                     $generar = new controllerCodigo();
                     $code1=$generar->generarCodigo($x);
                     $code2=$generar->generarCodigo($y);
+                    
 
+                    endif;
                     endif;
 
                     $sql='SELECT * FROM analisis WHERE analisis.tipo = "2"';
                     $res3= $mysqli->query($sql);
 
-                    
+                    echo $code2.$Cod_sol;
                                    
                 ?>
                 
@@ -435,7 +447,7 @@
 									<input type="checkbox" name="Practicas[]" value="3"<?php foreach($practica as $id){ if($id=='3'){echo 'checked';} }?>/>Organico
 								</br></br>
 							<label for="Produc_dosis" title="">Productos ultilizados y dosis</label>
-									<input type="text" name="Produc_dosis" value="<?php echo $reg[0] ?>" id="Produc_dosis" title="" maxlength="60" placeholder="" />
+									<input type="text" name="Produc_dosis" value="<?php echo $reg[28] ?>" id="Produc_dosis" title="" maxlength="60" placeholder="" />
 									</br></br>
 							<label for="Control">Control de</label>
 									<input type="checkbox" name="Control[]" value="1"<?php foreach($control as $id){ if($id=='1'){echo 'checked';} }?>/>Malezas
@@ -466,11 +478,14 @@
                         	<input type='hidden' name='Inicio' value='' />
                     		<?php endif;?>
 							     </br></br>
-								<input type="hidden" name="Cod_sol" value="<?php echo $code2; ?>" />
+								<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
-                                <input type="hidden" name="Cod_fito" value="<?php echo $code1; ?>" />
-								<button class="boton" type="reset" value="Borrar" name="reset" id="reset">Limpiar</button>
-								<button class="boton" type="submit" value="RegistrarF" name="RegistrarF" id="submit">siguiente --></button></br>						
+								<input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
+                                <input type="hidden" name="Cod_fito" value="<?php echo $code1.$reg[0]; ?>" />
+								<button class="boton" type="reset" value="Borrar" name="reset" id="reset"><i class="fa fa-eraser"></i> Limpiar</button>
+								<?php if($RegistrarF=='ModificarF'): ?><button type="submit" name="ActualizarF" value="ActualizarF" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
+                    			<?php elseif($RegistrarF=='Continue') :  ?><button type="submit" name="RegistrarF" value="Continue" class="boton" ><i class="fa fa-check"></i> Registrar</button>
+								<?php else: ?><button type="submit" name="RegistrarF" value="RegistrarF" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>					
 				</form>
                 <?php endif; ?>
             

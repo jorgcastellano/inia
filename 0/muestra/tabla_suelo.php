@@ -53,4 +53,5 @@
     <tr><th>Cantidad de fertilizante: </th><td><?php echo $reg[18] ?></td></tr>
     <tr><th>Epoca de aplicacion: </th><td><?php echo $reg[19] ?></td></tr>
     <tr><th>Modo de aplicacion: </th><td><?php echo $reg[20] ?></td></tr>
+    <tr><th>Análisis a realizar: </th><td><?php echo $analisis; ?></td></tr>
     </table>
