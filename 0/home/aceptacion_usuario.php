@@ -70,7 +70,7 @@
                         <td>$resultado[1]</td>
                         <td>$resultado[2]</td>
                         <td>$resultado[3]</td>
-                        <td><input type='checkbox' name='cod[]' value='$resultado[0]' $checked/></td>
+                        <td><input type='checkbox' name='cod[]' value='$resultado[0]' title='Clip para seleccionar los usuarios que desea aceptar' $checked/></td>
                     </tr>";
                 endwhile;
                 echo "</table>";
