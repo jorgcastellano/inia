@@ -1,0 +1,17 @@
+# ====================================================
+#Mejorar la compatibilidad de los caracteres
+AddDefaultCharset utf-8
+
+#Limpiar las extensiones .php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+#Redirigir a 0/home al abrir la pagina web
+RewriteCond %{HTTP_HOST} ^inia.jorgcastellano.net.ve\.ve$
+RewriteRule (.*) http://inia.jorgcastellano.net.ve/$1 [R=301,L]
+RewriteRule ^$ 0/home/ [L]
+
+#Redirigir web amigable con SEO
+Redirect 301 0/home/ http://inia.jorgcastellano.net.ve
+# ====================================================

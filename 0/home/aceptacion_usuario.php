@@ -25,7 +25,7 @@
                 $reg = $objinicio->consultar_miembro($mysqli);
 
                 echo "<form action='aceptacion_usuario' method='POST'>
-                <table class='anapro'>
+                <table class='usuario'>
                     <tr>
                         <td><i class='fa fa-chevron-circle-right'></i> Cédula</td>
                         <td>Usuario</td>
