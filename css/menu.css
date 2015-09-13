@@ -40,6 +40,7 @@
 .menu{
 	width: 100%;
 	height: 45px;
+    z-index: 2000;
 	
 	background: rgb(82,177,82); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(82,177,82,1) 0%, rgba(0,87,0,1) 93%, rgba(0,36,0,1) 98%, rgba(219,219,219,1) 99%); /* FF3.6+ */
@@ -115,6 +116,7 @@ button.botonmenu {
     list-style: none outside none;
     margin: 0;
     padding: 0;
+    z-index: 1000;
 }
 .menuHorizontal{
     background-color: #C8E6C9;
@@ -147,6 +149,7 @@ button.botonmenu {
 .menuHorizontal ul {
     position: absolute;
     top: -9999px;
+    z-index: 1000;
 }
 .menuHorizontal ul li {
     background: none repeat scroll 0 0 #C8E6C9;
