@@ -20,6 +20,8 @@
 		endif;
 		
 		$registro = $result -> fetch_array();
+
+		$password = hash("sha512", $password);
 		
 		if (("$correo"=="$registro[3]") AND ("$password"=="$registro[4]")) :
 			session_start();
@@ -49,16 +51,16 @@ include_once 'functions.php';
  
 sec_session_start(); // Nuestra manera personalizada segura de iniciar sesión PHP.
  
-if (isset($_POST['email'], $_POST['p'])) {
-    $email = $_POST['email'];
-    $password = $_POST['p']; // La contraseña con hash
+if (isset($_POST['correo'], $_POST['password'])) {
+    $email = $_POST['correo'];
+    $password = $_POST['password']; // La contraseña con hash
  
     if (login($correo, $password, $mysqli) == true) {
         // Inicio de sesión exitosa
-        header('Location: ../protected_page.php');
+        header('Location: ../0/home/index');
     } else {
-        // Inicio de sesión exitosa
-        header('Location: ../index.php?error=1');
+        // Inicio de sesión no exitosa
+        header('Location: ../0/home/errorsesion.php?error=1');
     }
 } else {
     // Las variables POST correctas no se enviaron a esta página.
