@@ -73,7 +73,7 @@
             ?>
             <div>
                 <button type="button" name="regresar" onclick=location="inicio" class="boton"><i class="fa fa-home"></i> Regresar a inicio</button>
-               
+                <button type="submit" name="guardar" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
             </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>
