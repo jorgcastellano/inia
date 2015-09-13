@@ -13,8 +13,10 @@ include_once '../../system/check.php';
             </div>
             <h1>ERROR</h1>
            <h1>¡Pagina no encontrada!</h1>
+            <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>
  			<?php include 'layouts/layout_p.php' ?>
             <?php include_once '../../layouts/layout_p.php' ?>
+
         </section>
 	</body>
 </html>

@@ -22,9 +22,17 @@
 
                 extract($_POST);
                 $objinicio = new inicio_seguro();
-                if (isset($guardar) AND isset($cod)) :
-                    for ($i=0; $i < count($cod); $i++)
-                        $objinicio -> eliminar_miembros($mysqli, $cod[$i]);
+
+                if (isset($eliminar)) :
+                        $objinicio -> eliminar_miembros($mysqli, $eliminar);
+                elseif (isset($guardar)) :
+                    for ($i=0; $i < count($codigos); $i++) :
+                        if (!empty($privilegios[$i])) :
+                            $objinicio -> modificar_privilegios($mysqli, $privilegios[$i], $codigos[$i]);
+                        else :
+                            echo "<br>Debe seleccionar un privilegio";
+                        endif;
+                    endfor;
                 endif;
                 $reg = $objinicio->consultar_miembro_on($mysqli);
 
@@ -35,28 +43,37 @@
                         <td>Usuario</td>
                         <td>Email</td>
                         <td>Privilegios</td>
-                        <td><i class='fa fa-check-square'></i></td>
+                        <td><i class='fa fa-trash-o'></i></td>
                     </tr>";
 
                 while ($resultado = $reg->fetch_array()) :
+                    if ($resultado[9] == 1) :
+                        $uno = "selected";
+                    elseif ($resultado[9] == 2) :
+                        $dos = "selected";
+                    elseif ($resultado[9] == 3) :
+                        $tres = "selected";
+                    endif;
                     echo "<tr>
                         <td>$resultado[1]</td>
                         <td>$resultado[2]</td>
                         <td>$resultado[3]</td>
-                        <td><select name='privilegios'>
-                            <option value=''>-seleccione-</option>
-                            <option value='1'>Gerente</option>
-                            <option value='2'>Especialista</option>
-                            <option value='3'>Factura</option>
+                        <td><select required name='privilegios[]'>
+                            <option value=''        >-seleccione-</option>
+                            <option value='1' $uno  >Gerente</option>
+                            <option value='2' $dos  >Especialista</option>
+                            <option value='3' $tres >Factura</option>
                         </select></td>
-                        <td><input type='checkbox' name='cod[]' value='$resultado[0]' /></td>
-                    </tr>";
+                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[0]' /><i class='fa fa-trash-o'></button></i></td>
+                    </tr>
+                    <input type='hidden' name='codigos[]' value='$resultado[0]' />";
+                    unset($uno, $dos, $tres);
                 endwhile;
                 echo "</table>";
             ?>
             <div>
                 <button type="button" name="regresar" onclick=location="inicio" class="boton"><i class="fa fa-home"></i> Regresar a inicio</button>
-                <button type="submit" name="guardar" value="guardar" class="boton"><i class="fa fa-floppy-o"></i> Guardar cambios</button>
+                <button type="submit" name="guardar" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
             </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>

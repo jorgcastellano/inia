@@ -14,4 +14,10 @@ RewriteRule ^$ 0/home/index [L]
 
 #Redirigir web amigable con SEO
 Redirect 301 0/home/ http://inia.jorgcastellano.net.ve
+
+#Evitar navegar los directorios
+Options All -Indexes
+
+# Error 404
+ErrorDocument 404 /0/home/error404.php
 # ====================================================

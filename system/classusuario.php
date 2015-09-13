@@ -22,8 +22,10 @@
             $sql = "SELECT * FROM miembros WHERE aprobacion = 'On'";
             return $mysqli->query($sql);
         }
-        public function modificar_privilegios($mysqli, $privilegio) {
-            
+        public function modificar_privilegios($mysqli, $privilegio, $cod) {
+            $sql = "UPDATE miembros SET privilegios = '$privilegio' WHERE id = '$cod'";
+            $mysqli->query($sql);
+            require_once 'error_update.php';
         }
         public function eliminar_miembros($mysqli, $cod) {
             $sql = "DELETE FROM miembros WHERE id = '$cod'";
