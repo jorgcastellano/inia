@@ -1,6 +1,5 @@
 <!-- PAGINA DE BIENVENIDA | ENTRADA AL SISTEMA -->
 <?php
-    session_start();
     include_once '../../system/check.php';
     $indexes = "Yes";
 ?>
