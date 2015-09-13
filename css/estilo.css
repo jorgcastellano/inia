@@ -71,6 +71,7 @@ footer{
 }
 .sinboton{
 	background-color: transparent;
-	border: 1px solid #d0d0d0;
+	border: 0px;
 	color: #780000;
+	cursor: pointer;
 }
