@@ -64,11 +64,3 @@
         </section>
     </body>
 </html>
-
-
-
-<!--
-Username: administrador
-Email: test@example.com
-Password: 6ZaxN2Vzm9NUJT2y
- -->
