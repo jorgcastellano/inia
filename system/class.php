@@ -370,7 +370,7 @@ class solicitud_analisis {
     {
 
 
-      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_suelo='$Cod_suelo'"
+      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_suelo='$Cod_suelo'";
       $res=$mysqli->query($sql);
 
     }
