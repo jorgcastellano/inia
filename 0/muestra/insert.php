@@ -33,9 +33,12 @@
                         $suelo = new suelo();
                         $suelo->registrar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion);
 
-
+                        if($RegistrarF=='Continue'):
+                        
+                        else:
                         $sol = new solicitud();
                         $sol->registrar_solicitud($mysqli,$Cod_sol,$Ced_cliente);
+                        endif;
 
                         foreach ($_POST['analisis'] as $id){
 
@@ -62,7 +65,7 @@
                         <form action="index" method="post">
                             <input type="hidden" name="Cod_suelo" value="<?php echo $Cod_suelo; ?>" />
                             <input type="hidden" name="Cod_sol" value="<?php echo $Cod_sol; ?>" />
-                            <input type="hidden" name="code_analisis" value="<?php echo $code_analisis; ?>" />
+                            <input type="hidden" name="codi_analisis" value="<?php echo $codi_analisis; ?>" />
                             
                             <button class="boton" type="submit" value="ModificarS" name="RegistrarS"><i class="fa fa-edit"></i> Modificar</button>
                             <button type="submit" class="boton" name="RegistrarS" value="Continue" ><i class="fa fa-plus"></i> Muestra de Suelo</button>
@@ -78,6 +81,45 @@
                         include 'lib_suelo.php';
                         $suelo = new suelo();
                         $suelo->modificar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion);
+                        
+                        $sol_ana = new solicitud_analisis();
+
+                        $sql='SELECT * FROM analisis WHERE analisis.tipo = "1"';
+                        $res5= $mysqli->query($sql);
+
+                        while ($resultado = $res5->fetch_array()) :
+                            //Verificacion de los seleccionados para ser almacenados
+                            
+                                for ($x=0; $x < $temp = count($analisis); $x++)
+                                    if ($resultado[0] == $analisis[$x]) :
+                                        
+                                            $insert = $resultado[0];
+                                            $x=$temp;
+                                    elseif ($x == ($temp-1)) :
+
+                                            $drop = $resultado[0];
+                                    endif;
+
+                                if (isset($insert)) :
+
+                                    
+                                    echo "Aqui inserta";
+                                    $sol_ana->eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_suelo);
+                                    $sol_ana->registrar_solicitud_analisis1($mysqli,$Cod_sol,$insert,$Cod_suelo,$Cod_fito);
+                                    
+                                elseif (isset($drop)) :
+                                    
+                                    echo "Aqui elimina";
+                                    $sol_ana->eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_suelo);
+
+                                endif;
+                                unset($insert, $drop);
+                            
+                        endwhile;
+
+
+                        
+
                         $codm=$Cod_suelo;
                         include 'tabla_analisis.php';
                         include 'tabla_suelo.php';
@@ -85,7 +127,7 @@
                         ?>
                         <form action="index" method="post">
                             <input type="hidden" name="Cod_suelo" value="<?php echo $Cod_suelo; ?>" />
-                            <input type="hidden" name="code_analisis" value="<?php echo $code_analisis; ?>" />
+                            <input type="hidden" name="codi_analisis" value="<?php echo $codi_analisis; ?>" />
                             <input type="hidden" name="Cod_sol" value="<?php echo $Cod_sol; ?>" />
                             
                             
@@ -143,7 +185,7 @@
 
                         <form action="index" method="post">
                             <input type="hidden" name="Cod_fito" value="<?php echo $Cod_fito; ?>" />
-                            <input type="hidden" name="code_analisis" value="<?php echo $code_analisis; ?>" />
+                            <input type="hidden" name="codi_analisis" value="<?php echo $codi_analisis; ?>" />
                             <input type="hidden" name="Cod_sol" value="<?php echo $Cod_sol; ?>" />
                             
                             
@@ -171,7 +213,7 @@
 
                         <form action="index" method="post">
                             <input type="hidden" name="Cod_fito" value="<?php echo $Cod_fito; ?>" />
-                            <input type="hidden" name="code_analisis" value="<?php echo $code_analisis; ?>" />
+                            <input type="hidden" name="codi_analisis" value="<?php echo $codi_analisis; ?>" />
                             <input type="hidden" name="Cod_sol" value="<?php echo $Cod_sol; ?>" />
                             
                             <button class="boton" type="submit" value="ModificarF" name="RegistrarF"><i class="fa fa-edit"></i> Modificar</button>
