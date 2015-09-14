@@ -118,6 +118,7 @@ button.botonmenu {
     margin: 0;
     padding: 0;
     z-index: 1000;
+    font-family: Calibri, Open Sans, Carlito;
 }
 .menuHorizontal{
     background-color: #C8E6C9;
@@ -132,6 +133,7 @@ button.botonmenu {
     max-height: 80px;
     border: 1px solid #A5D6A7;
     border-left: transparent;
+    font-family: Calibri, Open Sans, Carlito;
 }
 .menuHorizontal li:first-child{
     border-left: 1px solid #A5D6A7;
@@ -142,6 +144,7 @@ button.botonmenu {
     color: #333;
     text-decoration: none;
     text-align: center;
+    font-family: Calibri, Open Sans, Carlito;
 }
 .menuHorizontal li a:hover{
     background-color: #E8F5E9;
@@ -211,8 +214,46 @@ button.botonmenu {
 }
 
 
-
-
+/*Menu cPanel de usuario*/
+.cpanel, .cpanel ul{
+    z-index: 3000;
+    width: 200px;
+    background-color: white;
+    list-style: none outside none;
+    border: 1px solid #00CF2F;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+}
+.cpanel li{
+    list-style-type: none;
+    /*float: left;*/
+    font-family: Calibri, Open Sans, Carlito;
+    color: white;
+    margin: 0;
+}
+.cpanel a{
+    text-decoration: none;
+    color: black;
+    text-align: right;
+    font-family: Calibri, Open Sans, Carlito;
+    font-size: 15px;
+    margin: auto;
+    display: block;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.cpanel li:last-child{
+    border-radius: 0px 0px 10px 10px;
+}
+.cpanel li:first-child{
+    border-radius: 10px 10px 0px 0px;
+}
+.cpanel li:hover{
+    background-color: #DDDDDD;
+}
 
 
 
@@ -235,6 +276,7 @@ button.botonmenu {
 
 
 /*Menu Vertical (Opcional)*/
+/*ACTUALMENTE NO FUNCIONANDO*/
 ul{
     margin: 10px;
     margin-left: -21px;

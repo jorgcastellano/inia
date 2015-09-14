@@ -365,6 +365,16 @@ class solicitud_analisis {
 
     }
 
+
+    public function eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_suelo)
+    {
+
+
+      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_suelo='$Cod_suelo'";
+      $res=$mysqli->query($sql);
+
+    }
+
   }
 
 

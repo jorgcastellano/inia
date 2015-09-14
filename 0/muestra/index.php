@@ -173,11 +173,12 @@
 					<label for="Aplicacion" title="">Modo de aplicación</label>
 							<textarea name="Aplicacion" id="Aplicacion" title="" cols="30" rows="5" maxlength="30" placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[20] ?></textarea>
                             </br></br>
-
+                        <?php $pre = explode("|", $codi_analisis); ?>    
 					<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
-						<?php while ($reg2 = $res3->fetch_array(MYSQLI_ASSOC)) { ?>
-							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
+						<?php while ($reg2 = $res3->fetch_array()) { ?>
+							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } 
+						
 
    
                         if($RegistrarS=='Inicio') : ?>

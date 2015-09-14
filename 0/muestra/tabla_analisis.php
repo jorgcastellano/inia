@@ -2,15 +2,51 @@
 
 
         $sa= new solicitud_analisis();
-        $reg4=$sa-> consultar_sam($mysqli,$codm);
+        $regi1=$sa-> consultar_sam($mysqli,$codm);
+        $regi2=$sa-> consultar_sam($mysqli,$codm);
+
         
-        $code_analisis='';
-        $analisis='';
-        $l=", ";
+        $codi_analisis='';
         $j="|";
 
-      
-        while ($reg5 = $reg4->fetch_array()) { 
+        while ($reg6 = $regi2->fetch_array()) {
+
+            if($reg6[3]==""){
+
+
+                if($codi_analisis == ''){ 
+
+                    $codi_analisis=$reg6[2];
+
+
+                }else{ 
+
+                    $codi_analisis .= $j.$reg6[2];
+
+             
+                     } 
+            }
+
+            if($reg6[4]==""){
+                
+                if($codi_analisis == ''){
+
+                    $codi_analisis=$reg6[2];
+
+                }else{ 
+
+                    $codi_analisis .= $j.$reg6[2];
+
+                    } 
+            }
+
+        }       
+
+
+        $analisis='';
+        $l=", ";
+
+        while ($reg5 = $regi1->fetch_array()) { 
 
             if($reg5[3]==""){
 
@@ -18,14 +54,14 @@
                 if($analisis == ''){ 
 
                     $analisis =$reg5[6];
-                    $code_analisis=$reg[2];
+                    
 
 
                 }else{ 
 
 
                     $analisis .= $l.$reg5[6];
-                    $code_analisis .= $j.$reg[2];
+                    
 
              
                      } 
@@ -36,21 +72,17 @@
                 if($analisis == ''){ 
 
                     $analisis =$reg5[6];
-                    $code_analisis=$reg[2];
+                    
 
                 }else{ 
 
 
                     $analisis .= $l.$reg5[6];
-                    $code_analisis .= $j.$reg[2];
 
                     } 
             }
 
         } 
-
-       
-
 
 
 
