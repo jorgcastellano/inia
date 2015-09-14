@@ -42,28 +42,4 @@
 		//En caso de que el formulario se encuentren vacios
 		header("location: ../../0/home/index");
 	endif;
-
-/*
- * Procesamiento de inicio de sesion *
-*/
-/*
-include_once 'functions.php';
- 
-sec_session_start(); // Nuestra manera personalizada segura de iniciar sesión PHP.
- 
-if (isset($_POST['correo'], $_POST['password'])) {
-    $email = $_POST['correo'];
-    $password = $_POST['password']; // La contraseña con hash
- 
-    if (login($correo, $password, $mysqli) == true) {
-        // Inicio de sesión exitosa
-        header('Location: ../0/home/index');
-    } else {
-        // Inicio de sesión no exitosa
-        header('Location: ../0/home/errorsesion.php?error=1');
-    }
-} else {
-    // Las variables POST correctas no se enviaron a esta página.
-    echo 'Solicitud no válida';
-}*/
 ?>
