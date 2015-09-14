@@ -57,18 +57,23 @@ table.tstatus tr th:first-child, .tstatus tr td:first-child{
 }
 table.tstatus tr:first-child td:first-child{
     border-radius:5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px; 
 }
 table.tstatus-index tr:first-child th:first-child{
     border-radius:5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px; 
 }
 table.tstatus tr:first-child td:last-child{
     border-radius:0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px; 
 }
 table.tstatus tr:last-child td:last-child{
     border-radius:0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px; 
 }
 table.tstatus tr:last-child td:first-child{
     border-radius:0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px; 
 }
 table.tstatus td:last-child{
     text-align: center;
@@ -88,14 +93,18 @@ table.anapro tr td:first-child{
 }
 table.anapro tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px; 
 }
 table.anapro tr:first-child td:last-child{
     border-radius: 0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px; 
 }table.anapro tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px; 
 }
 table.anapro tr:last-child td:first-child{
     border-radius: 0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px; 
 }
 table.anapro td:first-child{
     text-align: left;
@@ -113,14 +122,18 @@ table.usuario td{
 }
 table.usuario tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px; 
 }
 table.usuario tr:first-child td:last-child{
     border-radius: 0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px; 
 }table.usuario tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px; 
 }
 table.usuario tr:last-child td:first-child{
     border-radius: 0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px; 
 }
 table.usuario td:first-child{
     width: 70px;

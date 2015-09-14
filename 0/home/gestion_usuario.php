@@ -59,7 +59,7 @@
                         <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
                         <td>$resultado[2]</td>
                         <td>$resultado[3]</td>
-                        <td><select required name='privilegios[]'>
+                        <td><select name='privilegios[]'>
                             <option value=''        >-seleccione-</option>
                             <option value='1' $uno  >Gerente</option>
                             <option value='2' $dos  >Especialista</option>

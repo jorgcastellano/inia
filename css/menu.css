@@ -1,13 +1,14 @@
 /* PSEUDO CLASES */
 .menu-margen{
-    width: 800px;
+    max-width: 810px;
     margin: auto;
     padding-left: 0px;
+    /*border: 1px solid red;*/
 }
 .menu li{
 	list-style-type: none;
 	float: left;
-	margin-top: 9px;
+	margin-top: 10px;
     text-align: center;
     color: white;
     font-family: Calibri, Open Sans, Carlito;
