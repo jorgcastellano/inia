@@ -1,7 +1,3 @@
-<?php
-    session_start();
-    include_once '../../system/check.php';
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +18,7 @@
                 <li> Los correos electrónicos deberán tener un formato válido. </li>
                 <li> Las contraseñas deberán tener al menos 6 caracteres.</li>
                 <li>Las contraseñas deberán estar compuestas por:
-                    <ol>
+                    <ol type="a">
                         <li> Por lo menos una letra mayúscula (A-Z)</li>
                         <li> Por lo menos una letra minúscula (a-z)</li>
                         <li> Por lo menos un número (0-9)</li>

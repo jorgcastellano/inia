@@ -9,6 +9,7 @@
 		endif;
 	else :
 		$logeado = 'Off';
+		header("location: ../../0/home/index");
 	endif;
     $indexes = "No";
 ?>
