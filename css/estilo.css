@@ -75,3 +75,24 @@ footer{
 	color: red;
 	cursor: pointer;
 }
+
+/*ccs para notificaciones*/
+/*.notific::before {
+     content: "\25C0";
+     color: #d45252;
+     position: absolute;
+     top: 1px;
+     left: -6px;
+}
+
+.contact_form input:focus + .notific {
+    display: inline;
+}
+
+.contact_form input:required:valid + .notific {
+    background: #28921f;
+}
+
+ .contact_form input:required:valid + .notific::before {
+        color: #28921f;
+}*/
