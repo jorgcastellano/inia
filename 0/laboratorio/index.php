@@ -45,7 +45,8 @@
                 while ($resultado = $reg->fetch_array()) {
                     echo "<tr>
                         <td>".$resultado[1]." </td>";
-                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='click aquí para seleccionar y modificar un laboratorio'></td></tr>";
+                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='click aquí para seleccionar y modificar un laboratorio'></td>
+                    </tr>";
                 }
                 echo "</table>";
             ?>

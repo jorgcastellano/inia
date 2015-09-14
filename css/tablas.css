@@ -52,9 +52,6 @@ table.tcliente tr td{
 table.tstatus{
     width: 500px;
 }
-table.tstatus tr th, .tstatus tr td{
-    width: 50px;
-}
 table.tstatus tr th:first-child, .tstatus tr td:first-child{
 	width: 490px;
 }
@@ -73,13 +70,21 @@ table.tstatus tr:last-child td:last-child{
 table.tstatus tr:last-child td:first-child{
     border-radius:0px 0px 0px 5px;
 }
+table.tstatus td:last-child{
+    text-align: center;
+    width: 50px;
+}
 
 /*ESTILO PARA ANALISIS Y PRODUCTOS*/
 table.anapro{
-    width: 600px;
+    width: 500px;
 }
 table.anapro td{
     text-align: center;
+}
+
+table.anapro tr td:first-child{
+    width: 400px;
 }
 table.anapro tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;
