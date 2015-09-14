@@ -75,3 +75,15 @@ footer{
 	color: red;
 	cursor: pointer;
 }
+
+/*ccs para notificaciones*/
+.notify {
+    background: transparent;
+    border-radius: 3px 3px 3px 3px;
+    color: green;
+    margin-left: 20px;
+    padding: 1px 6px;
+    z-index: 999; 
+    position: center; 
+    display: ;
+}

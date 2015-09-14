@@ -69,7 +69,7 @@ class laboratorio {
       $sql="UPDATE laboratorio SET Nom_lab='$Nom_lab' WHERE Cod_lab='$Cod_lab'";
       $mysqli->query($sql);
       require_once 'error_update.php';
-      if($mysqli->affected_rows > 0){echo "Los datos del laboratorio se han modificado con exito";} else { echo "No se ha podido modificar los datos del laboratorio";}
+      
 
     }
     public function consultar_completa($mysqli)
@@ -366,11 +366,20 @@ class solicitud_analisis {
     }
 
 
-    public function eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_suelo)
+    public function eliminar_sams($mysqli,$insert,$Cod_sol,$Cod_suelo)
     {
 
 
       $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_suelo='$Cod_suelo'";
+      $res=$mysqli->query($sql);
+
+    }
+
+    public function eliminar_samf($mysqli,$insert,$Cod_sol,$Cod_fito)
+    {
+
+
+      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_fito='$Cod_fito'";
       $res=$mysqli->query($sql);
 
     }
