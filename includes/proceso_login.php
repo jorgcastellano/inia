@@ -23,17 +23,29 @@
 
 		$password = hash("sha512", $password);
 		
-		if (("$correo"=="$registro[3]") AND ("$password"=="$registro[4]")) :
+		if (("$correo"=="$registro[4]") AND ("$password"=="$registro[5]")) :
 			session_start();
 			$_SESSION['id']="$registro[0]";
 			$_SESSION['ci']="$registro[1]";
 			$_SESSION['nombre']="$registro[2]";
-			$_SESSION['email']="$registro[3]";
-			$_SESSION['pregunta']="$registro[6]";
-			$_SESSION['respuesta']="$registro[7]";
-			$_SESSION['aprobacion']="$registro[8]";
-			$_SESSION['privilegios']="$registro[9]";
-			header("location: ../0/home/inicio");
+			$_SESSION['email']="$registro[4]";
+			$_SESSION['pregunta']="$registro[7]";
+			$_SESSION['respuesta']="$registro[8]";
+			$_SESSION['aprobacion']="$registro[9]";
+			$_SESSION['privilegios']="$registro[10]";
+
+		    //Solo para privilegios (2) especialistas
+		    if ($_SESSION['privilegios'] == 2) :
+		    	$cod = $_SESSION['privilegios'];
+				include_once '../system/classesp.php';
+	            $objesp = new especialista();
+	            $resultado = $objesp->verificar_privilegio_2($mysqli2, $cod);
+		        if (empty($resultado)) :
+		        	header("location: ../0/home/culminar_registro");
+		    	endif;
+		    else :
+				header("location: ../0/home/inicio");
+			endif;
 		else :
 			//Error entre correos y contraseñas
 			header("location: ../../0/home/index");
