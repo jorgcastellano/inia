@@ -102,8 +102,8 @@
                                 <span class="form_hint">Debe seleccionar un elemento"</span><br />
 							</br></br>
 					<label for="Inundacion" title="¿Existe riesgo de inundación para el terreno?">Riesgo de inundación</label>
-							<input type="radio" id="Inundacion" name="Inundación" value="1" title="Si tiene riesgo"<?php if($reg[5]=='1'){ echo 'checked'; } ?>/>Si
-							<input type="radio" id="Inundacion" name="Inundación" value="0"title="No tiene riesgo"<?php if($reg[5]=='0'){ echo 'checked'; } ?>/>No
+							<input type="radio" id="Inundacion" name="Inundacion" value="1" title="Si tiene riesgo"<?php if($reg[5]=='1'){ echo 'checked'; } ?>/>Si
+							<input type="radio" id="Inundacion" name="Inundacion" value="0"title="No tiene riesgo"<?php if($reg[5]=='0'){ echo 'checked'; } ?>/>No
 							</br></br>
 					<label for="Riego" title="¿Tiene riego este terreno?">Riego</label>
 							<input type="radio" name="Riego" value="1"<?php if($reg[6]=='1'){ echo 'checked'; } ?>/>Si
@@ -171,13 +171,14 @@
 							<input type="text" name="Epoca_aplic" value="<?php echo $reg[19] ?>" id="Epoca_aplic" title="" maxlength="10" placeholder="" />
 							</br></br>	
 					<label for="Aplicacion" title="">Modo de aplicación</label>
-							<textarea name="Aplicación" id="Aplicacion" title="" cols="30" rows="5" maxlength="30" placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[20] ?></textarea>
+							<textarea name="Aplicacion" id="Aplicacion" title="" cols="30" rows="5" maxlength="30" placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[20] ?></textarea>
                             </br></br>
-
+                        <?php $pre = explode("|", $codi_analisis); ?>    
 					<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
-						<?php while ($reg2 = $res3->fetch_array(MYSQLI_ASSOC)) { ?>
-							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
+						<?php while ($reg2 = $res3->fetch_array()) { ?>
+							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } 
+						
 
    
                         if($RegistrarS=='Inicio') : ?>
