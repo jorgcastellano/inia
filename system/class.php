@@ -121,8 +121,7 @@ class analisis {
 
     public function modificar_analisis($mysqli,$Cod_ana,$Nom_ana,$Precio_ana,$Tipo)
     {
-
-      $sql="UPDATE analisis SET analisis.Nom_ana='$Nom_ana', analisis.Precio_ana='$Precio_ana', analisis.Tipo='$Tipo' WHERE analisis.Cod_ana ='$Cod_ana'";
+      $sql="UPDATE analisis SET Nom_ana='$Nom_ana', Precio_ana='$Precio_ana', Tipo='$Tipo' WHERE Cod_ana ='$Cod_ana'";
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows>0){echo "El analisis se ha modificado con exito";} else { echo "No se ha podido modificar el analisis";}

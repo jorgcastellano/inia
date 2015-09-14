@@ -1,4 +1,5 @@
  <!-- FORMATO DE TODAS LAS PAGINAS -->
+	<link rel="shortcut icon" href="../../imgs/favicon.png" type="image/png">
 	<meta http-equiv="conten-type" charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="../../css/estilo.css">
 	<link rel="stylesheet" type="text/css" href="../../css/menu.css">

@@ -36,7 +36,7 @@
 			header("location: ../0/home/inicio");
 		else :
 			//Error entre correos y contraseñas
-			header("location: ../../0/home/error");
+			header("location: ../../0/home/index");
 		endif;
 	else :
 		//En caso de que el formulario se encuentren vacios

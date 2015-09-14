@@ -40,7 +40,7 @@
             ?>
 
             <form method="post" action="formulario">
-                <table class="">
+                <table class="anapro">
                     <tr>
                         <td>Nombre del análisis</td>
                         <td>Precio</td>
@@ -54,7 +54,7 @@
                 </table>
                 <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
                 <button type="submit" name="ana" value="<?php echo $reg[0]?>" class="boton"><i class="fa fa-pencil"></i> Modificar</button>
-                <button type='button' OnClick=location='index' class="boton"><i class="fa fa-home"></i> Página Principal</button>
+                <button type='button' OnClick=location='index' class="boton"><i class="fa fa-list-alt"></i> Listado de análisis</button>
             </form>
              <?php include '../../layouts/layout_p.php' ?>
         </section>

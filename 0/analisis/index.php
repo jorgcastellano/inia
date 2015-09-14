@@ -123,7 +123,7 @@
                 <div>
                     <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
                     <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar análisis</button>
-                    <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Inicio</button>
+                    <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>
                 </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>
