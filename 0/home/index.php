@@ -2,6 +2,8 @@
 <?php
     include_once '../../system/check.php';
     $indexes = "Yes";
+    if ($logeado == "On");
+        header("location: cerrar_sesion");
 ?>
 <!DOCTYPE html>
 <html>
