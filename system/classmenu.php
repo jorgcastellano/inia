@@ -34,7 +34,7 @@
 
 		public function cerrar_sesion(){
 			$menuh = new menu();
-			$menuh->cargarElemento("fa-reorder", "", "");
+			$menuh->cargarElemento("fa-reorder", "../home/cerrar_sesion", "");
             return $menuh->mostrar();
 		}
 
