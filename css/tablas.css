@@ -49,13 +49,16 @@ table.tcliente tr td{
 }
 
 /*ESTILO PARA ESTATUS DE LABORATORIOS Y ANALISIS*/
+table.tstatus{
+    width: 500px;
+}
 table.tstatus tr th, .tstatus tr td{
     width: 50px;
 }
 table.tstatus tr th:first-child, .tstatus tr td:first-child{
 	width: 490px;
 }
-table.tstatus tr:first-child th:first-child{
+table.tstatus tr:first-child td:first-child{
     border-radius:5px 0px 0px 0px;
 }
 table.tstatus-index tr:first-child th:first-child{
@@ -98,7 +101,7 @@ table.anapro td:last-child{
 
 /*ESTILO PARA LAS TABLAS DE ACEPTACION DE USUARIOS*/
 table.usuario{
-    width: 570px;
+    width: 600px;
 }
 table.usuario td{
     text-align: center;

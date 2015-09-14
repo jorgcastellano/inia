@@ -31,7 +31,7 @@
                 while ($lab = $reg->fetch_array()) {?>
                     <table class="tstatus">
                         <tr>
-                            <th><i class="fa fa-chevron-circle-right"></i> <?php echo $lab[1]; ?></th>
+                            <td><i class="fa fa-chevron-circle-right"></i> <?php echo $lab[1]; ?></td>
                             <td><input type="checkbox" name="laboratorio[]" <?php echo "value='$lab[0]'"; if($lab[2]=='On'){ echo 'checked';}?> title="click aquí para desactivar todos los servicios de este laboratorio" /></td>
                         </tr>
                         <?php

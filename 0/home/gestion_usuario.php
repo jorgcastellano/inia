@@ -55,7 +55,8 @@
                         $tres = "selected";
                     endif;
                     echo "<tr>
-                        <td>$resultado[1]</td>
+                        <td>$resultado[1]
+                        <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
                         <td>$resultado[2]</td>
                         <td>$resultado[3]</td>
                         <td><select required name='privilegios[]'>
@@ -65,8 +66,7 @@
                             <option value='3' $tres >Factura</option>
                         </select></td>
                         <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[0]' /><i class='fa fa-trash-o'></button></i></td>
-                    </tr>
-                    <input type='hidden' name='codigos[]' value='$resultado[0]' />";
+                    </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;
                 echo "</table>";

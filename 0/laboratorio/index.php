@@ -39,8 +39,8 @@
 	            endif;
 	            echo "  <table class='tstatus'>
 	                    <tr>
-	                        <th>Nombre</th>
-	                        <th><i class='fa fa-check-circle'></i></th>
+	                        <td>Nombre</td>
+	                        <td><i class='fa fa-check-circle'></i></td>
 	                     </tr> ";
                 while ($resultado = $reg->fetch_array()) {
                     echo "<tr>
