@@ -214,7 +214,7 @@
                     $partes = explode("|", $reg[20]);
                     $practica = explode("|", $reg[27]);
                     $control = explode("|", $reg[29]);
-                    $fecha1 = explode("|", $reg[6]);
+                    $fecha = explode("|", $reg[6]);
                     $fecha2 = explode("|", $reg[10]);
 
                     echo $code_analisis;
@@ -272,24 +272,25 @@
 									<input type="text" name="Edad_fito" value="<?php echo $reg[5] ?>" id="Edad_fito" title="Edad del cultivo en días, meses o años" maxlength="11" placeholder="" />
 									</br></br>
 							<label for="F_coleccion">Fecha de colección</label>
-									<select name="Dia" title="Día">
-										<option value="">Dia</option>
+									<select name="Dia" title="Dia">
+										<option value="">Día</option>
 										<?php for($i=01;$i<32;$i++) { ?>
-											<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha1[0]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
+											<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha[0]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
 										<?php } ?>
 									</select>
 									<select name="Mes" title="Mes">
 										<option value="">Mes</option>
 										<?php for($i=01;$i<13;$i++) { ?>
-											<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha1[1]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
+											<option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha[1]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
 										<?php } ?>
 									</select>
 									<select name="Ano" title="Año">
 										<option value="">Año</option>
 										<?php for($i=1990;$i<2051;$i++) { ?>
-											<option value="<?php echo $i; ?>"<?php if($fecha1[2]==$i){ echo 'selected'; } ?>><?php echo $i; ?></option>
+											<option value="<?php echo $i; ?>"<?php if($fecha[2]==$i){ echo 'selected'; } ?>><?php echo $i; ?></option>
 										<?php } ?>
 									</select>
+									
 									</br></br>
 							<label for="Pobl_cercana" title="Indique la población mas cercana al lugar del cultivo">Población más Cercana</label>
 									<input type="text" name="Pobl_cercana" value="<?php echo $reg[7] ?>" id="Pobl_cercana" title="Indique la población más cercana al lugar del cultivo" maxlength="15" placeholder="" />
@@ -469,10 +470,10 @@
 							<label for="Observaciones">Observaciones</label>
 									<textarea name="Observaciones" id="Observaciones" title="" cols="30" rows="5" maxlength="50" placeholder=""><?php echo $reg[33] ?></textarea>	 
 									</br></br>
-
+							<?php $pre = explode("|", $codi_analisis); ?> 
 							<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
-						<?php while ($reg2 = $res3->fetch_array(MYSQLI_ASSOC)) { ?>
-							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"/><?php echo $reg2['Nom_ana']; ?>
+						<?php while ($reg2 = $res3->fetch_array()) { ?>
+							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } 
 
 							if($RegistrarF=='Inicio') : ?>

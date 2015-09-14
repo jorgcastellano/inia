@@ -103,14 +103,14 @@
                                 if (isset($insert)) :
 
                                     
-                                    echo "Aqui inserta";
-                                    $sol_ana->eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_suelo);
+                                    
+                                    $sol_ana->eliminar_sams($mysqli,$insert,$Cod_sol,$Cod_suelo);
                                     $sol_ana->registrar_solicitud_analisis1($mysqli,$Cod_sol,$insert,$Cod_suelo,$Cod_fito);
                                     
                                 elseif (isset($drop)) :
                                     
-                                    echo "Aqui elimina";
-                                    $sol_ana->eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_suelo);
+                                    
+                                    $sol_ana->eliminar_sams($mysqli,$drop,$Cod_sol,$Cod_suelo);
 
                                 endif;
                                 unset($insert, $drop);
@@ -205,6 +205,42 @@
 
                         $fito = new fito();
                         $fito->modificar_fito($mysqli,$Cod_fito,$Cod_lab,$Tipo_fito,$Descrip_fito,$Cult_fito,$Edad_fito,$F_coleccion,$Pobl_cercana,$Id_microorg,$sintoma,$F_sintomas,$Causa,$Tipo_plant,$Tam_lote,$Nro_plant,$Nro_subm,$dist_f,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parte,$Riego,$Topografia,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$practicas,$Produc_dosis,$control,$Produc_dosisb,$Cult_ant,$Cond_agroclima,$Observaciones);
+                        
+                        $sol_ana = new solicitud_analisis();
+
+                        $sql='SELECT * FROM analisis WHERE analisis.tipo = "2"';
+                        $res5= $mysqli->query($sql);
+
+                        while ($resultado = $res5->fetch_array()) :
+                            //Verificacion de los seleccionados para ser almacenados
+                            
+                                for ($x=0; $x < $temp = count($analisis); $x++)
+                                    if ($resultado[0] == $analisis[$x]) :
+                                        
+                                            $insert = $resultado[0];
+                                            $x=$temp;
+                                    elseif ($x == ($temp-1)) :
+
+                                            $drop = $resultado[0];
+                                    endif;
+
+                                if (isset($insert)) :
+
+                                    
+                                    
+                                    $sol_ana->eliminar_samf($mysqli,$insert,$Cod_sol,$Cod_fito);
+                                    $sol_ana->registrar_solicitud_analisis2($mysqli,$Cod_sol,$insert,$Cod_suelo,$Cod_fito);
+                                    
+                                elseif (isset($drop)) :
+                                    
+                                    
+                                    $sol_ana->eliminar_samf($mysqli,$drop,$Cod_sol,$Cod_fito);
+
+                                endif;
+                                unset($insert, $drop);
+                            
+                        endwhile;
+
                         $codm=$Cod_fito;
                         include 'tabla_analisis.php';
                         include 'tabla_fito.php';
