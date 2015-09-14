@@ -33,6 +33,7 @@
 	            elseif (isset($Actualizar)) :
 	            	$lab->modificar_laboratorio($mysqli, $Actualizar, $Nom_lab);
 	            	$reg = $lab->consultar_completa($mysqli);
+                    if($mysqli->affected_rows > 0){echo "Los datos del laboratorio se han modificado con exito";} else { echo "No se ha podido modificar los datos del laboratorio";}
 	            else :
 	            	$reg = $lab->consultar_completa($mysqli);
 	            endif;
