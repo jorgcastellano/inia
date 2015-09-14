@@ -1,6 +1,13 @@
 <!-- PAGINA DE BIENVENIDA | ENTRADA AL SISTEMA -->
 <?php
-    include_once '../../system/check.php';
+    
+    session_start();
+
+    if(isset($_SESSION['id'])) :
+        $logeado = 'On';
+    else :
+        $logeado = 'Off';
+    endif;
     $indexes = "Yes";
     if ($logeado == "On")
         header("location: ../../0/home/cerrar_sesion");
