@@ -28,6 +28,7 @@
 			$_SESSION['id']="$registro[0]";
 			$_SESSION['ci']="$registro[1]";
 			$_SESSION['nombre']="$registro[2]";
+			$_SESSION['apellido']="$registro[3]";
 			$_SESSION['email']="$registro[4]";
 			$_SESSION['pregunta']="$registro[7]";
 			$_SESSION['respuesta']="$registro[8]";
@@ -41,7 +42,7 @@
 	            $objesp = new especialista();
 	            $resultado = $objesp->verificar_privilegio_2($mysqli2, $cod);
 		        if (empty($resultado)) :
-		        	header("location: ../0/home/culminar_registro");
+		        	header("location: ../0/especialista/culminar_registro");
 		    	endif;
 		    else :
 				header("location: ../0/home/inicio");

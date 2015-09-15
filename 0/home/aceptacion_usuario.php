@@ -58,16 +58,16 @@
                     endif;
                     if (isset($guardar) AND !isset($cod)) {
                         $objinicio->modificar_miembros_estatus_all($mysqli, "Off");
-                        $resultado[8] = "Off";
+                        $resultado[9] = "Off";
                     }
-                    if ($resultado[8] == "On") :
+                    if ($resultado[9] == "On") :
                         $checked = "checked";
                     else :
                         $checked = "";
                     endif;
                     echo "<tr>
                         <td>$resultado[1]</td>
-                        <td>$resultado[2]</td>
+                        <td>$resultado[2] $resultado[3]</td>
                         <td>$resultado[4]</td>
                         <td><input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/></td>
                     </tr>";

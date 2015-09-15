@@ -23,7 +23,7 @@
                     $checksum = hash("sha512", $password);
                     $resp = hash("sha512", $resp);
 
-                    $command_sql = "INSERT INTO miembros (ci, usuario, email, password, pregunta, respuesta) VALUES ('$cedula', '$usuario', '$email', '$checksum', '$pregunta', '$resp')";
+                    $command_sql = "INSERT INTO miembros (ci, usuario, apellido, email, password, pregunta, respuesta) VALUES ('$cedula', '$nombre', '$apellido', '$email', '$checksum', '$pregunta', '$resp')";
                     require_once '../../includes/sql.php';
 
                     echo "<p>Se ha registrado con éxito</p>

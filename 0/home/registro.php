@@ -32,9 +32,12 @@
                     <label>Cédula: </label>
                     <input required type="text" name="cedula" id="cedula" placeholder="00 000 000" pattern="\d{6,}" maxlength="8" >
                     <span class="form_hint">Debe contener al menos 6 dígitos</span><br />
-                    <label>Nombre y Apellido: </label>
-                    <input required type='text' name='usuario' id='usuario' placeholder="Primer nombre y primer apellido" />
-                    <span class="form_hint">Debe tener siempre la primera letra en "Mayúscula"</span><br />
+                    <label>Primer nombre: </label>
+                    <input required type='text' name='nombre' id='nombre' placeholder="Primer nombre" />
+                    <span class="form_hint">Debe tener la primera letra en "Mayúscula"</span><br />
+                    <label>Primer apellido</label>
+                    <input required type='text' name='apellido' id='apellido' placeholder="Primer apellido" />
+                    <span class="form_hint">Debe tener la primera letra en "Mayúscula"</span><br />
                     <label>Correo electrónico: </label>
                     <input required type="email" name="email" id="email" placeholder="usuario@ejemplo.com" />
                     <span class="form_hint">Formato correcto: "name@inia.gob.ve"</span><br />
@@ -55,7 +58,7 @@
                         <option value="8">¿Dónde fué su bautizo?</option>
                         <option value="9">¿Dónde cursó el primer año escolar?</option>
                     </select>
-                    <input required type="text" name="resp" id="resp" placeholder="Respuesta" /><br />
+                    <input required type="password" name="resp" id="resp" placeholder="Respuesta" /><br />
                     <button class="boton" type="buttom" onclick=location="index" ><i class="fa fa-arrow-left"></i> Página principal</button>
                     <button class="boton" type="submit"><i class='fa fa-check'></i> Registrarse</button>
                 </div>
