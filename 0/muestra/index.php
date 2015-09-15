@@ -65,11 +65,14 @@
 					$sql='SELECT * FROM laboratorio';
 					$res= $mysqli->query($sql);
 
-					echo $code2.$Cod_sol;
+					
 				?>
 
 				<form class="contact_form" method="POST" action="insert"  id="f_suelo">
-				
+					<label for="Codig">Código de Solicitud</label>
+							<input type="text" name="Codig" value="<?php echo $code2.$Cod_sol; ?>" id="Codig" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/>
+                            
+							</br></br>
 					<label for="Codigo">Código Suelo</label>
 							<input type="text" name="Codigo" value="<?php echo $code1.$reg[0]; ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/>
                             
@@ -241,13 +244,16 @@
                     $sql='SELECT * FROM analisis WHERE analisis.tipo = "2" AND analisis.estatus = "On"';
                     $res3= $mysqli->query($sql);
 
-                    echo $code2.$Cod_sol;
+                    
                                    
                 ?>
                 
                 
                 <form class="contact_form" method="post" action="insert"  id="">
-						
+							<label for="Codig">Código de Solicitud</label>
+									<input type="text" name="Codig" value="<?php echo $code2.$Cod_sol; ?>" id="Codig" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/>
+                            
+									</br></br>
 							<label for="Cod">Código Fitopatología</label>
 									<input type="text" name="Cod" value="<?php echo $code1.$reg[0]; ?>" id="Cod_fito" title="" maxlength="" placeholder="" disabled/>
 
@@ -343,7 +349,7 @@
 									<option value="3"<?php if($reg[12]=='3'){ echo 'selected'; } ?>>Invernadero</option>
 									<option value="4"<?php if($reg[12]=='4'){ echo 'selected'; } ?>>Vivero</option>
 								</select>
-									
+								</br></br>
 							<label for="Tam_lote">Tamaño de Plantación/lote</label>
 									<input type="text" name="Tam_lote" value="<?php echo $reg[13] ?>" id="Tam_lote" title="" maxlength="11" placeholder="" />
 									</br></br>
@@ -422,9 +428,9 @@
 							<label for="Composicion">Composición del suelo</label>
 								<select name="Composicion">
 									<option value="">Seleccione</option>
-									<option value="1"<?php if($reg[24]=='1'){ echo 'selected'; } ?>>Fino</option>
-									<option value="2"<?php if($reg[24]=='2'){ echo 'selected'; } ?>>Medio</option>
-									<option value="3"<?php if($reg[24]=='3'){ echo 'selected'; } ?>>Grueso</option>
+									<option value="1"<?php if($reg[24]=='1'){ echo 'selected'; } ?>>Mineral</option>
+									<option value="2"<?php if($reg[24]=='2'){ echo 'selected'; } ?>>Orgánico</option>
+									<option value="3"<?php if($reg[24]=='3'){ echo 'selected'; } ?>>Sustrato</option>
 								</select>
 									</br></br>
 							<label for="Hum_sue">Humedad del suelo</label>

@@ -14,7 +14,7 @@
             <div>
                 <?php include '../../layouts/cabecera-body.php'; ?>
 				<hgroup>
-					<h1>Registrar Muestra de suelo</h1>
+					<h1>Registrar Muestra</h1>
 				</hgroup>
 			</div>
             <?php

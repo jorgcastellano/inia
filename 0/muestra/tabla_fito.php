@@ -79,9 +79,9 @@
     if ($reg[23]=='3') { $tex='Grueso'; }
 
 
-    if ($reg[24]=='1') { $com=''; }
-    if ($reg[24]=='2') { $com=''; }
-    if ($reg[24]=='3') { $com=''; }
+    if ($reg[24]=='1') { $com='Mineral'; }
+    if ($reg[24]=='2') { $com='Orgánico'; }
+    if ($reg[24]=='3') { $com='Sustrato'; }
 
 
     if ($reg[25]=='1') { $hum='Excesiva'; }
