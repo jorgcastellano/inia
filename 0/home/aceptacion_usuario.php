@@ -68,7 +68,7 @@
                     echo "<tr>
                         <td>$resultado[1]</td>
                         <td>$resultado[2]</td>
-                        <td>$resultado[3]</td>
+                        <td>$resultado[4]</td>
                         <td><input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/></td>
                     </tr>";
                 endwhile;

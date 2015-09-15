@@ -57,7 +57,7 @@
                         <td>$resultado[1]
                         <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
                         <td>$resultado[2]</td>
-                        <td>$resultado[3]</td>
+                        <td>$resultado[4]</td>
                         <td><select name='privilegios[]'>
                             <option value=''        >-seleccione-</option>
                             <option value='1' $uno  >Gerente</option>
