@@ -36,7 +36,7 @@
                 <input required type="text" name="especialidad" value="" placeholder="Solo de contener letras">
                 <span class="form_hint">Especialidad en los análisis</span><br /> 
                 <div align="center">
-                    <button type="button" class="boton" name="cancelar" onclick=location="../home/cerrar_sesion"><i class="fa fa-cancel"></i> Cancelar</button>
+                    <button type="button" class="boton" name="cancelar" onclick=location="../home/cerrar_sesion"><i class="fa fa-ban"></i> Cancelar</button>
                     <button type="submit" class="boton" name="submit"><i class="fa fa-check"></i> Completar registro</button>
                 </div>
             </form>

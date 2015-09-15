@@ -69,6 +69,25 @@ footer{
 	margin:auto;
 	margin-top:50px;
 }
+<<<<<<< HEAD
+.cuadro{
+	background-color: #fafafa;
+ border-left: solid;
+	border-right: solid;
+	border-bottom: solid;
+	border-top: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	border-color: #4BCC40;
+	max-width: 220px;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	margin:auto;
+	margin-top:50px;
+}
+=======
 .sinboton{
 	background-color: transparent;
 	border: 0px;
@@ -87,3 +106,4 @@ footer{
     position: center; 
     display: ;
 }
+>>>>>>> 0409068843cf1399d273702fcb016546e1bd128e
