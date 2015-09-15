@@ -84,7 +84,7 @@
                         
                         $sol_ana = new solicitud_analisis();
 
-                        $sql='SELECT * FROM analisis WHERE analisis.tipo = "1"';
+                        $sql='SELECT * FROM analisis WHERE analisis.tipo = "1" AND analisis.estatus = "On"';
                         $res5= $mysqli->query($sql);
 
                         while ($resultado = $res5->fetch_array()) :
@@ -208,7 +208,7 @@
                         
                         $sol_ana = new solicitud_analisis();
 
-                        $sql='SELECT * FROM analisis WHERE analisis.tipo = "2"';
+                        $sql='SELECT * FROM analisis WHERE analisis.tipo = "2" AND analisis.estatus = "On"';
                         $res5= $mysqli->query($sql);
 
                         while ($resultado = $res5->fetch_array()) :

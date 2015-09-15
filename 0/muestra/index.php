@@ -58,7 +58,7 @@
                     endif;
                     endif;
 
-                    $sql='SELECT * FROM analisis WHERE analisis.tipo = "1"';
+                    $sql='SELECT * FROM analisis WHERE analisis.tipo = "1" AND analisis.estatus = "On"';
                     $res3= $mysqli->query($sql);
 
 					
@@ -214,10 +214,10 @@
                     $partes = explode("|", $reg[20]);
                     $practica = explode("|", $reg[27]);
                     $control = explode("|", $reg[29]);
-                    $fecha = explode("|", $reg[6]);
-                    $fecha2 = explode("|", $reg[10]);
+                    $fecha = explode("-", $reg[6]);
+                    $fecha2 = explode("-", $reg[10]);
 
-                    echo $code_analisis;
+                    
                     else:
 
                     if($RegistrarF=='Continue') :
@@ -238,7 +238,7 @@
                     endif;
                     endif;
 
-                    $sql='SELECT * FROM analisis WHERE analisis.tipo = "2"';
+                    $sql='SELECT * FROM analisis WHERE analisis.tipo = "2" AND analisis.estatus = "On"';
                     $res3= $mysqli->query($sql);
 
                     echo $code2.$Cod_sol;
