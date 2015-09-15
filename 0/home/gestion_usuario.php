@@ -46,11 +46,11 @@
                     </tr>";
 
                 while ($resultado = $reg->fetch_array()) :
-                    if ($resultado[9] == 1) :
+                    if ($resultado[10] == 1) :
                         $uno = "selected";
-                    elseif ($resultado[9] == 2) :
+                    elseif ($resultado[10] == 2) :
                         $dos = "selected";
-                    elseif ($resultado[9] == 3) :
+                    elseif ($resultado[10] == 3) :
                         $tres = "selected";
                     endif;
                     echo "<tr>
