@@ -1,11 +1,11 @@
 <?php
 
-	define("HOST", "mipc.jorgcastellano.net.ve");
-  	define("USER", "gproyecto");
-  	define("PASSWORD", "123456");
-  	define("DATABASE", "proyecto3");
+	define("HOSTS", "mipc.jorgcastellano.net.ve");
+  	define("USERS", "gproyecto");
+  	define("PASSWORDS", "123456");
+  	define("DB", "proyecto3");
 
-  	$mysqli2 = new mysqli(HOST, USER, PASSWORD, DATABASE);
+  	$mysqli2 = new mysqli(HOSTS, USERS, PASSWORDS, DB);
 
   	if($mysqli2->connect_errno){
 		printf(
