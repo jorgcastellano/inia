@@ -69,6 +69,7 @@ footer{
 	margin:auto;
 	margin-top:50px;
 }
+<<<<<<< HEAD
 .cuadro{
 	background-color: #fafafa;
  border-left: solid;
@@ -86,3 +87,23 @@ footer{
 	margin:auto;
 	margin-top:50px;
 }
+=======
+.sinboton{
+	background-color: transparent;
+	border: 0px;
+	color: red;
+	cursor: pointer;
+}
+
+/*ccs para notificaciones*/
+.notify {
+    background: transparent;
+    border-radius: 3px 3px 3px 3px;
+    color: green;
+    margin-left: 20px;
+    padding: 1px 6px;
+    z-index: 999; 
+    position: center; 
+    display: ;
+}
+>>>>>>> 0409068843cf1399d273702fcb016546e1bd128e

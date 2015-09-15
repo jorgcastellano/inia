@@ -27,7 +27,7 @@
 		            </form>
 		    <?php
 	            	echo '<div class="csesion">
-	            			<li><i class="fa fa-user"></i> Usuario: '.$_SESSION['nombre'].'</li>';
+	            			<li><i class="fa fa-user"></i> Usuario: '.$_SESSION['nombre'].' '.$_SESSION['apellido'].'</li>';
 	            	echo $arreglo2[0].'</li></div>';
 			endif; ?>
 		</ul>

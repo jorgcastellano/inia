@@ -38,11 +38,11 @@
             return $menuh->mostrar();
 		}
 
-		public function menuNivel1(){
+		public function menuNivel1(){ 
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-star-o", "#", " Servicios");
 			$elementos->cargarElemento("fa-shopping-cart", "#", " Productos");
-			$elementos->cargarElemento("fa-bar-chart", "#", " Estadisticas");
+			$elementos->cargarElemento("fa-bar-chart", "#", " Estadísticas");
 			$elementos->cargarElemento("fa-gear", "#", " Administración");
 
 			return $elementos -> mostrar();
@@ -53,7 +53,7 @@
 				case 0:
 					$subElementos->cargarElemento("fa-check-square-o", "../../0/home/estatus", " Activar/Desactivar");
 					$subElementos->cargarElemento("fa-flask", "../../0/laboratorio/index", " Laboratorios");
-					$subElementos->cargarElemento("fa-bug", "../../0/analisis/index", " Analisis");
+					$subElementos->cargarElemento("fa-bug", "../../0/analisis/index", " Análisis");
 					return $subElementos->mostrar();
 					break;
 				case 1:
@@ -63,8 +63,8 @@
 					break;
 				
 				case 3:
-					$subElementos->cargarElemento("fa-user", "#", " Aceptación de usuarios");
-					$subElementos->cargarElemento("fa-list", "#", " Gestion de usuarios");
+					$subElementos->cargarElemento("fa-user", "../../0/home/aceptacion_usuario", " Aceptación de usuarios");
+					$subElementos->cargarElemento("fa-list", "../../0/home/gestion_usuario", " Gestion de usuarios");
 					$subElementos->cargarElemento("fa-cloud-download", "#", " Respaldar");
 					$subElementos->cargarElemento("fa-cloud-upload", "#", " Restaurar");
 					return $subElementos->mostrar();

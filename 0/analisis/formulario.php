@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include_once '../../system/check.php';
 ?>
 <!DOCTYPE html>
@@ -42,7 +41,7 @@
                 <label for="Precio_ana">Costo del analisis</label>
                     <input type="text" name="Precio_ana" value="<?php if(isset($reg)) echo $reg[2]; ?>" />
                     <br>
-                <label for="Tipo">Tipo de analisis</label>
+                <label for="Tipo"> Laboratorio</label>
                 <select name="Tipo">
                     <option value="">Seleccione</option>
                     <?php while ($resultado = $reg2->fetch_array()) : ?>
@@ -53,9 +52,10 @@
                 <button name="atras" type="button" onclick=location="index" class="boton"><i class="fa fa-arrow-left"></i> Página anterior</button>
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                 <?php if (isset($_POST['seleccion']) OR isset($_POST['ana'])) : ?>
-                    <button class="boton" type="submit" name="modificar"><i class="fa fa-floppy-o"></i> Guardar cambios</button> 
+                    <button class="boton" type="submit" name="modificar" value="<?php echo $reg[0] ?>"><i class="fa fa-check"></i> Guardar cambios</button> 
                     <?php else : ?>
-                    <button class="boton" type="submit" name="submit"><i class="fa fa-floppy-o"></i> Registrar análisis</button> 
+                    <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Registrar análisis</button> 
+                    
                 <?php endif; ?>
             </form>
             <?php include '../../layouts/layout_p.php' ?>

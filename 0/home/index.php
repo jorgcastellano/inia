@@ -1,8 +1,16 @@
 <!-- PAGINA DE BIENVENIDA | ENTRADA AL SISTEMA -->
 <?php
+    
     session_start();
-    include_once '../../system/check.php';
+
+    if(isset($_SESSION['id'])) :
+        $logeado = 'On';
+    else :
+        $logeado = 'Off';
+    endif;
     $indexes = "Yes";
+    if ($logeado == "On")
+        header("location: ../../0/home/cerrar_sesion");
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +54,7 @@
                     <td><?php echo $res[1] ?></td>
                 </tr>
                 <tr>
-                    <th>Muestras analizadas en fitopatologia</th>
+                    <th>Muestras analizadas en fitopatología</th>
                     <td><?php echo $res[2] ?></td>
                 </tr>
             </table>
@@ -56,11 +64,3 @@
         </section>
     </body>
 </html>
-
-
-
-<!--
-Username: administrador
-Email: test@example.com
-Password: 6ZaxN2Vzm9NUJT2y
- -->

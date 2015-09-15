@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include_once '../../system/check.php';
 ?>
 <!DOCTYPE html>
@@ -21,10 +20,10 @@
             <form action="index" method="POST">
                 <div class="buscadores">
                     <input type="text" name="buscador" id="buscador" value="<?php if (isset($_POST['buscador'])) echo $_POST['buscador']; ?>" placeholder="Buscar análisis" />
-                    <button type="submit" class="botonmenu"><i class="fa fa-search"></i></button>
+                    <button type="submit" class="botonmenu"><i class="fa fa-search"></i> Buscar</button>
                     <br>
-                    <input type="radio" name="opc" value="1" checked />Frase
-                    <input type="radio" name="opc" value="2" <?php if (isset($_POST['opc'])){ if ($_POST['opc'] == 2) echo "checked";}?> />Nombre completo
+                    <input type="radio" name="opc" value="1" title="click aquí para seleccionar un método de busqueda" checked />Frase 
+                    <input type="radio" name="opc" value="2" title="click aquí para seleccionar un método de busqueda" <?php if (isset($_POST['opc'])){ if ($_POST['opc'] == 2) echo "checked";}?> />Nombre completo
                 </div>
             </form>
             <form method="POST" action="formulario">
@@ -61,7 +60,7 @@
                                             echo "<td>".$resultado[2]."</td>";
                                             echo "<td>".$resultado[3]."</td>";
                                             echo "<td>".$resultado[4]."</td>";
-                                            echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
+                                            echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td>
                                         </tr>";
                                     }
                                     echo "</table>";
@@ -96,7 +95,6 @@
                                 echo "Uy! existe un error";
                                 break;
                         }
-
                     } elseif (empty($buscador) OR !isset($buscador)) {
                         echo "
                                 <table class='anapro'>
@@ -115,7 +113,7 @@
                                     echo "<td>".$resultado[2]."</td>";
                                     echo "<td>".$resultado[3]."</td>";
                                     echo "<td>".$resultado[4]."</td>";
-                                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
+                                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='click aquí para modificar este análisis'></td>
                                 </tr>";
                         }
                         echo "</table>";
@@ -124,6 +122,7 @@
                 <div>
                     <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
                     <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar análisis</button>
+                    <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>
                 </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>

@@ -7,8 +7,11 @@ table tr td, table tr th{
     /*border: 1px solid green;*/
     width: 270px;
     height: 25px;
-    padding-left: 30px;
     text-align: left;
+}
+
+table tr th:first-child, table tr td:first-child{
+    padding-left: 20px;
 }
 table tr:first-child th:first-child{
     border-radius:5px 5px 0px 0px;
@@ -20,7 +23,8 @@ table tr:last-child th:first-child {
     border-radius:0px 0px 0px 5px;
 }
 
-table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child {
+/*ESTILO PARA LOS ENCABEZADOS DE TODAS LAS TABLAS*/
+table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child, table.usuario tr:first-child{
     text-align: center;
     font-weight: bold;
     color:#fff;
@@ -45,52 +49,97 @@ table.tcliente tr td{
 }
 
 /*ESTILO PARA ESTATUS DE LABORATORIOS Y ANALISIS*/
-table.tstatus tr th, .tstatus tr td{
-    width: 50px;
+table.tstatus{
+    width: 500px;
 }
 table.tstatus tr th:first-child, .tstatus tr td:first-child{
 	width: 490px;
 }
-table.tstatus tr:first-child th:first-child{
+table.tstatus tr:first-child td:first-child{
     border-radius:5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px; 
 }
 table.tstatus-index tr:first-child th:first-child{
     border-radius:5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px; 
 }
 table.tstatus tr:first-child td:last-child{
     border-radius:0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px; 
 }
 table.tstatus tr:last-child td:last-child{
     border-radius:0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px; 
 }
 table.tstatus tr:last-child td:first-child{
     border-radius:0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px; 
+}
+table.tstatus td:last-child{
+    text-align: center;
+    width: 50px;
 }
 
 /*ESTILO PARA ANALISIS Y PRODUCTOS*/
 table.anapro{
-    width: 600px;
+    width: 500px;
 }
 table.anapro td{
     text-align: center;
 }
+
+table.anapro tr td:first-child{
+    width: 400px;
+}
 table.anapro tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px; 
 }
 table.anapro tr:first-child td:last-child{
     border-radius: 0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px; 
 }table.anapro tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px; 
 }
 table.anapro tr:last-child td:first-child{
     border-radius: 0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px; 
 }
 table.anapro td:first-child{
     text-align: left;
 }
 table.anapro td:last-child{
-    width: 100px;
-    padding-left: 0px;
+    width: 60px;
+}
+
+/*ESTILO PARA LAS TABLAS DE ACEPTACION DE USUARIOS*/
+table.usuario{
+    width: 600px;
+}
+table.usuario td{
+    text-align: center;
+}
+table.usuario tr:first-child td:first-child{
+    border-radius: 5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px; 
+}
+table.usuario tr:first-child td:last-child{
+    border-radius: 0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px; 
+}table.usuario tr:last-child td:last-child{
+    border-radius: 0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px; 
+}
+table.usuario tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px; 
+}
+table.usuario td:first-child{
+    width: 70px;
+}
+table.usuario td:last-child{
+    width: 60px;
 }
 
 

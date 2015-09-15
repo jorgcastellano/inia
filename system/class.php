@@ -23,41 +23,31 @@ class producto
     }
     
 
-    public function consultar_produc($mysqli, $Cod)
+    public function consultar_produc($mysqli,$Cod_produ)
     {
-      $sql="SELECT * FROM producto WHERE producto.Cod_produ ='$Cod'";
+      $sql="SELECT * FROM producto WHERE Cod_produ ='$Cod_produ'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
 
     }
 
-      public function modificar_produ($mysqli,$Nom_produ, $Existencia, $Precio_produ)
-    {
-      $sql="UPDATE producto SET producto.Existencia='$Existencia', producto.Precio_produ='$Precio_produ' WHERE producto.Nom_produ='$Nom_produ'";
-      $mysqli->query($sql);
-      require_once 'error_update.php';
-      if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
-
-
-    }
-
       public function consulta_completo($mysqli)
       {
-      $sql = "SELECT * FROM producto ORDER BY Nom_produ ASC";
+      $sql = "SELECT * FROM producto";
       return $mysqli->query($sql);
       }
-
 
     public function buscadorlike($mysqli, $var){
       $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
       return $mysqli->query($sql);
     }
-
-      public function Consulta ($buscador)
-      {
-          $sql= "SELECT * producto WHERE Nom_produ LIKE '%buscador%'";
-          return $mysqli->query($sql);
-      }
+ public function modificar_produ($mysqli,$Cod_produ, $Nom_produ, $Existencia, $Precio_produ)
+    {
+      $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ' WHERE Cod_produ='$Cod_produ' ";
+      $mysqli->query($sql);
+      require_once 'error_update.php';
+      if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
+    }
   }
 
 class laboratorio {
@@ -76,13 +66,13 @@ class laboratorio {
 
     public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab) 
     {
-      $sql="UPDATE laboratorio SET laboratorio.Nom_lab='$Nom_lab' WHERE laboratorio.Cod_lab ='$Cod_lab'";
+      $sql="UPDATE laboratorio SET Nom_lab='$Nom_lab' WHERE Cod_lab='$Cod_lab'";
       $mysqli->query($sql);
       require_once 'error_update.php';
-      if($mysqli->affected_rows > 0){echo "Los datos del laboratorio se han modificado con exito";} else { echo "No se ha podido modificar los datos del laboratorio";}
+      
 
     }
-      public function consultar_completa($mysqli,$Nom_lab)
+    public function consultar_completa($mysqli)
     {
       $sql="SELECT * FROM laboratorio";
       return $res = $mysqli->query($sql);
@@ -90,7 +80,7 @@ class laboratorio {
 
     public function consultar_laboratorio($mysqli,$Cod)
     {
-      $sql="SELECT * FROM laboratorio WHERE laboratorio.Cod_lab ='$Cod'";
+      $sql="SELECT * FROM laboratorio WHERE Cod_lab ='$Cod'";
       $res = $mysqli->query($sql);
       return $res->fetch_array();
     }
@@ -131,8 +121,7 @@ class analisis {
 
     public function modificar_analisis($mysqli,$Cod_ana,$Nom_ana,$Precio_ana,$Tipo)
     {
-
-      $sql="UPDATE analisis SET analisis.Nom_ana='$Nom_ana', analisis.Precio_ana='$Precio_ana', analisis.Tipo='$Tipo' WHERE analisis.Cod_ana ='$Cod_ana'";
+      $sql="UPDATE analisis SET Nom_ana='$Nom_ana', Precio_ana='$Precio_ana', Tipo='$Tipo' WHERE Cod_ana ='$Cod_ana'";
       $mysqli->query($sql);
       require_once 'error_update.php';
       if($mysqli->affected_rows>0){echo "El analisis se ha modificado con exito";} else { echo "No se ha podido modificar el analisis";}
@@ -141,7 +130,7 @@ class analisis {
 
     public function consultar_analisis($mysqli,$Cod) {
       //Buscdor por nombre exacto
-      $sql="SELECT * FROM analisis WHERE Nom_ana='$Cod'";
+      $sql="SELECT * FROM analisis WHERE Cod_ana='$Cod'";
       $res= $mysqli->query($sql);
       return $res->fetch_array();
     }
@@ -328,10 +317,10 @@ class suelo {
     }
 
 
-    public function modificar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Cod_rsuelo,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion)
+    public function modificar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion)
     {       
 
-      $sql="";
+      $sql="UPDATE m_suelo SET Cod_lab='$Cod_lab',Tam_lote='$Tam_lote',Profundidad='$Profundidad',Carac_terreno='$Carac_terreno',Inundacion='$Inundacion',Riego='$Riego',Criego='$Criego',F_toma='$F_toma',T_vege='$T_vege',Cultivo='$Cultivo',Edad_cult='$Edad_cult',Dis_siembra='$Dis_siembra',Nro_pl='$Nro_pl',Cult_antes='$Cult_antes',Rend_cult='$Rend_cult',Restos='$Restos',Fertilizante='$fertil',Fert_cant='$Fert_cantidad',Epoca_aplic='$Epoca_aplic',Aplicacion='$Aplicacion' WHERE Cod_suelo='$Cod_suelo' ";
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
 
@@ -353,6 +342,46 @@ class solicitud_analisis {
       include_once 'error_insert.php';
 
       
+    }
+
+    public function registrar_solicitud_analisis2($mysqli,$Cod_sol,$Cod_ana,$Cod_suelo,$Cod_fito)
+    {
+
+
+      $sql="INSERT INTO `proyecto3`.`solicitud_analisis` (`Id_sa`, `Cod_sol`, `Cod_ana`, `Cod_suelo`, `Cod_fito`) VALUES (NULL, '$Cod_sol', '$Cod_ana', NULL, '$Cod_fito')";
+      $res=$mysqli->query($sql);
+      //$res=$mysqli_query($mysqli,$sql);
+      include_once 'error_insert.php';
+
+      
+    }
+
+    public function consultar_sam($mysqli,$codm)
+    {
+
+      $sql="SELECT * FROM solicitud_analisis, analisis WHERE Cod_suelo ='$codm'  AND solicitud_analisis.Cod_ana=analisis.Cod_ana OR Cod_fito ='$codm' AND solicitud_analisis.Cod_ana=analisis.Cod_ana";
+      return $mysqli->query($sql);
+      
+
+    }
+
+
+    public function eliminar_sams($mysqli,$insert,$Cod_sol,$Cod_suelo)
+    {
+
+
+      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_suelo='$Cod_suelo'";
+      $res=$mysqli->query($sql);
+
+    }
+
+    public function eliminar_samf($mysqli,$insert,$Cod_sol,$Cod_fito)
+    {
+
+
+      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_fito='$Cod_fito'";
+      $res=$mysqli->query($sql);
+
     }
 
   }
@@ -385,10 +414,10 @@ class fito {
 
   }
 
-  public function modificar_fito($mysqli,$Cod_fito,$Cod_lab,$Tipo_fito,$Descrip_fito,$Cult_fito,$Edad_fito,$F_coleccion,$Pobl_cercana,$Id_microorg,$sintoma,$Malformacion,$F_sintomas,$Causa,$Tipo_plant,$Tam_lote,$Nro_plant,$Nro_subm,$dist_f,$Origen_sem,$Pres_microorg,$Dist_planafect,$Part_afect,$Riego,$Topografia,$Text_sue,$Hum_sue,$Uso_quimico,$Contrl_male,$Cult_ant,$Cond_agroclima,$Obervaciones)
+  public function modificar_fito($mysqli,$Cod_fito,$Cod_lab,$Tipo_fito,$Descrip_fito,$Cult_fito,$Edad_fito,$F_coleccion,$Pobl_cercana,$Id_microorg,$sintoma,$F_sintomas,$Causa,$Tipo_plant,$Tam_lote,$Nro_plant,$Nro_subm,$dist_f,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parte,$Riego,$Topografia,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$practicas,$Produc_dosis,$control,$Produc_dosisb,$Cult_ant,$Cond_agroclima,$Observaciones)
   {       
 
-    $sql="";
+    $sql="UPDATE m_fito SET Tipo_fito='$Tipo_fito',Descrip_fito='$Descrip_fito',Cult_fito='$Cult_fito',Edad_fito='$Edad_fito',F_coleccion='$F_coleccion',Pobl_cercana='$Pobl_cercana',Id_microorg='$Id_microorg',Sintomas='$sintoma',F_sintomas='$F_sintomas',Causa='$Causa',Tipo_plant='$Tipo_plant',Tam_lote='$Tam_lote',Nro_plant='$Nro_plant',Nro_subm='$Nro_subm',dist_f='$dist_f',Origen_sem='$Origen_sem',Pres_microorg='$Pres_microorg',Dist_planafect='$Dist_planafect',Part_afect='$Parte',Riego='$Riego',Topografia='$Topografia',Text_sue='$Text_sue',Composicion='$Composicion',Hum_sue='$Hum_sue',Drenaje='$Drenaje',Practicas='$practicas',Produc_dosis='$Produc_dosis',Control='$control',Produc_dosisb='$Produc_dosisb',Cult_ant='$Cult_ant',Cond_agroclima='$Cond_agroclima',Observaciones='$Observaciones' WHERE Cod_fito='$Cod_fito'";
     $res=$mysqli->query($sql);
     include_once 'error_update.php';
 

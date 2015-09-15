@@ -7,7 +7,7 @@
 			</header>
 			';
 
-			if ($logeado == 'On') {
+			if ($logeado == 'On' AND $_SESSION['privilegios'] == 1) {
 				echo '<ul class="menuHorizontal">';
 				$array1 = array();
 				$array2 = array();
