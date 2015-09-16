@@ -121,7 +121,7 @@ button.botonmenu {
     font-family: Calibri, Open Sans, Carlito;
 }
 .menuHorizontal{
-    background-color: #C8E6C9;
+    background-color: #92DB95;
     margin: 0px;
     margin-top: -6px;
     list-style: none outside none;
@@ -131,12 +131,12 @@ button.botonmenu {
     position: relative;
     width: 188.75px;
     max-height: 80px;
-    border: 1px solid #A5D6A7;
+    border: 1px solid #74B176;
     border-left: transparent;
     font-family: Calibri, Open Sans, Carlito;
 }
 .menuHorizontal li:first-child{
-    border-left: 1px solid #A5D6A7;
+    border-left: 1px solid #74B176;
 }
 .menuHorizontal li a{
     display: block;
@@ -160,11 +160,11 @@ button.botonmenu {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     max-width: 300px;
     max-height: 80px;
-    border: 1px solid #A5D6A7;
+    border: 1px solid #74B176;
     border-bottom: transparent;
 }
 .menuHorizontal ul li:last-child{
-    border-bottom: 1px solid #A5D6A7;
+    border-bottom: 1px solid #74B176;
 }
 @-webkit-keyframes animation {
     0% {
@@ -210,7 +210,7 @@ button.botonmenu {
 }
 .menuHorizontal li:hover ul {
     left: -1px;
-    top: 40px;
+    top: 41px;
 }
 
 
