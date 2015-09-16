@@ -97,7 +97,7 @@ footer{
 .notify {
     background: transparent;
     border-radius: 3px 3px 3px 3px;
-    color: green;
+    color: red;
     margin-left: 20px;
     padding: 1px 6px;
     z-index: 999; 
