@@ -37,22 +37,22 @@
                     if (isset($guardar)) :
                         for ($x=0; $x < $temp = count($cod); $x++)
                             if ($resultado[0] == $cod[$x]) :
-                                if ($resultado[8] == "On")
+                                if ($resultado[9] == "On")
                                     $x=$temp;
                                 else
                                     $on = $resultado[0];
                                     $x=$temp;
                             elseif ($x == ($temp-1)) :
-                                if ($resultado[8] == "On")
+                                if ($resultado[9] == "On")
                                     $off = $resultado[0];
                             endif;
 
                         if (isset($on)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "On", $on);
-                            $resultado[8] = "On";
+                            $resultado[9] = "On";
                         elseif (isset($off)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "Off", $off);
-                            $resultado[8] = "Off";
+                            $resultado[9] = "Off";
                         endif;
                         unset($off, $on);
                     endif;
@@ -62,7 +62,7 @@
                     }
                     if ($resultado[9] == "On") :
                         $checked = "checked";
-                    else :
+                    elseif ($resultado[9] == "Off") :
                         $checked = "";
                     endif;
                     echo "<tr>
