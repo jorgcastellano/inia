@@ -36,7 +36,7 @@
                     $lab->modificar_laboratorio($mysqli, $Actualizar, $Nom_lab);
                     $reg = $lab->consultar_completa($mysqli);
                 if($mysqli->affected_rows > 0){echo "<span class='notify'>Los datos del laboratorio se han modificado con exito</span> <i class='fa fa-check-square'></i>";} 
-                else { echo "<span class='notify_f'>No se ha podido modificar los datos del laboratorio</span> <i class='fa fa-times'></i>";}
+                else { echo "<span class='notify_f'>No se ha podido modificar los datos del laboratorio</span><i class='fa fa-times'></i>";}
                 else :
                     $reg = $lab->consultar_completa($mysqli);
                 endif;

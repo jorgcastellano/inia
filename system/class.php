@@ -60,8 +60,7 @@ class laboratorio {
       $sql="INSERT INTO laboratorio (Cod_lab,Nom_lab)
             VALUES ('$Cod_lab','$Nom_lab')";
       $mysqli->query($sql);
-      require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "El nuevo laboratorio se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo laboratorio";}
+      require_once 'error_insert.php';      
     }
 
     public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab) 
