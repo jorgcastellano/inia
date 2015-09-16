@@ -53,7 +53,7 @@
                 	$y=1;
                     $generar = new controllerCodigo();
                     $code1=$generar->generarCodigo($x);
-                    $code2=$generar->generarCodigo($y);
+                    $code2=$generar->generarCodigo($y);if($reg[1]==$reg1[0]){ echo 'selected'; }
 
                     endif;
                     endif;
@@ -64,6 +64,9 @@
 					
 					$sql='SELECT * FROM laboratorio';
 					$res= $mysqli->query($sql);
+
+					$sql="SELECT * FROM finca WHERE Ced_cliente='$Ced_cliente'";
+					$resfin= $mysqli->query($sql);
 
 					
 				?>
@@ -175,6 +178,15 @@
 							</br></br>	
 					<label for="Aplicacion" title="">Modo de aplicación</label>
 							<textarea name="Aplicacion" id="Aplicacion" title="" cols="30" rows="5" maxlength="30" placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[20] ?></textarea>
+                            </br></br>
+                    <label for="Finca" title="">Finca</label>
+                    		<select name="finca">
+                    			<option value="">Seleccione</option>
+                    		<?php while ($reg8 = $resfin->fetch_array()) { 
+                    		echo "<option value='$reg8[0]' if($reg8[0]==$reg1[22]){ echo 'selected'; }>$reg8[2]</option>";
+                    		  }?>
+
+                    		</select>
                             </br></br>
                         <?php $pre = explode("|", $codi_analisis); ?>    
 					<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
