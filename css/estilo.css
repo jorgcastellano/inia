@@ -71,7 +71,7 @@ footer{
 }
 .cuadro{
 	background-color: #fafafa;
- border-left: solid;
+    border-left: solid;
 	border-right: solid;
 	border-bottom: solid;
 	border-top: solid;
@@ -97,9 +97,9 @@ footer{
 .notify {
     background: transparent;
     border-radius: 3px 3px 3px 3px;
-    color: red;
+    color: green;
     margin-left: 20px;
-    padding: 1px 6px;
+    padding: 6px 6px;
     z-index: 999; 
     position: center; 
     display: ;
