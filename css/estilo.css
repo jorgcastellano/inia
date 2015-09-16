@@ -69,6 +69,23 @@ footer{
 	margin:auto;
 	margin-top:50px;
 }
+.cuadro{
+	background-color: #fafafa;
+    border-left: solid;
+	border-right: solid;
+	border-bottom: solid;
+	border-top: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	border-color: #4BCC40;
+	max-width: 220px;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	margin:auto;
+	margin-top:50px;
+}
 .sinboton{
 	background-color: transparent;
 	border: 0px;
@@ -76,11 +93,23 @@ footer{
 	cursor: pointer;
 }
 
-/*ccs para notificaciones*/
+/*ccs para notificaciones exitosas*/
 .notify {
     background: transparent;
     border-radius: 3px 3px 3px 3px;
     color: green;
+    margin-left: 20px;
+    padding: 20px 20px;
+    z-index: 999; 
+    position: center; 
+    display: ;
+}
+
+/*ccs para notificaciones fallidas*/
+.notify_f {
+    background: transparent;
+    border-radius: 3px 3px 3px 3px;
+    color: red;
     margin-left: 20px;
     padding: 1px 6px;
     z-index: 999; 

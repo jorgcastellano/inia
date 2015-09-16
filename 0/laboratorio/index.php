@@ -21,22 +21,24 @@
 	        <form action="index" method="post">
 	    	<?php
 				extract($_POST);
-	            require_once '../../system/class.php';
+                require_once '../../system/class.php';
 
-	            $lab = new laboratorio();  
-	            if (isset($seleccion) AND isset($modificar)) :
-	                $reg1 = $lab->consultar_laboratorio($mysqli,$seleccion);
-	            	$reg = $lab->consultar_completa($mysqli);
-	            elseif (isset($Registrar)) :
-	                $lab->registrar_laboratorio($mysqli,$Nom_lab);
-	            	$reg = $lab->consultar_completa($mysqli);
-	            elseif (isset($Actualizar)) :
-	            	$lab->modificar_laboratorio($mysqli, $Actualizar, $Nom_lab);
-	            	$reg = $lab->consultar_completa($mysqli);
-                    if($mysqli->affected_rows > 0){echo "<span class='notify'>Los datos del laboratorio se han modificado con exito</span><br />";} else { echo "No se ha podido modificar los datos del laboratorio";}
-	            else :
-	            	$reg = $lab->consultar_completa($mysqli);
-	            endif;
+                $lab = new laboratorio();  
+                if (isset($seleccion) AND isset($modificar)) :
+                    $reg1 = $lab->consultar_laboratorio($mysqli,$seleccion);
+                    $reg = $lab->consultar_completa($mysqli);
+                elseif (isset($Registrar)) :
+                    $lab->registrar_laboratorio($mysqli,$Nom_lab);
+                    $reg = $lab->consultar_completa($mysqli);
+                if($mysqli->affected_rows>0){echo "<span class='notify'>El nuevo laboratorio se ha registrado con exito <i class='fa fa-check-square'</i></span>";} else { echo "<span class='notify_f'>No se ha podido registrar el nuevo laboratorio</span> <i class='fa fa-times'></i>";}
+                elseif (isset($Actualizar)) :
+                    $lab->modificar_laboratorio($mysqli, $Actualizar, $Nom_lab);
+                    $reg = $lab->consultar_completa($mysqli);
+                if($mysqli->affected_rows > 0){echo "<span class='notify'>Los datos del laboratorio se han modificado con exito</span> <i class='fa fa-check-square'></i>";} 
+                else { echo "<span class='notify_f'>No se ha podido modificar los datos del laboratorio</span><i class='fa fa-times'></i>";}
+                else :
+                    $reg = $lab->consultar_completa($mysqli);
+                endif;
 	            echo "  <table class='tstatus'>
 	                    <tr>
 	                        <td>Nombre</td>

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-09-2015 a las 10:21:00
+-- Tiempo de generación: 15-09-2015 a las 22:16:04
 -- Versión del servidor: 5.5.44-0+deb8u1
--- Versión de PHP: 5.6.12-0+deb8u1
+-- Versión de PHP: 5.6.13-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,72 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `inicio_seguro`
---
-
-CREATE DATABASE IF NOT EXISTS `inicio_seguro` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `inicio_seguro`;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `intentos`
---
-
-CREATE TABLE IF NOT EXISTS `intentos` (
-  `user_id` int(11) NOT NULL,
-  `time` varchar(30) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `miembros`
---
-
-CREATE TABLE IF NOT EXISTS `miembros` (
-`id` int(11) NOT NULL,
-  `ci` int(9) NOT NULL,
-  `usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `password` char(128) COLLATE utf8_spanish_ci NOT NULL,
-  `salt` char(128) COLLATE utf8_spanish_ci NOT NULL,
-  `pregunta` char(1) COLLATE utf8_spanish_ci NOT NULL,
-  `respuesta` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `aprobacion` varchar(2) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'NO'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabla de inicio de sesion seguro';
-
---
--- Volcado de datos para la tabla `miembros`
---
-
-INSERT INTO `miembros` (`id`, `ci`, `usuario`, `email`, `password`, `salt`, `pregunta`, `respuesta`, `aprobacion`) VALUES
-(1, 21417486, 'Jitzon Colmenares', 'jitzon.jose@gmail.com', '123456', '', '1', 'garfield', 'NO'),
-(3, 20709289, 'Jorge Castellano', 'jorgecm14@gmail.com', '123456', '', '1', 'garfield', 'NO'),
-(4, 22280499, 'Ines Benitez', 'ines.benitez2@gmail.com', '1234', '', '2', 'benitez', 'NO');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `miembros`
---
-ALTER TABLE `miembros`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `ci` (`ci`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `miembros`
---
-ALTER TABLE `miembros`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;--
 -- Base de datos: `proyecto3`
 --
-
 CREATE DATABASE IF NOT EXISTS `proyecto3` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `proyecto3`;
 
@@ -94,29 +30,11 @@ USE `proyecto3`;
 
 CREATE TABLE IF NOT EXISTS `analisis` (
 `Cod_ana` int(11) NOT NULL,
-  `Nom_ana` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `Nom_ana` varchar(35) COLLATE utf8_spanish_ci NOT NULL,
   `Precio_ana` int(11) NOT NULL,
   `Tipo` int(1) NOT NULL,
   `estatus` varchar(3) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'On' COMMENT 'estado del analisis'
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `analisis`
---
-
-INSERT INTO `analisis` (`Cod_ana`, `Nom_ana`, `Precio_ana`, `Tipo`, `estatus`) VALUES
-(1, 'PH', 100, 2, 'Off'),
-(2, 'Macro Elementos', 200, 2, 'On'),
-(3, 'humedad', 150, 2, 'Off'),
-(4, 'Micro Elementos', 250, 1, 'On'),
-(5, 'nematodos', 300, 2, 'On'),
-(6, 'bacterias', 100, 1, 'Off'),
-(7, 'plagas', 200, 2, 'On'),
-(8, 'microorganismos', 100, 1, 'Off'),
-(9, 'Nuevo', 300, 1, 'On'),
-(10, 'Ph45', 250, 1, 'Off'),
-(11, 'd3f', 250, 1, 'On'),
-(12, 'HematologÃ­a', 350, 2, 'Off');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -128,15 +46,9 @@ CREATE TABLE IF NOT EXISTS `ayudante` (
   `aiso` int(5) unsigned zerofill NOT NULL COMMENT 'AutoIncrementable Solicitud',
   `aims` int(5) unsigned zerofill NOT NULL COMMENT 'AutoIncrementable muestra suelo',
   `aimf` int(5) unsigned zerofill NOT NULL COMMENT 'AutoIncrementable muestra fito',
-  `ano` int(4) unsigned NOT NULL COMMENT 'ultimo año'
+  `ano` int(4) unsigned NOT NULL COMMENT 'ultimo año',
+`id` int(2) unsigned zerofill NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `ayudante`
---
-
-INSERT INTO `ayudante` (`aiso`, `aims`, `aimf`, `ano`) VALUES
-(00000, 00000, 00000, 2015);
 
 -- --------------------------------------------------------
 
@@ -152,18 +64,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `Contacto` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `Telf_cliente` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
   `Dire_cliente` varchar(100) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `cliente`
---
-
-INSERT INTO `cliente` (`Id_cliente`, `Ced_cliente`, `Nom_cliente`, `Apelli_cliente`, `Contacto`, `Telf_cliente`, `Dire_cliente`) VALUES
-(9, 15922177, 'Isabelina', 'Mantilla', '', '0212-1753465', 'Pamplona, Norte de Santander, Colombia'),
-(5, 20709289, 'Jorge Agustin', 'Castellano Mantilla', '', '0416-1379717', 'Manzano bajo, Calle las Frutas, Casa S/N, Ejido, Estado MÃ©rida'),
-(14, 21417486, 'Yitzon Jose', 'ColmenÃ¡res Pulido', 'Jorge Castellano', '0212-1234567', 'San Benito, Lagunillas, Estado MÃ©rida'),
-(6, 22280499, 'Ines', 'Benitez', 'Jorge', '0416-1234587', 'Manzano'),
-(1, 23721514, 'Benito', 'Gutierrez', 'Pedro', '0212-0000000', 'la variante');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -177,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `especialista` (
   `Nom_esp` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Ape_esp` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Telf_esp` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
-  `Direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+  `Especialidad` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -226,18 +127,7 @@ CREATE TABLE IF NOT EXISTS `finca` (
   `Estado` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Municipio` varchar(35) COLLATE utf8_spanish_ci NOT NULL,
   `Parroquia` varchar(60) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `finca`
---
-
-INSERT INTO `finca` (`Cod_fin`, `Ced_cliente`, `Nom_fin`, `Estado`, `Municipio`, `Parroquia`) VALUES
-(1, 20709289, 'EscorpiÃ³n', 'MÃ©rida', 'mun4', 'Manzano bajo'),
-(3, 22280499, 'las frutas 2', 'MÃ©rida', 'mun4', 'Manzano'),
-(6, 15922177, 'Barrio cristo rey', 'Tachira', 'mun3', 'Cristo rey'),
-(13, 21417486, 'Junco', 'TÃ¡chira', 'mun5', 'TÃ¡riba'),
-(14, 22280499, 'lolo', 'A', 'm', '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -248,16 +138,8 @@ INSERT INTO `finca` (`Cod_fin`, `Ced_cliente`, `Nom_fin`, `Estado`, `Municipio`,
 CREATE TABLE IF NOT EXISTS `laboratorio` (
 `Cod_lab` int(11) NOT NULL,
   `Nom_lab` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `estatus` varchar(3) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Off'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `laboratorio`
---
-
-INSERT INTO `laboratorio` (`Cod_lab`, `Nom_lab`, `estatus`) VALUES
-(1, 'FitopatologÃ­a', 'Off'),
-(2, 'Suelo', 'On');
+  `estatus` varchar(3) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'On'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -275,11 +157,10 @@ CREATE TABLE IF NOT EXISTS `m_fito` (
   `F_coleccion` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Pobl_cercana` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Id_microorg` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Sintomas` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `Sintomas` varchar(24) COLLATE utf8_spanish_ci NOT NULL,
   `F_sintomas` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Causa` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Tipo_plant` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
-  `Otro_tipo` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `Tam_lote` int(11) NOT NULL,
   `Nro_plant` int(11) NOT NULL,
   `Nro_subm` int(11) NOT NULL,
@@ -312,35 +193,30 @@ CREATE TABLE IF NOT EXISTS `m_fito` (
 CREATE TABLE IF NOT EXISTS `m_suelo` (
   `Cod_suelo` varchar(18) COLLATE utf8_spanish_ci NOT NULL,
   `Cod_lab` int(11) NOT NULL,
-  `Cod_rsuelo` int(11) NOT NULL,
-  `Tam_lote` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
+  `Tam_lote` float NOT NULL,
   `Profundidad` int(11) NOT NULL,
   `Carac_terreno` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
-  `Inundacion` tinyint(1) NOT NULL,
+  `Inundacion` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
   `Riego` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `Criego` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   `F_toma` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `T_vege` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `Cultivo` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
   `Edad_cult` int(11) DEFAULT NULL,
-  `Dis_siembra` int(11) DEFAULT NULL,
+  `Dis_siembra` float DEFAULT NULL,
   `Nro_pl` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Cult_antes` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `Rend_cult` varchar(1) COLLATE utf8_spanish_ci DEFAULT NULL,
   `Restos` tinyint(1) DEFAULT NULL,
   `Fertilizante` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `Fert_cant` int(11) DEFAULT NULL,
-  `Epoca_aplic` tinyint(10) DEFAULT NULL,
+  `Epoca_aplic` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `Aplicacion` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `Hora` time DEFAULT NULL
+  `Hora` time DEFAULT NULL,
+  `Cod_fin` int(4) NOT NULL,
+  `Fecha` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
+  `Estatus` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `m_suelo`
---
-
-INSERT INTO `m_suelo` (`Cod_suelo`, `Cod_lab`, `Cod_rsuelo`, `Tam_lote`, `Profundidad`, `Carac_terreno`, `Inundacion`, `Riego`, `Criego`, `F_toma`, `T_vege`, `Cultivo`, `Edad_cult`, `Dis_siembra`, `Nro_pl`, `Cult_antes`, `Rend_cult`, `Restos`, `Fertilizante`, `Fert_cant`, `Epoca_aplic`, `Aplicacion`, `Hora`) VALUES
-('SUE-MER-2015-1', 2, 0, '11', 11, 'x', 1, '1', 'qq', '02-02-1991', 'qq', 'qq', 0, 0, 'qq', 'qq', 'R', 0, 'E|F', 0, 0, 'qq', NULL);
 
 -- --------------------------------------------------------
 
@@ -353,37 +229,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `Nom_produ` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Existencia` int(11) NOT NULL,
   `Precio_produ` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci ROW_FORMAT=COMPACT;
-
---
--- Volcado de datos para la tabla `producto`
---
-
-INSERT INTO `producto` (`Cod_produ`, `Nom_produ`, `Existencia`, `Precio_produ`) VALUES
-(1, 'tuberculos', 10, 1000),
-(2, 'alevines', 160, 800),
-(3, 'papas', 400, 200),
-(5, 'abono', 50, 700),
-(6, 'truchas', 700, 20),
-(7, 'terneros', 20, 2000),
-(8, 'vacas', 25, 2500),
-(9, 'chivos', 50, 500),
-(10, 'ovejas', 40, 400),
-(11, 'yuca', 110, 45),
-(12, 'manzana', 50, 50),
-(13, 'repoyo', 70, 85),
-(14, 'lechuga', 29, 90),
-(15, 'platano', 500, 600),
-(16, 'fertilizantes', 80, 950),
-(17, 'cambur', 60, 600),
-(18, 'frezas', 60, 80),
-(19, 'naranjas', 70, 700),
-(20, 'pavo', 70, 500),
-(21, 'azucar', 40, 400),
-(22, 'tomate', 70, 700),
-(23, 'tamarindo', 90, 10),
-(24, 'mandarina', 60, 600),
-(25, 'zanahorias', 60, 250);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -424,14 +270,7 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   `Cod_sol` varchar(18) COLLATE utf8_spanish_ci NOT NULL,
   `Cod_cliente` int(11) NOT NULL,
   `Fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `solicitud`
---
-
-INSERT INTO `solicitud` (`gai_sol`, `Cod_sol`, `Cod_cliente`, `Fecha`) VALUES
-(00017, 'SSS-MER-2015-1', 20709289, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -456,6 +295,12 @@ CREATE TABLE IF NOT EXISTS `solicitud_analisis` (
 --
 ALTER TABLE `analisis`
  ADD PRIMARY KEY (`Cod_ana`);
+
+--
+-- Indices de la tabla `ayudante`
+--
+ALTER TABLE `ayudante`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `cliente`
@@ -543,12 +388,17 @@ ALTER TABLE `solicitud_analisis`
 -- AUTO_INCREMENT de la tabla `analisis`
 --
 ALTER TABLE `analisis`
-MODIFY `Cod_ana` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `Cod_ana` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `ayudante`
+--
+ALTER TABLE `ayudante`
+MODIFY `id` int(2) unsigned zerofill NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-MODIFY `Id_cliente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `Id_cliente` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `fact_descripcion`
 --
@@ -563,22 +413,22 @@ MODIFY `Cod_fact` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `finca`
 --
 ALTER TABLE `finca`
-MODIFY `Cod_fin` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `Cod_fin` int(4) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `laboratorio`
 --
 ALTER TABLE `laboratorio`
-MODIFY `Cod_lab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `Cod_lab` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-MODIFY `Cod_produ` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+MODIFY `Cod_produ` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-MODIFY `gai_sol` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT 'auto incrementable para generar codigo oficial',AUTO_INCREMENT=18;
+MODIFY `gai_sol` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT 'auto incrementable para generar codigo oficial';
 --
 -- AUTO_INCREMENT de la tabla `solicitud_analisis`
 --

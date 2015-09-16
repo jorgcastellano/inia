@@ -28,6 +28,7 @@
 			$_SESSION['id']="$registro[0]";
 			$_SESSION['ci']="$registro[1]";
 			$_SESSION['nombre']="$registro[2]";
+			$_SESSION['apellido']="$registro[3]";
 			$_SESSION['email']="$registro[4]";
 			$_SESSION['pregunta']="$registro[7]";
 			$_SESSION['respuesta']="$registro[8]";
@@ -36,12 +37,14 @@
 
 		    //Solo para privilegios (2) especialistas
 		    if ($_SESSION['privilegios'] == 2) :
-		    	$cod = $_SESSION['privilegios'];
+		    	$cod = $_SESSION['ci'];
 				include_once '../system/classesp.php';
 	            $objesp = new especialista();
 	            $resultado = $objesp->verificar_privilegio_2($mysqli2, $cod);
-		        if (empty($resultado)) :
-		        	header("location: ../0/home/culminar_registro");
+		        if ($resultado[0] == $_SESSION['ci']) :
+		        	header("location: ../0/home/inicio");
+		        else :
+		        	header("location: ../0/especialista/culminar_registro");
 		    	endif;
 		    else :
 				header("location: ../0/home/inicio");

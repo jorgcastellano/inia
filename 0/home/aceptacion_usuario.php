@@ -37,38 +37,38 @@
                     if (isset($guardar)) :
                         for ($x=0; $x < $temp = count($cod); $x++)
                             if ($resultado[0] == $cod[$x]) :
-                                if ($resultado[8] == "On")
+                                if ($resultado[9] == "On")
                                     $x=$temp;
                                 else
                                     $on = $resultado[0];
                                     $x=$temp;
                             elseif ($x == ($temp-1)) :
-                                if ($resultado[8] == "On")
+                                if ($resultado[9] == "On")
                                     $off = $resultado[0];
                             endif;
 
                         if (isset($on)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "On", $on);
-                            $resultado[8] = "On";
+                            $resultado[9] = "On";
                         elseif (isset($off)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "Off", $off);
-                            $resultado[8] = "Off";
+                            $resultado[9] = "Off";
                         endif;
                         unset($off, $on);
                     endif;
                     if (isset($guardar) AND !isset($cod)) {
                         $objinicio->modificar_miembros_estatus_all($mysqli, "Off");
-                        $resultado[8] = "Off";
+                        $resultado[9] = "Off";
                     }
-                    if ($resultado[8] == "On") :
+                    if ($resultado[9] == "On") :
                         $checked = "checked";
-                    else :
+                    elseif ($resultado[9] == "Off") :
                         $checked = "";
                     endif;
                     echo "<tr>
                         <td>$resultado[1]</td>
-                        <td>$resultado[2]</td>
-                        <td>$resultado[3]</td>
+                        <td>$resultado[2] $resultado[3]</td>
+                        <td>$resultado[4]</td>
                         <td><input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/></td>
                     </tr>";
                 endwhile;

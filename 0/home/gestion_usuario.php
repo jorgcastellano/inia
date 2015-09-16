@@ -46,18 +46,18 @@
                     </tr>";
 
                 while ($resultado = $reg->fetch_array()) :
-                    if ($resultado[9] == 1) :
+                    if ($resultado[10] == 1) :
                         $uno = "selected";
-                    elseif ($resultado[9] == 2) :
+                    elseif ($resultado[10] == 2) :
                         $dos = "selected";
-                    elseif ($resultado[9] == 3) :
+                    elseif ($resultado[10] == 3) :
                         $tres = "selected";
                     endif;
                     echo "<tr>
                         <td>$resultado[1]
                         <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
-                        <td>$resultado[2]</td>
-                        <td>$resultado[3]</td>
+                        <td>$resultado[2] $resultado[3]</td>
+                        <td>$resultado[4]</td>
                         <td><select name='privilegios[]'>
                             <option value=''        >-seleccione-</option>
                             <option value='1' $uno  >Gerente</option>
