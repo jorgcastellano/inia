@@ -30,7 +30,7 @@
                 elseif (isset($Registrar)) :
                     $lab->registrar_laboratorio($mysqli,$Nom_lab);
                     $reg = $lab->consultar_completa($mysqli);
-                if($mysqli->affected_rows>0){echo "<span class='notify'>El nuevo laboratorio se ha registrado con exito</span> <i class='fa fa-check-square'></i>";} 
+                if($mysqli->affected_rows>0){echo "<span class='notify'>El nuevo laboratorio se ha registrado con exito</span><i class='fa fa-check-square'></i>";} 
                 else { echo "<span class='notify_f'>No se ha podido registrar el nuevo laboratorio</span> <i class='fa fa-times'></i>";}
                 elseif (isset($Actualizar)) :
                     $lab->modificar_laboratorio($mysqli, $Actualizar, $Nom_lab);
