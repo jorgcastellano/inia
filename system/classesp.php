@@ -1,5 +1,6 @@
 <?php
 
+	//Esto solamente para verificar si existen privilegios de especialista
 	define("HOSTS", "mipc.jorgcastellano.net.ve");
   	define("USERS", "gproyecto");
   	define("PASSWORDS", "123456");
@@ -20,7 +21,7 @@
 
 	class especialista{
 		public function verificar_privilegio_2($mysqli2, $ced){
-		$sql = "SELECT Ced_esp FROM proyecto3.especialista WHERE Ced_esp = '$ced'";
+		$sql = "SELECT Ced_esp FROM especialista WHERE Ced_esp = '$ced'";
 		$res = $mysqli2->query($sql);
 		if($mysqli2->errno) :
 			printf(
@@ -32,6 +33,13 @@
 			exit();
 		endif;
 		return $res->fetch_array();
+		}
+
+	//Clases sin la funcion anterior
+		public function insertar_especialista($mysqli, $cedula, $laboratorio, $nombre, $apellido, $telefono, $especialidad){
+			$sql = "INSERT INTO especialista(Ced_esp, Cod_lab, Nom_esp, Ape_esp, Telf_esp, Especialidad) VALUES ('$cedula', '$laboratorio', '$nombre', '$apellido', '$telefono', '$especialidad')";
+			$mysqli->query($sql);
+			include 'error_insert';
 		}
 	}
 ?>

@@ -37,11 +37,13 @@
 
 		    //Solo para privilegios (2) especialistas
 		    if ($_SESSION['privilegios'] == 2) :
-		    	$cod = $_SESSION['privilegios'];
+		    	$cod = $_SESSION['ci'];
 				include_once '../system/classesp.php';
 	            $objesp = new especialista();
 	            $resultado = $objesp->verificar_privilegio_2($mysqli2, $cod);
-		        if (empty($resultado)) :
+		        if ($resultado[0] == $_SESSION['ci']) :
+		        	header("location: ../0/home/inicio");
+		        else :
 		        	header("location: ../0/especialista/culminar_registro");
 		    	endif;
 		    else :

@@ -17,20 +17,35 @@
             <ol>
                 <li>Debes completar tu registro en el formulario que se te muestra a continuación</li>
                 <li>Rellena los campos de forma correcta, ya que, este se te mostrara solo la primera vez para cada especialista</li>
+                <li>Muchas gracias</li>
             </ol>
-            <form class="contact_form" method="POST" action=""><br>
+            <?php $ci = $_SESSION['ci'];
+            $nombre = $_SESSION['nombre'];
+            $apellido =  $_SESSION['apellido']?>
+            <form class="contact_form" method="POST" action="registro">
                 <label>Cédula: </label>
-            	<input type="text" name="cedula" value="<?php echo $_SESSION['ci'] ?>" disabled><br>
+            	<input type="text" name="1" value="<?php echo $ci ?>" disabled><br>
+                <input type="hidden" name="ci" value="<?php echo $ci ?>">
                 <label>Nombre: </label>
-                <input type="text" name="nombre" value="<?php echo $_SESSION['nombre'] ?>" disabled><br>
+                <input type="text" name="2" value="<?php echo $nombre ?>" disabled><br>
+                <input type="hidden" name="name" value="<?php echo $nombre ?>">
                 <label>Apellido: </label>
-                <input type="text" name="apellido" value="<?php echo $_SESSION['apellido'] ?>" disabled><br>
+                <input type="text" name="3" value="<?php echo $apellido ?>" disabled><br>
+                <input type="hidden" name="apel" value="<?php echo $apellido ?>">
                 <label>Teléfono: </label>
                 <input required type="text" name="telefono" value="" placeholder="0000-0000000">
                 <span class="form_hint">Número de contácto</span><br />
                 <label>Laboratorio: </label>
                 <select name="laboratorio" required>
-                    <option></option>
+                    <option value=""> -- Seleccione -- </option>
+                <?php
+                    include_once '../../system/class.php'; 
+                    $objlab = new laboratorio();
+                    $res = $objlab->consultar_completa($mysqli);
+                    while ($resultado = $res->fetch_array()){
+                        echo "<option value='$resultado[0]'>$resultado[1]</option>";
+                    }
+                ?>
                 </select><br>
                 <label>Especialidad: </label>
                 <input required type="text" name="especialidad" value="" placeholder="Solo de contener letras">
