@@ -511,9 +511,19 @@ class factura {
   public function consultar_facturas($mysqli)
 
   {
-    //Buscdor por codigo
+    
     $sql="SELECT * FROM factura WHERE Estatus='impaga'";
     return $res= $mysqli->query($sql);
+     
+  }
+
+  public function consultar_factura($mysqli, $codigo)
+
+  {
+    
+    $sql="SELECT * FROM factura WHERE Cod_fact='$codigo'";
+    $res= $mysqli->query($sql);
+    return $res->fetch_array();
      
   }
 }

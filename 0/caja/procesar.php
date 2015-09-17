@@ -13,9 +13,22 @@
             <div>
                 <?php include '../../layouts/cabecera-body.php' ?>
                 <hgroup>
-                    <h1>Gestión de usuarios</h1>
+                    <h1>Procesar factura</h1>
                 </hgroup>
             </div>
+
+            <?php
+
+            extract($_POST);
+            include_once '../../system/class.php';
+            $objfactura = new factura();
+            $res=$objfactura->consultar_factura($mysqli,$codigo);
+            $objayudante= new ayudante();
+            $res2=$objayudante-> consultar_ayudante($mysqli);
+            $impuesto=($res[7]*$res2[4])/100;
+            $total=$res[7]+$impuesto;
+            ?>
+
             <form method="post" action="procesar">
             <label for=''>Tipo de pago</label>
             <select name="Tipo_pago" >
@@ -34,7 +47,13 @@
             </select>
 
             <label for=''>Bauche</label>
-            <input type="text" name="" value=""/>
+            <input type="text" name="Bauche" value=""/>
+
+            <label for=''>iva</label>
+            <input type="text" name="a" value="<?php echo $res2[4].'%' ?>" disabled/>
+
+            <label for=''>Total</label>
+            <input type="text" name="b" value="echo $total" disabled/>
 
                 
             </form>
