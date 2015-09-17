@@ -17,9 +17,15 @@
                 </hgroup>
             </div>
             
-            <article>
-                <p>Has iniciado sesión correctamente</p>
-            </article> <!-- FINALIZACION DEL CUERPO O CONTENEDOR DE LA PAGINA -->
+            <?php 
+            if ($_SESSION['privilegios'] == 1) :
+                echo "Gerente del sistema";
+            elseif ($_SESSION['privilegios'] == 2) :
+                echo "Especialista de laboratorios";
+            elseif ($_SESSION['privilegios'] == 3) :
+                include '../../0/caja/listado.php';
+            endif;
+            ?>
             
             <?php include '../../layouts/layout_p.php' ?>
         </section>
