@@ -505,6 +505,17 @@ class factura {
     $res= $mysqli->query($sql);
     return $res->fetch_array();
   }
+
+
+
+  public function consultar_facturas($mysqli)
+
+  {
+    //Buscdor por codigo
+    $sql="SELECT * FROM factura WHERE Estatus='impaga'";
+    return $res= $mysqli->query($sql);
+     
+  }
 }
 
 class factura_descripcion {

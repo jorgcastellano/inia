@@ -64,7 +64,7 @@
                             <option value='2' $dos  >Especialista</option>
                             <option value='3' $tres >Factura</option>
                         </select></td>
-                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[0]' /><i class='fa fa-trash-o'></button></i></td>
+                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[0]' ><i class='fa fa-trash-o'></button></i></td>
                     </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;
