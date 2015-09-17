@@ -12,7 +12,9 @@ class producto
         VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
-      
+      if($mysqli->affected_rows>0){echo "El nuevo producto se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo producto";}
+      }
+
     public function consultar_produ($mysqli,$Nom_produ)
     {
       $sql="SELECT * FROM producto WHERE producto.Nom_produ ='$Nom_produ'";
@@ -29,10 +31,9 @@ class producto
 
     }
 
-      public function consulta_completo($mysqli)
-      {
-      $sql = "SELECT * FROM producto";
-      return $mysqli->query($sql);
+      public function consulta_completo($mysqli) {
+        $sql = "SELECT * FROM producto";
+        return $mysqli->query($sql);
       }
 
     public function buscadorlike($mysqli, $var){
@@ -49,8 +50,7 @@ class producto
   }
 
 class laboratorio {
-
-    //private $res;
+  
     private $reg;
    
     public function registrar_laboratorio($mysqli,$Nom_lab)
@@ -66,8 +66,6 @@ class laboratorio {
       $sql="UPDATE laboratorio SET Nom_lab='$Nom_lab' WHERE Cod_lab='$Cod_lab'";
       $mysqli->query($sql);
       require_once 'error_update.php';
-      
-
     }
     public function consultar_completa($mysqli)
     {
@@ -494,4 +492,26 @@ class r_fito {
 
 }
 
+class factura {
+  public function facturar($mysqli, $cedula, $subtotal) {
+    $fecha = date('Y-m-d');
+    $sql = "INSERT INTO factura(Ced_cliente, Fecha, subtotal) VALUES ('$cedula', '$fecha', '$subtotal')";
+    $mysqli->query($sql);
+    include_once 'error_insert.php';
+  }
+  public function consultar_factura_insertada($mysqli,$ci) {
+    //Buscdor por codigo
+    $sql="SELECT * FROM factura WHERE Cod_fact=(SELECT MAX(Cod_fact) FROM factura WHERE Ced_cliente='$ci')";
+    $res= $mysqli->query($sql);
+    return $res->fetch_array();
+  }
+}
+
+class factura_descripcion {
+  public function facturar_productos($mysqli, $id, $descripcion, $cantidad, $costo, $precio, $cod_produ) {
+    $sql = "INSERT INTO fact_descripcion (Cod_fact, Descripcion, Cantidad, Costo_unidad, Precio, Cod_produ) VALUES ('$id', '$descripcion', '$cantidad', '$costo', '$precio', '$cod_produ')";
+    $mysqli->query($sql);
+    include_once 'error_insert.php';
+  }
+}
 ?>

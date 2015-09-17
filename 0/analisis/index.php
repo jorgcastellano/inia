@@ -31,7 +31,6 @@
                     extract($_POST);
 
                     include_once '../../system/class.php';
-                    $objlaboratorio = new laboratorio();
                     $objanalisis = new analisis();
 
                     if (!empty($buscador)) {
@@ -55,10 +54,17 @@
                                     ";
                                     $result = $objanalisis->buscadorlike($mysqli, $buscador);
                                     while ($resultado = $result->fetch_array()) {
+                                        if ($resultado[3] == 1) :
+                                            $laboratorio = "Fitopatología";
+                                        elseif ($resultado[3] == 2) :
+                                            $laboratorio = "Suelo";
+                                        else :
+                                            $laboratorio = "Error";
+                                        endif;
                                         echo "<tr>
                                             <td>".$resultado[1]."</td>";
                                             echo "<td>".$resultado[2]."</td>";
-                                            echo "<td>".$resultado[3]."</td>";
+                                            echo "<td>$laboratorio</td>";
                                             echo "<td>".$resultado[4]."</td>";
                                             echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td>
                                         </tr>";
@@ -68,6 +74,13 @@
                                 break;
                             case 2:
                                 $resultado = $objanalisis->consultar_analisis($mysqli, $buscador);
+                                        if ($resultado[3] == 1) :
+                                            $laboratorio = "Fitopatología";
+                                        elseif ($resultado[3] == 2) :
+                                            $laboratorio = "Suelo";
+                                        else :
+                                            $laboratorio = "Error";
+                                        endif;
                                 if (empty($resultado))
                                     echo "No existe el análisis buscado";
                                 else {
@@ -84,7 +97,7 @@
                                     echo "<tr>
                                         <td>".$resultado[1]."</td>";
                                         echo "<td>".$resultado[2]."</td>";
-                                        echo "<td>".$resultado[3]."</td>";
+                                        echo "<td>".$laboratorio."</td>";
                                         echo "<td>".$resultado[4]."</td>";
                                         echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
                                         </tr>
@@ -108,10 +121,17 @@
                             ";
                         $result = $objanalisis->consulta_completo($mysqli);
                         while ($resultado = $result->fetch_array()) {
+                                        if ($resultado[3] == 1) :
+                                            $laboratorio = "Fitopatología";
+                                        elseif ($resultado[3] == 2) :
+                                            $laboratorio = "Suelo";
+                                        else :
+                                            $laboratorio = "Error";
+                                        endif;
                             echo "<tr>
                                     <td>".$resultado[1]."</td>";
                                     echo "<td>".$resultado[2]."</td>";
-                                    echo "<td>".$resultado[3]."</td>";
+                                    echo "<td>".$laboratorio."</td>";
                                     echo "<td>".$resultado[4]."</td>";
                                     echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='click aquí para modificar este análisis'></td>
                                 </tr>";

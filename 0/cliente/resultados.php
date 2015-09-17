@@ -90,7 +90,7 @@
 						       <td><?php echo $reg2[2]?></td>
 					        </tr>
                             <tr>
-                                <th colspan="2">Dirección:</th>
+                                <th colspan="2">DIRECCIÓN DE LA FINCA</th>
                             </tr>
                             <tr>
 						       <th>Estado:</th>
@@ -109,7 +109,7 @@
                         <button type="submit" name="Modificar" value="<?php echo $reg[1]?>" class="boton" ><i class="fa fa-pencil-square-o"></i> Actualizar datos</button>
                         <button type="submit" formaction="finca" name="Finca" value="<?php echo $reg[1]?>" class="boton" ><i class="fa fa-plus"></i> Agregar Finca</button>
                         <button type="submit" formaction="../muestra/fitoOsue" name="RegistrarM" value="<?php echo $Ced_cliente; ?>" class="boton" ><i class="fa fa-file-text-o"></i> Nueva solicitud</button>
-                        <button type="submit" formaction="###" name="Productos" value="Productos" class="boton" ><i class="fa fa-shopping-cart"></i> Comprar Productos</button>
+                        <button type="submit" formaction="../../0/producto/compra_productos" name="compra" value="<?php if (isset($reg)) echo $reg[1]; ?>" class="boton" ><i class="fa fa-shopping-cart"></i> Compra de productos</button>
                     </form>
                 <?php  endif;
                 include_once '../../layouts/layout_p.php'; ?>
