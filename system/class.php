@@ -31,10 +31,9 @@ class producto
 
     }
 
-      public function consulta_completo($mysqli)
-      {
-      $sql = "SELECT * FROM producto";
-      return $mysqli->query($sql);
+      public function consulta_completo($mysqli) {
+        $sql = "SELECT * FROM producto";
+        return $mysqli->query($sql);
       }
 
     public function buscadorlike($mysqli, $var){
