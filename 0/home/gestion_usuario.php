@@ -23,7 +23,7 @@
                 $objinicio = new inicio_seguro();
 
                 if (isset($eliminar)) :
-                        $objinicio -> eliminar_miembros($mysqli, $eliminar);
+                    $objinicio -> eliminar_miembros($mysqli, $eliminar);
                 elseif (isset($guardar)) :
                     for ($i=0; $i < count($codigos); $i++) :
                         if (!empty($privilegios[$i])) :
