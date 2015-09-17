@@ -1,6 +1,6 @@
 <?php
       
-      echo "<form method='POST' action='procesar'>";
+      echo "<form method='POST' action='../../0/caja/procesar'>";
         
           extract($_POST);
           include_once '../../system/class.php';

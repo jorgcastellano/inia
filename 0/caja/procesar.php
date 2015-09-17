@@ -20,16 +20,19 @@
             <?php
 
             extract($_POST);
+            
             include_once '../../system/class.php';
             $objfactura = new factura();
             $res=$objfactura->consultar_factura($mysqli,$codigo);
             $objayudante= new ayudante();
             $res2=$objayudante-> consultar_ayudante($mysqli);
-            $impuesto=($res[7]*$res2[4])/100;
-            $total=$res[7]+$impuesto;
+            $impuesto=($res[6]*$res2[4])/100;
+            $total=$res[6]+$impuesto;
+            
+
             ?>
 
-            <form method="post" action="procesar">
+            <form class="contact_form" method="post" action="procesar">
             <label for=''>Tipo de pago</label>
             <select name="Tipo_pago" >
                 <option value="" >Seleccione</option>
@@ -38,25 +41,33 @@
                 <option value="3" >Credíto</option>
                 <option value="4" >Cheque</option>
             </select>
-
+            <br/>
             <label for=''>Forma de pago</label>
             <select name="Forma_pago" >
                 <option value="" >Seleccione</option>
                 <option value="1" >Compra</option>
                 <option value="2" >Donación</option>
             </select>
-
+            <br/>
             <label for=''>Bauche</label>
             <input type="text" name="Bauche" value=""/>
-
+            <br/>
+            <label for=''>Subtotal</label>
+            <input type="text" name="Subtotal" value="<?php echo $res[6] ?>"disabled/>
+            <br/>
             <label for=''>iva</label>
             <input type="text" name="a" value="<?php echo $res2[4].'%' ?>" disabled/>
-
+            <br/>
             <label for=''>Total</label>
-            <input type="text" name="b" value="echo $total" disabled/>
+            <input type="text" name="b" value="<?php echo $total ?>" disabled/>
 
+            <div align="center">
+                <button type="button" name="regresar" onclick=location="inicio" class="boton"><i class="fa fa-home"></i> Página principal</button>
+                <button type="submit" name="guardar" class="boton"><i class="fa fa-check"></i> Generar factura</button>
+            </div>
                 
             </form>
+
 
 
 
