@@ -46,7 +46,7 @@ class producto
       $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ' WHERE Cod_produ='$Cod_produ' ";
       $mysqli->query($sql);
       require_once 'error_update.php';
-      if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
+    
     }
   }
 
@@ -60,7 +60,8 @@ class laboratorio {
       $sql="INSERT INTO laboratorio (Cod_lab,Nom_lab)
             VALUES ('$Cod_lab','$Nom_lab')";
       $mysqli->query($sql);
-      require_once 'error_insert.php';      
+      require_once 'error_insert.php'; 
+       
     }
 
     public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab) 
@@ -68,7 +69,7 @@ class laboratorio {
       $sql="UPDATE laboratorio SET Nom_lab='$Nom_lab' WHERE Cod_lab='$Cod_lab'";
       $mysqli->query($sql);
       require_once 'error_update.php';
-      
+      if($mysqli->affected_rows>0){return 1;} else {return 2;}
 
     }
     public function consultar_completa($mysqli)
