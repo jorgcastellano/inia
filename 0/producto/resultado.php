@@ -25,6 +25,8 @@
             $producto = new producto();
             $producto->modificar_produ($mysqli,$Cod_produ,$Nom_produ,$Existencia,$Precio_produ);
             $reg = $producto->consultar_produc($mysqli,$Cod_produ);
+            if($mysqli->affected_rows>0){ echo "<span class='notify'>El nuevo producto se ha registrado con exito</span> <i class='fa fa-check-square'></i>";} 
+            else { echo "<span class='notify_f'>No se ha podido registrar el nuevo producto</span> <i class='fa fa-times'></i>";}
             endif; 
             if (isset($_POST['submit'])) :
                 extract($_POST);

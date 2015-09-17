@@ -20,12 +20,15 @@
 	            	echo $arreglo2[0]."</li></div>";
 	        ?>
 	        <?php  	else :
-	            	echo $arreglo1[0]."</li>"; ?>
-	            	<form method="POST" action="../cliente/resultados">
-		                <li><input type="text" name="Ced_cliente" placeholder="Busqueda por cédula" pattern="\d{6,8}"></li>
-		                <div><li><button class="botonmenu" type="submit" name="button"><i class="fa fa-search"></i></button></li></div>
-		            </form>
+	            	echo $arreglo1[0]."</li>";
+	            	if ($_SESSION['privilegios'] == 1) :
+	        ?>
+		            	<form method="POST" action="../cliente/resultados">
+			                <li><input type="text" name="Ced_cliente" placeholder="Busqueda por cédula" pattern="\d{6,8}"></li>
+			                <div><li><button class="botonmenu" type="submit" name="button"><i class="fa fa-search"></i></button></li></div>
+			            </form>
 		    <?php
+		    		endif;
 	            	echo '<div class="csesion">
 	            			<li><i class="fa fa-user"></i> Usuario: '.$_SESSION['nombre'].' '.$_SESSION['apellido'].'</li>';
 	            	echo $arreglo2[0].'</li></div>';
