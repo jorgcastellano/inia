@@ -34,7 +34,7 @@
                 //if($mysqli->affected_rows>0){echo "<span class='notify'>El nuevo laboratorio se ha registrado con exito <i class='fa fa-check-square'</i></span>";} else { echo "<span class='notify_f'>No se ha podido registrar el nuevo laboratorio</span> <i class='fa fa-times'></i>";}
                 elseif (isset($Actualizar)) :
                      $cap = $lab->modificar_laboratorio($mysqli, $Actualizar, $Nom_lab);
-                        include_once '../../0/notificaciones/libreria_noti.php';
+                        //include_once '../../0/notificaciones/libreria_noti.php';
                      $reg = $lab->consultar_completa($mysqli);
                 else :
                     $reg = $lab->consultar_completa($mysqli);
