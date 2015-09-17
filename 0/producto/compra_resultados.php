@@ -16,7 +16,7 @@
         				<h1>Listado de productos a comprar</h1>
         			</hgroup>
         		</div>
-      <form method="POST" action="#">
+      <form method="POST" action="compra_completa">
         <?php
           extract($_POST);
           include_once '../../system/class.php';
@@ -32,7 +32,9 @@
             $i++;
           endwhile;
 
-          echo "<table class='anapro'>
+          echo "
+                <input type='hidden' name='total' value='$total' />
+                <table class='anapro'>
                   <tr>
                     <td>Nombre del cliente</td>
                     <td>Cédula</td>
@@ -54,7 +56,9 @@
           $result = $objproducto->consulta_completo($mysqli);
           $i = 0;
           while ($resultado = $result->fetch_array()) :
-            if (!empty($cantidad[$i])) :
+            if (empty($cantidad[$i])) :
+              echo "<input type='hidden' name='cantidad[]' value='$cantidad[$i]' />";
+            else :
               echo "<tr>
                       <td>".$resultado[1]."</td>";
                       echo "<td>".$resultado[2]."</td>";
@@ -70,7 +74,7 @@
           <button type='button' onclick=location='../../0/home/inicio' class="boton"><i class="fa fa-ban"></i> Cancelar</button>
           <button type="submit" formaction="compra_resultados" class="boton" name="compra" value="<?php if(isset($compra)) echo $compra; ?>"><i class="fa fa-pencil"></i> Actualizar compra</button>
           <button type="submit" formaction="compra_productos" class="boton" name="compra" value="<?php if(isset($compra)) echo $compra; ?>"><i class="fa fa-shopping-cart"></i> Agregar o eliminar productos</button>
-          <button type="submit" name="compra" value="<?php if(isset($compra)) echo $compra; ?>" class="boton" formaction="compra_resultados"><i class="fa fa-check"></i> Confirmar compra</button>
+          <button type="submit" name="comprado" value="<?php if(isset($compra)) echo $compra; ?>" class="boton"><i class="fa fa-check"></i> Confirmar compra</button>
         </div>
       </form>
         <?php include '../../layouts/layout_p.php' ?>

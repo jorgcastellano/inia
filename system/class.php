@@ -484,4 +484,26 @@ class r_fito {
 
 }
 
+class factura {
+  public function facturar($mysqli, $cedula, $subtotal) {
+    $fecha = date('Y-m-d');
+    $sql = "INSERT INTO factura(Ced_cliente, Fecha, subtotal) VALUES ('$cedula', '$fecha', '$subtotal')";
+    $mysqli->query($sql);
+    include_once 'error_insert.php';
+  }
+  public function consultar_factura_insertada($mysqli,$ci) {
+    //Buscdor por codigo
+    $sql="SELECT * FROM factura WHERE Cod_fact=(SELECT MAX(Cod_fact) FROM factura WHERE Ced_cliente='$ci')";
+    $res= $mysqli->query($sql);
+    return $res->fetch_array();
+  }
+}
+
+class factura_descripcion {
+  public function facturar_productos($mysqli, $id, $descripcion, $cantidad, $costo, $precio, $cod_produ) {
+    $sql = "INSERT INTO fact_descripcion (Cod_fact, Descripcion, Cantidad, Costo_unidad, Precio, Cod_produ) VALUES ('$id', '$descripcion', '$cantidad', '$costo', '$precio', '$cod_produ')";
+    $mysqli->query($sql);
+    include_once 'error_insert.php';
+  }
+}
 ?>
