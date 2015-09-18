@@ -19,7 +19,6 @@
 
             <?php
 
-<<<<<<< HEAD
             extract($_POST);
             echo $codigo;
             
@@ -99,7 +98,6 @@
 
                 </form>
               ";
-=======
                 extract($_POST);
                 
                 include_once '../../system/class.php';
@@ -110,7 +108,6 @@
                 //Calculos de subtotal con iva
                 $impuesto=($res[6]*$res2[4])/100;
                 $total=$res[6]+$impuesto;
->>>>>>> 11fb1fe3cc1e28c714fb3779e4e3abab068c79d2
 
             ?>
 
@@ -151,19 +148,8 @@
                 <button type="button" name="regresar" onclick=location="inicio" class="boton"><i class="fa fa-home"></i> Página principal</button>
                 <button type="submit" name="guardar" class="boton"><i class="fa fa-check"></i> Generar factura</button>
             </div>
-                
-<<<<<<< HEAD
             </form>*/ ?>
-
-
-
-
-
-
-
-=======
             </form>
->>>>>>> 11fb1fe3cc1e28c714fb3779e4e3abab068c79d2
             <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>

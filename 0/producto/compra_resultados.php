@@ -57,7 +57,7 @@
           $i = 0;
           while ($resultado = $result->fetch_array()) :
             if (empty($cantidad[$i])) :
-              $cantidad[] = $cantidad[$i];
+              echo "<input type='hidden' name='cantidad[]' value='$cantidad[$i]' /><input type='hidden' name='1234567890' />";
             else :
               $existencia = $resultado[2] - $cantidad[$i];
               echo "<tr>
