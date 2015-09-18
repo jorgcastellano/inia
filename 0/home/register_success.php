@@ -32,7 +32,7 @@
                     header('location: registro');
                 endif;
             ?>
-            <button style="margin-left: 75%" class="boton" type="button" onclick=location="index"><i class="fa fa-arrow-left"> Ir a la página principal</i></button>
+            <button style="margin-left: 75%" class="boton" type="button" onclick=location="index"><i class="fa fa-arrow-left"></i> Ir a la página principal</button>
             <?php include_once '../../layouts/layout_p.php' ?>
         </section>
     </body>

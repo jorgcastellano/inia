@@ -16,22 +16,18 @@
 					<h1>Registrar Finca</h1>
 				</hgroup>
 			</div>
+                <?php
+                    if ($_SESSION['privilegios'] == 1) : 
+                        require_once '../../system/class.php';
+                        extract($_POST);
+                        
+                        for ($i=0;$i<count($Estado);$i++){ $Estado=$Estado[$i]; }
+                        for ($i=0;$i<count($Municipio);$i++){ $Municipio=$Municipio[$i]; }
 
-                <?php  
-
-                    require_once '../../system/class.php';
-                    extract($_POST);
-                    
-                    for ($i=0;$i<count($Estado);$i++){ $Estado=$Estado[$i]; }
-                    for ($i=0;$i<count($Municipio);$i++){ $Municipio=$Municipio[$i]; }
-
-
-                    $fin = new finca();
-                    $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Direccion2);
-        
+                        $fin = new finca();
+                        $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Direccion2);
+                    endif;
                 ?>
-
-
                 <?php include '../../layouts/layout_p.php'; ?>
         </section>
     </body>

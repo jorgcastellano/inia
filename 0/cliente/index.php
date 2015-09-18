@@ -26,9 +26,10 @@
             require_once '../../system/class.php';
 			$client = new cliente();
 			$reg = $client->consultar_cliente($mysqli,$Ced_cliente);
-            $fin = new finca();
-            $reg2=$fin->consultar_finca($mysqli,$Ced_cliente);
-
+			if ($_SESSION['privilegios'] == 1) : 
+	            $fin = new finca();
+	            $reg2=$fin->consultar_finca($mysqli,$Ced_cliente);
+            endif;
         endif;
 				?>
 
@@ -53,7 +54,7 @@
 					<textarea required name="Dire_cliente" id="Dire_cliente"  title="" cols="30" rows="5" maxlength="100" placeholder="Por Favor Especifique aqui la dirección del cliente"><?php echo $reg[6]?></textarea>
 					</br>
                  
-                <?php include_once 'lib_finca.php' ?>
+                <?php if ($_SESSION['privilegios'] == 1) include_once 'lib_finca.php'; ?>
                 
 					
 					<button type="reset" class="boton" name="reset" title="Click aquí para quitar todos los datos que fueron llenados en el formulario"><i class="fa fa-eraser" ></i> Limpiar formulario</button>
