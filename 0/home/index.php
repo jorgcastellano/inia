@@ -38,11 +38,8 @@
                             <li>caja@gmail.com</li>
                         </ol>
                     </li>
-                    <li><b>Clave:</b> 
-                        <ol type="a">
-                            <li>123456</li>
-                        </ol>
-                    </li>
+                    <li><b>Clave:</b> 123456</li>
+                    <li><b>Base de datos: <a href="http://jorgcastellano.net.ve/phpmyadmin/">phpMyAdmin</a></b></li>
                 </ol>
             </article> <!-- FINALIZACION DEL CUERPO O CONTENEDOR DE LA PAGINA -->
 
