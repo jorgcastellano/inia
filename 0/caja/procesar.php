@@ -19,6 +19,7 @@
 
             <?php
 
+<<<<<<< HEAD
             extract($_POST);
             echo $codigo;
             
@@ -98,6 +99,18 @@
 
                 </form>
               ";
+=======
+                extract($_POST);
+                
+                include_once '../../system/class.php';
+                $objfactura = new factura();
+                $res=$objfactura->consultar_factura($mysqli,$codigo);
+                $objayudante= new ayudante();
+                $res2=$objayudante-> consultar_ayudante($mysqli);
+                //Calculos de subtotal con iva
+                $impuesto=($res[6]*$res2[4])/100;
+                $total=$res[6]+$impuesto;
+>>>>>>> 11fb1fe3cc1e28c714fb3779e4e3abab068c79d2
 
             ?>
 
@@ -139,6 +152,7 @@
                 <button type="submit" name="guardar" class="boton"><i class="fa fa-check"></i> Generar factura</button>
             </div>
                 
+<<<<<<< HEAD
             </form>*/ ?>
 
 
@@ -147,6 +161,9 @@
 
 
 
+=======
+            </form>
+>>>>>>> 11fb1fe3cc1e28c714fb3779e4e3abab068c79d2
             <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>

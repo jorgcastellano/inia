@@ -21,7 +21,7 @@
 	        ?>
 	        <?php  	else :
 	            	echo $arreglo1[0]."</li>";
-	            	if ($_SESSION['privilegios'] == 1) :
+	            	if ($_SESSION['privilegios'] == 1 OR $_SESSION['privilegios'] == 3) :
 	        ?>
 		            	<form method="POST" action="../cliente/resultados">
 			                <li><input type="text" name="Ced_cliente" placeholder="Busqueda por cédula" pattern="\d{6,8}"></li>

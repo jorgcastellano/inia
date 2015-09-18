@@ -24,10 +24,10 @@
           
           echo "<table class='anapro'>
                   <tr>
-                    <td>Nombre</td>
-                    <td>Existencia</td>
-                    <td>Precio</td>
-                    <td>Cantidad</td>
+                    <td>NOMBRE</td>
+                    <td>EXISTENCIA</td>
+                    <td>PRECIO</td>
+                    <td>CANTIDAD</td>
                    </tr> ";
           $result = $objproducto->consulta_completo($mysqli);
           $i = 0;
