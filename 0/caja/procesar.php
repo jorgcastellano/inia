@@ -20,19 +20,92 @@
             <?php
 
             extract($_POST);
+            echo $codigo;
             
             include_once '../../system/class.php';
-            $objfactura = new factura();
-            $res=$objfactura->consultar_factura($mysqli,$codigo);
-            $objayudante= new ayudante();
-            $res2=$objayudante-> consultar_ayudante($mysqli);
+            /*$objfactura = new factura();
+            $res=$objfactura->consultar_factura($mysqli,$codigo);*/
+            $objfactura_des = new factura_descripcion();
+            $res2=$objfactura_des->consultar_factura($mysqli, $codigo);
+            /*$objayudante= new ayudante();
+            $res3=$objayudante-> consultar_ayudante($mysqli);
             $impuesto=($res[6]*$res2[4])/100;
-            $total=$res[6]+$impuesto;
+            $total=$res[6]+$impuesto;*/
             
+            echo "
+
+            <form method='post' action=''>
+                <table class=''>
+                    <tr>
+                        <td>CANTIDAD</td>
+                        <td>DESCRIPCION</td>
+                        <td>P. UNIT</td>
+                        <td>TOTAL</td>
+                    </tr>
+            ";
+
+            while($resultado = $res2->fetch_array()){
+          echo "
+                  <tr>
+                    <td>$resultado[3]</td>
+                    <td>$resultado[2]</td>
+                    <td>$resultado[4]</td>
+                    <td>$resultado[5]</td>
+                  </tr>";
+            }
+
+         echo "
+                    
+                    <tr>
+                        <td rowspan='8'><textarea cols='30' rows='12' placeholder='Observacion' ></textarea></td>
+                        <td colspan='2'>Sub-total</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>adiciones, bonificaciones</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>Monto Total Exento o Exonerado</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>I.V.A. Base</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>I.V.A.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>Retencion</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>Monto total del impuesto segun alicuota</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>MONTO TOTAL</td>
+                        <td></td>
+                    </tr>
+
+
+
+
+                </table>
+
+
+                </form>
+              ";
 
             ?>
 
-            <form class="contact_form" method="post" action="procesar">
+
+
+
+
+           <?php /*<form class="contact_form" method="post" action="procesar">
             <label for=''>Tipo de pago</label>
             <select name="Tipo_pago" >
                 <option value="" >Seleccione</option>
@@ -66,7 +139,7 @@
                 <button type="submit" name="guardar" class="boton"><i class="fa fa-check"></i> Generar factura</button>
             </div>
                 
-            </form>
+            </form>*/ ?>
 
 
 

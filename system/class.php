@@ -512,7 +512,7 @@ class factura {
 
   {
     
-    $sql="SELECT * FROM factura WHERE Estatus='impaga'";
+    $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente AND Estatus='impaga'";
     return $res= $mysqli->query($sql);
      
   }
@@ -529,10 +529,18 @@ class factura {
 }
 
 class factura_descripcion {
+
   public function facturar_productos($mysqli, $id, $descripcion, $cantidad, $costo, $precio, $cod_produ) {
     $sql = "INSERT INTO fact_descripcion (Cod_fact, Descripcion, Cantidad, Costo_unidad, Precio, Cod_produ) VALUES ('$id', '$descripcion', '$cantidad', '$costo', '$precio', '$cod_produ')";
     $mysqli->query($sql);
     include_once 'error_insert.php';
+  }
+
+  public function consultar_factura($mysqli, $codigo)
+  {
+    $sql="SELECT * FROM fact_descripcion WHERE Cod_fact='$codigo'";
+    return $res= $mysqli->query($sql);
+    
   }
 }
 ?>
