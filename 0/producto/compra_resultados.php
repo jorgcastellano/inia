@@ -36,9 +36,9 @@
                 <input type='hidden' name='total' value='$total' />
                 <table class='anapro'>
                   <tr>
-                    <td>Nombre del cliente</td>
-                    <td>Cédula</td>
-                    <td>Total</td>
+                    <td>CLIENTE</td>
+                    <td>CEDULA</td>
+                    <td>TOTAL</td>
                   </tr>
                   <tr>
                     <td>$ress[2] $ress[3]</td>
@@ -48,20 +48,21 @@
           
           echo "<table class='anapro'>
                   <tr>
-                    <td>Nombre</td>
-                    <td>Existencia</td>
-                    <td>Precio</td>
-                    <td>Cantidad</td>
+                    <td>NOMBRE</td>
+                    <td>EXISTENCIA</td>
+                    <td>PRECIO</td>
+                    <td>CANTIDAD</td>
                    </tr> ";
           $result = $objproducto->consulta_completo($mysqli);
           $i = 0;
           while ($resultado = $result->fetch_array()) :
             if (empty($cantidad[$i])) :
-              echo "<input type='hidden' name='cantidad[]' value='$cantidad[$i]' />";
+              $cantidad[] = $cantidad[$i];
             else :
+              $existencia = $resultado[2] - $cantidad[$i];
               echo "<tr>
                       <td>".$resultado[1]."</td>";
-                      echo "<td>".$resultado[2]."</td>";
+                      echo "<td>".$existencia."</td>";
                       echo "<td>".$resultado[3]."</td>";
                       echo "<td><input type='text' name='cantidad[]' size='5' pattern='\d{1,8}' maxlength='8' value='$cantidad[$i]' /></td>
                     </tr>";

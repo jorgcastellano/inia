@@ -19,16 +19,16 @@
 
             <?php
 
-            extract($_POST);
-            
-            include_once '../../system/class.php';
-            $objfactura = new factura();
-            $res=$objfactura->consultar_factura($mysqli,$codigo);
-            $objayudante= new ayudante();
-            $res2=$objayudante-> consultar_ayudante($mysqli);
-            $impuesto=($res[6]*$res2[4])/100;
-            $total=$res[6]+$impuesto;
-            
+                extract($_POST);
+                
+                include_once '../../system/class.php';
+                $objfactura = new factura();
+                $res=$objfactura->consultar_factura($mysqli,$codigo);
+                $objayudante= new ayudante();
+                $res2=$objayudante-> consultar_ayudante($mysqli);
+                //Calculos de subtotal con iva
+                $impuesto=($res[6]*$res2[4])/100;
+                $total=$res[6]+$impuesto;
 
             ?>
 
@@ -67,13 +67,6 @@
             </div>
                 
             </form>
-
-
-
-
-
-
-
             <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>
