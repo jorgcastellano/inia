@@ -2,8 +2,6 @@
 
 require_once '../../includes/conexion_bd.php';
 
-
-
 class producto 
   {
   public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ, $iva)
@@ -523,23 +521,21 @@ class factura {
     $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente AND Estatus='impaga'";
     return $res= $mysqli->query($sql);
   }
+   public function consultar_factu($mysqli, $codigo) {
+    $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente AND Estatus='impaga'";
+    return $res= $mysqli->query($sql);
+  }
 
-  public function consultar_factura($mysqli, $codigo)
 
-  {
-    
+  public function consultar_factura($mysqli, $codigo) {
     $sql="SELECT * FROM factura WHERE Cod_fact='$codigo'";
     $res= $mysqli->query($sql);
     return $res->fetch_array();
-     
   }
 
-  public function modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total)
-  {
-
+  public function modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total) {
     $sql="UPDATE factura SET exento='$exento',base='$base',iva='$iva',retencion='$retencion',alicuota='$alicuota',Total='$total' WHERE Cod_fact='$codigo' ";
     $res= $mysqli->query($sql);
-
   }
 }
 
