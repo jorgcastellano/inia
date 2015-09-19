@@ -31,7 +31,7 @@
             
             echo "
 
-            <form method='post' action='procesar'>
+            <form method='POST' action='procesar'>
                 <table class='factura2'>
                     <tr>
                         <td>CANTIDAD</td>
@@ -44,6 +44,7 @@
             $iva='';
             $exe='';
             while($resultado = $res2->fetch_array()){
+            $exe = 0;
           echo "
                   <tr>
                     <td>$resultado[3]</td>
@@ -73,14 +74,8 @@
                     <input type='hidden' name='alicuota' value='$alicuota'/>
                     <input type='hidden' name='total' value='$total'/>";
 
-
-  		
-                $boton="<button type='submit' name='confirmar' value=' ' formaction='../../0/factura/pdf/factu.php' class='boton'><i class='fa fa-check'></i> Generar Factura</button>";
-
-
                 $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
-                <button type='submit' name='confirmar' value='' formaction='confirmar' class='boton'><i class='fa fa-check'></i> Confirmar</button>";
-
+                <button type='submit' name='confirmar' value='confirmar' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Confirmar</button>";
 
             }else{
                 $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";

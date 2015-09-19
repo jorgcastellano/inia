@@ -2,7 +2,6 @@ header{
 	width: 600px;
 	margin-top: -15px;
 	margin-bottom: 0px;
-
 }
 
 #dos {
@@ -121,7 +120,7 @@ table.facturat tr th{
 	 width: 100%;
 }
 table.facturat2 tr td p{
-	margin-top: -60px;
+	margin-top: -50px;
 	 font-family: arial;
 	 font-size: 10;
 }
