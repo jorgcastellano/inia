@@ -512,6 +512,10 @@ class factura {
     $res= $mysqli->query($sql);
     return $res->fetch_array();
   }
+     public function buscadorlike($mysqli, $var){
+    $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente  LIKE ('%$var%') AND Estatus='impaga'";
+    return $mysqli->query($sql);
+  }
 
 
 
@@ -551,7 +555,6 @@ class factura_descripcion {
   {
     $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
     return $res= $mysqli->query($sql);
-    
   }
 }
 ?>
