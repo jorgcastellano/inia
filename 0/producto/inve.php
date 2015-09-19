@@ -30,7 +30,6 @@
           extract($_POST);
           include_once '../../system/class.php';
           $objproducto = new producto();
-          
           if (!empty($buscador)) {
 
             switch ($opc) {
@@ -40,7 +39,7 @@
                   if (empty($result))
                       echo "No existe el producto buscado";
                   else {
-                  echo "<table class='anapro'>
+                    echo "<table class='anapro'>
                       <tr>
                             <td>Nombre</td>
                             <td>Existencia</td>
@@ -104,10 +103,10 @@
                   echo "</table>";
                 }
         ?>
-        <div>
+        <div align="center">
              <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
              <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Producto</button>
-             <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Inicio</button>
+             <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>
         </div> 
       </form>
         <?php include '../../layouts/layout_p.php' ?>
