@@ -32,7 +32,7 @@
             echo "
 
             <form method='post' action='procesar'>
-                <table class=''>
+                <table class='factura2'>
                     <tr>
                         <td>CANTIDAD</td>
                         <td>DESCRIPCION</td>
@@ -74,34 +74,36 @@
                     <input type='hidden' name='total' value='$total'/>";
 
 
-                $boton="<button type='submit' name='confirmar' value='' formaction='confirmar' class='boton'><i class='fa fa-check'></i> Confirmar</button>";
+                $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
+                <button type='submit' name='confirmar' value='' formaction='confirmar' class='boton'><i class='fa fa-check'></i> Confirmar</button>";
 
             }else{
-                $impuesto="<input type='text' name='ivaporciento' value='' />";
-                $retencion="<input type='text' name='retencionporciento' value='' />";
-                $observacion="<textarea cols='30' rows='12' name='Observacion' value='' placeholder='Observacion' ></textarea>";
+                $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";
+                $retencion="<input type='text' name='retencionporciento' value='' size='5px' />%";
+                $observacion="<textarea cols='25' rows='10' name='Observacion' value='' placeholder='Observacion' ></textarea>";
             
                 $hidden="<input type='hidden' name='codigo' value='$codigo'/>";
 
-                $boton="<button type='button' name='regresar' onclick=location='inicio' class='boton'><i class='fa fa-home'></i> Regresar a inicio</button>
-                    <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Procesar</button>";
+                $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
+                    <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Guardar cambios</button>";
             }
-         echo "
+         echo " </table>
+                <table class='factura3'>
                     <tr>
                         <td rowspan='8'>$observacion</td>
-                        <td colspan='2'>Sub-total</td>
+                        <td colspan='2' id='espaciosubtotal'>Sub-total</td>
                         <td>$subtotal</td>
                     </tr>
                     <tr>
-                        <td colspan='2'>adiciones, bonificaciones</td>
+                        <td colspan='2'>Adiciones, bonificaciones</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan='2'>Monto Total Exento o Exonerado</td>
+                        <td colspan='2'>Monto total exento o exonerado</td>
                         <td>$exe</td>
                     </tr>
                     <tr>
-                        <td colspan='2'>I.V.A. Base</td>
+                        <td colspan='2'>I.V.A. base</td>
                         <td>$iva</td>
                     </tr>
                     <tr>
@@ -117,8 +119,8 @@
                         <td>$alicuota</td>
                     </tr>
                     <tr>
-                        <td colspan='2'>MONTO TOTAL</td>
-                        <td>$total</td>
+                        <td colspan='2'><b>MONTO TOTAL</b></td>
+                        <td><b>$total</b></td>
                     </tr>
                 </table>
                     

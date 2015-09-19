@@ -6,10 +6,10 @@ require_once '../../includes/conexion_bd.php';
 
 class producto 
   {
-  public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ)
+  public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ, $iva)
   {
-    $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ)
-    VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ')";
+    $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ, I_E)
+    VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ', '$iva')";
   $mysqli->query($sql);
   require_once 'error_insert.php';
   if($mysqli->affected_rows>0){echo "El nuevo producto se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo producto";}
@@ -40,9 +40,9 @@ class producto
     $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
     return $mysqli->query($sql);
   }
-  public function modificar_produ($mysqli,$Cod_produ, $Nom_produ, $Existencia, $Precio_produ)
+  public function modificar_produ($mysqli,$Cod_produ, $Nom_produ, $Existencia, $Precio_produ, $iva)
   {
-    $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ' WHERE Cod_produ='$Cod_produ'";
+    $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ', I_E='$iva' WHERE Cod_produ='$Cod_produ'";
     $mysqli->query($sql);
     require_once 'error_update.php';
     if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
@@ -53,6 +53,12 @@ class producto
     require_once 'error_update.php';
     if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
   }
+    public function consultar_ultimo_registro($mysqli) {
+      //Ultimo producto insertado
+      $sql="SELECT * FROM producto WHERE Cod_produ=(SELECT MAX(Cod_produ) FROM producto)";
+      $res= $mysqli->query($sql);
+      return $res->fetch_array();
+    }
 }
 
 class laboratorio {
@@ -509,13 +515,9 @@ class factura {
 
 
 
-  public function consultar_facturas($mysqli)
-
-  {
-    
+  public function consultar_facturas($mysqli) {
     $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente AND Estatus='impaga'";
     return $res= $mysqli->query($sql);
-     
   }
 
   public function consultar_factura($mysqli, $codigo)

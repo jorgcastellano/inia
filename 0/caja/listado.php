@@ -7,13 +7,13 @@
           $objfactura = new factura();
           $res=$objfactura->consultar_facturas($mysqli);
 
-          echo "<table class='anapro'>
+          echo "<table class='facturai'>
                   <tr>
                     <td>Nombres y Apellidos</td>
                     <td>Cedula</td>
                     <td>Fecha</td>
                     <td>Subtotal</td>
-                    <td><i class=''></i></td>
+                    <td><i class='fa fa-dollar'></i></td>
                   </tr>";
           while($resultado = $res->fetch_array()){
           echo "
@@ -22,16 +22,11 @@
                     <td>$resultado[0]</td>
                     <td>$resultado[4]</td>
                     <td>$resultado[5]</td>
-                    <td><button class='sinboton' type='submit' name='codigo' value='$resultado[3]' ><i class='fa fa-money'></i></td>
+                    <td><button class='botonmenu' type='submit' name='codigo' value='$resultado[3]' >Procesar <i class='fa fa-arrow-right'></i></td>
                   </tr>";
             }
 
             echo "</table>
                   </form>
-
               ";
-          
-          
-                      
-                
         ?>

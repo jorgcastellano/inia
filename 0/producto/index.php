@@ -51,14 +51,31 @@
                 <label for="Precio_produ"> Precio de Producto </label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="7" />
            		</br>
-                <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
-                <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-               
-                <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
-                    <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button> 
-                    <?php else : ?>
-                    <button class="boton" type="submit" name="submit"><i class="fa fa-floppy-o"></i> Registrar Producto</button> 
-                <?php endif; ?>
+                <?php if (isset($reg)) {
+                        if ($reg[4] == "I"){
+                            $selected =  "selected";
+                        }
+                        elseif ($reg[4] == "E"){
+                            $selected2 = "selected";
+                        }
+                    }
+                ?>
+                <label for="iva">I.V.A. o Exento</label>
+                <select id="iva" name="iva" required>
+                    <option value=""> -- Selecciones --</option>
+                    <option value="I" <?php if (isset($selected)) echo $selected; ?>>I.V.A.</option>
+                    <option value="E" <?php if (isset($selected2)) echo $selected2; ?>>Exento</option>
+                </select>
+                <br>
+                <div align="center">
+                    <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
+                    <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
+                    <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
+                        <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button> 
+                        <?php else : ?>
+                        <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Registrar Producto</button> 
+                    <?php endif; ?>
+                </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>
         </section>
