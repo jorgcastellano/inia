@@ -1,0 +1,71 @@
+td.obse{
+	width: 30%;
+}
+
+
+div.ima{
+  width: 100%;
+height: auto;
+margin: auto;
+}
+div.ima img{
+ width: 100%;
+height: auto;
+ }
+
+p.ti{
+	   font-family: arial ;
+	  font-size: 10;
+		text-align: center;
+		font-weight:bold;
+		margin-top: 10px;
+		height: 50px;
+
+}
+
+p {
+	  margin-top: 0px;
+	  font-family: arial;
+	  font-size: 12;
+	  height: 0px;
+	}
+div.ine{
+ 
+	border: 1px solid ;
+	
+}
+table.tab tr th{
+	  background-color: #BBB;  
+}
+table.tab{
+	   font-family: arial;
+	  font-size: 10;
+	height: 0px;
+	width: 85%;
+   margin-left: 25px;
+}
+table.tab tr td{
+
+width: 25px;
+}
+table.uno{
+	  font-family: arial ;
+	  font-size: 11;
+	 width:100%;
+}
+table.ope{
+	text-align: center;
+   font-family: arial;
+	 font-size: 10; 
+}
+
+table.ope tr th{
+	 text-decoration: bold;
+	width: 200px;
+	height: 75px;
+}
+
+table.ope tr td{
+	width: 200px;
+	height: 20px;
+}

@@ -1,0 +1,183 @@
+header{
+	width: 600px;
+	margin-top: -15px;
+	margin-bottom: 0px;
+
+}
+
+#dos {
+	 
+	  font-family: arial;
+	  font-size: 6;
+}
+#tres{
+
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+#uno{
+	margin-bottom: 0px;
+}
+
+#cuatro{
+margin-top: 1px;
+margin-bottom: 1px;
+	color: #fff;
+}
+
+div.imaprin{
+	position: float;
+	width: 20%;
+}
+
+
+div.imaprin img{
+ width: 100%;
+ }
+div.prin{
+position: absolute;
+width: 100%;
+height: 9%;
+margin-left: 22%;
+margin-top: 5px;
+}
+
+div.tres p:first-child{
+text-align: center;
+font-size:8;
+}
+div.prin p:first-child{
+text-align: center;
+font-size:10;
+font-weight:bold;
+}
+
+div.prin p:second-child{
+	margin-top: 2px;
+text-align: center;
+font-size:6;
+}
+div.imaprin{
+	position: float;
+	width: 20%;
+}
+div.imaprin img{
+ width: 100%;
+ }
+div.prin{
+position: absolute;
+width: 55%;
+height: 9%;
+margin-left: 22%;
+}
+div.tres{
+
+width: 20%;
+height: 9%;
+margin-top: -15%;
+margin-left: 80%;
+padding-bottom: 7px;
+}
+div.tres p:first-child{
+text-align: center;
+font-family: arial;
+font-size:8;
+}
+div.prin p:first-child{
+text-align: center;
+font-family: arial;
+font-size:10;
+font-weight:bold;
+}
+div.prin p:second-child{
+	margin-top: 2px;
+text-align: center;
+font-family: arial;
+font-size:6;
+}
+
+/*Margenes para el contenido de la factura*/
+.margenes{
+	
+	width: 580px;
+	height: 310px;
+	margin-top: 5px;
+}
+table.factura{
+	font-family: Calibri, Open Sans, Carlito;
+	font-size: 12px;
+	padding-top: 5px;
+	margin-top: 0px;
+	height: 0px;
+	width: 100%;
+}
+table.factura tr td p{
+	 font-family: arial;
+	 font-size: 10;
+}
+table.facturat tr th{
+	 font-family: arial;
+	 font-size: 10;
+	 width: 100%;
+}
+table.facturat2 tr td p{
+	margin-top: -60px;
+	 font-family: arial;
+	 font-size: 10;
+}
+
+/*FACTURA CONTENIDO*/
+
+table.facturat {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	width: 100%;
+	margin-top:2px;
+	font-family: Calibri, Open Sans, Carlito;
+	font-size: 12px;
+}
+table.facturat tr:first-child{
+    text-align: center;
+    font-weight: bold;
+    font-style: #fff;
+
+    background-color: #444444;
+}
+table.facturat tr td:first-child{
+	width: 11%;
+    text-align: center;
+}
+table.facturat td:nth-child(2){
+	width: 60%;
+}
+table.facturat td:nth-child(3){
+	width: 12%;
+}
+table.facturat td:nth-child(4){
+	width: 8%;
+}
+table.facturat td:nth-child(8){
+	text-align: right;
+	width: 10%;
+}
+table.facturat2{
+	padding-top: 4px;
+	padding-bottom: 4px;
+	width: 100%;
+	margin-top: -10px;
+	font-family: Calibri, Open Sans, Carlito;
+	font-size: 12px;
+}
+table.facturat2 td:first-child{
+	width: 44%;
+}
+table.facturat2 td:last-child{
+	width: 4%;
+    text-align: center;
+}
+table.facturat2 td:nth-child(3){
+	width: 10.4%;
+}
+table.facturat2 td:nth-child(11){
+	width: 6%;
+}

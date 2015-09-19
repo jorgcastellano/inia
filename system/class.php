@@ -517,6 +517,15 @@ class factura {
     return $res= $mysqli->query($sql);
      
   }
+   public function consultar_factu($mysqli, $codigo)
+
+  {
+    
+    $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente AND Estatus='impaga'";
+    return $res= $mysqli->query($sql);
+     
+  }
+
 
   public function consultar_factura($mysqli, $codigo)
 

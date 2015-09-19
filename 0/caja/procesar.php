@@ -73,9 +73,8 @@
                     <input type='hidden' name='alicuota' value='$alicuota'/>
                     <input type='hidden' name='total' value='$total'/>";
 
-
-                $boton="<button type='submit' name='confirmar' value='' formaction='confirmar' class='boton'><i class='fa fa-check'></i> Confirmar</button>";
-
+  		
+                $boton="<button type='submit' name='confirmar' value=' ' formaction='../../0/factura/pdf/factu.php' class='boton'><i class='fa fa-check'></i> Generar Factura</button>";
             }else{
                 $impuesto="<input type='text' name='ivaporciento' value='' />";
                 $retencion="<input type='text' name='retencionporciento' value='' />";
