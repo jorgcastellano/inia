@@ -19,11 +19,10 @@
 
             <?php
 
-
-
-
             extract($_POST);
-            echo $codigo;
+            if ($_GET['codigo']) :
+                $codigo = $_GET['codigo'];
+            endif;
             
             include_once '../../system/class.php';
            
@@ -86,14 +85,8 @@
 
                 $boton="<button type='button' name='regresar' onclick=location='inicio' class='boton'><i class='fa fa-home'></i> Regresar a inicio</button>
                     <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Procesar</button>";
-
             }
-
-
-
-
          echo "
-                    
                     <tr>
                         <td rowspan='8'>$observacion</td>
                         <td colspan='2'>Sub-total</td>
@@ -127,10 +120,6 @@
                         <td colspan='2'>MONTO TOTAL</td>
                         <td>$total</td>
                     </tr>
-
-
-
-
                 </table>
                     
                     $hidden

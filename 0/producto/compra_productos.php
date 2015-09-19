@@ -32,12 +32,13 @@
           $result = $objproducto->consulta_completo($mysqli);
           $i = 0;
           while ($resultado = $result->fetch_array()) :
-            $cantidad[$i];
-            echo "<tr>
-            <td>".$resultado[1]."</td>";
-            echo "<td>".$resultado[2]."</td>";
-            echo "<td>".$resultado[3]."</td>";
-            echo "<td><input type='text' name='cantidad[]' size='5' pattern='\d{1,8}' maxlength='8' value='$cantidad[$i]' /></td></tr>";
+            if (!empty($resultado[2])) :
+              echo "<tr>
+              <td>".$resultado[1]."</td>";
+              echo "<td>".$resultado[2]."</td>";
+              echo "<td>".$resultado[3]."</td>";
+              echo "<td><input type='text' name='cantidad[]' size='5' pattern='\d{1,8}' maxlength='8' value='$cantidad[$i]' /></td></tr>";
+            endif;
             $i++;
           endwhile;
           echo "</table>";

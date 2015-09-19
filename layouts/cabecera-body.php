@@ -26,5 +26,15 @@
             		echo '</li>';
 				}
 				echo '</ul>';
-			}            	
+			}
+			elseif (($logeado == 'On') AND ($_SESSION['privilegios'] == 3)) {
+				echo '<ul class="menuHorizontal">';
+				$array1 = array();
+				$menu2 = new controladorMenu();
+            	$array1 = $menu2->menuNivel13();
+
+				for ($i=0; $i < count($array1); $i++)
+            		echo "$array1[$i]</li>";
+            	echo "</ul>";
+			}
         ?>

@@ -6,48 +6,54 @@ require_once '../../includes/conexion_bd.php';
 
 class producto 
   {
-     public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ)
-      {
-        $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ)
-        VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ')";
-      $mysqli->query($sql);
-      require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "El nuevo producto se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo producto";}
-      }
+  public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ)
+  {
+    $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ)
+    VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ')";
+  $mysqli->query($sql);
+  require_once 'error_insert.php';
+  if($mysqli->affected_rows>0){echo "El nuevo producto se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo producto";}
+  }
 
-    public function consultar_produ($mysqli,$Nom_produ)
-    {
-      $sql="SELECT * FROM producto WHERE producto.Nom_produ ='$Nom_produ'";
-      $res= $mysqli->query($sql);
-      return $res->fetch_array();
-    }
+  public function consultar_produ($mysqli,$Nom_produ)
+  {
+    $sql="SELECT * FROM producto WHERE producto.Nom_produ ='$Nom_produ'";
+    $res= $mysqli->query($sql);
+    return $res->fetch_array();
+  }
     
 
-    public function consultar_produc($mysqli,$Cod_produ)
-    {
-      $sql="SELECT * FROM producto WHERE Cod_produ ='$Cod_produ'";
-      $res= $mysqli->query($sql);
-      return $res->fetch_array();
+  public function consultar_produc($mysqli,$Cod_produ)
+  {
+    $sql="SELECT * FROM producto WHERE Cod_produ ='$Cod_produ'";
+    $res= $mysqli->query($sql);
+    return $res->fetch_array();
 
-    }
+  }
 
-      public function consulta_completo($mysqli) {
-        $sql = "SELECT * FROM producto";
-        return $mysqli->query($sql);
-      }
-
-    public function buscadorlike($mysqli, $var){
-      $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
+    public function consulta_completo($mysqli) {
+      $sql = "SELECT * FROM producto";
       return $mysqli->query($sql);
     }
- public function modificar_produ($mysqli,$Cod_produ, $Nom_produ, $Existencia, $Precio_produ)
-    {
-      $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ' WHERE Cod_produ='$Cod_produ' ";
-      $mysqli->query($sql);
-      require_once 'error_update.php';
-      if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
-    }
+
+  public function buscadorlike($mysqli, $var){
+    $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
+    return $mysqli->query($sql);
   }
+  public function modificar_produ($mysqli,$Cod_produ, $Nom_produ, $Existencia, $Precio_produ)
+  {
+    $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ' WHERE Cod_produ='$Cod_produ'";
+    $mysqli->query($sql);
+    require_once 'error_update.php';
+    if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
+  }
+  public function actualizar_existencia($mysqli, $Existencia, $cod){
+    $sql = "UPDATE producto SET Existencia='$Existencia' WHERE Cod_produ='$cod'";
+    $mysqli->query($sql);
+    require_once 'error_update.php';
+    if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
+  }
+}
 
 class laboratorio {
   
@@ -472,22 +478,17 @@ class r_fito {
 
   }
 
-  public function consultar_r_fito($mysqli)
-  {
-
+  public function consultar_r_fito($mysqli) {
     $sql="";
     $res=$mysqli->query($sql);
     include_once 'error_select.php';
 
   }
 
-  public function modificar_r_fito($mysqli)
-  {
-
+  public function modificar_r_fito($mysqli) {
     $sql="";
     $res=$mysqli->query($sql);
     include_once 'error_update.php';
-
   }
 
 }
