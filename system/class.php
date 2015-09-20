@@ -505,13 +505,13 @@ class factura {
     include_once 'error_insert.php';
   }
   public function consultar_factura_insertada($mysqli,$ci) {
-    //Buscdor por codigo
+    //Buscdor por cedula
     $sql="SELECT * FROM factura WHERE Cod_fact=(SELECT MAX(Cod_fact) FROM factura WHERE Ced_cliente='$ci')";
     $res= $mysqli->query($sql);
     return $res->fetch_array();
   }
-     public function buscadorlike($mysqli, $var){
-    $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente  LIKE ('%$var%') AND Estatus='impaga'";
+     public function buscador_cedula($mysqli, $ci){
+    $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente  AND factura.Ced_cliente='$ci' AND factura.Estatus='impaga'";
     return $mysqli->query($sql);
   }
 
