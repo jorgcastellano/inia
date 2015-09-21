@@ -175,7 +175,7 @@ table.factura2{
 table.factura2 tr:first-child td{
     text-align: center;
 }
-table.factura2 tr td:first-child{
+table.factura2 tr td{
     text-align: center;
 }
 table.factura2 td:last-child{
@@ -186,7 +186,10 @@ table.factura2 tr:nth-child(2) td:first-child{
     width: 10%;
 }
 table.factura2 td:nth-child(2){
-    text-align: center;
+    width: 45%;
+}
+table.factura2 td:nth-child(4){
+    width: 7%;
 }
 table.factura2 tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;

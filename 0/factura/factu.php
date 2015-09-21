@@ -3,7 +3,7 @@
     require ("../../system/class.php");
     extract($_POST);
     $objfactura = new factura();
-    //$objfactura->modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total);
+    $objfactura->modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total, $observacion, $ivaporciento, $retencionporciento, $tipofactura, $metodo, $bauche);
     $factura = $objfactura->consultar_factura($mysqli, $codigo);
 
     $objcliente = new cliente();
@@ -19,8 +19,9 @@
     $result4 = $resultado->fetch_array();
     $result5 = $resultado->fetch_array();
     $result6 = $resultado->fetch_array();
+
     if (!empty($factura[5]))
-        $compra123 = $factura[4].', '.$factura[5];
+        $compra123 = $factura[4].', Nro. '.$factura[5];
     else
         $compra123 = $factura[4];
 $html='
@@ -132,13 +133,13 @@ $html='
                 <td align="center"><i>00</i></td>
             </tr>
              <tr>
-                <td align="right"><b>%</b></td>
+                <td align="right"><b>'.$factura[14].'%</b></td>
                 <td></td>
                 <td align="right">'.$factura[9].'</td>
                 <td align="center"><i>00</i></td>
             </tr>
              <tr>
-                <td align="right"><b>%</b></td>
+                <td align="right"><b>'.$factura[15].'%</b></td>
                 <td></td>
                 <td align="right">'.$factura[10].'</td>
                 <td align="center"><i>00</i></td>

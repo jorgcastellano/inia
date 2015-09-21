@@ -533,8 +533,8 @@ class factura {
     return $res->fetch_array();
   }
 
-  public function modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total) {
-    $sql="UPDATE factura SET exento='$exento',base='$base',iva='$iva',retencion='$retencion',alicuota='$alicuota',Total='$total' WHERE Cod_fact='$codigo' ";
+  public function modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total, $obs, $ivaporciento, $exentoporciento, $tipofactura, $metodo, $bauche) {
+    $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche='$bauche', exento='$exento',base='$base',iva='$iva',retencion='$retencion',alicuota='$alicuota',Total='$total', observacion='$obs', ivaporc='$ivaporciento', exentoporc='$exentoporciento' WHERE Cod_fact='$codigo' ";
     $res= $mysqli->query($sql);
   }
 }

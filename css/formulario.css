@@ -118,6 +118,11 @@ body {
         background: #fff url(../imgs/red_asterisk.png) no-repeat 98% center;
     }
 
+    .contact_form input:focus:valid, .contact_form textarea:focus:valid {
+        background: #fff url(../imgs/valido.png) no-repeat 98% center;
+        box-shadow: 0 0 5px #5cd053;
+        border-color: #28921f;
+    }
     .contact_form input:required:valid, .contact_form textarea:required:valid {
         background: #fff url(../imgs/valido.png) no-repeat 98% center;
         box-shadow: 0 0 5px #5cd053;

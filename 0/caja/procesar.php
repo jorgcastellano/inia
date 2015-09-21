@@ -19,6 +19,9 @@
 
             <?php
 
+            if (!isset($_GET['codigo']) AND !isset($_POST['codigo']))
+                header('location: ../../0/home/inicio');
+
             extract($_POST);
             if ($_GET['codigo']) :
                 $codigo = $_GET['codigo'];
@@ -37,24 +40,31 @@
                         <td>CANTIDAD</td>
                         <td>DESCRIPCION</td>
                         <td>P. UNIT</td>
+                        <td>I.V.A.</td>
                         <td>TOTAL</td>
                     </tr>
             ";
 
-            $iva='';
-            $exe='';
-            while($resultado = $res2->fetch_array()){
+            $iva = 0;
             $exe = 0;
-          echo "
+            while($resultado = $res2->fetch_array()){
+                if($resultado[6]=='I') {
+                    $iva+=$resultado[5];
+                    $ivad = "Si";
+                }
+                elseif($resultado[6]=='E') {
+                    $exe+=$resultado[5];
+                    $ivad = "No";
+                }
+                echo "
                   <tr>
                     <td>$resultado[3]</td>
                     <td>$resultado[2]</td>
                     <td>$resultado[4]</td>
+                    <td>$ivad</td>
                     <td>$resultado[5]</td>
                   </tr>";
-
-                  if($resultado[6]=='I'){ $iva+=$resultado[5]; }
-                  if($resultado[6]=='E'){ $exe+=$resultado[5]; }
+                  unset($ivad);
             }
 
             $subtotal=$iva+$exe;
@@ -72,10 +82,18 @@
                     <input type='hidden' name='iva' value='$impuesto'/>
                     <input type='hidden' name='retencion' value='$retencion'/>
                     <input type='hidden' name='alicuota' value='$alicuota'/>
-                    <input type='hidden' name='total' value='$total'/>";
+                    <input type='hidden' name='total' value='$total'/>
+                    <input type='hidden' name='observacion' value='$observacion'/>
+                    <input type='hidden' name='ivaporciento' value='$ivaporciento'/>
+                    <input type='hidden' name='retencionporciento' value='$retencionporciento'/>
+                    <input type='hidden' name='tipofactura' value='$tipofactura'/>
+                    <input type='hidden' name='metodo' value='$metodo'/>
+                    <input type='hidden' name='bauche' value='$bauche'/>
+                    ";
 
                 $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
-                <button type='submit' name='confirmar' value='confirmar' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Confirmar</button>";
+                <button target='_top' type='submit' name='codigo' value='$codigo' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
+                <button target='_top' type='submit' name='confirmar' value='confirmar' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>";
 
             }else{
                 $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";
@@ -86,6 +104,28 @@
 
                 $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
                     <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Guardar cambios</button>";
+                
+                $formulario2='
+                <div class="contact_form"><br>
+                    <label for="tipofactura">Tipo de factura</label>
+                    <select required id="tipofactura" name="tipofactura">
+                        <option value="COMPRA">Compra</option>
+                        <option value="DONACION">Donación</option>
+                    </select><br>
+                    
+                    <label for="metodo">Método de pago</label>
+                    <select id="metodo" name="metodo">
+                        <option value="EFECTIVO">Efectivo</option>
+                        <option value="T/DEBITO">Débito</option>
+                        <option value="T/CREDITO">Crédito</option>
+                        <option value="DEPOSITO">Depósito</option>
+                        <option value="CHEQUE">Cheque</option>
+                    </select><br>
+
+                    <label for="bauche">Bauche/nro. de referencia</label>
+                    <input type="text" id="bauche" name="bauche" maxlength="10" pattern="^\d{6,10}$" />
+                </div>
+                ';
             }
          echo " </table>
                 <table class='factura3'>
@@ -126,6 +166,8 @@
                     
                     $hidden
 
+                    $formulario2
+                    
                 <div align='center'>
                    $boton 
                 </div>
