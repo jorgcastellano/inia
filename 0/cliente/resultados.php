@@ -21,6 +21,9 @@
 
                 require_once '../../system/class.php';
 
+                if (isset($_GET['Ced_cliente']))
+                    $Ced_cliente = $_GET['Ced_cliente'];
+
                 $client = new cliente();
                 if (isset($Registrar)) :
                     $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
@@ -52,63 +55,68 @@
                     <form class="contact_form" method="post" action="index"  id="">
                         <table class="tcliente">
                             <tr>
-                                <th colspan="2"><i class="fa fa-user"></i> Datos del cliente</th>
+                                <td colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
                             </tr>
                             <tr>
-                                <th>Cédula de identidad:</th>
+                                <td><b>Cédula de identidad:</b></td>
                                 <td><?php echo $reg[1]?></td>
                             </tr>
                             <tr>
-                                <th>Nombres:</th>
+                                <td><b>Nombres:</b></td>
                                 <td><?php echo $reg[2]?></td>
                             </tr>
                             <tr>
-                                <th>Apellidos:</th>
+                                <td><b>Apellidos:</b></td>
                                 <td><?php echo $reg[3]?></td>
                             </tr>
                             <tr>
-                                <th>Persona de contacto:</th>
+                                <td><b>Persona de contacto:</b></td>
                                 <td><?php echo $reg[4]?></td>
                             </tr>
                             <tr>
-                                <th>Teléfono:</th>
+                                <td><b>Teléfono:</b></td>
                                 <td><?php echo $reg[5]?></td>
                             </tr>
                             <tr>
-                                <th>Domicilio:</th>
+                                <td><b>Domicilio:</b></td>
                                 <td><?php echo $reg[6]?></td>
                             </tr>
                         </table>
                         <?php
                             if ($_SESSION['privilegios'] == 1) : 
                             $fin = new finca();
-                            $reg2 = $fin->consultar_finca($mysqli,$Ced_cliente);
+                            $reg3 = $fin->consultar_finca_all($mysqli,$Ced_cliente);
+                            $i = 1;
+                            while ($reg2 = $reg3->fetch_array()) :
                         ?>
-                        <table class="tcliente">
-                            <tr>
-                                <th colspan="2"><i class="fa fa-file-text"></i> Datos de la finca</th>
-                            </tr>
-                            <tr>
-						       <th>Nombre de la finca:</th>
-						       <td><?php echo $reg2[2]?></td>
-					        </tr>
-                            <tr>
-                                <th colspan="2">DIRECCIÓN DE LA FINCA</th>
-                            </tr>
-                            <tr>
-						       <th>Estado:</th>
-						       <td><?php echo $reg2[3]?></td>
-					        </tr>
-                            <tr>
-						       <th>Municipio:</th>
-						       <td><?php echo $reg2[4]?></td>
-					        </tr>
-                            <tr>
-						       <th>Parroquia:</th>
-						       <td><?php echo $reg2[5]?></td>
-					        </tr>
-                        </table>
-                        <?php endif; ?>
+                                <table class="tcliente">
+                                    <tr>
+                                        <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
+                                    </tr>
+                                    <tr>
+        						       <td><b>Nombre de la finca:</b></td>
+        						       <td><?php echo $reg2[2]?></td>
+        					        </tr>
+                                    <tr>
+                                        <td colspan="2"><b>DIRECCIÓN DE LA FINCA</b></td>
+                                    </tr>
+                                    <tr>
+        						       <td><b>Estado:</b></td>
+        						       <td><?php echo $reg2[3]?></td>
+        					        </tr>
+                                    <tr>
+        						       <td><b>Municipio:</b></td>
+        						       <td><?php echo $reg2[4]?></td>
+        					        </tr>
+                                    <tr>
+        						       <td><b>Parroquia:</b></td>
+        						       <td><?php echo $reg2[5]?></td>
+        					        </tr>
+                                </table>
+                        <?php
+                                $i++;
+                            endwhile;
+                        endif; ?>
                         <div align="center">
                             <button class="boton" type="button" name="regresar" value="regresar" onclick=location="../../0/home/inicio"><i class="fa fa-ban"></i> Cancelar</button>
                             <button type="submit" name="Modificar" value="<?php echo $reg[1]?>" class="boton" ><i class="fa fa-pencil-square-o"></i> Actualizar datos</button>

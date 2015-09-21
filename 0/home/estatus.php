@@ -48,8 +48,10 @@
                     echo "</table>";
                 }
                 $mysqli->close();?>
-                <button type="button" name="Regresar atras" class="boton" onclick=location="inicio"><i class="fa fa-arrow-left"></i> Página principal</button>
-                <button type="submit" name="ActualizarEstado" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
+                <div align="center">
+                    <button type="button" name="Regresar atras" class="boton" onclick=location="inicio"><i class="fa fa-arrow-left"></i> Página principal</button>
+                    <button type="submit" name="ActualizarEstado" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
+                </div>
             </form>
             
             <?php include '../../layouts/layout_p.php' ?>

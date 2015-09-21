@@ -3,28 +3,19 @@ table{
     margin-top: 20px;
     border-spacing: 0px; 
 }
-table tr td, table tr th{
+table tr td{
     /*border: 1px solid green;*/
     width: 270px;
     height: 25px;
     text-align: left;
 }
 
-table tr th:first-child, table tr td:first-child{
+table tr td:first-child{
     padding-left: 20px;
-}/*
-table tr:first-child th:first-child{
-    border-radius:5px 5px 0px 0px;
-}*/
-/*table tr:last-child td:last-child, table.tstatus tr:first-child td:first-child {
-    border-radius:0px 0px 5px 0px;
-}*/
-table tr:last-child th:first-child {
-    border-radius:0px 0px 0px 5px;
 }
 
 /*ESTILO PARA LOS ENCABEZADOS DE TODAS LAS TABLAS*/
-table.factura2 tr:first-child,table.facturai tr:first-child, table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child, table.usuario tr:first-child{
+table.usuario2 tr:first-child, table.factura2 tr:first-child,table.facturai tr:first-child, table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child, table.usuario tr:first-child{
     text-align: center;
     font-weight: bold;
     color:#fff;
@@ -40,12 +31,20 @@ table tr:nth-child(odd){
 }
 
 /*ESTILO PARA LOS CLIENTES*/
-table.tcliente tr th{
-    width: 200px;
+table.tcliente{
+    width: 550px;
 }
-table.tcliente tr td{
-    width: 365px;
-    padding-left: 5px;
+table.tcliente tr td:first-child{
+    width: 40%;
+}
+table.tcliente tr:first-child td:first-child{
+    border-radius: 5px 5px 0px 0px;
+}
+table.tcliente tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 5px;
+}
+table.tcliente tr:last-child td:last-child{
+    border-radius: 0px 0px 5px 0px;
 }
 
 /*ESTILO PARA ESTATUS DE LABORATORIOS Y ANALISIS*/
@@ -138,9 +137,43 @@ table.usuario tr:last-child td:first-child{
 table.usuario td:first-child{
     width: 70px;
 }
-table.usuario td:last-child{
-    width: 60px;
+
+table.usuario td:nth-child(4){
+    width: 20%;
 }
+table.usuario td:last-child{
+    width: 7%;
+}
+
+/*ESTILO PARA LAS TABLAS DE GESTION DE USUARIOS*/
+table.usuario2{
+    width: 550px;
+}
+table.usuario2 td{
+    text-align: center;
+}
+table.usuario2 td:first-child{
+    width: 20%;
+}
+table.usuario2 td:nth-child(4){
+    width: 5%;
+}
+table.usuario2 td:last-child{
+    width: 7%;
+}
+table.usuario2 tr:first-child td:first-child{
+    border-radius: 5px 0px 0px 0px;
+}
+table.usuario2 tr:first-child td:last-child{
+    border-radius: 0px 5px 0px 0px;
+}
+table.usuario2 tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 5px;
+}
+table.usuario2 tr:last-child td:last-child{
+    border-radius: 0px 0px 5px 0px;
+}
+
 
 /*FACTURAS IMPAGAS*/
 table.facturai {

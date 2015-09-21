@@ -51,9 +51,11 @@
                         <td><?php echo $reg[3]?></td>
                     </tr>
                 </table>
-                <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
-                <button type="submit" name="ana" value="<?php echo $reg[0]?>" class="boton"><i class="fa fa-pencil"></i> Modificar</button>
-                <button type='button' OnClick=location='index' class="boton"><i class="fa fa-list-alt"></i> Listado de análisis</button>
+                <div align="center">
+                    <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
+                    <button type="submit" name="ana" value="<?php echo $reg[0]?>" class="boton"><i class="fa fa-pencil"></i> Modificar</button>
+                    <button type='button' OnClick=location='index' class="boton"><i class="fa fa-list-alt"></i> Listado de análisis</button>
+                </div>
             </form>
              <?php include '../../layouts/layout_p.php' ?>
         </section>

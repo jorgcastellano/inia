@@ -53,14 +53,16 @@
                 echo "</table>";
             ?>
             <br>
-            <label for="Nom_lab">Nombre del laboratorio</label>
-            <input  type="text" name="Nom_lab" id="Nom_lab" value="<?php if(isset($reg1)) echo $reg1[1]?>" title="Introduzca el nombre del laboratorio para buscar o modificar" />
-            <?php if(isset($modificar)): ?><button type="submit" name="Actualizar" value="<?php if(isset($reg1)) echo $reg1[0]?>" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
-            <?php else : ?><button type="submit" name="Registrar" value="Registrar" class="boton" ><i class="fa fa-check"></i> Registrar laboratorio</button><?php endif; ?>
-            <div>
+            <div align="center">
+                <label for="Nom_lab">Nombre del laboratorio</label>
+                <input  type="text" name="Nom_lab" id="Nom_lab" value="<?php if(isset($reg1)) echo $reg1[1]?>" title="Introduzca el nombre del laboratorio para buscar o modificar" />
+                <?php if(isset($modificar)): ?><button type="submit" name="Actualizar" value="<?php if(isset($reg1)) echo $reg1[0]?>" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
+                <?php else : ?><button type="submit" name="Registrar" value="Registrar" class="boton" ><i class="fa fa-check"></i> Registrar laboratorio</button><?php endif; ?>
+            </div>
+            <div align="center">
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                 <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> modificar laboratorio</button>
-                <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home" ></i> Inicio</button>
+                <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home" ></i> Página principal</button>
             </div>
         </form>
            <?php include '../../layouts/layout_p.php' ?>

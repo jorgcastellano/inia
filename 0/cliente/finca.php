@@ -17,16 +17,16 @@
 				</hgroup>
 			</div>
 
-            <form class="contact_form" method="post" action="insert_finca.php"  id="">
+            <form class="contact_form" method="POST" action="insert_finca.php">
                 
-                    <?php include_once 'lib_finca.php'; ?>
-                    
+                <?php include_once 'lib_finca.php'; ?>
+
+                <div align="center">
                     <input type="hidden" name="Ced_cliente" value="<?php echo $_POST['Finca']; ?>" />
                     <button type="reset" class="boton" name="reset"><i class="fa fa-eraser"></i> Limpiar formulario</button>
-                    <button type="submit" name="RegistrarM" value="RegistrarM" class="boton" ><i class="fa fa-check"></i> Registrar</button>
+                    <button type="submit" name="RegistrarM" value="RegistrarM" class="boton" ><i class="fa fa-check"></i> Registrar finca</button>
+                </div>
             </form>
-
-
                 <?php include 'layouts/layout_p.php'; ?>
         </section>
     </body>

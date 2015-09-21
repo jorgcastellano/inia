@@ -21,15 +21,19 @@
 
                 extract($_POST);
                 $objinicio = new inicio_seguro();
+                if (isset($eliminar)) :
+                    $objinicio -> eliminar_miembros($mysqli, $eliminar);
+                endif;
                 $reg = $objinicio->consultar_miembro($mysqli);
 
                 echo "<form action='aceptacion_usuario' method='POST'>
-                <table class='usuario'>
+                <table class='usuario2'>
                     <tr>
                         <td><i class='fa fa-chevron-circle-right'></i> Cédula</td>
                         <td>Usuario</td>
                         <td>Email</td>
                         <td><i class='fa fa-check-square'></i></td>
+                        <td><i class='fa fa-trash-o'></i></td>
                     </tr>";
 
                 while ($resultado = $reg->fetch_array()) :
@@ -70,6 +74,7 @@
                         <td>$resultado[2] $resultado[3]</td>
                         <td>$resultado[4]</td>
                         <td><input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/></td>
+                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[0]' ><i class='fa fa-trash-o'></button></i></td>
                     </tr>";
                 endwhile;
                 echo "</table>";
