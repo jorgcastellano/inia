@@ -540,6 +540,14 @@ class factura {
                               ivaporc='$ivaporciento', exentoporc='$retencionporciento' WHERE Cod_fact='$codigo'";
     $res=$mysqli->query($sql);
   }
+
+  public function consultar_ventas_anual($mysqli,$Tipo_pago,$Fecha)
+  {
+    $sql="SELECT factura.total FROM factura WHERE factura.Estatus='paga' AND factura.Tipo_pago='$Tipo_pago' AND Fecha LIKE '%$Fecha%'";
+    return $res= $mysqli->query($sql);
+  }
+
+
 }
 
 class factura_descripcion {
