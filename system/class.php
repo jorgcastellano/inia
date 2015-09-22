@@ -223,9 +223,7 @@ class finca {
   
     private $reg;
 
-    public function registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia)
-    {
-
+    public function registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia) {
       $sql="INSERT INTO finca (Ced_cliente,Nom_fin,Estado,Municipio,Parroquia)
             VALUES ('$Ced_cliente','$Nom_fin','$Estado','$Municipio','$Parroquia')";
       $mysqli->query($sql);
@@ -233,17 +231,20 @@ class finca {
        if($mysqli->affected_rows>0){ echo "La nueva finca se ha registrado con éxito";} else { echo "no se ha podido registrar la nueva finca";}
 
     }
-   
-    public function consultar_finca($mysqli,$Ced_cliente)
-    {
+    public function consultar_finca($mysqli,$Ced_cliente) {
 
       $sql="SELECT * FROM finca WHERE finca.Ced_cliente ='$Ced_cliente'";
       $res=$mysqli->query($sql);
       return  $res->fetch_array();
 
     }
-    public function modificar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia)
-    {
+    public function consultar_finca_all($mysqli,$Ced_cliente) {
+
+      $sql="SELECT * FROM finca WHERE finca.Ced_cliente ='$Ced_cliente'";
+      return $mysqli->query($sql);
+
+    }
+    public function modificar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia) {
 
       $sql="UPDATE finca SET finca.Nom_fin='$Nom_fin',finca.Estado='$Estado',finca.Municipio='$Municipio',finca.Parroquia='$Parroquia'  WHERE finca.Ced_cliente='$Ced_cliente'";
       $res=$mysqli->query($sql);

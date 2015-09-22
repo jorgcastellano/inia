@@ -1,12 +1,10 @@
                 
                 <label for="Nom_fin">Nombre de la finca</label>
                     <input required type="text" name="Nom_fin" id="Nom_fin" value="<?php echo $reg2[2]?>" title="Introduzca el nombre de la finca" maxlength="30" placeholder=""  />
-                       <span class="form_hint">Debe contener solo caracteres alfanumericos"</span>
-                       <br />
+                    <span class="form_hint">Debe contener solo caracteres alfanumericos"</span>
+                    <br />
                 <label for="Estado">Estado</label>
                     <select required name="Estado" id="Estado">
-                        <span class="form_hint">Por favor seleccione un elemento de esta lista"</span>
-                        <br />
                         <option value="">Seleccione</option>
                         <option value="Amazonas" <?php if($reg2[3]=="Amazonas"){ echo 'selected'; } ?>>Amazonas</option>
                         <option value="Aragua" <?php if($reg2[3]=="Aragua"){ echo 'selected'; } ?>>Aragua</option>
@@ -17,10 +15,8 @@
                         <option value="Trujillo" <?php if($reg2[3]=="Trujillo"){ echo 'selected'; } ?>>Trujillo</option>
                     </select>
                     </br>
-                <label  for="Municipio">Municipio</label>
+                <label for="Municipio">Municipio</label>
                     <select required name="Municipio" id="Municipio">
-                        <span class="form_hint">Por favor seleccione un elemento de esta lista"</span>
-                        <br />
                         <option value="">Seleccione</option>
                         <option value="mun1" <?php if($reg2[4]=="mun1"){ echo 'selected'; } ?>>mun1</option>
                         <option value="mun2" <?php if($reg2[4]=="mun2"){ echo 'selected'; } ?>>mun2</option>
