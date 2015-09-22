@@ -40,7 +40,7 @@
 		public function menuNivel13() {
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-money", "../../0/home/inicio", " Facturas impagas");
-			$elementos->cargarElemento("fa-gear", "#", " Historial");
+			$elementos->cargarElemento("fa-gear", "../../0/caja/estadistica", " Historial");
 			$elementos->cargarElemento("fa-search", "../../0/producto/inve", " Inventario");
 			$elementos->cargarElemento("fa-gift", "../../0/producto/index", " Nuevos productos");
 
