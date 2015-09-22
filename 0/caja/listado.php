@@ -17,7 +17,7 @@
                                 <td>Cedula</td>
                                 <td>Fecha</td>
                                 <td>Subtotal</td>
-                                <td><i class='fa fa-dollar'></i></td>
+                                <td>Procesar</td>
                             </tr>";
                     while($resultado = $res->fetch_array()){
                     echo "  <tr>
@@ -41,7 +41,7 @@
                         <td>Cedula</td>
                         <td>Fecha</td>
                         <td>Subtotal</td>
-                        <td><i class='fa fa-dollar'></i></td>
+                        <td>Procesar</td>
                     </tr>";
 
                     while($resultado = $res->fetch_array()){

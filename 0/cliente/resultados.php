@@ -98,7 +98,7 @@
         						       <td><?php echo $reg2[2]?></td>
         					        </tr>
                                     <tr>
-                                        <td colspan="2"><b>DIRECCIÓN DE LA FINCA</b></td>
+                                        <td colspan="2" id="center"><b>DIRECCIÓN DE LA FINCA</b></td>
                                     </tr>
                                     <tr>
         						       <td><b>Estado:</b></td>
