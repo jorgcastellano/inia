@@ -98,22 +98,15 @@ footer{
     background: transparent;
     border-radius: 3px 3px 3px 3px;
     color: green;
-    margin-left: 20px;
-    padding: 20px 20px;
-    z-index: 999; 
-    position: center; 
-    display: ;
+    margin-left: 40px;
+
 }
 
 /*ccs para notificaciones fallidas*/
 .notify_f {
     background: transparent;
-    border-radius: 3px 3px 3px 3px;
     color: red;
-    margin-left: 20px;
-    padding: 6px 6px;
-    z-index: 999; 
-    position: center; 
-    display: ;
     font-size:16; 
+    margin-left: 40px;
+   
 }

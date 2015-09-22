@@ -39,7 +39,7 @@
                 <input required type="num" name="Ced_cliente" id="Ced_cliente" value="<?php echo $reg[1].$var1; ?>" title="Introduzca la cédula " maxlength="8" placeholder="" pattern="\d{6,}" />
                 <span class="form_hint">Debe contener solo caracteres númericos"</span><br />
 				<label for="Nom_cliente">Nombres</label>
-					<input required type="text" name="Nom_cliente" id="Nom_cliente" value="<?php echo $reg[2]?>" title="Introduzca los nombres " maxlength="30" placeholder="" pattern="([A-Z]{1}[a-z,á,é,í,ó,ú]{1,}\s{0,1})+" />
+					<input required type="text" name="Nom_cliente" id="Nom_cliente" value="<?php echo $reg[2]?>" title="Introduzca los nombres " maxlength="30" placeholder="" pattern="([A-Z]{1}[a-z,ñ,á,é,í,ó,ú,]{1,}\s{0,1})+" />
                     <span class="form_hint">Debe tener siempre la primera letra en "Mayúscula"</span><br />
 				<label for="Apelli_cliente">Apellidos</label>
 					<input required type="text" name="Apelli_cliente" id="Apelli_cliente" value="<?php echo $reg[3]?>" title="Introduzca los apellidos  " maxlength="30" placeholder="" pattern="([A-Z]{1}[a-z,á,é,í,ó,ú]{1,}\s{0,1})+" />
