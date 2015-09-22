@@ -39,7 +39,7 @@
                         </ol>
                     </li>
                     <li><b>Clave:</b> la misma de siempre</li>
-                    <li><b>Base de datos: <a href="http://jorgcastellano.net.ve/phpmyadmin/">phpMyAdmin</a></b></li>
+                    <li><b>Base de datos: <a href="http://jorgcastellano.net.ve/phpmyadmin/" target="_blank">phpMyAdmin</a></b></li>
                 </ol>
             </article> <!-- FINALIZACION DEL CUERPO O CONTENEDOR DE LA PAGINA -->
 

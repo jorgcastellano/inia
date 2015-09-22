@@ -171,8 +171,9 @@ $dompdf->load_html($html);
 $dompdf->set_paper(array(0,0,400,500), 'landscape');
 
 $dompdf->render();
+$fecha = date("ymd");
 //Para visualizar en pantalla
-$dompdf->stream("$tipofactura$cliente[1].pdf",array("Attachment" => 0));
+$dompdf->stream("$tipofactura$cliente[1]_$fecha.pdf",array("Attachment" => 0));
 //Para Descargas
 //$dompdf->stream("$tipofactura$cliente[1].pdf");
 ?>

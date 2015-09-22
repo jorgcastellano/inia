@@ -116,7 +116,7 @@
             
                 $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
                 <button target='_top' type='submit' name='codigo' value='$codigo' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
-                <button target='_top' type='submit' name='confirmar' value='confirmar' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>";
+                <button target='_top' type='submit' name='confirmar' value='confirmar' formtarget='_blank' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>";
 
             }else{
                 $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";
