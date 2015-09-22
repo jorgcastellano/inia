@@ -537,6 +537,14 @@ class factura {
     $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche='$bauche', exento='$exento',base='$base',iva='$iva',retencion='$retencion',alicuota='$alicuota',Total='$total', observacion='$obs', ivaporc='$ivaporciento', exentoporc='$exentoporciento' WHERE Cod_fact='$codigo' ";
     $res= $mysqli->query($sql);
   }
+
+  public function consultar_ventas_anual($mysqli,$Tipo_pago,$Fecha)
+  {
+    $sql="SELECT factura.total FROM factura WHERE factura.Estatus='paga' AND factura.Tipo_pago='$Tipo_pago' AND Fecha LIKE '%$Fecha%'";
+    return $res= $mysqli->query($sql);
+  }
+
+
 }
 
 class factura_descripcion {
