@@ -1,3 +1,6 @@
+#center b{
+    text-align: center;
+}
 table{
     margin: auto;
     margin-top: 20px;
@@ -51,28 +54,28 @@ table.tcliente tr:last-child td:last-child{
 table.tstatus{
     width: 500px;
 }
-table.tstatus tr th:first-child, .tstatus tr td:first-child{
+table.tstatus tr td:first-child, .tstatus tr td:first-child{
 	width: 490px;
 }
 table.tstatus tr:first-child td:first-child{
-    border-radius:5px 0px 0px 0px;
-    -moz-border-radius: 5px 0px 0px 0px; 
-}
-table.tstatus-index tr:first-child th:first-child{
-    border-radius:5px 5px 0px 0px;
-    -moz-border-radius: 5px 5px 0px 0px; 
+    border-radius: 5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px;
 }
 table.tstatus tr:first-child td:last-child{
     border-radius:0px 5px 0px 0px;
-    -moz-border-radius: 0px 5px 0px 0px; 
+    -moz-border-radius: 0px 5px 0px 0px;
+}
+table.tstatus-index tr:first-child td:first-child{
+    border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
 }
 table.tstatus tr:last-child td:last-child{
     border-radius:0px 0px 5px 0px;
-    -moz-border-radius: 0px 0px 5px 0px; 
+    -moz-border-radius: 0px 0px 5px 0px;
 }
 table.tstatus tr:last-child td:first-child{
     border-radius:0px 0px 0px 5px;
-    -moz-border-radius: 0px 0px 0px 5px; 
+    -moz-border-radius: 0px 0px 0px 5px;
 }
 table.tstatus td:last-child{
     text-align: center;
