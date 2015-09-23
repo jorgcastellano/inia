@@ -1,6 +1,6 @@
 <?php
 
-	define("HOST", "jorgcastellano.net.ve");
+	define("HOST", "192.168.150.1");
 	//define("USER", "sec_user");
 	define("USER", "isinia");
 	//define("PASSWORD", "123456");

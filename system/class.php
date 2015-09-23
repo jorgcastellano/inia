@@ -209,6 +209,12 @@ class cliente {
 
       }
 
+     public function consultar_clientes($mysqli)
+     {
+      $sql="SELECT * FROM cliente";
+      return $res=$mysqli->query($sql);
+     }
+
      public function modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente)
      {       
 
