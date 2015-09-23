@@ -39,7 +39,7 @@
                         </ol>
                     </li>
                     <li><b>Clave:</b> la misma de siempre</li>
-                    <li><b>Base de datos: <a href="http://jorgcastellano.net.ve/phpmyadmin/">phpMyAdmin</a></b></li>
+                    <li><b>Base de datos: <a href="http://jorgcastellano.net.ve/phpmyadmin/" target="_blank">phpMyAdmin</a></b></li>
                 </ol>
             </article> <!-- FINALIZACION DEL CUERPO O CONTENEDOR DE LA PAGINA -->
 
@@ -53,23 +53,23 @@
 
             <table class="tstatus tstatus-index">
                 <tr>
-                    <th colspan="2"><i class="fa fa-server"></i> Estado del servidor - <?php echo $res[3] ?></th>
+                    <td colspan="2"><i class="fa fa-server"></i> Estado del servidor - <?php echo $res[3] ?></td>
                 </tr>
                 <tr>
-                    <th>Cantidad de solicitudes</th>
+                    <td>Cantidad de solicitudes</td>
                     <td><?php echo $res[0] ?></td>
                 </tr>
                 <tr>
-                    <th>Muestras analizadas en suelo</th>
+                    <td>Muestras analizadas en suelo</td>
                     <td><?php echo $res[1] ?></td>
                 </tr>
                 <tr>
-                    <th>Muestras analizadas en fitopatología</th>
+                    <td>Muestras analizadas en fitopatología</td>
                     <td><?php echo $res[2] ?></td>
                 </tr>
             </table>
 
-            <button style="margin-left: 75%" class="boton" type="button" onclick=location="registro" name="registro"> Registrese aquí <i class="fa fa-arrow-right"></i></button>
+            <button style="margin-left: 75%" class="boton" type="button" onclick=location="../../0/home/registro" name="registro"> Registrese aquí <i class="fa fa-arrow-right"></i></button>
             <?php include_once '../../layouts/layout_p.php' ?>
         </section>
     </body>

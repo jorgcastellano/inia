@@ -34,6 +34,8 @@
                 //if($mysqli->affected_rows>0){echo "<span class='notify'>El nuevo laboratorio se ha registrado con exito <i class='fa fa-check-square'</i></span>";} else { echo "<span class='notify_f'>No se ha podido registrar el nuevo laboratorio</span> <i class='fa fa-times'></i>";}
                 elseif (isset($Actualizar)) :
                      $cap = $lab->modificar_laboratorio($mysqli, $Actualizar, $Nom_lab);
+                 if($mysqli->affected_rows>0){ echo "<span class='notify'><i class='fa fa-check-square'></i>El laboratorio se ha modificado con exito</span> ";} 
+                 else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido modificar el loboratorio</span> ";}
                         //include_once '../../0/notificaciones/libreria_noti.php';
                      $reg = $lab->consultar_completa($mysqli);
                 else :
@@ -61,7 +63,7 @@
             </div>
             <div align="center">
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-                <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> modificar laboratorio</button>
+                <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar laboratorio</button>
                 <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home" ></i> Página principal</button>
             </div>
         </form>

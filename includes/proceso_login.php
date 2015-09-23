@@ -35,26 +35,32 @@
 			$_SESSION['aprobacion']="$registro[9]";
 			$_SESSION['privilegios']="$registro[10]";
 
+			//comprueba si ha sido aprobado
+			if ($_SESSION['aprobacion'] == "Off") :
+				header("location: ../0/home/noaceptado");
+			endif;
+
 		    //Solo para privilegios (2) especialistas
-		    if ($_SESSION['privilegios'] == 2) :
-		    	$cod = $_SESSION['ci'];
+		    if ($_SESSION['privilegios'] == 0) :
+	        	header("location: ../0/home/noprivilegios");
+	        elseif ($_SESSION['privilegios'] == 2) :
 				include_once '../system/classesp.php';
 	            $objesp = new especialista();
-	            $resultado = $objesp->verificar_privilegio_2($mysqli2, $cod);
+	            $resultado = $objesp->verificar_privilegio_2($mysqli2, $_SESSION['ci']);
 		        if ($resultado[0] == $_SESSION['ci']) :
 		        	header("location: ../0/home/inicio");
 		        else :
 		        	header("location: ../0/especialista/culminar_registro");
 		    	endif;
-		    else :
+	        else :
 				header("location: ../0/home/inicio");
 			endif;
 		else :
 			//Error entre correos y contraseñas
-			header("location: ../../0/home/index");
+			header("location: ../0/home/index");
 		endif;
 	else :
 		//En caso de que el formulario se encuentren vacios
-		header("location: ../../0/home/index");
+		header("location: ../0/home/index");
 	endif;
 ?>

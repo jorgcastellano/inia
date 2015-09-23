@@ -43,7 +43,7 @@ class producto
     $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ', I_E='$iva' WHERE Cod_produ='$Cod_produ'";
     $mysqli->query($sql);
     require_once 'error_update.php';
-    if($mysqli->affected_rows > 0){echo "Los datos del producto se han modificado con exito";} else { echo "No se ha podido moificar los datos del producto";}
+    if($mysqli->affected_rows > 0);
   }
   public function actualizar_existencia($mysqli, $Existencia, $cod){
     $sql = "UPDATE producto SET Existencia='$Existencia' WHERE Cod_produ='$cod'";
@@ -129,8 +129,6 @@ class analisis {
       $sql="UPDATE analisis SET Nom_ana='$Nom_ana', Precio_ana='$Precio_ana', Tipo='$Tipo' WHERE Cod_ana ='$Cod_ana'";
       $mysqli->query($sql);
       require_once 'error_update.php';
-      if($mysqli->affected_rows>0){echo "El analisis se ha modificado con exito";} else { echo "No se ha podido modificar el analisis";}
-
     }
 
     public function consultar_analisis($mysqli,$Cod) {
@@ -540,9 +538,11 @@ class factura {
     return $res->fetch_array();
   }
 
-  public function modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total, $obs, $ivaporciento, $exentoporciento, $tipofactura, $metodo, $bauche) {
-    $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche='$bauche', exento='$exento',base='$base',iva='$iva',retencion='$retencion',alicuota='$alicuota',Total='$total', observacion='$obs', ivaporc='$ivaporciento', exentoporc='$exentoporciento' WHERE Cod_fact='$codigo' ";
-    $res= $mysqli->query($sql);
+  public function modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total, $observacion, $ivaporciento, $retencionporciento, $tipofactura, $metodo, $bauche) {
+    $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche='$bauche', exento='$exento',
+                              base='$base', iva='$iva', retencion='$retencion', alicuota='$alicuota',Total='$total', observacion='$observacion', 
+                              ivaporc='$ivaporciento', exentoporc='$retencionporciento' WHERE Cod_fact='$codigo'";
+    $res=$mysqli->query($sql);
   }
 
   public function consultar_ventas_anual($mysqli,$Tipo_pago,$Fecha)

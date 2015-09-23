@@ -3,7 +3,12 @@
     require ("../../system/class.php");
     extract($_POST);
     $objfactura = new factura();
+
+    if (!isset($bauche))
+        $bauche = "";
+
     $objfactura->modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total, $observacion, $ivaporciento, $retencionporciento, $tipofactura, $metodo, $bauche);
+
     $factura = $objfactura->consultar_factura($mysqli, $codigo);
 
     $objcliente = new cliente();
@@ -166,5 +171,9 @@ $dompdf->load_html($html);
 $dompdf->set_paper(array(0,0,400,500), 'landscape');
 
 $dompdf->render();
-$dompdf->stream("factura.php",array("Attachment" => 0));
+$fecha = date("ymd");
+//Para visualizar en pantalla
+$dompdf->stream("$tipofactura$cliente[1]_$fecha.pdf",array("Attachment" => 0));
+//Para Descargas
+//$dompdf->stream("$tipofactura$cliente[1].pdf");
 ?>

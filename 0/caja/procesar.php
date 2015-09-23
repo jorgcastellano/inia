@@ -69,8 +69,11 @@
 
             $subtotal=$iva+$exe;
 
-            if(isset($procesar)){ 
-                $observacion=$Observacion;
+            if (isset($retencionporciento))
+                if (empty($retencionporciento))
+                    $retencionporciento = 0;
+
+            if(isset($procesar)) {
                 $impuesto=($iva*$ivaporciento)/100; 
                 $retencion=($impuesto*$retencionporciento)/100;
                 $alicuota=$impuesto-$retencion;
@@ -86,25 +89,8 @@
                     <input type='hidden' name='observacion' value='$observacion'/>
                     <input type='hidden' name='ivaporciento' value='$ivaporciento'/>
                     <input type='hidden' name='retencionporciento' value='$retencionporciento'/>
-                    <input type='hidden' name='tipofactura' value='$tipofactura'/>
-                    <input type='hidden' name='metodo' value='$metodo'/>
-                    <input type='hidden' name='bauche' value='$bauche'/>
                     ";
 
-                $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
-                <button target='_top' type='submit' name='codigo' value='$codigo' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
-                <button target='_top' type='submit' name='confirmar' value='confirmar' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>";
-
-            }else{
-                $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";
-                $retencion="<input type='text' name='retencionporciento' value='' size='5px' />%";
-                $observacion="<textarea cols='25' rows='10' name='Observacion' value='' placeholder='Observacion' ></textarea>";
-            
-                $hidden="<input type='hidden' name='codigo' value='$codigo'/>";
-
-                $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
-                    <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Guardar cambios</button>";
-                
                 $formulario2='
                 <div class="contact_form"><br>
                     <label for="tipofactura">Tipo de factura</label>
@@ -115,6 +101,7 @@
                     
                     <label for="metodo">Método de pago</label>
                     <select id="metodo" name="metodo">
+                        <option value="NINGUNO">Ninguno</option>
                         <option value="EFECTIVO">Efectivo</option>
                         <option value="T/DEBITO">Débito</option>
                         <option value="T/CREDITO">Crédito</option>
@@ -126,52 +113,66 @@
                     <input type="text" id="bauche" name="bauche" maxlength="10" pattern="^\d{6,10}$" />
                 </div>
                 ';
+            
+                $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
+                <button target='_top' type='submit' name='codigo' value='$codigo' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
+                <button target='_top' type='submit' name='confirmar' value='confirmar' formtarget='_blank' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>";
+
+            }else{
+                $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";
+                $retencion="<input type='text' name='retencionporciento' value='' size='5px' />%";
+                $observacion="<textarea cols='25' rows='10' name='observacion' value='' placeholder='Observacion' ></textarea>";
+            
+                $hidden="<input type='hidden' name='codigo' value='$codigo'/>";
+
+                $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
+                    <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Guardar cambios</button>";
+               
             }
-         echo " </table>
-                <table class='factura3'>
-                    <tr>
-                        <td rowspan='8'>$observacion</td>
-                        <td colspan='2' id='espaciosubtotal'>Sub-total</td>
-                        <td>$subtotal</td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'>Adiciones, bonificaciones</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'>Monto total exento o exonerado</td>
-                        <td>$exe</td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'>I.V.A. base</td>
-                        <td>$iva</td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'>I.V.A.</td>
-                        <td>$impuesto</td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'>Retencion</td>
-                        <td>$retencion</td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'>Monto total del impuesto segun alicuota</td>
-                        <td>$alicuota</td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'><b>MONTO TOTAL</b></td>
-                        <td><b>$total</b></td>
-                    </tr>
-                </table>
+            echo "</table>
+                    <table class='factura3'>
+                        <tr>
+                            <td rowspan='8'>$observacion</td>
+                            <td colspan='2' id='espaciosubtotal'>Sub-total</td>
+                            <td>$subtotal</td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>Adiciones, bonificaciones</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>Monto total exento o exonerado</td>
+                            <td>$exe</td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>I.V.A. base</td>
+                            <td>$iva</td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>I.V.A.</td>
+                            <td>$impuesto</td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>Retencion</td>
+                            <td>$retencion</td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>Monto total del impuesto segun alicuota</td>
+                            <td>$alicuota</td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'><b>MONTO TOTAL</b></td>
+                            <td><b>$total</b></td>
+                        </tr>
+                    </table>
                     
                     $hidden
 
                     $formulario2
                     
-                <div align='center'>
-                   $boton 
-                </div>
-                
+                    <div align='center'>
+                       $boton 
+                    </div>
                 </form>
               ";
               ?>

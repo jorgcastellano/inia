@@ -137,5 +137,5 @@ $canvas = $dompdf->get_canvas();
 	 $canvas->close_object();
     $canvas->add_object($footer, "all");
 
-$dompdf->stream("ejemplo.php",array("Attachment" => 0));
+$dompdf->PDF::loadView("ejemplo.php",array("Attachment" => 0));
 ?>
