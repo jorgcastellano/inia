@@ -207,6 +207,12 @@ class cliente {
 
       }
 
+     public function consultar_clientes($mysqli,$reg,$lim)
+     {
+      $sql="SELECT * FROM cliente LIMIT $reg,$lim ";
+      return $res=$mysqli->query($sql);
+     }
+
      public function modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente)
      {       
 
