@@ -207,9 +207,9 @@ class cliente {
 
       }
 
-     public function consultar_clientes($mysqli)
+     public function consultar_clientes($mysqli,$reg,$lim)
      {
-      $sql="SELECT * FROM cliente";
+      $sql="SELECT * FROM cliente LIMIT $reg,$lim ";
       return $res=$mysqli->query($sql);
      }
 

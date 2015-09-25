@@ -21,7 +21,7 @@
             
             echo " <form method='POST' action='../../0/caja/clientes'>
                 <div class='buscadores'>
-                <input type='text' name='buscador' placeholder='Buscar factura por cédula' />
+                <input type='text' name='buscador' placeholder='Buscar cliente por cédula' />
                 <button class='botonmenu' type='submit' name='button'><i class='fa fa-search'></i> Buscar</button>
                 </div></form>";
 
@@ -32,7 +32,7 @@
             if (!empty($buscador)) {
                 $reg = $objcliente->consultar_cliente($mysqli,$buscador);
             
-           
+    
             echo "
 
                 <table>
@@ -53,7 +53,9 @@
 
             ";}else{   
 
-            $res=$objcliente->consultar_clientes($mysqli);
+            $registro=0;
+            $limite=50;
+            $res=$objcliente->consultar_clientes($mysqli,$registro,$limite);
 
             echo "
 
