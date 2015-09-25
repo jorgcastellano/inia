@@ -1,6 +1,6 @@
 <?php 
 	
-	define("HOST", "192.168.150.1");
+	define("HOST", "inia.jorgcastellano.net.ve");
  	//define("USER", "sec_user");
   	define("USER", "gproyecto");
   	define("PASSWORD", "123456");
