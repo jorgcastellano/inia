@@ -567,5 +567,11 @@ class factura_descripcion {
     $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
     return $res= $mysqli->query($sql);
   }
+
+  public function consultar_producto_cantidad($mysqli, $codigo)
+  {
+    $sql="SELECT * FROM fact_descripcion WHERE Cod_produ='$codigo'";
+    return $res= $mysqli->query($sql);
+  }
 }
 ?>
