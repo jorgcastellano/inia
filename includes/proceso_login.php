@@ -57,10 +57,10 @@
 			endif;
 		else :
 			//Error entre correos y contraseñas
-			header("location: ../0/home/index");
+			header("location: ../../0/home/iniciar_sesion");
 		endif;
 	else :
 		//En caso de que el formulario se encuentren vacios
-		header("location: ../0/home/index");
+		header("location: ../../0/home/iniciar_sesion");
 	endif;
 ?>

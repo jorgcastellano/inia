@@ -114,7 +114,8 @@
                 </div>
                 ';
             
-                $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
+                $boton="
+                <button type='submit' name='borrar' value='$codigo' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
                 <button target='_top' type='submit' name='codigo' value='$codigo' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
                 <button target='_top' type='submit' name='confirmar' value='confirmar' formtarget='_blank' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>";
 
@@ -127,7 +128,6 @@
 
                 $boton="<button type='submit' name='borrar' value='$codigo' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
                     <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Guardar cambios</button>";
-               
             }
             echo "</table>
                     <table class='factura3'>
