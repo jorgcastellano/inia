@@ -5,7 +5,7 @@
     $objfactura = new factura();
 
     if (!isset($bauche))
-        $bauche = "";
+        $bauche = 0;
 
     $objfactura->modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total, $observacion, $ivaporciento, $retencionporciento, $tipofactura, $metodo, $bauche);
 

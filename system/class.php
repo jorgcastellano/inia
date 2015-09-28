@@ -520,8 +520,6 @@ class factura {
     return $mysqli->query($sql);
   }
 
-
-
   public function consultar_facturas($mysqli) {
     $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente AND Estatus='impaga'";
     return $res= $mysqli->query($sql);
@@ -539,9 +537,15 @@ class factura {
   }
 
   public function modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total, $observacion, $ivaporciento, $retencionporciento, $tipofactura, $metodo, $bauche) {
-    $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche='$bauche', exento='$exento',
+    if ($bauche == 0){
+    $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche=NULL, exento='$exento',
                               base='$base', iva='$iva', retencion='$retencion', alicuota='$alicuota',Total='$total', observacion='$observacion', 
-                              ivaporc='$ivaporciento', exentoporc='$retencionporciento' WHERE Cod_fact='$codigo'";
+                              ivaporc='$ivaporciento', exentoporc='$retencionporciento', Estatus='paga' WHERE Cod_fact='$codigo'";
+    } else {
+          $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche='$bauche', exento='$exento',
+                              base='$base', iva='$iva', retencion='$retencion', alicuota='$alicuota',Total='$total', observacion='$observacion', 
+                              ivaporc='$ivaporciento', exentoporc='$retencionporciento', Estatus='paga' WHERE Cod_fact='$codigo'";
+    }
     $res=$mysqli->query($sql);
   }
 
@@ -550,8 +554,10 @@ class factura {
     $sql="SELECT factura.total FROM factura WHERE factura.Estatus='paga' AND factura.Tipo_pago='$Tipo_pago' AND Fecha LIKE '%$Fecha%'";
     return $res= $mysqli->query($sql);
   }
-
-
+  public function eliminar_factura($mysqli, $cod){
+    $sql = "DELETE FROM factura WHERE Cod_fact = '$cod'";
+    $mysqli->query($sql);
+  }
 }
 
 class factura_descripcion {
@@ -564,7 +570,7 @@ class factura_descripcion {
 
   public function consultar_factura($mysqli, $codigo)
   {
-    $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
+    $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E, fact_descripcion.Cod_produ FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
     return $res= $mysqli->query($sql);
   }
 }

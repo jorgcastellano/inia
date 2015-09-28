@@ -125,7 +125,7 @@
             
                 $hidden="<input type='hidden' name='codigo' value='$codigo'/>";
 
-                $boton="<button type='button' name='regresar' onclick=location='../../0/home/inicio' class='boton'><i class='fa fa-ban'></i> Cancelar</button>
+                $boton="<button type='submit' name='borrar' value='$codigo' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
                     <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Guardar cambios</button>";
                
             }
