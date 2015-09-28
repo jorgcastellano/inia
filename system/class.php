@@ -568,9 +568,9 @@ class factura_descripcion {
     return $res= $mysqli->query($sql);
   }
 
-  public function consultar_producto_cantidad($mysqli, $codigo)
+  public function consultar_producto_cantidad($mysqli, $codigo, $fecha)
   {
-    $sql="SELECT * FROM fact_descripcion WHERE Cod_produ='$codigo'";
+    $sql="SELECT factura.Fecha, factura.ivaporc, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad FROM factura, fact_descripcion WHERE factura.Cod_fact=fact_descripcion.Cod_fact AND factura.Fecha LIKE '%$fecha%' AND fact_descripcion.Cod_produ = '$codigo'";
     return $res= $mysqli->query($sql);
   }
 }
