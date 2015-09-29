@@ -8,17 +8,22 @@
         <?php include '../../layouts/head.php' ?>
     </head>
     <body>
-    	<?php include '../../system/menu.php' ?>
         <section class="bloque">
             <div>
-                <?php include '../../layouts/cabecera-body.php' ?>
+                <?php
+                    echo '
+                        <header>
+                            <section>   
+                                <img src="../../imgs/logo_new.jpg" />
+                            </section>
+                        </header>
+                    ';
+                ?>
                 <hgroup>
                     <h1>Procesar factura</h1>
                 </hgroup>
             </div>
-
             <?php
-
             if (!isset($_GET['codigo']) AND !isset($_POST['codigo']))
                 header('location: ../../0/home/inicio');
 
@@ -113,11 +118,17 @@
                     <input type="text" id="bauche" name="bauche" maxlength="10" pattern="^\d{6,10}$" />
                 </div>
                 ';
-            
+            ?>
+            <script type="text/javascript">
+            function salirpagina() {
+                window.location="../home/inicio";
+            }
+            </script>
+            <?php
                 $boton="
                 <button type='submit' name='borrar' value='$codigo' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
                 <button target='_top' type='submit' name='codigo' value='$codigo' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
-                <button target='_top' type='submit' name='confirmar' value='confirmar' formtarget='_blank' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>";
+                <button target='_top' type='button' name='confirmar' value='confirmar' formtarget='_blank' formaction='../../0/factura/factu.php' class='boton' onclick='salirpagina()'><i class='fa fa-check'></i> Pagado</button>";
 
             }else{
                 $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";
