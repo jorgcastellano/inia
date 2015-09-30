@@ -31,16 +31,7 @@
                 <p><b>Visión:</b> Ser una institución componente del sistema agrario nacional, dedicado a la innovación agroalimentaria, que fortalece los valores éticos socialista del modelo agrario vigente como instrumento para la nueva sociedad; que reconoce y promueve la cultura ancestral, tradicional, formal e informal en consolidación revolucionaria, científica y bolivariana (INIA, 2011).</p>
                 <p><b>Misión:</b> Impulsar la innovación tecnológica agroalimentaria para optimizar la función producción en el sistema agroalimentario nacional, bajo la estructura social  comunal, en el marco del modelo agrario socialista (INIA,  2011).</p>
                 <p><b>Objetivo:</b> El Instituto Nacional de Investigaciones Agrícolas (INIA) es un organismo público descentralizado del Ministerio de Agricultura y Tierras, cuyo objetivo prioritario es contribuir a la tecnificación del agro-nacional promoviendo el aumento de su rentabilidad, bajo condiciones de competitividad; con la participación de los sectores público y privado, nacional e internacional.</p>
-                <ol>
-                    <li><b>Usuarios:</b>
-                        <ol type="a">
-                            <li>laboratorio@gmail.com</li>
-                            <li>caja@gmail.com</li>
-                        </ol>
-                    </li>
-                    <li><b>Clave:</b> la misma de siempre</li>
-                    <li><b>Base de datos: <a href="http://jorgcastellano.net.ve/phpmyadmin/" target="_blank">phpMyAdmin</a></b></li>
-                </ol>
+
             </article> <!-- FINALIZACION DEL CUERPO O CONTENEDOR DE LA PAGINA -->
 
             <?php
