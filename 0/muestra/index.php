@@ -53,7 +53,7 @@
                 	$y=1;
                     $generar = new controllerCodigo();
                     $code1=$generar->generarCodigo($x);
-                    $code2=$generar->generarCodigo($y);if($reg[1]==$reg1[0]){ echo 'selected'; }
+                    $code2=$generar->generarCodigo($y);
 
                     endif;
                     endif;
