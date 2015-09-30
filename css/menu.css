@@ -216,7 +216,7 @@ button.botonmenu {
 
 /*Menu cPanel de usuario*/
 .cpanel, .cpanel ul{
-    z-index: 3000;
+    z-index: 50000;
     width: 200px;
     background-color: white;
     list-style: none outside none;
@@ -224,6 +224,7 @@ button.botonmenu {
     border-radius: 10px;
     margin: 0;
     padding: 0;
+    top: -9000;
 }
 .cpanel li{
     list-style-type: none;

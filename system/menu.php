@@ -16,7 +16,7 @@
 		                <div><li><button class="botonmenu" type="submit" name="button">Entrar</button></li></div>
 		            </form>
         	<?php 	elseif ($indexes == "Yes" AND $logeado == "On") :
-	            	echo '<div class="csesion"><li><i class="fa fa-user"></i> Usuario: '.$_SESSION['nombre'].'</li>';
+	            	echo '<div class="csesion"><li><i class="fa fa-user"></i> Usuario: '.$_SESSION['nombre'].' '.$_SESSION['apellido'].'</li>';
 	            	echo $arreglo2[0]."</li></div>";
 	        ?>
 	        <?php  	else :

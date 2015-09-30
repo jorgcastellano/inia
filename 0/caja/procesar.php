@@ -36,11 +36,18 @@
            
             $objfactura_des = new factura_descripcion();
             $res2=$objfactura_des->consultar_factura($mysqli, $codigo);
-            
-            echo "
 
-            <form method='POST' action='procesar'>
-                <table class='factura2'>
+            ?>
+                <script language="JavaScript" type="text/javascript">
+                function salirpagina() {
+                    
+                    setTimeout("location.href='../home/inicio'", 500);
+                }
+                </script>
+
+            <form method='POST' action='procesar' onsubmit='salirpagina()'>
+            <?php
+            echo "    <table class='factura2'>
                     <tr>
                         <td>CANTIDAD</td>
                         <td>DESCRIPCION</td>
@@ -118,17 +125,12 @@
                     <input type="text" id="bauche" name="bauche" maxlength="10" pattern="^\d{6,10}$" />
                 </div>
                 ';
-            ?>
-            <script type="text/javascript">
-            function salirpagina() {
-                window.location="../home/inicio";
-            }
-            </script>
-            <?php
+
                 $boton="
                 <button type='submit' name='borrar' value='$codigo' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
-                <button target='_top' type='submit' name='codigo' value='$codigo' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
-                <button target='_top' type='button' name='confirmar' value='confirmar' formtarget='_blank' formaction='../../0/factura/factu.php' class='boton' onclick='salirpagina()'><i class='fa fa-check'></i> Pagado</button>";
+                <button type='submit' name='codigo' value='$codigo' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
+                <button type='submit' name='confirmar' value='confirmar' formtarget='_blank' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>
+                ";
 
             }else{
                 $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";

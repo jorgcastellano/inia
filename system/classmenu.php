@@ -34,7 +34,7 @@
 
 		public function cerrar_sesion(){
 			$menuh = new menu();
-			$menuh->cargarElemento("fa-reorder", "../home/cerrar_sesion", "");
+			$menuh->cargarElemento("fa-sign-out", "../../0/home/cerrar_sesion", "");
             return $menuh->mostrar();
 		}
 		public function menuNivel13() {
