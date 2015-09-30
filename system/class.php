@@ -570,7 +570,7 @@ class factura_descripcion {
 
   public function consultar_factura($mysqli, $codigo)
   {
-    $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E, fact_descripcion.Cod_produ FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
+    $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
     return $res= $mysqli->query($sql);
   }
 

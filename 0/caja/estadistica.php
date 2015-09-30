@@ -63,12 +63,12 @@
             
 
             echo "
-                  <table class='factura2'>
+                  <table>
                     <tr>
-                        <td>Ventas anuales</td>
-                        <td>Donaciones anuales</td>
-                        <td>Ventas mensuales</td>
-                        <td>Donaciones mensuales</td>
+                        <td>VENTAS ANUALES</td>
+                        <td>DONACIONES ANUALES</td>
+                        <td>VENTAS MENSUALES</td>
+                        <td>DONACIONES MENSUALES</td>
                     </tr>
                     <tr>
                         <td>$ventaanual1</td>
@@ -79,6 +79,55 @@
                   </table>
 
                  ";
+
+
+            $objproducto= new producto();
+            $res5=$objproducto->consulta_completo($mysqli);
+            $objfactura=new factura_descripcion();
+            
+
+            echo "<table>
+                    <tr>
+                        <td>PRODUCTO</td>
+                        <td>CANTIDAD VENDIDO</td>
+                        <td>TOTAL BS</td>
+                        <td>TOTAL IVA</td>
+                    </tr>
+
+            ";
+
+            while ($reg = $res5->fetch_array()) {
+
+                $anual = date("Y");
+                $codigo=$reg[0];
+                $res6=$objfactura->consultar_producto_cantidad($mysqli,$codigo,$anual);
+                $filas=mysqli_num_rows($res6);
+                
+                if($filas>0){
+
+                $cantidad='';
+                while($reg2 = $res6->fetch_array()){
+
+                    $cantidad+=$reg2[3];
+                    $costo_unidad=$reg2[4];
+                    $iva=$reg2[1];
+                }
+
+                $totalbs=$cantidad*$costo_unidad;
+                $totaliva=($totalbs*$iva)/100;
+
+            echo "
+                    <tr>
+                        <td>$reg[1]</td>
+                        <td>$cantidad</td>
+                        <td>$totalbs</td>
+                        <td>$totaliva</td>
+                    </tr>  
+            ";              
+               } 
+            }
+
+            echo "</table>";
 
 
 
