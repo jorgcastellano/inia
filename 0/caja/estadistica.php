@@ -63,7 +63,7 @@
             
 
             echo "
-                  <table>
+                  <table class='estadisticas-caja-1'>
                     <tr>
                         <td>VENTAS ANUALES</td>
                         <td>DONACIONES ANUALES</td>
@@ -86,12 +86,12 @@
             $objfactura=new factura_descripcion();
             
 
-            echo "<table>
+            echo "<table class='estadisticas-caja-2'>
                     <tr>
                         <td>PRODUCTO</td>
-                        <td>CANTIDAD VENDIDO</td>
-                        <td>TOTAL BS</td>
+                        <td>CANT. VENDIDO</td>
                         <td>TOTAL IVA</td>
+                        <td>TOTAL BS</td>
                     </tr>
 
             ";
@@ -120,8 +120,8 @@
                     <tr>
                         <td>$reg[1]</td>
                         <td>$cantidad</td>
-                        <td>$totalbs</td>
                         <td>$totaliva</td>
+                        <td>$totalbs</td>
                     </tr>  
             ";              
                } 
