@@ -39,13 +39,13 @@
 
             ?>
                 <script language="JavaScript" type="text/javascript">
-                function salirpagina() {
-                    
-                    setTimeout("location.href='../home/inicio'", 500);
+                    function salirpagina() {
+                        alert("compa");
+                    }
                 }
                 </script>
 
-            <form method='POST' action='procesar' onsubmit='salirpagina()'>
+            <form method='POST' action='procesar' onsubmit='<?php if (isset($funcionsalir)) {echo $funcionsalir;} ?>'>
             <?php
             echo "    <table class='factura2'>
                     <tr>
@@ -91,6 +91,7 @@
                 $alicuota=$impuesto-$retencion;
                 $total=$subtotal+$alicuota;
 
+
                 $hidden="<input type='hidden' name='codigo' value='$codigo'/>
                     <input type='hidden' name='exento' value='$exe'/>
                     <input type='hidden' name='base' value='$iva'/>
@@ -101,6 +102,7 @@
                     <input type='hidden' name='observacion' value='$observacion'/>
                     <input type='hidden' name='ivaporciento' value='$ivaporciento'/>
                     <input type='hidden' name='retencionporciento' value='$retencionporciento'/>
+                    <input type='hidden' name='funcionsalir' value='salirpagina()'/>
                     ";
 
                 $formulario2='
