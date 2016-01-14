@@ -47,6 +47,20 @@
             	</br>
             	<label for="Existencia"> Cantidad de Producto </label>
             	<input required type="num" name="Existencia" id="Existencia" value="<?php if(isset($reg)) echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="7" />
+                
+                <select name="um" required>
+                        <option value="">---Seleccione---</option>
+                        <option value="1">Por unidad C/U</option>
+                    <optgroup label="Volumen liquido">
+                        <option value="2">Mililitro</option>
+                        <option value="3">Litro</option>
+                        <option value="4">Galon</option>
+                    </optgroup>
+                    <optgroup label="Masa">
+                        <option value="5">Gramos</option>
+                        <option value="6">Kilogramos</option>
+                    </optgroup>
+                </select>
                 </br>
                 <label for="Precio_produ"> Precio de Producto </label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="7" />
