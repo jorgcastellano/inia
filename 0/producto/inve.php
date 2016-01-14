@@ -50,7 +50,7 @@
                   while ($resultado = $result->fetch_array()) {
                   echo "<tr>
                   <td>".$resultado[1]."</td>";
-                  echo "<td>".$resultado[2]."</td>";
+                  echo "<td>".$resultado[2].$resultado[5]."</td>";
                   echo "<td>".$resultado[3]."</td>";
                   echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td></tr>";
                   }
@@ -72,7 +72,7 @@
                                    </tr> ";
                                    echo "<tr>
                           <td>".$resultado[1]."</td>";
-                          echo "<td>".$resultado[2]."</td>";
+                          echo "<td>".$resultado[2].$resultado[5]."</td>";
                           echo "<td>".$resultado[3]."</td>";
                           echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td></tr>
                            </table>";
@@ -96,7 +96,7 @@
                   {
                     echo "<tr>
                     <td>".$resultado[1]."</td>";
-                    echo "<td>".$resultado[2]."</td>";
+                    echo "<td>".$resultado[2].$resultado[5]."</td>";
                     echo "<td>".$resultado[3]."</td>";
                     echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td></tr>";
                   }
