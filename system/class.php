@@ -4,11 +4,11 @@ require_once '../../includes/conexion_bd.php';
 
 class producto 
   {
-  public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ, $iva)
+  public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ, $iva, $um)
   {
-    $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ, I_E)
-    VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ', '$iva')";
-  $mysqli->query($sql);
+    $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ, I_E, um)
+    VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ', '$iva', '$um')";
+  $mysqli->query($sql);  
   require_once 'error_insert.php';
   if($mysqli->affected_rows>0){echo "El nuevo producto se ha registrado con exito";} else { echo "No se ha podido registrar el nuevo producto";}
   }
