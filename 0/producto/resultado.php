@@ -44,9 +44,19 @@
                         <td>CANTIDAD</td>
                         <td>PRECIO</td>
                     </tr>
+                    <?php
+                              if($reg[5]==1){ $unidad="C/U"; }
+                              if($reg[5]==2){ $unidad="mls"; }
+                              if($reg[5]==3){ $unidad="Lts"; }
+                              if($reg[5]==4){ $unidad="Galones"; }
+                              if($reg[5]==5){ $unidad="Gr"; }
+                              if($reg[5]==6){ $unidad="Kg"; }
+
+                    ?>
+
                     <tr>
                         <td><?php if(isset($reg)) echo $reg[1]?></td>
-                        <td><?php if(isset($reg)) echo $reg[2]?></td>
+                        <td><?php if(isset($reg)) echo "".$reg[2]." ".$unidad; ?></td>
                         <td><?php if(isset($reg)) echo $reg[3]?></td>
                     </tr>
 

@@ -48,10 +48,19 @@
                        </tr> ";
                  $result = $objproducto->buscadorlike($mysqli, $buscador);
                   while ($resultado = $result->fetch_array()) {
+
+
+                    if($resultado[5]==1){ $unidad="c/u"; }
+                    if($resultado[5]==2){ $unidad="mls"; }
+                    if($resultado[5]==3){ $unidad="Lts"; }
+                    if($resultado[5]==4){ $unidad="Galones"; }
+                    if($resultado[5]==5){ $unidad="Gr"; }
+                    if($resultado[5]==6){ $unidad="Kg"; }
+
                   echo "<tr>
                   <td>".$resultado[1]."</td>";
-                  echo "<td>".$resultado[2].$resultado[5]."</td>";
-                  echo "<td>".$resultado[3]."</td>";
+                  echo "<td>".$resultado[2]." ".$unidad."</td>";
+                  echo "<td>".$resultado[3]." Bs"."</td>";
                   echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td></tr>";
                   }
               echo "</table>";
@@ -63,6 +72,13 @@
                           if (empty($resultado))
                               echo "No existe el producto buscado";
                           else {
+
+                              if($resultado[5]==1){ $unidad="c/u"; }
+                              if($resultado[5]==2){ $unidad="mls"; }
+                              if($resultado[5]==3){ $unidad="Lts"; }
+                              if($resultado[5]==4){ $unidad="Galones"; }
+                              if($resultado[5]==5){ $unidad="Gr"; }
+                              if($resultado[5]==6){ $unidad="Kg"; }
                                echo "  <table class='anapro'>
                                   <tr>
                                         <td>Nombre</td>
@@ -72,8 +88,8 @@
                                    </tr> ";
                                    echo "<tr>
                           <td>".$resultado[1]."</td>";
-                          echo "<td>".$resultado[2].$resultado[5]."</td>";
-                          echo "<td>".$resultado[3]."</td>";
+                          echo "<td>".$resultado[2]." ".$unidad."</td>";
+                          echo "<td>".$resultado[3]." Bs"."</td>";
                           echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td></tr>
                            </table>";
                                 }
@@ -94,10 +110,18 @@
                   $result = $objproducto->consulta_completo($mysqli);
                   while ($resultado = $result->fetch_array()) 
                   {
+                    
+                    if($resultado[5]==1){ $unidad="c/u"; }
+                    if($resultado[5]==2){ $unidad="mls"; }
+                    if($resultado[5]==3){ $unidad="Lts"; }
+                    if($resultado[5]==4){ $unidad="Galones"; }
+                    if($resultado[5]==5){ $unidad="Gr"; }
+                    if($resultado[5]==6){ $unidad="Kg"; }
+                    
                     echo "<tr>
                     <td>".$resultado[1]."</td>";
-                    echo "<td>".$resultado[2].$resultado[5]."</td>";
-                    echo "<td>".$resultado[3]."</td>";
+                    echo "<td>".$resultado[2]." ".$unidad."</td>";
+                    echo "<td>".$resultado[3]." Bs"."</td>";
                     echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td></tr>";
                   }
                   echo "</table>";

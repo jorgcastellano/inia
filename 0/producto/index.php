@@ -50,15 +50,15 @@
                 
                 <select name="um" required>
                         <option value="">---Seleccione---</option>
-                        <option value="1">Por unidad C/U</option>
+                        <option value="1"<?php if ($reg[5] == "1") echo "selected"; ?>>Por unidad c/u</option>
                     <optgroup label="Volumen liquido">
-                        <option value="2">Mililitro</option>
-                        <option value="3">Litro</option>
-                        <option value="4">Galon</option>
+                        <option value="2"<?php if ($reg[5] == "2") echo "selected"; ?>>Mililitro</option>
+                        <option value="3"<?php if ($reg[5] == "3") echo "selected"; ?>>Litro</option>
+                        <option value="4"<?php if ($reg[5] == "4") echo "selected"; ?>>Galon</option>
                     </optgroup>
                     <optgroup label="Masa">
-                        <option value="5">Gramos</option>
-                        <option value="6">Kilogramos</option>
+                        <option value="5"<?php if ($reg[5] == "5") echo "selected"; ?>>Gramos</option>
+                        <option value="6"<?php if ($reg[5] == "6") echo "selected"; ?>>Kilogramos</option>
                     </optgroup>
                 </select>
                 </br>

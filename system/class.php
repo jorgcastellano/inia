@@ -38,9 +38,9 @@ class producto
     $sql = "SELECT * FROM producto WHERE Nom_produ LIKE ('%$var%')";
     return $mysqli->query($sql);
   }
-  public function modificar_produ($mysqli,$Cod_produ, $Nom_produ, $Existencia, $Precio_produ, $iva)
+  public function modificar_produ($mysqli,$Cod_produ, $Nom_produ, $Existencia, $Precio_produ, $iva, $um)
   {
-    $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ', I_E='$iva' WHERE Cod_produ='$Cod_produ'";
+    $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ', I_E='$iva', um='$um' WHERE Cod_produ='$Cod_produ'";
     $mysqli->query($sql);
     require_once 'error_update.php';
     if($mysqli->affected_rows > 0);
