@@ -61,18 +61,16 @@
 			switch ($xa) {
 				case 0:
 					$subElementos->cargarElemento("fa-check-square-o", "../../0/home/estatus", " Activar/Desactivar");
-					$subElementos->cargarElemento("fa-flask", "../../0/laboratorio/index", " Laboratorios");
 					$subElementos->cargarElemento("fa-bug", "../../0/analisis/index", " Análisis");
 					return $subElementos->mostrar();
 					break;
 				case 1:
-					$subElementos->cargarElemento("fa-gift", "../../0/producto/index", " Nuevos productos");
 					$subElementos->cargarElemento("fa-search", "../../0/producto/inve", " Inventario");
+					$subElementos->cargarElemento("fa-gift", "../../0/producto/index", " Nuevos productos");
 					return $subElementos->mostrar();
 					break;
 				
 				case 3:
-					$subElementos->cargarElemento("fa-user", "../../0/home/aceptacion_usuario", " Aceptación de usuarios");
 					$subElementos->cargarElemento("fa-list", "../../0/home/gestion_usuario", " Gestion de usuarios");
 					$subElementos->cargarElemento("fa-cloud-download", "#", " Respaldar");
 					$subElementos->cargarElemento("fa-cloud-upload", "#", " Restaurar");
