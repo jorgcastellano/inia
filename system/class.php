@@ -299,6 +299,14 @@ class ayudante
     include_once 'error_update.php';
 
     }
+
+    public function actualizar_iva($mysqli,$iva)
+    {
+    $sql="UPDATE ayudante SET iva='$iva'";
+    $res=$mysqli->query($sql);
+    include_once 'error_update.php';
+
+    }
 }
 
 class suelo {
