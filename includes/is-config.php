@@ -1,10 +1,10 @@
 <?php
 
-	define("HOST", "inia.jorgcastellano.net.ve");
+	define("HOST", "localhost");
 	//define("USER", "sec_user");
-	define("USER", "isinia");
+	define("USER", "root");
 	//define("PASSWORD", "123456");
-	define("PASSWORD", "Qzd7PZHT6fLtLxQm");
+	define("PASSWORD", "123456");
 	define("DATABASE", "inicio_seguro");
 
 	define("CAN_REGISTER", "any");
