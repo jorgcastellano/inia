@@ -72,7 +72,7 @@
 				
 				case 3:
 					$subElementos->cargarElemento("fa-list", "../../0/home/gestion_usuario", " Gestion de usuarios");
-					$subElementos->cargarElemento("fa-cloud-download", "#", " Respaldar");
+					$subElementos->cargarElemento("fa-cloud-download", "../../includes/respaldo", " Respaldar");
 					$subElementos->cargarElemento("fa-cloud-upload", "#", " Restaurar");
 					return $subElementos->mostrar();
 					break;

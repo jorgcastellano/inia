@@ -13,7 +13,7 @@
                 <?php
                     echo '
                         <header>
-                            <section>   
+                            <section>
                                 <img src="../../imgs/logo_new.jpg" />
                             </section>
                         </header>
