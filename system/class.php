@@ -248,9 +248,9 @@ class finca {
       return $mysqli->query($sql);
 
     }
-    public function modificar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia) {
+    public function modificar_finca($mysqli, $Ced_cliente, $cod_finca, $Nom_fin, $Estado, $Municipio,$Parroquia) {
 
-      $sql="UPDATE finca SET finca.Nom_fin='$Nom_fin',finca.Estado='$Estado',finca.Municipio='$Municipio',finca.Parroquia='$Parroquia'  WHERE finca.Ced_cliente='$Ced_cliente'";
+      $sql="UPDATE finca SET finca.Nom_fin='$Nom_fin',finca.Estado='$Estado',finca.Municipio='$Municipio',finca.Parroquia='$Parroquia'  WHERE finca.Ced_cliente='$Ced_cliente' AND finca.Cod_fin='$cod_finca'";
       $res=$mysqli->query($sql);
       if($mysqli->affected_rows>0){echo "La finca se modifico con exito";} else { echo "No se realizó ningún cambio a la finca";}
     }

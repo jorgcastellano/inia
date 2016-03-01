@@ -24,18 +24,45 @@
                 </hgroup>
             </div>
             <?php
-            if (!isset($_GET['codigo']) AND !isset($_POST['codigo']))
-                header('location: ../../0/home/inicio');
 
-            extract($_POST);
-            if ($_GET['codigo']) :
-                $codigo = $_GET['codigo'];
-            endif;
-            
-            include_once '../../system/class.php';
-           
-            $objfactura_des = new factura_descripcion();
-            $res2=$objfactura_des->consultar_factura($mysqli, $codigo);
+                extract($_POST);
+                include_once '../../system/class.php';
+                $objfactdescrip = new factura_descripcion();
+
+                //Inciamos una transacción
+                if (isset($comprado)) :
+                    $sql = "BEGIN";
+                    $mysqli->query($sql);
+                
+
+                    //Invocacion de los objetos
+                    $objcliente = new cliente();
+                    $objproducto = new producto();
+                    $objfactura = new factura();
+
+                    //Consulta de clientes y productos
+                    $ress = $objcliente->consultar_cliente($mysqli, $comprado);
+                    $result = $objproducto->consulta_completo($mysqli);
+
+                    //Proceso de compra
+                    //Primero hacer la factura básica
+                    $objfactura -> facturar($mysqli, $ress[1], $total);
+                    $id = $objfactura -> consultar_factura_insertada($mysqli, $ress[1]);
+                    
+                    //Luego la descripcion o compras actualizando el inventario de una vez
+                    $i = 0;
+                    while ($resultado = $result->fetch_array()) :
+                      if (!empty($cantidad[$i])) :
+                        $precio = ($resultado[3] * $cantidad[$i]);
+                        $objfactdescrip->facturar_productos($mysqli, $id[0], $resultado[1], $cantidad[$i], $resultado[3], $precio, $resultado[0]);
+                        $nuevaexistencia = $resultado[2] - $cantidad[$i];
+                        $objproducto->actualizar_existencia($mysqli, $nuevaexistencia, $resultado[0]);
+                      endif;
+                      $i++;
+                    endwhile;
+                endif;
+
+            $res2=$objfactdescrip->consultar_factura($mysqli, $id[0]);
 
             ?>
                 <script language="JavaScript" type="text/javascript">
@@ -90,7 +117,6 @@
                 $retencion=($impuesto*$retencionporciento)/100;
                 $alicuota=$impuesto-$retencion;
                 $total=$subtotal+$alicuota;
-
 
                 $hidden="<input type='hidden' name='codigo' value='$codigo'/>
                     <input type='hidden' name='exento' value='$exe'/>

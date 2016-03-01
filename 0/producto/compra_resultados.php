@@ -16,7 +16,7 @@
         				<h1>Listado de productos a comprar</h1>
         			</hgroup>
         		</div>
-      <form method="POST" action="compra_completa">
+      <form method="POST" action="../caja/procesar">
         <?php
           extract($_POST);
           include_once '../../system/class.php';
