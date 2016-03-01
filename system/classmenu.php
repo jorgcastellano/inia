@@ -42,9 +42,20 @@
 			$elementos->cargarElemento("fa-money", "../../0/home/inicio", " Facturas impagas");
 			$elementos->cargarElemento("fa-search", "../../0/producto/inve", " Inventario");
 			$elementos->cargarElemento("fa-bar-chart", "../../0/caja/estadistica", " Estadísticas");
-			$elementos->cargarElemento("fa-gift", "../../0/producto/index", " Nuevos productos");
-
-			return $elementos -> mostrar();
+			$elementos->cargarElemento("fa-gift", "#", " Registro");
+			
+			return $elementos -> mostrar();		
+			
+		}
+		public function menuNivel14($xa){
+			$subElementos = new menu();
+			switch ($xa) {
+				case 3:
+					$subElementos->cargarElemento("fa-gift", "../../0/producto/index", " Nuevos productos");
+					$subElementos->cargarElemento("fa-gift", "../../0/producto/iva", " Nuevo IVA");
+					return $subElementos->mostrar();
+					break;
+			}
 		}
 
 		public function menuNivel1(){ 
@@ -56,9 +67,9 @@
 
 			return $elementos -> mostrar();
 		}
-		public function menuNivel2($xa){
+		public function menuNivel2($xb){
 			$subElementos = new menu();
-			switch ($xa) {
+			switch ($xb) {
 				case 0:
 					$subElementos->cargarElemento("fa-check-square-o", "../../0/home/estatus", " Activar/Desactivar");
 					$subElementos->cargarElemento("fa-bug", "../../0/analisis/index", " Análisis");

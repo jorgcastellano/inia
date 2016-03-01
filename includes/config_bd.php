@@ -1,8 +1,8 @@
 <?php 
 	
-	define("HOST", "localhost");
+	define("HOST", "inia.jorgcastellano.net.ve");
  	//define("USER", "sec_user");
-  	define("USER", "root");
+  	define("USER", "gproyecto");
   	define("PASSWORD", "123456");
   	//define("PASSWORD", "AHxySPDT7U8mNTdE");
   	define("DATABASE", "proyecto3");

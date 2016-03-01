@@ -30,11 +30,21 @@
 			elseif (($logeado == 'On') AND ($_SESSION['privilegios'] == 3)) {
 				echo '<ul class="menuHorizontal">';
 				$array1 = array();
-				$menu2 = new controladorMenu();
-            	$array1 = $menu2->menuNivel13();
+				$array2 = array();
+				$menu3 = new controladorMenu();
+            	$array1 = $menu3->menuNivel13();
 
-				for ($i=0; $i < count($array1); $i++)
-            		echo "$array1[$i]</li>";
-            	echo "</ul>";
+				for ($i=0; $i < count($array1); $i++) {
+            		echo $array1[$i];
+            		$array2 = $menu3->menuNivel14($i);
+            		if (!empty($array2)) {
+            			echo '<ul>';
+            			for ($x=0; $x < count($array2); $x++)
+            				echo $array2[$x].'</li>';
+            			echo '</ul>';
+            		}
+            		echo '</li>';
+				}
+				echo '</ul>';
 			}
         ?>
