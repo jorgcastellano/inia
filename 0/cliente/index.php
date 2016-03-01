@@ -54,7 +54,10 @@
 					<textarea required name="Dire_cliente" id="Dire_cliente"  title="" cols="30" rows="5" maxlength="100" placeholder="Por Favor Especifique aqui la dirección del cliente"><?php echo $reg[6]?></textarea>
 					</br>
                  
-                <?php if ($_SESSION['privilegios'] == 1) include_once 'lib_finca.php'; ?>
+                <?php if ($_SESSION['privilegios'] == 1) :
+                	include_once 'lib_finca.php';
+
+                endif?>
                 <div align="center">
 					<button type="reset" class="boton" name="reset" title="Click aquí para quitar todos los datos que fueron llenados en el formulario"><i class="fa fa-eraser" ></i> Limpiar formulario</button>
 					<?php if(isset($Modificar)): ?><button type="submit" formaction="resultados" name="Actualizar" value="<?php echo $reg[0]?>" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
