@@ -53,8 +53,8 @@
 				<label for="Dire_cliente">Dirección</label>
 					<textarea required name="Dire_cliente" id="Dire_cliente"  title="" cols="30" rows="5" maxlength="100" placeholder="Por Favor Especifique aqui la dirección del cliente"><?php echo $reg[6]?></textarea>
 					</br>
-                 
-<<<<<<< HEAD
+                 		
+
                 <?php
                 if ($_SESSION['privilegios'] == 1) :
                 	while($reg3 = $reg2->fetch_array()) :
@@ -62,13 +62,13 @@
                 		echo "<input type='hidden' name='cod_finca[]' value='$reg3[0]'>";
                 	endwhile;
                 endif;
-                ?>
-=======
-                <?php if ($_SESSION['privilegios'] == 1) :
-                	include_once 'lib_finca.php';
 
-                endif?>
->>>>>>> 58fd3cc32c175b1f236d8e2f6b2b1009fd8eeb19
+                //<label for="persona" title="Seleccione si es una persona juridica">Persona juridica</label>
+				//<input type="checkbox" name="Nat_jur[]" value="1" title="Seleccione si es una persona juridica"/>
+					
+                ?>
+
+
                 <div align="center">
 					<button type="reset" class="boton" name="reset" title="Click aquí para quitar todos los datos que fueron llenados en el formulario"><i class="fa fa-eraser" ></i> Limpiar formulario</button>
 					<?php if(isset($Modificar)): ?><button type="submit" formaction="resultados" name="Actualizar" value="<?php echo $reg[0]?>" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>

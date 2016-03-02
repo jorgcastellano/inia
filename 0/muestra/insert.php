@@ -36,8 +36,7 @@
                        if($RegistrarS=='Inicio'): 
                         
                         
-                        echo $Cod_sol;
-                        echo $Ced_cliente;
+                        
                         $sol = new solicitud();
                         $sol->registrar_solicitud($mysqli,$Cod_sol,$Ced_cliente);
                        
@@ -62,8 +61,7 @@
                         if($RegistrarS=='ContinueS'): 
                         
                         
-                        echo $Cod_sol;
-                        echo $Ced_cliente;
+                        
                        
                        
 
@@ -189,8 +187,7 @@
         
                         if($RegistrarF=='Inicio'):
         
-                        echo $Cod_sol;
-                        echo $Ced_cliente;
+                        
                         $sol = new solicitud();
                         $sol->registrar_solicitud($mysqli,$Cod_sol,$Ced_cliente);
                         
@@ -213,8 +210,7 @@
 
                         if($RegistrarF=='ContinueF'):
         
-                        echo $Cod_sol;
-                        echo $Ced_cliente;
+                       
                         
                         
 
