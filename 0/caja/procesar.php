@@ -29,11 +29,7 @@
                 include_once '../../system/class.php';
                 $objfactdescrip = new factura_descripcion();
 
-                //Inciamos una transacción
-                if (isset($comprado)) :
-                    $sql = "BEGIN";
-                    $mysqli->query($sql);
-                
+                if (isset($comprado)) :                
 
                     //Invocacion de los objetos
                     $objcliente = new cliente();
