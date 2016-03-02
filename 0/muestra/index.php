@@ -22,6 +22,7 @@
 					
                     require_once '../../system/class.php';
                     extract($_POST);
+                    echo $Ced_cliente;
 
 //####################################################################################################################################################
 //###########################  #  # ## # __ #  __#     # __ #### #######  __# ## # __ # ####    ######################################################
@@ -40,23 +41,25 @@
                     $fertilizante = explode("|", $reg[17]);
 
                     $fecha = explode("-", $reg[8]);
-                    else:
+                    endif;
                     
-                    if($RegistrarS=='Continue') :
+                    if($RegistrarS=='ContinueS') :
 
                     $x=2;
                     $generar = new controllerCodigo();
                     $code1=$generar->generarCodigo($x);
+                    endif;
                     
-                    else:
+                    if($RegistrarS=='NoContinueS'||$RegistrarS=='Inicio'):
                 	$x=2;
                 	$y=1;
                     $generar = new controllerCodigo();
                     $code1=$generar->generarCodigo($x);
                     $code2=$generar->generarCodigo($y);
+                    $Cod_sol='';
 
                     endif;
-                    endif;
+                   
 
                     $sql='SELECT * FROM analisis WHERE analisis.tipo = "1" AND analisis.estatus = "On"';
                     $res3= $mysqli->query($sql);
@@ -182,9 +185,9 @@
                     <label for="Finca" title="">Finca</label>
                     		<select name="finca">
                     			<option value="">Seleccione</option>
-                    		<?php while ($reg8 = $resfin->fetch_array()) { 
-                    		echo "<option value='$reg8[0]' if($reg8[0]==$reg1[22]){ echo 'selected'; }>$reg8[2]</option>";
-                    		  }?>
+                    		<?php while ($reg8 = $resfin->fetch_array()) { ?>
+                    				<option value="<?php echo $reg8[0] ?>" <?php if($reg8[0]==$reg[22]){ echo 'selected'; } ?>><?php echo $reg8[2] ?> </option>
+                    		<?php  } ?>
 
                     		</select>
                             </br></br>
@@ -192,21 +195,19 @@
 					<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 						<?php while ($reg2 = $res3->fetch_array()) { ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
-						<?php } 
+						<?php } ?>
 						
 
    
-                        if($RegistrarS=='Inicio') : ?>
-                        <input type='hidden' name='Inicio' value='' />
-                    	<?php endif;?>
-                    	
+                        
                         </br></br>
 						<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
                         <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
 						<input type="hidden" name="Cod_suelo" value="<?php echo $code1.$reg[0]; ?>" />
 						<button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-						<?php if($RegistrarS=='ModificarS'): ?><button type="submit" name="ActualizarS" value="Actualizars" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
-                    	<?php else : ?><button type="submit" name="RegistrarS" value="RegistrarS" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
+						<?php if($RegistrarS=='ModificarS'): ?><button type="submit" name="ActualizarS" value="Actualizars" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
+                    	<?php if($RegistrarS=='ContinueS'): ?><button type="submit" name="RegistrarS" value="ContinueS" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
+                    	<?php if($RegistrarS=='Inicio'||$RegistrarS=='NoContinueS'): ?><button type="submit" name="RegistrarS" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 								
 				</form>
                 <?php  endif; 
@@ -233,28 +234,33 @@
                     $fecha2 = explode("-", $reg[10]);
 
                     
-                    else:
+                    endif;
 
-                    if($RegistrarF=='Continue') :
+                    if($RegistrarF=='ContinueF') :
 
                     $x=3;
                     $generar = new controllerCodigo();
                     $code1=$generar->generarCodigo($x);
                     
-                    else:
+                    endif;
+                    if($RegistrarF=='NoContinueF'||$RegistrarF=='Inicio'):
                     
                 	$x=3;
                 	$y=1;
                     $generar = new controllerCodigo();
                     $code1=$generar->generarCodigo($x);
                     $code2=$generar->generarCodigo($y);
+                    $Cod_sol='';
                     
 
                     endif;
-                    endif;
+                    
 
                     $sql='SELECT * FROM analisis WHERE analisis.tipo = "2" AND analisis.estatus = "On"';
                     $res3= $mysqli->query($sql);
+
+                    $sql="SELECT * FROM finca WHERE Ced_cliente='$Ced_cliente'";
+					$resfin= $mysqli->query($sql);
 
                     
                                    
@@ -488,24 +494,31 @@
 							<label for="Observaciones">Observaciones</label>
 									<textarea name="Observaciones" id="Observaciones" title="" cols="30" rows="5" maxlength="50" placeholder=""><?php echo $reg[33] ?></textarea>	 
 									</br></br>
+
+							<label for="Finca" title="">Finca</label>
+                    			<select name="finca">
+                    				<option value="">Seleccione</option>
+                    				<?php while ($reg8 = $resfin->fetch_array()) { ?>
+                    				<option value="<?php echo $reg8[0] ?>" <?php if($reg8[0]==$reg[34]){ echo 'selected'; } ?>><?php echo $reg8[2] ?> </option>
+                    				<?php  } ?>
+
+								</select>
+                            </br></br>
 							<?php $pre = explode("|", $codi_analisis); ?> 
 							<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 						<?php while ($reg2 = $res3->fetch_array()) { ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
-						<?php } 
-
-							if($RegistrarF=='Inicio') : ?>
-                        	<input type='hidden' name='Inicio' value='' />
-                    		<?php endif;?>
+						<?php } ;?>
 							     </br></br>
 								<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
 								<input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
                                 <input type="hidden" name="Cod_fito" value="<?php echo $code1.$reg[0]; ?>" />
 								<button class="boton" type="reset" value="Borrar" name="reset" id="reset"><i class="fa fa-eraser"></i> Limpiar</button>
-								<?php if($RegistrarF=='ModificarF'): ?><button type="submit" name="ActualizarF" value="ActualizarF" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
-                    			<?php elseif($RegistrarF=='Continue') :  ?><button type="submit" name="RegistrarF" value="Continue" class="boton" ><i class="fa fa-check"></i> Registrar</button>
-								<?php else: ?><button type="submit" name="RegistrarF" value="RegistrarF" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>					
+								<?php if($RegistrarF=='ModificarF'): ?><button type="submit" name="ActualizarF" value="ActualizarF" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
+                    			<?php if($RegistrarF=='ContinueF'): ?><button type="submit" name="RegistrarF" value="ContinueF" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
+                    			<?php if($RegistrarF=='Inicio'||$RegistrarF=='NoContinueF'): ?><button type="submit" name="RegistrarF" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
+									
 				</form>
                 <?php endif; ?>
             

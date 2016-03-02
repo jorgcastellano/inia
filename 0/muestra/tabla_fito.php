@@ -147,5 +147,6 @@
     <tr><th>Cultivo anterior: </th><td><?php echo $reg[31] ?></td></tr>
     <tr><th>Condiciones agroclimaticas: </th><td><?php echo $reg[32] ?></td></tr>
     <tr><th>Observaciones: </th><td><?php echo $reg[33] ?></td></tr>
+    <tr><th>Finca: </th><td><?php echo $regis[2] ?></td></tr>
     <tr><th>Análisis a realizar: </th><td><?php echo $analisis; ?></td></tr>
     </table>
