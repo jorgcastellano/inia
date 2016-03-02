@@ -590,6 +590,8 @@ class factura_descripcion {
 }
 
 class iva{
+
+  //Esta funcion hay q modificarla por el estado del iva
   public function consultar_iva_actual($mysqli){
     $sql = "SELECT iva FROM iva WHERE id=(SELECT MAX(id) AS id FROM iva)";
     return $mysqli->query($sql);

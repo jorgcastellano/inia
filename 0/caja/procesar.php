@@ -29,6 +29,12 @@
                 include_once '../../system/class.php';
                 $objfactdescrip = new factura_descripcion();
 
+                //IVA actual, facilitado por el sitema
+                $iva_actual = new iva();
+                $actual_iva = $iva_actual->consultar_iva_actual($mysqli);
+                $actual_iva = $actual_iva->fetch_array();
+                $impuesto = $actual_iva[0];
+
                 if (isset($comprado)) :                
 
                     //Invocacion de los objetos
@@ -103,21 +109,22 @@
             }
 
             $subtotal=$iva+$exe;
+            $impuestos=($iva*$impuesto)/100; 
+            $retencion=($impuestos*$retencionporciento)/100;
+            $alicuota=$impuestos-$retencion;
+            $total=$subtotal+$alicuota;
 
+            //Esto a futuro no va
             if (isset($retencionporciento))
                 if (empty($retencionporciento))
                     $retencionporciento = 0;
 
             if(isset($procesar)) {
-                $impuesto=($iva*$ivaporciento)/100; 
-                $retencion=($impuesto*$retencionporciento)/100;
-                $alicuota=$impuesto-$retencion;
-                $total=$subtotal+$alicuota;
 
                 $hidden="<input type='hidden' name='codigo' value='$codigo'/>
                     <input type='hidden' name='exento' value='$exe'/>
                     <input type='hidden' name='base' value='$iva'/>
-                    <input type='hidden' name='iva' value='$impuesto'/>
+                    <input type='hidden' name='iva' value='$impuestos'/>
                     <input type='hidden' name='retencion' value='$retencion'/>
                     <input type='hidden' name='alicuota' value='$alicuota'/>
                     <input type='hidden' name='total' value='$total'/>
@@ -157,11 +164,10 @@
                 ";
 
             }else{
-                $impuesto="<input required type='text' name='ivaporciento' value='' size='5px' />%";
-                $retencion="<input type='text' name='retencionporciento' value='' size='5px' />%";
                 $observacion="<textarea cols='25' rows='10' name='observacion' value='' placeholder='Observacion' ></textarea>";
             
-                $hidden="<input type='hidden' name='codigo' value='$codigo'/>";
+                $hidden="<input type='hidden' name='codigo' value='$codigo'/>
+                <input type='hidden' name='impuesto' value='$impuesto' />";
 
                 $boton="<button type='submit' name='borrar' value='$codigo' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
                     <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Guardar cambios</button>";
@@ -187,11 +193,11 @@
                         </tr>
                         <tr>
                             <td colspan='2'>I.V.A.</td>
-                            <td>$impuesto</td>
+                            <td>$impuesto %</td>
                         </tr>
                         <tr>
                             <td colspan='2'>Retencion</td>
-                            <td>$retencion</td>
+                            <td>$retencion %</td>
                         </tr>
                         <tr>
                             <td colspan='2'>Monto total del impuesto segun alicuota</td>
