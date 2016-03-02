@@ -32,11 +32,20 @@
           $result = $objproducto->consulta_completo($mysqli);
           $i = 0;
           while ($resultado = $result->fetch_array()) :
+
             if (!empty($resultado[2])) :
+
+                  if($resultado[5]==1){ $unidad="c/u"; }
+                  if($resultado[5]==2){ $unidad="mls"; }
+                  if($resultado[5]==3){ $unidad="Lts"; }
+                  if($resultado[5]==4){ $unidad="Galones"; }
+                  if($resultado[5]==5){ $unidad="Gr"; }
+                  if($resultado[5]==6){ $unidad="Kg"; }
+
               echo "<tr>
               <td>".$resultado[1]."</td>";
-              echo "<td>".$resultado[2]."</td>";
-              echo "<td>".$resultado[3]."</td>";
+              echo "<td>".$resultado[2]." ".$unidad."</td>";
+              echo "<td>".$resultado[3]." Bs"."</td>";
               echo "<td><input type='text' name='cantidad[]' size='5' pattern='\d{1,8}' maxlength='8' value='$cantidad[$i]' /></td></tr>";
             endif;
             $i++;
