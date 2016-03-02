@@ -41,7 +41,10 @@
                     $client->modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
                     if ($_SESSION['privilegios'] == 1) : 
                         $fin = new finca();
-                        $fin->modificar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia);
+                        $nume = count($Nom_fin);
+                        for ($i=0; $i<$nume; $i++) :
+                            $fin->modificar_finca($mysqli,$Ced_cliente, $cod_finca[$i], $Nom_fin[$i],$Estado[$i],$Municipio[$i],$Parroquia[$i]);
+                        endfor;
                     endif;
                 endif;
 

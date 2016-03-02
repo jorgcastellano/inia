@@ -5,39 +5,35 @@
 <html>
     <head>
         <title>Sistema interno de gestión de productos y servicios - INIA Mérida</title>
-        <?php include '../../layouts/head.php' ?>
+        <?php include_once '../../layouts/head.php' ?>
     </head>
     <body>
         <?php include '../../system/menu.php' ?>
         <section class="bloque">
             <div>
-                <?php include '../../layouts/cabecera-body.php' ?>
+                <?php include_once '../../layouts/cabecera-body.php' ?>
                 <hgroup>
-                  <h1>Sistema de Procesos Internos del INIA Mérida (SPIIM)</h1>
+                    <h1>Sistema de Procesos Internos del INIA Mérida (SPIIM)</h1>
                 </hgroup>
             </div>
-           
-           <?php
-                if(isset($update)){
-
-                    extract($_POST);
-
-                   $objiva = new ayudante();
-                   $objiva -> actualizar_iva($mysqli,$iva);
-                }
+           <?php 
+                require_once '../../system/class.php';
+                $ivas = new iva();
+                $iva_actual = $ivas->consultar_iva_actual($mysqli);
+                $reg = $iva_actual->fetch_array();
 
            ?>
-                
-            <form  class="contact_form" method="post" action="iva">
-                <label for="ivactual"> IVA actual </label>
-                <input type="num" name="ivactual" id="ivactual" value="<?php ?>" title="IVA actual " maxlength="5" disabled/>
+            <form  class="contact_form" method="post" action="update">
+                <label for="ivactual"> IVA actual ( % ) </label>
+                <input type="num" name="ivactual" id="ivactual" value="<?php if(isset($reg)) echo $reg[0]?>" title="IVA actual" maxlength="5" disabled />  % 
                 </br>
-                <label for="nuevoiva"> Nuevo IVA </label>
-                <input required type="num" name="nuevoiva" id="nuevoivsa" value="" title="Introduzca el nuevo iva" maxlength="5" />
+                <label for="nuevoiva"> Nuevo IVA ( % ) </label>
+                <input required type="num" name="nuevoiva" id="nuevoivsa" value="" title="Introduzca el nuevo iva" maxlength="5" />  % 
                 </br>
-                <label for="nuevoiva2"> Confirme el IVA</label>
-                <input required type="num" name="nuevoiva2" id="nuevoivsa2" value="" title="Confirme el nuevo iva" maxlength="5" />
+                <label for="reten"> Nueva retencion ( % )</label>
+                <input required type="num" name="reten" id="reten" value="" title="Confirme la nueva retencion" maxlength="5" />  % 
                 </br>
+              
                 <label for="F_toma">Fecha de activacion</label>
                             <select name="Dia" title="Dia">
                                 <option value="">Día</option>
@@ -56,18 +52,15 @@
                                 <?php for($i=1990;$i<2051;$i++) { ?>
                                     <option value="<?php echo $i; ?>"<?php if($fecha[2]==$i){ echo 'selected'; } ?>><?php echo $i; ?></option>
                                 <?php } ?>
-                            </select>              
-
-
-
-
+                            </select>
+</br>
                 <div align="center">
-                    <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
+                    <button name="atras" type="button" onclick=location="../home/inicio" class="boton"><i class="fa fa-times"></i> Cancelar</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
                         <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button> 
                         <?php else : ?>
-                        <button class="boton" type="submit" name="update"><i class="fa fa-check"></i> Guardar</button> 
+                        <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Guardar</button> 
                     <?php endif; ?>
                 </div>
             </form>

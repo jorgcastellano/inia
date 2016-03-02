@@ -1,0 +1,16 @@
+# nginx configuration
+charset utf-8;
+error_page 404 /0/home/error404.php;
+location 0/home/ {
+rewrite ^(.*)$ http://inia.jorgcastellano.net.ve redirect;
+}
+autoindex off;
+location / {
+if (!-e $request_filename){
+rewrite ^/([^\.]+)$ /$1.php break;
+}
+if ($http_host ~ "^inia.jorgcastellano.net.ve\.ve$"){
+rewrite ^(.*)$ http://inia.jorgcastellano.net.ve/$1 redirect;
+}
+rewrite ^/$ /home/index break;
+}

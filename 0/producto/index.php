@@ -51,7 +51,7 @@
                 <select name="um" required>
                         <option value="">---Seleccione---</option>
                         <option value="1"<?php if ($reg[5] == "1") echo "selected"; ?>>Por unidad c/u</option>
-                    <optgroup label="Volumen liquido">
+                    <optgroup label="Capacidad">
                         <option value="2"<?php if ($reg[5] == "2") echo "selected"; ?>>Mililitro</option>
                         <option value="3"<?php if ($reg[5] == "3") echo "selected"; ?>>Litro</option>
                         <option value="4"<?php if ($reg[5] == "4") echo "selected"; ?>>Galon</option>
