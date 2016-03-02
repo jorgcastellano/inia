@@ -588,4 +588,18 @@ class factura_descripcion {
     return $res= $mysqli->query($sql);
   }
 }
+
+class iva{
+  public function consultar_iva_actual($mysqli){
+    $sql = "SELECT iva FROM iva WHERE id=(SELECT MAX(id) AS id FROM iva)";
+    return $mysqli->query($sql);
+  }
+
+  public function insertar_iva($mysqli,$iva,$Dia,$Mes,$Ano,$reten){
+    $sql="INSERT INTO iva (iva, Dia, Mes, Ano, Reten) VALUES ('$iva','$Dia','$Mes','$Ano','$reten')";
+    $mysqli->query($sql);
+    include_once 'error_insert.php';
+  }
+}
+
 ?>
