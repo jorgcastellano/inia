@@ -2,7 +2,7 @@
 
 	//Esto solamente para verificar si existen privilegios de especialista
 	define("HOSTS", "localhost");
-  	define("USERS", "root");
+  	define("USERS", "gproyecto");
   	define("PASSWORDS", "123456");
   	define("DB", "proyecto3");
 
@@ -36,10 +36,15 @@
 		}
 
 	//Clases sin la funcion anterior
-		public function insertar_especialista($mysqli, $cedula, $laboratorio, $nombre, $apellido, $telefono, $especialidad){
+		public function insertar_especialista($mysqli2, $cedula, $laboratorio, $nombre, $apellido, $telefono, $especialidad){
 			$sql = "INSERT INTO especialista(Ced_esp, Cod_lab, Nom_esp, Ape_esp, Telf_esp, Especialidad) VALUES ('$cedula', '$laboratorio', '$nombre', '$apellido', '$telefono', '$especialidad')";
-			$mysqli->query($sql);
+			$mysqli2->query($sql);
 			include 'error_insert';
+		}
+
+		public function eliminar($mysqli2, $cedula){
+			$sql = "DELETE FROM especialista WHERE Ced_esp = '$cedula'";
+			$mysqli2->query($sql);
 		}
 	}
 ?>

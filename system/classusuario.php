@@ -28,7 +28,7 @@
             require_once 'error_update.php';
         }
         public function eliminar_miembros($mysqli, $cod) {
-            $sql = "DELETE FROM miembros WHERE id = '$cod'";
+            $sql = "DELETE FROM miembros WHERE ci = '$cod'";
             $mysqli->query($sql);
             require_once 'error_update.php';
         }

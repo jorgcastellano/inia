@@ -23,7 +23,14 @@
                 $objinicio = new inicio_seguro();
 
                 if (isset($eliminar)) :
-                    $objinicio -> eliminar_miembros($mysqli, $eliminar);
+                    echo $eliminar;
+                    if (isset($dos)) :
+                        require_once '../../system/classesp.php';
+                        $especialista = new especialista();
+                        $especialista->eliminar($mysqli2, $eliminar);
+                    else :
+                        $objinicio -> eliminar_miembros($mysqli, $eliminar);                        
+                    endif;
                 elseif (isset($guardar)) :
                     for ($i=0; $i < count($codigos); $i++) :
                         if (!empty($privilegios[$i])) :
@@ -102,7 +109,7 @@
                             <option value='2' $dos  >Especialista</option>
                             <option value='3' $tres >Factura</option>
                         </select></td>
-                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[0]' ><i class='fa fa-trash-o'></button></i></td>
+                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' ><i class='fa fa-trash-o'></button></i></td>
                     </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;
