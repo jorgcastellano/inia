@@ -3,9 +3,9 @@
 	//Validacion de usuario al logearse
 
 	extract ($_POST);
-
+	//Verificamos que los campos no queden vacios
 	if (!empty($correo) AND !empty($password)) :
-	
+		//Consultamos al usuario
 		$sql = "SELECT * FROM miembros WHERE email='$correo'";
 		$result = $mysqli->query($sql);
 		
@@ -24,6 +24,7 @@
 
 		$password = hash("sha512", $password);
 		
+		//Verifica si los datos concuerdan
 		if (("$correo"=="$registro[4]") AND ("$password"=="$registro[5]")) :
 			$intentos = new inicio_seguro();
 
