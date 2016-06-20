@@ -4,6 +4,7 @@
 
     class inicio_seguro{
 
+        //Funciones para la tabla miembros
         public function consultar_miembro($mysqli) { 
             $sql = "SELECT * FROM miembros";
             return $mysqli->query($sql);
@@ -37,7 +38,12 @@
             $mysqli->query($sql);
             require_once 'error_update.php';
         }
-        //Funcion para los intentos
+        public function consultar_bloqueo($mysqli, $email){
+            $sql = "SELECT block FROM miembros WHERE email='$email'";
+            return $mysqli->query($sql);
+        }
+
+        //Funciones para los intentos
         public function reg_intentos_fallidos($mysqli, $cod){
             $sql = "INSERT INTO intentos(user_id) VALUES ('$cod')";
             $mysqli -> query($sql);
