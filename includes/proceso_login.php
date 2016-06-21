@@ -1,5 +1,6 @@
 <?php
 	include_once '../system/classusuario.php';
+	require_once '../includes/is-conexion_bd.php';
 	//Validacion de usuario al logearse
 
 	extract ($_POST);
