@@ -2,6 +2,8 @@
     session_start();
     include_once '../../system/check.php';
 ?>
+<!--Los siguientes formularios son utilizados para el registro  de una muestra y en caso de querer modificar una muestra previa
+    mente registrada estos seran precargados con datos extraidos de la BD-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -556,7 +558,7 @@
 							<label for="Observaciones">Observaciones</label>
 									<textarea name="Observaciones" id="Observaciones" title="" cols="30" rows="5" maxlength="50" placeholder=""><?php echo $reg[33] ?></textarea>	 
 									</br></br>
-
+							<!-- consultar fincas del cliente para saber de cual proviene la muestra -->
 							<label for="Finca" title="">Finca</label>
                     			<select name="finca">
                     				<option value="">Seleccione</option>
@@ -566,12 +568,14 @@
 
 								</select>
                             </br></br>
+                            <!--se muestra los analisis disponibles para la muestra y en caso de ser un formulario para modificacion  se precargaran los seleccionados -->
 							<?php $pre = explode("|", $codi_analisis); ?> 
 							<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 						<?php while ($reg2 = $res3->fetch_array()) { ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } ;?>
 							     </br></br>
+							     <!--pasamos campos ocultos con codigos nesesarios para el registro de la muestra-->
 								<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
 								<input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />

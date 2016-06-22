@@ -20,6 +20,7 @@
             <?php
              
                 extract($_POST);
+                //verificamos si se desea modidficar un analisis
                  if (isset($_POST['modificar'])) :
                 $Cod_ana=$modificar;
                 require_once '../../system/class.php';
@@ -29,7 +30,7 @@
                     else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido modificar el nuevo analisis</span> ";}
                 $reg=$ana->consultar_analisis($mysqli,$Cod_ana);
                 endif;
-
+                //verificamos si se desea registrar un nuevo analisis
                 require_once '../../system/class.php';
                 $ana = new analisis();  
                 if (isset($submit)) :
@@ -39,7 +40,7 @@
 
 
             ?>
-
+            <!--mostrar resultados de la modificacion o el registro del analisis-->
             <form method="post" action="formulario">
                 <table class="anapro">
                     <tr>

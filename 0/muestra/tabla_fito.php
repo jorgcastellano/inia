@@ -1,4 +1,5 @@
 <?php
+    //Consultar la muestra registrada, convertirlos los datos extraidos en informacion entendible al usuario y  ordenarlos en una tabla
     $reg=$fito->consultar_fito($mysqli,$Cod_fito);
 
     if ($reg[2]=='1') { $tip='Vegetal'; }

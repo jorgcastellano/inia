@@ -1,11 +1,11 @@
 <?php
 
-
+        //consultar analisis asignados
         $sa= new solicitud_analisis();
         $regi1=$sa-> consultar_sam($mysqli,$codm);
         $regi2=$sa-> consultar_sam($mysqli,$codm);
 
-        
+        //guardar analisis asignados en una cadena en caso de realizar modificacion a la muestra
         $codi_analisis='';
         $j="|";
 
@@ -42,7 +42,7 @@
 
         }       
 
-
+        //guardar analisis asignados en una cadena para posteriormente mostralos
         $analisis='';
         $l=", ";
 

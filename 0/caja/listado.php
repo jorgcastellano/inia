@@ -1,4 +1,6 @@
-<?php
+<?php   //listar todas las facturas sin pagar////
+
+
         echo " <form method='POST' action='inicio'>
             <div class='buscadores'>
                 <input type='text' name='buscador' placeholder='Buscar factura por cédula' />
@@ -8,6 +10,7 @@
             echo "<form method='POST' action='../caja/procesar'>";
             extract($_POST);
             include_once '../../system/class.php';
+            //listar las facturas por numero de cedula del cliente
             $objfactura = new factura();
             if (!empty($buscador)) {
                 $res = $objfactura->buscador_cedula($mysqli,$buscador);
@@ -42,6 +45,7 @@
                         </div>
                     ";
                 endif;
+            //listar todas las facturas impagas en general
             }elseif (empty($buscador) OR !isset($buscador)) {
                 $res=$objfactura->consultar_facturas($mysqli);
                 if ($res->num_rows) :
@@ -66,6 +70,7 @@
                   }
 
                 echo "</table>";
+                //en caso de no haber facturas inpagas
                 else :
                     echo "<h2 align='center'>En estos momentos no se encuentran facturas pendientes</h2>";
                 endif;
