@@ -91,13 +91,14 @@
 			$n_intentos = $r2 -> fetch_array();
 			if ($n_intentos[0] <= 4) :
 				$intentos -> reg_intentos_fallidos($mysqli, $correo);
-				if ($n_intentos[0] == 4) :
+				if ($n_intentos[0] == 4) : //Al haber cometido el 4to error, se registra el quinto y automaticamente se redirige a la página de bloqueo
 					$intentos -> bloquear_usuario($mysqli, $correo);
 					header("location: ../../0/home/block");
 				else :
 					header("location: ../../0/home/iniciar_sesion");
 				endif;
 			else :
+				//Si ha ingresado mas de 5 intentos fallidos, igual nos interesa registrar los siguientes intentos para evaluar su interés de entrar al sistema
 				$intentos -> reg_intentos_fallidos($mysqli, $correo);
 				header("location: ../../0/home/block");
 			endif;
