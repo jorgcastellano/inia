@@ -117,7 +117,7 @@ table.anapro td:last-child{
 
 /*ESTILO PARA LAS TABLAS DE ACEPTACION DE USUARIOS*/
 table.usuario{
-    width: 600px;
+    width: 710px;
 }
 table.usuario td{
     text-align: center;
@@ -140,16 +140,18 @@ table.usuario tr:last-child td:first-child{
 table.usuario td:first-child{
     width: 70px;
 }
-
 table.usuario td:nth-child(4){
-    width: 20%;
+    width: 11%;
+}
+table.usuario td:nth-child(5){
+    width: 13%;
 }
 table.usuario td:last-child{
-    width: 7%;
+    width: 5%;
 }
 
 /*ESTILO PARA LAS TABLAS DE GESTION DE USUARIOS*/
-table.usuario2{
+/*table.usuario2{
     width: 550px;
 }
 table.usuario2 td{
@@ -175,7 +177,7 @@ table.usuario2 tr:last-child td:first-child{
 }
 table.usuario2 tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;
-}
+}*/
 
 
 /*FACTURAS IMPAGAS*/
