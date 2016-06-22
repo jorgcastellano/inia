@@ -15,7 +15,6 @@
 			<p>Aún no ha sido aprobado</p>
 			<p>Contacte al gerente para que sea aprobado su registro y asi disfrutar de nuestros servicios</p>
             <button type='button' OnClick=location='../../0/home/cerrar_sesion' class="boton"><i class="fa fa-home"></i> Página principal</button>
- 			<?php include 'layouts/layout_p.php' ?>
             <?php include_once '../../layouts/layout_p.php' ?>
         </section>
 	</body>

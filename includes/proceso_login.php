@@ -1,11 +1,12 @@
 <?php
+	include_once '../system/classusuario.php';
+	require_once '../includes/is-conexion_bd.php';
 	//Validacion de usuario al logearse
-	include_once 'is-conexion_bd.php';
 
 	extract ($_POST);
-
-	if (!empty($correo AND !empty($password))) :
-	
+	//Verificamos que los campos no queden vacios
+	if (!empty($correo) AND !empty($password)) :
+		//Consultamos al usuario
 		$sql = "SELECT * FROM miembros WHERE email='$correo'";
 		$result = $mysqli->query($sql);
 		
@@ -15,7 +16,8 @@
 				<b>Numero de error: </b>%d<br />
 				<b>Mensaje de error: </b>%s",
 				$mysqli->errno,
-				$mysqli->error);
+				$mysqli->error
+			);
 			exit();
 		endif;
 		
@@ -23,41 +25,82 @@
 
 		$password = hash("sha512", $password);
 		
+		//Verifica si los datos concuerdan
 		if (("$correo"=="$registro[4]") AND ("$password"=="$registro[5]")) :
-			session_start();
-			$_SESSION['id']="$registro[0]";
-			$_SESSION['ci']="$registro[1]";
-			$_SESSION['nombre']="$registro[2]";
-			$_SESSION['apellido']="$registro[3]";
-			$_SESSION['email']="$registro[4]";
-			$_SESSION['pregunta']="$registro[7]";
-			$_SESSION['respuesta']="$registro[8]";
-			$_SESSION['aprobacion']="$registro[9]";
-			$_SESSION['privilegios']="$registro[10]";
+			$intentos = new inicio_seguro();
 
-			//comprueba si ha sido aprobado
-			if ($_SESSION['aprobacion'] == "Off") :
-				header("location: ../0/home/noaceptado");
-			endif;
+			//Verificamos si esta bloqueado el usuario
+			$r1 = $intentos -> consultar_bloqueo($mysqli, $correo);
+			$validar_bloqueo = $r1 -> fetch_array();
+			if ($validar_bloqueo[0] == 1) :
+				header("location: ../../0/home/block");
+			else :
+				//Como no esta bloqueado procedemos con el inicio de sesion
+				session_start();
+				$_SESSION['id']="$registro[0]";
+				$_SESSION['ci']="$registro[1]";
+				$_SESSION['nombre']="$registro[2]";
+				$_SESSION['apellido']="$registro[3]";
+				$_SESSION['email']="$registro[4]";
+				$_SESSION['pregunta']="$registro[7]";
+				$_SESSION['respuesta']="$registro[8]";
+				$_SESSION['aprobacion']="$registro[9]";
+				$_SESSION['privilegios']="$registro[10]";
 
-		    //Solo para privilegios (2) especialistas
-		    if ($_SESSION['privilegios'] == 0) :
-	        	header("location: ../0/home/noprivilegios");
-	        elseif ($_SESSION['privilegios'] == 2) :
-				include_once '../system/classesp.php';
-	            $objesp = new especialista();
-	            $resultado = $objesp->verificar_privilegio_2($mysqli2, $_SESSION['ci']);
-		        if ($resultado[0] == $_SESSION['ci']) :
-		        	header("location: ../0/home/inicio");
-		        else :
-		        	header("location: ../0/especialista/culminar_registro");
-		    	endif;
-	        else :
-				header("location: ../0/home/inicio");
+				//comprueba si ha sido aprobado
+				if ($_SESSION['aprobacion'] == "Off") :
+					header("location: ../0/home/noaceptado");
+
+				//Ya fué aceptado!! se procede con la sesión.
+				else :
+					//Chequeamos los intentos fallidos
+					$r2 = $intentos -> chequeo_intentos($mysqli, $correo);
+					$n_intentos = $r2 -> fetch_array();
+
+					//Comprobamos privilegios
+				    if ($_SESSION['privilegios'] == 0) : //0 No tiene privilegios
+			        	header("location: ../0/home/noprivilegios");
+			        //Solo para privilegios (2) especialistas
+			        elseif ($_SESSION['privilegios'] == 2) : //Privilegio 2 es especialista
+						include_once '../system/classesp.php';
+			            $objesp = new especialista();
+			            $resultado = $objesp->verificar_privilegio_2($mysqli2, $_SESSION['ci']);
+				        if ($resultado[0] == $_SESSION['ci']) :
+							if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
+				        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+				        	header("location: ../0/home/inicio");
+				        //En caso de no estar registrado el especialista por completo debe culminar su registro, esto sucede despues de estara aprobado
+				        else :
+				        	if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
+				        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+				        	header("location: ../0/especialista/culminar_registro");
+				    	endif;
+				    //Para el resto de privilegios
+			        else :
+						if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
+				        	$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+						header("location: ../0/home/inicio");
+					endif;
+				endif;
 			endif;
 		else :
 			//Error entre correos y contraseñas
-			header("location: ../../0/home/iniciar_sesion");
+			//Registro de intento fallido
+			$intentos = new inicio_seguro();
+			$r2 = $intentos -> chequeo_intentos($mysqli, $correo);
+			$n_intentos = $r2 -> fetch_array();
+			if ($n_intentos[0] <= 4) :
+				$intentos -> reg_intentos_fallidos($mysqli, $correo);
+				if ($n_intentos[0] == 4) :
+					$intentos -> bloquear_usuario($mysqli, $correo);
+					header("location: ../../0/home/block");
+				else :
+					header("location: ../../0/home/iniciar_sesion");
+				endif;
+			else :
+				$intentos -> reg_intentos_fallidos($mysqli, $correo);
+				header("location: ../../0/home/block");
+			endif;
 		endif;
 	else :
 		//En caso de que el formulario se encuentren vacios

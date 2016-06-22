@@ -17,7 +17,6 @@
             <div align="center">
             	<button type='button' onclick=location='../../0/home/cerrar_sesion' class="boton"><i class="fa fa-home"></i> Página principal</button>
  			</div>
- 			<?php include 'layouts/layout_p.php' ?>
             <?php include_once '../../layouts/layout_p.php' ?>
         </section>
 	</body>
