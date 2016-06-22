@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-06-2016 a las 00:20:52
+-- Tiempo de generación: 22-06-2016 a las 03:22:02
 -- Versión del servidor: 5.7.13-log
 -- Versión de PHP: 5.6.22
 
@@ -200,16 +200,6 @@ CREATE TABLE IF NOT EXISTS `especialista` (
   `Telf_esp` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
   `Especialidad` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `especialista`
---
-
-INSERT INTO `especialista` (`Ced_esp`, `Cod_lab`, `Nom_esp`, `Ape_esp`, `Telf_esp`, `Especialidad`) VALUES
-(12345678, 1, 'Laboratorio', '1', '0426-4285550', 'hongos '),
-(21123432, 1, 'Jesus', 'Peres', '0212-1234567', 'nematodos'),
-(22280499, 2, 'Ines', 'Benitez', '0416-1234568', 'Hongos'),
-(22721512, 1, 'Esteban', 'Torrealba', '0274-9961608', 'analista de papa y yuca');
 
 -- --------------------------------------------------------
 

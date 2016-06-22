@@ -387,7 +387,7 @@
 									<input type="text" name="Id_microorg" value="<?php echo $reg[8] ?>" id="Id_microorg" title="" maxlength="20" placeholder="" />
 									</br></br>
 							<label for="Sintomas">Síntomas</label>
-									<input type="checkbox" name="Sintomas[]" value="1"<?php foreach($sintoma as $id){ if($id=='1'){echo 'checked';} }?>/>Secamiento
+									<input type="checkbox" name="Sintomas[]" value="1"<?php if (isset($autocompletado)) { foreach($sintoma as $id){ if($id=='1'){echo 'checked';} } }?>/>Secamiento
 									<input type="checkbox" name="Sintomas[]" value="2"<?php foreach($sintoma as $id){ if($id=='2'){echo 'checked';} }?>/>Callos
 									<input type="checkbox" name="Sintomas[]" value="3"<?php foreach($sintoma as $id){ if($id=='3'){echo 'checked';} }?>/>Defoliacion
 									<input type="checkbox" name="Sintomas[]" value="4"<?php foreach($sintoma as $id){ if($id=='4'){echo 'checked';} }?>/>Moteado
