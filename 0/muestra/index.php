@@ -387,18 +387,18 @@
 									<input type="text" name="Id_microorg" value="<?php echo $reg[8] ?>" id="Id_microorg" title="" maxlength="20" placeholder="" />
 									</br></br>
 							<label for="Sintomas">Síntomas</label>
-									<input type="checkbox" name="Sintomas[]" value="1"<?php if (isset($autocompletado)) { foreach($sintoma as $id){ if($id=='1'){echo 'checked';} } }?>/>Secamiento
-									<input type="checkbox" name="Sintomas[]" value="2"<?php foreach($sintoma as $id){ if($id=='2'){echo 'checked';} }?>/>Callos
-									<input type="checkbox" name="Sintomas[]" value="3"<?php foreach($sintoma as $id){ if($id=='3'){echo 'checked';} }?>/>Defoliacion
-									<input type="checkbox" name="Sintomas[]" value="4"<?php foreach($sintoma as $id){ if($id=='4'){echo 'checked';} }?>/>Moteado
-									<input type="checkbox" name="Sintomas[]" value="5"<?php foreach($sintoma as $id){ if($id=='5'){echo 'checked';} }?>/>Enanismo
-									<input type="checkbox" name="Sintomas[]" value="6"<?php foreach($sintoma as $id){ if($id=='6'){echo 'checked';} }?>/>Amarillamiento
-									<input type="checkbox" name="Sintomas[]" value="7"<?php foreach($sintoma as $id){ if($id=='7'){echo 'checked';} }?>/>Malformacion
-									<input type="checkbox" name="Sintomas[]" value="8"<?php foreach($sintoma as $id){ if($id=='8'){echo 'checked';} }?>/>Mancha
-									<input type="checkbox" name="Sintomas[]" value="9"<?php foreach($sintoma as $id){ if($id=='9'){echo 'checked';} }?>/>Marchitamiento
-									<input type="checkbox" name="Sintomas[]" value="10"<?php foreach($sintoma as $id){ if($id=='10'){echo 'checked';} }?>/>Muerte regresiva
-									<input type="checkbox" name="Sintomas[]" value="11"<?php foreach($sintoma as $id){ if($id=='11'){echo 'checked';} }?>/>Gomosis
-									<input type="checkbox" name="Sintomas[]" value="12"<?php foreach($sintoma as $id){ if($id=='12'){echo 'checked';} }?>/>Otros
+									<input type="checkbox" name="Sintomas[]" value="1"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='1'){echo 'checked';} }?>/>Secamiento
+									<input type="checkbox" name="Sintomas[]" value="2"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='2'){echo 'checked';} }?>/>Callos
+									<input type="checkbox" name="Sintomas[]" value="3"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='3'){echo 'checked';} }?>/>Defoliacion
+									<input type="checkbox" name="Sintomas[]" value="4"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='4'){echo 'checked';} }?>/>Moteado
+									<input type="checkbox" name="Sintomas[]" value="5"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='5'){echo 'checked';} }?>/>Enanismo
+									<input type="checkbox" name="Sintomas[]" value="6"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='6'){echo 'checked';} }?>/>Amarillamiento
+									<input type="checkbox" name="Sintomas[]" value="7"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='7'){echo 'checked';} }?>/>Malformacion
+									<input type="checkbox" name="Sintomas[]" value="8"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='8'){echo 'checked';} }?>/>Mancha
+									<input type="checkbox" name="Sintomas[]" value="9"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='9'){echo 'checked';} }?>/>Marchitamiento
+									<input type="checkbox" name="Sintomas[]" value="10"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='10'){echo 'checked';} }?>/>Muerte regresiva
+									<input type="checkbox" name="Sintomas[]" value="11"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='11'){echo 'checked';} }?>/>Gomosis
+									<input type="checkbox" name="Sintomas[]" value="12"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='12'){echo 'checked';} }?>/>Otros
 									</br></br>
 							<label for="F_sintomas">Fecha de inicio de la sintomatología</label>
 									<select name="Dia2" title="Día">
