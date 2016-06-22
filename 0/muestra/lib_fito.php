@@ -1,4 +1,4 @@
-<?php
+<?php  //Libreria con procedimientos para campos especiales del formulario de muestras de fitopatologia
 	    $g = '-';
 	    $F_coleccion = $Dia.$g.$Mes.$g.$Ano;
 

@@ -1,4 +1,4 @@
-<?php
+<?php  //Libreria con procedimientos para campos especiales del formulario de muestras de suelo
 
 			$g = '-';
             $F_toma = $Dia.$g.$Mes.$g.$Ano;		

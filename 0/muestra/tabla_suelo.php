@@ -1,5 +1,6 @@
 <?php
 
+   //Consultar la muestra registrada, convertirlos los datos extraidos en informacion entendible al usuario y  ordenarlos en una tabla
    $reg=$suelo->consultar_suelo($mysqli,$Cod_suelo);
 
    if ($reg[2]=='1') { $tip='Suelo'; }
