@@ -8,6 +8,7 @@
         <title>Registro de muestras</title>
         <?php include '../../layouts/head.php'; ?>
 	<script type="text/javascript">
+	//scrip de selección que determina cual formulario se desea cargar.
 
 		function mostrarformulario(){
 		if (document.principal1.formulario[0].checked == true) {
@@ -39,24 +40,24 @@
                 <?php include '../../layouts/cabecera-body.php'; ?>
 				<hgroup>
 					<h1>Registrar Muestra</h1>
-				</hgroup>
+				</hgroup>   
 			</div>
 				<?php
 
 					
-                    require_once '../../system/class.php';
+                    require_once '../../system/class.php';//Libreria que contiene las clases.
                     extract($_POST);
 
-                    if(isset($RegistrarM)):
+                    if(isset($RegistrarM))://Condición que verifica cuando este archivo se carga por primera vez.
 
-                    	$RegistrarS="Inicio";
-                    	$RegistrarF="Inicio";
+                    	$RegistrarS="Inicio";//Variable que indica que se cargará por primera vez el formulario de suelo.
+                    	$RegistrarF="Inicio";//Variable que indica que se cargará por primera vez el formulario de fitopatología.
                     
                     ?>
 
 
-             		<form  class="contact_form"  action="" method="" name="principal1">
-
+             		<form  class="contact_form"  action="" method="" name="principal1"><!--Formulario principal que contiene los formularios de suelo y fitopatología-->
+                     <!--Boton de selección para indicar que formulario se cargá -->
              		<input type="radio" name="formulario" value="primero" id="Conocido" onclick="mostrarformulario();" />suelo
            			<input type="radio" name="formulario" value="segundo" id="Conocido" onclick="mostrarformulario();" />fitopatologia
              		<div id="primero1" style="display:none;">
@@ -71,70 +72,74 @@
 //########################### ### #    #    #    ### ### ### # ### #####    #    #    #    #    ######################################################
 //####################################################################################################################################################
 
-                    include '../../system/gcodigo.php';
+                    include '../../system/gcodigo.php'; //Libreria que contiene el generador de codigos correspondientes a solicitudes y muestras.
                     
-                    if(isset($RegistrarS)) :
+                    if(isset($RegistrarS)) : //Condición que verifica si la muestra a registar o modificar es de suelo. 
 
-                    if($RegistrarS=='ModificarS') :
-                    $muestra = new suelo();
-                    $reg = $muestra->consultar_suelo($mysqli,$Cod_suelo);
+                    if($RegistrarS=='ModificarS') : //Verificar si se desea modificar muestra de suelo.
+                    $muestra = new suelo(); //Crear objeto suelo.
+                    $reg = $muestra->consultar_suelo($mysqli,$Cod_suelo); //LLamado a la función que consulta la muestra de suelo por su código($Cod_suelo).
 
-                    $fertilizante = explode("|", $reg[18]);
+                    $fertilizante = explode("|", $reg[18]); //Dividir el registro que contiene los fertilizantes y guardarlo en la variable $fertilizante para precargarla en el formulario.
 
-                    $fecha = explode("-", $reg[9]);
+                    $fecha = explode("-", $reg[9]); //Dividir el registro que contiene la fecha y guardarlo en la variable $fecha para precargarla en el formulario.
                     endif;
                     
-                    if($RegistrarS=='ContinueS') :
+                    if($RegistrarS=='ContinueS') : //Condición que verifica si se registrará por segunda vez una muestra de suelo.
 
-                    $x=2;
-                    $generar = new controllerCodigo();
-                    $code1=$generar->generarCodigo($x);
+                    $x=2; //Variable que indica el tipo de código a generar (para suelo).
+                    $generar = new controllerCodigo(); //Crear el objeto controllerCodigo.
+                    $code1=$generar->generarCodigo($x); //Llamar a la función que genera el código.
                     endif;
                     
-                    if($RegistrarS=='NoContinueS'||$RegistrarS=='Inicio'):
-                	$x=2;
-                	$y=1;
-                    $generar = new controllerCodigo();
-                    $code1=$generar->generarCodigo($x);
-                    $code2=$generar->generarCodigo($y);
-                    $Cod_sol='';
+                    if($RegistrarS=='NoContinueS'||$RegistrarS=='Inicio'): //Condición que verifica si el formulario anteriormente llenado es de fitopatología($RegistrarS=='NoContinueS') y desea llenar uno de suelo ó no ha llenado un formulario anteriormente.
+                                                                           //Para generar nuevos códigos de solicitud y de muestra para esa solicitud.
+                	$x=2; //Variable que indica el tipo de código a generar (para suelo).
+                	$y=1; //Variable que indica el tipo de código a generar (para solicitud).
+                    $generar = new controllerCodigo(); //Crear el objeto controllerCodigo. 
+                    $code1=$generar->generarCodigo($x); //LLamar a la función y generar código de suelo.
+                    $code2=$generar->generarCodigo($y); //LLamar a la función y generar código de solicitud.
+                    $Cod_sol=''; //Manterner la variable que contiene el código de solicitud vacía para el nuevo código.
 
                     endif;
                    
 
-                    $sql='SELECT * FROM analisis WHERE analisis.tipo = "1" AND analisis.estatus = "On"';
-                    $res3= $mysqli->query($sql);
+                    $sql='SELECT * FROM analisis WHERE analisis.tipo = "1" AND analisis.estatus = "On"'; //Consultar análisis disponibles para la muestra de suelo. 
+                    $res3= $mysqli->query($sql); //Guardar la consulta en la variable $res3.
 
 					
-					$sql='SELECT * FROM laboratorio';
-					$res= $mysqli->query($sql);
+					$sql='SELECT * FROM laboratorio'; //Consultar laboratorios a los que se enviará la muestra resgistrada.
+					$res= $mysqli->query($sql); //Guardar consulta en la variable $res.
 
-					$sql="SELECT * FROM finca WHERE Ced_cliente='$Ced_cliente'";
-					$resfin= $mysqli->query($sql);
+					$sql="SELECT * FROM finca WHERE Ced_cliente='$Ced_cliente'"; //Consultar fincas del cliente para luego seleccionar a que finca corresponde la muestra.
+					$resfin= $mysqli->query($sql); //Guardar consulta en la variable $resfin.
 
 					
 				?>
 
-				<form class="contact_form" method="POST" action="insert"  id="" name="formulario1">
-					<label for="Codig">Código de Solicitud</label>
-							<input type="text" name="Codig" value="<?php echo $code2.$Cod_sol; ?>" id="Codig" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/>
+				<form class="contact_form" method="POST" action="insert"  id="" name="formulario1"> <!--Formulario de suelo-->
+					<label for="Codig">Código de Solicitud</label> 
+							<input type="text" name="Codig" value="<?php echo $code2.$Cod_sol; //Imprimir en este campo el código de la solicitud creado previamente por el generador de código. ?>" id="Codig" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de la solicitud-->
                             
 							</br></br>
 					<label for="Codigo">Código Suelo</label>
-							<input type="text" name="Codigo" value="<?php echo $code1.$reg[0]; ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/>
+							<input type="text" name="Codigo" value="<?php echo $code1.$reg[0]; //Imprimir en este campo el código de muestra de suelo creado previamente por el generador de código. ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de muestra de suelo-->
                             
 							</br></br>
 					<label for="Cod_lab" title="Selecione el laboratorio al que asignara esta muestra">Laboratorio</label>
 							<select name="Cod_lab" title="Selecione el laboratorio al que asignara esta muestra">
 								<option value="">Seleccione</option>
-								<?php while ($reg1 = $res->fetch_array()) { ?>
+								<!--Aquí se muestran los laboratorios consultados a los cuales se le asignará la muestra-->
+								<!--La condición if($reg[1]==$reg1[0]) verifica que laboratorio precargar en caso de que se este modificando la muestra-->
+								<?php while ($reg1 = $res->fetch_array()) { //Extraer arreglo que contiene los laboratorios consultados. ?>
 								<option value="<?php echo $reg1["0"]; ?>"<?php if($reg[1]==$reg1[0]){ echo 'selected'; } ?>><?php echo $reg1[1]; ?></option>
 								<?php } ?>
 							</select>
-                            <span class="form_hint">Debe seleccionar un laboratorio"</span><br />
+                            <span class="form_hint">Debe seleccionar un laboratorio"</span><br /> <!--Mensaje de alerta de selección de laboratorio-->
 							</br></br>	
 
 					<label for="Tipo_sue" title="Seleccione el tipo de muestra a registrar">Tipo de muestra</label>
+					<!--Listado de los tipos de muestra, la condición if($reg[2]=='x') verifica que tipo precargar en caso de que se este modificando la muestra-->
 									<select name="Tipo_sue" title="Seleccione el tipo de muestra a registrar">
 										<option value="">Seleccione</option>
 										<option value="1"<?php if($reg[2]=='1'){ echo 'selected'; } ?>>Suelo</option>
@@ -234,17 +239,18 @@
 							<textarea name="Aplicacion" id="Aplicacion" title="" cols="30" rows="5" maxlength="30" placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[21] ?></textarea>
                             </br></br>
                     <label for="Finca" title="">Finca</label>
+                    <!--Aquí se muestra el listado de las fincas del cliente para saber a cual pertenece la muestra-->
                     		<select name="finca">
                     			<option value="">Seleccione</option>
-                    		<?php while ($reg8 = $resfin->fetch_array()) { ?>
-                    				<option value="<?php echo $reg8[0] ?>" <?php if($reg8[0]==$reg[22]){ echo 'selected'; } ?>><?php echo $reg8[2] ?> </option>
+                    		<?php while ($reg8 = $resfin->fetch_array()) { //Extraer el arreglo que contiene la finca a la variable $reg8 en un bucle de "repita mientras". ?>
+                    				<option value="<?php echo $reg8[0] ?>" <?php if($reg8[0]==$reg[22]){ echo 'selected'; } //Verificar si el registro mostrado en esta opción es el mismo a precargar en caso que se este modificando. ?>><?php echo $reg8[2] ?> </option>
                     		<?php  } ?>
 
                     		</select>
                             </br></br>
-                        <?php $pre = explode("|", $codi_analisis); ?>    
+                        <?php $pre = explode("|", $codi_analisis); //Dividir el registro que contiene una cadena con los análisis de las muestras para precargar los checkbox en caso de que se este modificando la muestra. ?>    
 					<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
-						<?php while ($reg2 = $res3->fetch_array()) { ?>
+						<?php while ($reg2 = $res3->fetch_array()) { //Extraer el arreglo que contiene los análisis a la variable $reg2.  ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } ?>
 						
@@ -252,20 +258,20 @@
    
                         
                         </br></br>
-						<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
-                        <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
-						<input type="hidden" name="Cod_suelo" value="<?php echo $code1.$reg[0]; ?>" />
+						<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" /> <!--Campo oculto que contiene las variables con el código de solicitud-->
+                        <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" /> <!--Campo oculto que contiene la variable con la cédula del cliente-->
+						<input type="hidden" name="Cod_suelo" value="<?php echo $code1.$reg[0]; ?>" /> <!--Campo oculto que contiene la variable con el código de la muestra de suelo-->
 						<button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
-						<?php if($RegistrarS=='ModificarS'): ?><button type="submit" name="ActualizarS" value="Actualizars" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
-                    	<?php if($RegistrarS=='ContinueS'): ?><button type="submit" name="RegistrarS" value="ContinueS" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
-                    	<?php if($RegistrarS=='Inicio'||$RegistrarS=='NoContinueS'): ?><button type="submit" name="RegistrarS" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
+						<?php if($RegistrarS=='ModificarS'): //Condición que verifica si el formulario es precargado para modificación de la muestra, mostrando el botón que acciona la modificación. ?><button type="submit" name="ActualizarS" value="Actualizars" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
+                    	<?php if($RegistrarS=='ContinueS'): //Condición que verifica si el formulario ah sido cargado por segunda vez para una misma muestra de suelo, mostrando el botón que acciona un segundo registro del mismo tipo. ?><button type="submit" name="RegistrarS" value="ContinueS" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
+                    	<?php if($RegistrarS=='Inicio'||$RegistrarS=='NoContinueS'): //Condición que verifica si el formulario ha sido cargado por primera vez para esta muestra, mostrando el botón que acciona el registro de una muestra de este tipo por primera vez. ?><button type="submit" name="RegistrarS" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 								
 				</form>
                 <?php  endif; 
 
 
 
-                if(isset($RegistrarM)):
+                if(isset($RegistrarM)): //Condición que verifica si se está cargando este archivo por primera vez para mostrar los radios de selección del formulario a cargar (Fitopatología ó suelo).
 
                 	echo "</div>";
                 	echo "<div id='segundo2' style='display:none;'>";
@@ -281,12 +287,12 @@
      
            
 
-                    if(isset($RegistrarF)) :
+                    if(isset($RegistrarF)) : //Condición que verifica si la muestra a registar o modificar es de fitopatología.
                     
 
-                    if($RegistrarF=='ModificarF') :
-                    $muestra = new fito();
-                    $reg = $muestra->consultar_fito($mysqli,$Cod_fito);
+                    if($RegistrarF=='ModificarF') : //Verificar si se desea modificar muestra de fitopatología.
+                    $muestra = new fito(); //Crear objeto fito.
+                    $reg = $muestra->consultar_fito($mysqli,$Cod_fito); //LLamado a la función que consulta la muestra de suelo por su código($Cod_fito).
 
                     $sintoma = explode("|", $reg[9]);
                     $partes = explode("|", $reg[20]);
