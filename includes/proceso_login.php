@@ -50,35 +50,37 @@
 				//comprueba si ha sido aprobado
 				if ($_SESSION['aprobacion'] == "Off") :
 					header("location: ../0/home/noaceptado");
-				endif;
 
-				//Chequeamos los intentos fallidos
-				$r2 = $intentos -> chequeo_intentos($mysqli, $correo);
-				$n_intentos = $r2 -> fetch_array();
+				//Ya fué aceptado!! se procede con la sesión.
+				else :
+					//Chequeamos los intentos fallidos
+					$r2 = $intentos -> chequeo_intentos($mysqli, $correo);
+					$n_intentos = $r2 -> fetch_array();
 
-				//Comprobamos privilegios
-			    if ($_SESSION['privilegios'] == 0) : //0 No tiene privilegios
-		        	header("location: ../0/home/noprivilegios");
-		        //Solo para privilegios (2) especialistas
-		        elseif ($_SESSION['privilegios'] == 2) : //Privilegio 2 es especialista
-					include_once '../system/classesp.php';
-		            $objesp = new especialista();
-		            $resultado = $objesp->verificar_privilegio_2($mysqli2, $_SESSION['ci']);
-			        if ($resultado[0] == $_SESSION['ci']) :
-						if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
-			        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
-			        	header("location: ../0/home/inicio");
-			        //En caso de no estar registrado el especialista por completo debe culminar su registro, esto sucede despues de estara aprobado
+					//Comprobamos privilegios
+				    if ($_SESSION['privilegios'] == 0) : //0 No tiene privilegios
+			        	header("location: ../0/home/noprivilegios");
+			        //Solo para privilegios (2) especialistas
+			        elseif ($_SESSION['privilegios'] == 2) : //Privilegio 2 es especialista
+						include_once '../system/classesp.php';
+			            $objesp = new especialista();
+			            $resultado = $objesp->verificar_privilegio_2($mysqli2, $_SESSION['ci']);
+				        if ($resultado[0] == $_SESSION['ci']) :
+							if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
+				        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+				        	header("location: ../0/home/inicio");
+				        //En caso de no estar registrado el especialista por completo debe culminar su registro, esto sucede despues de estara aprobado
+				        else :
+				        	if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
+				        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+				        	header("location: ../0/especialista/culminar_registro");
+				    	endif;
+				    //Para el resto de privilegios
 			        else :
-			        	if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
-			        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
-			        	header("location: ../0/especialista/culminar_registro");
-			    	endif;
-			    //Para el resto de privilegios
-		        else :
-					if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
-			        	$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
-					header("location: ../0/home/inicio");
+						if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
+				        	$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+						header("location: ../0/home/inicio");
+					endif;
 				endif;
 			endif;
 		else :

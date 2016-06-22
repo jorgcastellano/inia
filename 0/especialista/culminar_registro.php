@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+    include_once '../../system/check.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
