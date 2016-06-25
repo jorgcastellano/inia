@@ -2,6 +2,8 @@
     session_start();
     include_once '../../system/check.php';
 ?>
+<!--Los siguientes formularios son utilizados para el registro  de una muestra y en caso de querer modificar una muestra previa
+    mente registrada estos seran precargados con datos extraidos de la BD-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -391,18 +393,18 @@
 									<input type="text" name="Id_microorg" value="<?php echo $reg[8] ?>" id="Id_microorg" title="" maxlength="20" placeholder="" />
 									</br></br>
 							<label for="Sintomas">Síntomas</label>
-									<input type="checkbox" name="Sintomas[]" value="1"<?php foreach($sintoma as $id){ if($id=='1'){echo 'checked';} }?>/>Secamiento
-									<input type="checkbox" name="Sintomas[]" value="2"<?php foreach($sintoma as $id){ if($id=='2'){echo 'checked';} }?>/>Callos
-									<input type="checkbox" name="Sintomas[]" value="3"<?php foreach($sintoma as $id){ if($id=='3'){echo 'checked';} }?>/>Defoliacion
-									<input type="checkbox" name="Sintomas[]" value="4"<?php foreach($sintoma as $id){ if($id=='4'){echo 'checked';} }?>/>Moteado
-									<input type="checkbox" name="Sintomas[]" value="5"<?php foreach($sintoma as $id){ if($id=='5'){echo 'checked';} }?>/>Enanismo
-									<input type="checkbox" name="Sintomas[]" value="6"<?php foreach($sintoma as $id){ if($id=='6'){echo 'checked';} }?>/>Amarillamiento
-									<input type="checkbox" name="Sintomas[]" value="7"<?php foreach($sintoma as $id){ if($id=='7'){echo 'checked';} }?>/>Malformacion
-									<input type="checkbox" name="Sintomas[]" value="8"<?php foreach($sintoma as $id){ if($id=='8'){echo 'checked';} }?>/>Mancha
-									<input type="checkbox" name="Sintomas[]" value="9"<?php foreach($sintoma as $id){ if($id=='9'){echo 'checked';} }?>/>Marchitamiento
-									<input type="checkbox" name="Sintomas[]" value="10"<?php foreach($sintoma as $id){ if($id=='10'){echo 'checked';} }?>/>Muerte regresiva
-									<input type="checkbox" name="Sintomas[]" value="11"<?php foreach($sintoma as $id){ if($id=='11'){echo 'checked';} }?>/>Gomosis
-									<input type="checkbox" name="Sintomas[]" value="12"<?php foreach($sintoma as $id){ if($id=='12'){echo 'checked';} }?>/>Otros
+									<input type="checkbox" name="Sintomas[]" value="1"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='1'){echo 'checked';} }?>/>Secamiento
+									<input type="checkbox" name="Sintomas[]" value="2"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='2'){echo 'checked';} }?>/>Callos
+									<input type="checkbox" name="Sintomas[]" value="3"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='3'){echo 'checked';} }?>/>Defoliacion
+									<input type="checkbox" name="Sintomas[]" value="4"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='4'){echo 'checked';} }?>/>Moteado
+									<input type="checkbox" name="Sintomas[]" value="5"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='5'){echo 'checked';} }?>/>Enanismo
+									<input type="checkbox" name="Sintomas[]" value="6"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='6'){echo 'checked';} }?>/>Amarillamiento
+									<input type="checkbox" name="Sintomas[]" value="7"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='7'){echo 'checked';} }?>/>Malformacion
+									<input type="checkbox" name="Sintomas[]" value="8"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='8'){echo 'checked';} }?>/>Mancha
+									<input type="checkbox" name="Sintomas[]" value="9"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='9'){echo 'checked';} }?>/>Marchitamiento
+									<input type="checkbox" name="Sintomas[]" value="10"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='10'){echo 'checked';} }?>/>Muerte regresiva
+									<input type="checkbox" name="Sintomas[]" value="11"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='11'){echo 'checked';} }?>/>Gomosis
+									<input type="checkbox" name="Sintomas[]" value="12"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='12'){echo 'checked';} }?>/>Otros
 									</br></br>
 							<label for="F_sintomas">Fecha de inicio de la sintomatología</label>
 									<select name="Dia2" title="Día">
@@ -562,7 +564,7 @@
 							<label for="Observaciones">Observaciones</label>
 									<textarea name="Observaciones" id="Observaciones" title="" cols="30" rows="5" maxlength="50" placeholder=""><?php echo $reg[33] ?></textarea>	 
 									</br></br>
-
+							<!-- consultar fincas del cliente para saber de cual proviene la muestra -->
 							<label for="Finca" title="">Finca</label>
                     			<select name="finca">
                     				<option value="">Seleccione</option>
@@ -572,12 +574,14 @@
 
 								</select>
                             </br></br>
+                            <!--se muestra los analisis disponibles para la muestra y en caso de ser un formulario para modificacion  se precargaran los seleccionados -->
 							<?php $pre = explode("|", $codi_analisis); ?> 
 							<label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 						<?php while ($reg2 = $res3->fetch_array()) { ?>
 							<input type="checkbox" name="analisis[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } ;?>
 							     </br></br>
+							     <!--pasamos campos ocultos con codigos nesesarios para el registro de la muestra-->
 								<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
 								<input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />

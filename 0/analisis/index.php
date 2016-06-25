@@ -32,7 +32,7 @@
 
                     include_once '../../system/class.php';
                     $objanalisis = new analisis();
-
+                    //buscador de analisis segun sea el caso nombre completo, frase y otros.
                     if (!empty($buscador)) {
 
                         switch ($opc) {
@@ -108,6 +108,8 @@
                                 echo "Uy! existe un error";
                                 break;
                         }
+
+                    //en caso de que no se use el buscador mostrar una lista completa de los analisis    
                     } elseif (empty($buscador) OR !isset($buscador)) {
                         echo "
                                 <table class='anapro'>

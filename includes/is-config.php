@@ -1,6 +1,6 @@
 <?php
 
-	define("HOST", "inia.jorgcastellano.net.ve");
+	define("HOST", "inia.local");
 	//define("USER", "sec_user");
 	define("USER", "isinia");
 	//define("PASSWORD", "123456");

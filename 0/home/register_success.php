@@ -5,7 +5,6 @@
         <?php include_once '../../layouts/head.php' ?>
     </head>
     <body>
-        <?php include '../../system/menu.php' ?>
         <section class="bloque">
             <div>
             <?php include_once '../../layouts/cabecera-body.php' ?>
@@ -14,7 +13,6 @@
                 </hgroup>
             </div>
             <?php 
-                include '../../layouts/logo.php';
 
                 extract($_POST);
                 include_once '../../includes/is-conexion_bd.php';
