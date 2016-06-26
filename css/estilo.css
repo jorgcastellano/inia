@@ -4,6 +4,7 @@ body{
 	font-family: Calibri, Open Sans, Carlito;
 	margin:auto;
 	color: #212121;
+	padding-bottom: 25px;
 }
 header{
 	text-align: center;
@@ -47,7 +48,7 @@ footer{
 	text-align: center;
 	font-size: small;
 	height: 75px;
-	margin: 0 auto;
+	margin: auto;
 	margin-top: 20px;
 }
 
