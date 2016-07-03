@@ -1,9 +1,10 @@
 <?php
 
 	//Esto solamente para verificar si existen privilegios de especialista
-	define("HOSTS", "localhost");
-  	define("USERS", "root");
-  	define("PASSWORDS", "PAZ010300669");
+
+	define("HOSTS", "inia.local");
+  	define("USERS", "gproyecto");
+  	define("PASSWORDS", "123456");
   	define("DB", "proyecto3");
 
   	$mysqli2 = new mysqli(HOSTS, USERS, PASSWORDS, DB);

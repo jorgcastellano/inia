@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-06-2016 a las 03:22:02
--- Versión del servidor: 5.7.13-log
--- Versión de PHP: 5.6.22
+-- Tiempo de generación: 02-07-2016 a las 17:42:55
+-- Versión del servidor: 5.5.49-0+deb8u1
+-- Versión de PHP: 5.6.22-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,8 +32,15 @@ USE `inicio_seguro`;
 CREATE TABLE IF NOT EXISTS `intentos` (
   `id` int(9) unsigned zerofill NOT NULL COMMENT 'Contador de inicio de sesion',
   `user_id` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha del intento fallido'
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha del intento fallido'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `intentos`
+--
+
+INSERT INTO `intentos` (`id`, `user_id`, `fecha`) VALUES
+(000000001, 'jorgecm14@gmail.com', '2016-07-02 21:41:12');
 
 -- --------------------------------------------------------
 
@@ -54,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `miembros` (
   `aprobacion` varchar(3) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Off',
   `privilegios` int(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Privilegios de la persona',
   `block` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Usuario bloqueado por max intentos hechos al iniciar sesion'
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabla de inicio de sesion seguro';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabla de inicio de sesion seguro';
 
 --
 -- Volcado de datos para la tabla `miembros`
@@ -64,8 +71,9 @@ INSERT INTO `miembros` (`id`, `ci`, `usuario`, `apellido`, `email`, `password`, 
 (12, 17896569, 'Jose Luis', 'Rivera', 'jlrivera@inia.gob.ve', '283fac8fe3fd80e91afef9523495012eefeaadee0ca59c8337666f3eb8504769090bbf6e7ff310e78ce4580165011f13411865e36992a872836ec880ac7cb2fc', '', '1', 'c6113d386edd46b2ff44e4eab60aa73a8caf87ba83e9aac45e32c00ca6aa8e169056726c0ce93a7da786ce82bd23fb29fc8c8768ff66921a0f8930ac07e64606', 'On', 1, 0),
 (18, 87654321, 'Caja', '1', 'caja@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '', '1', 'd11e48cd4de9c64d5cd373fe868f45e06f5ee910cba49e4fdf3a99cf6b6fd41b8d1f16387f97ebc1f5d0a35f8b96a2e8af736ccf363e0552f66037f12284c883', 'On', 3, 0),
 (25, 20709289, 'Jorge', 'Castellano', 'jorgecm14@gmail.com', 'b825cf2f6db03ba3a62f043cfa244f79b4c71e8476fa393921c1a417fffc8b0f9fc667d556d4fbe9bea8ee09b8e93efedcff058b995e5ec54457b6e45bde0b1d', '', '1', '5d4e12dfb4488101412ba40237a288634d46aab734f16a0dadcdf92810b7bf8c29fb80966cf61fbb777ed396487727f1831267a528ef3c40bd6550be3bee296e', 'On', 1, 0),
-(26, 22721512, 'Benito', 'De La Paz', 'benitodelapaz@gmail.com', '3627909a29c31381a071ec27f7c9ca97726182aed29a7ddd2e54353322cfb30abb9e3a6df2ac2c20fe23436311d678564d0c8d305930575f60e2d3d048184d79', '', '1', '1b71c1a8807987529f29eb5995cdc71575621ba8567914854777e77e51819268e663b2eef681a6814b3b617494adc970325ca23abaedbdc1611b0916aee4306c', 'Off', 1, 0),
-(28, 15922568, 'maria virginia', 'mendoza', 'mmendoza@inia.gob.ve', 'ad427581460cb831a08da2813204034960a9aec6a64a4ecae013baf5792f7e41beec9029b5d85c9affe0ffc003abac2045506aa0f225cf7ddfc348bcc3036f73', '', '7', '8b832dc3313b12084a87dec77a57965b2fc38af9f87dfc621066c11de3a512bcab5fe51ad1d38734811ef885166743fb4d5ff8c034cca654914352b680d4b6cc', 'On', 1, 0);
+(26, 22721512, 'Benito', 'De La Paz', 'benitodelapaz@gmail.com', '3627909a29c31381a071ec27f7c9ca97726182aed29a7ddd2e54353322cfb30abb9e3a6df2ac2c20fe23436311d678564d0c8d305930575f60e2d3d048184d79', '', '1', '1b71c1a8807987529f29eb5995cdc71575621ba8567914854777e77e51819268e663b2eef681a6814b3b617494adc970325ca23abaedbdc1611b0916aee4306c', 'On', 1, 0),
+(28, 15922568, 'maria virginia', 'mendoza', 'mmendoza@inia.gob.ve', 'ad427581460cb831a08da2813204034960a9aec6a64a4ecae013baf5792f7e41beec9029b5d85c9affe0ffc003abac2045506aa0f225cf7ddfc348bcc3036f73', '', '7', '8b832dc3313b12084a87dec77a57965b2fc38af9f87dfc621066c11de3a512bcab5fe51ad1d38734811ef885166743fb4d5ff8c034cca654914352b680d4b6cc', 'On', 1, 0),
+(29, 24191165, 'Josman', 'Mora', 'aromyosman@gmail.com', 'abdee47b13b255e7c1c3ba92cc4610eec0bedbcd1d01faeb929b5312d7725612d12ba1d30360578cf9e630b26fe27d138293c2a2abb5b213e8facb75a321f49e', '', '1', 'd97dfd1e4d1d083a06deb82c6779d9ade3fe5c20603bff0376f905b01e0cd7cbfe04471a057b0e5700973b9d91279c42801ceb7fab9f57e4f37ada9285d1a648', 'On', 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -93,12 +101,12 @@ ALTER TABLE `miembros`
 -- AUTO_INCREMENT de la tabla `intentos`
 --
 ALTER TABLE `intentos`
-  MODIFY `id` int(9) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT 'Contador de inicio de sesion',AUTO_INCREMENT=34;
+  MODIFY `id` int(9) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT 'Contador de inicio de sesion',AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `miembros`
 --
 ALTER TABLE `miembros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;--
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;--
 -- Base de datos: `proyecto3`
 --
 DROP DATABASE `proyecto3`;
@@ -351,8 +359,8 @@ CREATE TABLE IF NOT EXISTS `iva` (
 --
 
 INSERT INTO `iva` (`id`, `iva`, `dia`, `mes`, `ano`, `estatus`, `reten`) VALUES
-(3, '0.00', 1, 2, 2016, 0, '55.00'),
-(4, '9.00', 2, 1, 2016, 0, '50.00');
+(3, 0.00, 1, 2, 2016, 0, 55.00),
+(4, 9.00, 2, 1, 2016, 0, 50.00);
 
 -- --------------------------------------------------------
 

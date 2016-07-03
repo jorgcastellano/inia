@@ -12,27 +12,7 @@
 	<script type="text/javascript">
 	//scrip de selección que determina cual formulario se desea cargar.
 
-		function mostrarformulario(){
-		if (document.principal1.formulario[0].checked == true) {
 
-		document.getElementById('primero1').style.display='block';
-
-		} else {
-
-		document.getElementById('primero1').style.display='none';
-		}
-
-		if (document.principal1.formulario[1].checked == true) {
-
-		document.getElementById('segundo2').style.display='block';
-
-		} else {
-
-		document.getElementById('segundo2').style.display='none';
-		}
-
-
-		}
 </script>
     </head>
     <body>
@@ -50,23 +30,7 @@
                     require_once '../../system/class.php';//Libreria que contiene las clases.
                     extract($_POST);
 
-                    if(isset($RegistrarM))://Condición que verifica cuando este archivo se carga por primera vez.
-
-                    	$RegistrarS="Inicio";//Variable que indica que se cargará por primera vez el formulario de suelo.
-                    	$RegistrarF="Inicio";//Variable que indica que se cargará por primera vez el formulario de fitopatología.
                     
-                    ?>
-
-
-             		<form  class="contact_form"  action="" method="" name="principal1"><!--Formulario principal que contiene los formularios de suelo y fitopatología-->
-                     <!--Boton de selección para indicar que formulario se cargá -->
-             		<input type="radio" name="formulario" value="primero" id="Conocido" onclick="mostrarformulario();" />suelo
-           			<input type="radio" name="formulario" value="segundo" id="Conocido" onclick="mostrarformulario();" />fitopatologia
-             		<div id="primero1" style="display:none;">
-
-
-
-                   <?php endif;
                     
 //####################################################################################################################################################
 //###########################  #  # ## # __ #  __#     # __ #### #######  __# ## # __ # ####    ######################################################
@@ -269,16 +233,11 @@
                     	<?php if($RegistrarS=='Inicio'||$RegistrarS=='NoContinueS'): //Condición que verifica si el formulario ha sido cargado por primera vez para esta muestra, mostrando el botón que acciona el registro de una muestra de este tipo por primera vez. ?><button type="submit" name="RegistrarS" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 								
 				</form>
-                <?php  endif; 
+                <?php 
 
 
 
-                if(isset($RegistrarM)): //Condición que verifica si se está cargando este archivo por primera vez para mostrar los radios de selección del formulario a cargar (Fitopatología ó suelo).
-
-                	echo "</div>";
-                	echo "<div id='segundo2' style='display:none;'>";
-
-                endif;
+                
 
                 	
 //################################################################################################################################
@@ -592,18 +551,6 @@
                     			<?php if($RegistrarF=='Inicio'||$RegistrarF=='NoContinueF'): ?><button type="submit" name="RegistrarF" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 									
 				</form>
-                <?php 
-
-                endif; 
-
-                	if(isset($RegistrarM)) :
-
-                	echo "</div>";
-                	echo "</form>";
-
-                endif;
-
-                ?>
             
 			<?php include '../../layouts/layout_p.php'; ?>
         </section>
