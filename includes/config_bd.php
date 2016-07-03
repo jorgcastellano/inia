@@ -1,9 +1,9 @@
 <?php 
 	
-	define("HOST", "inia.local");
+	define("HOST", "localhost");
  	//define("USER", "sec_user");
-  	define("USER", "gproyecto");
-  	define("PASSWORD", "123456");
+  	define("USER", "root");
+  	define("PASSWORD", "PAZ010300669");
   	//define("PASSWORD", "AHxySPDT7U8mNTdE");
   	define("DATABASE", "proyecto3");
 
