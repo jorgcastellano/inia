@@ -1,7 +1,7 @@
 <?php
 
 	//Esto solamente para verificar si existen privilegios de especialista
-	define("HOSTS", "inia.local");
+	define("HOSTS", "inia.jcm.co.ve");
   	define("USERS", "gproyecto");
   	define("PASSWORDS", "123456");
   	define("DB", "proyecto3");

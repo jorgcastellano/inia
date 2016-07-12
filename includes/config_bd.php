@@ -1,6 +1,6 @@
 <?php 
 	
-	define("HOST", "inia.local");
+	define("HOST", "inia.jcm.co.ve");
  	//define("USER", "sec_user");
   	define("USER", "gproyecto");
   	define("PASSWORD", "123456");
