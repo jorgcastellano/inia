@@ -1,5 +1,6 @@
 <?php 
 	
+
 	define("HOST", "inia.jcm.co.ve");
  	//define("USER", "sec_user");
   	define("USER", "gproyecto");
