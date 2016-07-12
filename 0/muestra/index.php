@@ -17,56 +17,71 @@
 		if (document.principal1.formulario[0].checked == true) {
 
 		document.getElementById('ambos').style.display='block';
+		document.getElementById('ambos2').style.display='block';
+		
 
 		} 
 		
-
 		if (document.principal1.formulario[1].checked == true) {
 
 		document.getElementById('ambos').style.display='block';
+		document.getElementById('ambos2').style.display='block';
+
+		} 
+
+		if (document.principal1.formulario[0].checked == false&&document.principal1.formulario[1].checked == false) {
+
+		document.getElementById('ambos').style.display='none';
+		document.getElementById('ambos2').style.display='none';
 
 		} 
 
 
+
+		
 
 
 
 		if (document.principal1.formulario[0].checked == true) {
 
-		document.getElementById('ambos2').style.display='block';
+		document.getElementById('codigo1').style.display='block';
 
-		} 
-		
+		} else {
+
+		document.getElementById('codigo1').style.display='none';
+		}
 
 		if (document.principal1.formulario[1].checked == true) {
 
-		document.getElementById('ambos2').style.display='block';
+		document.getElementById('codigo2').style.display='block';
 
+		} else {
+
+		document.getElementById('codigo2').style.display='none';
 		}
-
-
-
-
-
 
 		
 
 		if (document.principal1.formulario[0].checked == true) {
 
 		document.getElementById('primero1').style.display='block';
+		document.getElementById('analisis1').style.display='block';
 
 		} else {
 
 		document.getElementById('primero1').style.display='none';
+		document.getElementById('analisis1').style.display='none';
 		}
 
 		if (document.principal1.formulario[1].checked == true) {
 
 		document.getElementById('segundo2').style.display='block';
+		document.getElementById('analisis2').style.display='block';
 
 		} else {
 
 		document.getElementById('segundo2').style.display='none';
+		document.getElementById('analisis2').style.display='none';
 		}
 
 
@@ -86,27 +101,46 @@
 			</div>
 				<?php
 
-					
                     require_once '../../system/class.php';//Libreria que contiene las clases.
+                    include '../../system/gcodigo.php'; //Libreria que contiene el generador de codigos correspondientes a solicitudes y muestras.
                     extract($_POST);
 
-                    
-                    
-//####################################################################################################################################################
-//###########################  #  # ## # __ #  __#     # __ #### #######  __# ## # __ # ####    ######################################################
-//########################### # # # ## # __##__  ### ### __ ### # ######__  # ## # __## #### ## ######################################################
-//########################### ### #    #    #    ### ### ### # ### #####    #    #    #    #    ######################################################
-//####################################################################################################################################################
+//#################################################################################################################################
+//###############################################  #  # ## # __ #  __#     # __ #### ###  __#######################################
+//############################################### # # # ## # __##__  ### ### __ ### # ##__  #######################################
+//############################################### ### #    #    #    ### ### ### # ### #    #######################################
+//#################################################################################################################################
 
-                    include '../../system/gcodigo.php'; //Libreria que contiene el generador de codigos correspondientes a solicitudes y muestras.
+                    //if($RegistrarS=='NoContinueS'||$RegistrarS=='Inicio'): //Condición que verifica si el formulario anteriormente llenado es de fitopatología($RegistrarS=='NoContinueS') y desea llenar uno de suelo ó no ha llenado un formulario anteriormente.
+                                                                           //Para generar nuevos códigos de solicitud y de muestra para esa solicitud.
+	                	$x=3; 
+	                	$y=2;
+	                	$z=1;
+	                    $generar = new controllerCodigo();
+	                    $code1=$generar->generarCodigo($x); 
+	                    $code2=$generar->generarCodigo($y);
+	                    $code3=$generar->generarCodigo($z); 
+	                    $Cod_sol=''; 
+
+                    //endif;
+	                    $tipo1=1;
+	                    $tipo2=2;
+	                    $Ced_cliente=$RegistrarM;
+	                	$objfinca = new finca();
+	                	$finca=$objfinca->consultar_finca_all($mysqli,$Ced_cliente);
+	                	$objanalisis = new analisis();
+	                	$analisis=$objanalisis->consultar_analisis_muestra($mysqli,$tipo2);
+	                	$analisis2=$objanalisis->consultar_analisis_muestra($mysqli,$tipo1);
                     
                     
 				?>
 
-				<form  class="contact_form"  action="" method="" name="principal1"><!--Formulario principal que contiene los formularios de suelo y fitopatología-->
+			<form  class="contact_form"  action="" method="" name="principal1"><!--Formulario principal que contiene los formularios de suelo y fitopatología-->
                      <!--Boton de selección para indicar que formulario se cargá -->
+             		<center>
              		<input type="checkbox" name="formulario" value="primero" id="Conocido" onclick="mostrarformulario();" />suelo
            			<input type="checkbox" name="formulario" value="segundo" id="Conocido" onclick="mostrarformulario();" />fitopatologia
+             		</center>
              		</br></br>
 
 
@@ -114,17 +148,23 @@
 
 
 					<div id="ambos" style="display:none;">
-					<label for="Codig">Código de Solicitud</label> 
-							<input type="text" name="Codig" value="<?php echo $code2.$Cod_sol; //Imprimir en este campo el código de la solicitud creado previamente por el generador de código. ?>" id="Codig" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de la solicitud-->
-                            
-							</br></br>
-					<label for="Codigo">Código de Muestra</label>
-							<input type="text" name="Codigo" value="<?php echo $code1.$reg[0]; //Imprimir en este campo el código de muestra de suelo creado previamente por el generador de código. ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de muestra de suelo-->
-                            
-							</br></br>
+						<label for="Codig">Código de Solicitud</label> 
+							<input type="text" name="Codig" value="<?php echo $code3.$Cod_sol; //Imprimir en este campo el código de la solicitud creado previamente por el generador de código. ?>" id="Codig" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de la solicitud-->
+                            </br></br>
+
+                     <div id="codigo1" style="display:none;">
+						<label for="Codigo">Código Suelo</label>
+								<input type="text" name="Codigo" value="<?php echo $code2.$reg[0]; //Imprimir en este campo el código de muestra de suelo creado previamente por el generador de código. ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de muestra de suelo-->
+								</br></br>
+					 </div>
+					 <div id="codigo2" style="display:none;">
+						<label for="Codigo">Código Fitopatologia</label>
+								<input type="text" name="Codigo" value="<?php echo $code1.$reg[0]; //Imprimir en este campo el código de muestra de suelo creado previamente por el generador de código. ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de muestra de suelo-->
+								</br></br>
+					 </div>
 					
 
-					<label for="Tipo_sue" title="Seleccione el tipo de muestra a registrar">Tipo de muestra</label>
+					<label for="Tipo_m" title="Seleccione el tipo de muestra a registrar">Tipo de muestra</label>
 					<!--Listado de los tipos de muestra, la condición if($reg[2]=='x') verifica que tipo precargar en caso de que se este modificando la muestra-->
 									<select name="Tipo_sue" title="Seleccione el tipo de muestra a registrar">
 										<option value="">-----------------Seleccione-----------------</option>
@@ -138,13 +178,13 @@
 									</select>
 									</br></br>
 
-					<label for="Cult_fito" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' ">Cultivo, Especie o Variedad</label>
-							<input type="text" name="Cult_fito" value="<?php echo $reg[4] ?>" id="Cult_fito" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' " maxlength="15" placeholder="" />
+					<label for="Cult_act" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' ">Cultivo, Especie o Variedad</label>
+							<input type="text" name="Cult_act" value="<?php echo $reg[4] ?>" id="Cult_fito" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' " maxlength="15" placeholder="" />
 							</br></br>
 					<label for="Nro_pl" title="Indique el número de plantas que tiene cultivadas">Nro de plantas</label>
 							<input type="num" name="Nro_pl" value="<?php echo $reg[14] ?>" id="Nro_pl" title="Indique el número de plantas que tiene cultivadas" maxlength="10" placeholder="" />
 							</br></br>
-					<label for="Edad_fito" title="Edad del cultivo en días, meses o años">Edad del Cultivo</label>
+					<label for="Edad_cul" title="Edad del cultivo en días, meses o años">Edad del Cultivo</label>
 							<input type="text" name="Edad_fito" value="<?php echo $reg[5] ?>" id="Edad_fito" title="Edad del cultivo en días, meses o años" maxlength="11" placeholder="" />
 							</br></br>
 					<label for="Tam_lote">Tamaño del lote  (Ha)</label>
@@ -161,8 +201,8 @@
 							<option value="5"<?php if($reg[22]=='5'){ echo 'selected'; } ?>>Cima</option>
 						</select>
 							</br></br>
-                     <label for="dist_f">Distancia Siembra (cm)</label>
-							<input type="text" name="dist_f" value="<?php echo $reg[16] ?>" id="dist_f" title="" maxlength="11" placeholder="" />		
+                     <label for="dist_siembra">Distancia Siembra (cm)</label>
+							<input type="text" name="dist_siembra" value="<?php echo $reg[16] ?>" id="dist_f" title="" maxlength="11" placeholder="" />		
 							</br></br>
 					<label for="Riego">Riego</label>
 						<select name="Riego">
@@ -173,8 +213,8 @@
 							<option value="4"<?php if($reg[21]=='4'){ echo 'selected'; } ?>>No tiene</option>
 						</select>
 							</br></br>
-					<label for="Cult_antes" title="Indique el cultivo anterior de este terreno">Cultivo anterior</label>
-							<input type="text" name="Cult_antes" value="<?php echo $reg[15] ?>" id="Cult_antes" title="Indique el cultivo anterior de este terreno" maxlength="20" placeholder="" />
+					<label for="Cult_ant" title="Indique el cultivo anterior de este terreno">Cultivo anterior</label>
+							<input type="text" name="Cult_ant" value="<?php echo $reg[15] ?>" id="Cult_antes" title="Indique el cultivo anterior de este terreno" maxlength="20" placeholder="" />
 							</br></br>
 					<label for="F_toma">Fecha de toma de la muestra</label>
 							<select name="Dia" title="Dia">
@@ -205,16 +245,22 @@
 							<input type="text" name="Produc_dosis" value="<?php echo $reg[28] ?>" id="Produc_dosis" title="" maxlength="60" placeholder="" />
 							</br></br>
 					<label for="Epoca_aplic" title="">Época de Aplicación</label>
-							<input type="text" name="Epoca_aplic" value="<?php echo $reg[20] ?>" id="Epoca_aplic" title="" maxlength="10" placeholder="" />
+							<input type="text" name="Epoca_aplic" value="<?php echo $reg[20] ?>"  id="Epoca_aplic" title="" maxlength="10" placeholder="" />
 							</br></br>	
-					<label for="Aplicacion" title="">Modo de aplicación</label>
-							<textarea name="Aplicacion" id="Aplicacion" title="" cols="30" rows="5" maxlength="30" placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[21] ?></textarea>
+					<label for="Modo_aplic" title="">Modo de aplicación</label>
+							<textarea name="Modo_aplic" id="Aplicacion" title="" cols="5" rows="6" maxlength="30" placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[21] ?></textarea>
                             </br></br>
                     <label for="Pobl_cercana" title="Indique la población mas cercana al lugar del cultivo">Población más Cercana</label>
 							<input type="text" name="Pobl_cercana" value="<?php echo $reg[7] ?>" id="Pobl_cercana" title="Indique la población más cercana al lugar del cultivo" maxlength="15" placeholder="" />
 							</br></br>
-
 					</div>
+<?php
+//#################################################################################################################################
+//###########################  #  # ## # __ #  __#     # __ #### #######  __# ## # __ # ####    ###################################
+//########################### # # # ## # __##__  ### ### __ ### # ######__  # ## # __## #### ## ###################################
+//########################### ### #    #    #    ### ### ### # ### #####    #    #    #    #    ###################################
+//#################################################################################################################################
+?>
 					<div id="primero1" style="display:none;">		
 
 					<label for="Profundidad" title="Indique en Centimetros a que profundidad tomo la muestra">Profundidad de la muestra  (Cm)</label>
@@ -243,20 +289,13 @@
 					</div>
 					
  
- <?php 
-
-
-
-                
-
-                	
+ <?php                 	
 //################################################################################################################################
 //###########################  #  # ## # __ #  __#     # __ #### ######## __.#     #     #    ####################################
 //########################### # # # ## # __##__  ### ### __ ### # ####### __#### ##### ### ## ####################################
 //########################### ### #    #    #    ### ### ### # ### ###### ####     ### ###    ####################################
 //################################################################################################################################
-     
-           
+         
   ?>
                 
                 
@@ -273,19 +312,19 @@
 							<label for="Id_microorg">Identificación del microorganismo</label>
 									<input type="text" name="Id_microorg" value="<?php echo $reg[8] ?>" id="Id_microorg" title="" maxlength="20" placeholder="" />
 									</br></br>
-							<label for="Sintomas">Síntomas</label>
-									<input type="checkbox" name="Sintomas[]" value="1"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='1'){echo 'checked';} }?>/>Secamiento
-									<input type="checkbox" name="Sintomas[]" value="2"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='2'){echo 'checked';} }?>/>Callos
-									<input type="checkbox" name="Sintomas[]" value="3"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='3'){echo 'checked';} }?>/>Defoliacion
-									<input type="checkbox" name="Sintomas[]" value="4"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='4'){echo 'checked';} }?>/>Moteado
-									<input type="checkbox" name="Sintomas[]" value="5"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='5'){echo 'checked';} }?>/>Enanismo
-									<input type="checkbox" name="Sintomas[]" value="6"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='6'){echo 'checked';} }?>/>Amarillamiento
-									<input type="checkbox" name="Sintomas[]" value="7"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='7'){echo 'checked';} }?>/>Malformacion
-									<input type="checkbox" name="Sintomas[]" value="8"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='8'){echo 'checked';} }?>/>Mancha
-									<input type="checkbox" name="Sintomas[]" value="9"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='9'){echo 'checked';} }?>/>Marchitamiento
-									<input type="checkbox" name="Sintomas[]" value="10"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='10'){echo 'checked';} }?>/>Muerte regresiva
-									<input type="checkbox" name="Sintomas[]" value="11"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='11'){echo 'checked';} }?>/>Gomosis
-									<input type="checkbox" name="Sintomas[]" value="12"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='12'){echo 'checked';} }?>/>Otros
+							<label for="Sintoma">Síntomas</label>
+									<input type="checkbox" name="Sintoma[]" value="1"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='1'){echo 'checked';} }?>/>Secamiento
+									<input type="checkbox" name="Sintoma[]" value="2"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='2'){echo 'checked';} }?>/>Callos
+									<input type="checkbox" name="Sintoma[]" value="3"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='3'){echo 'checked';} }?>/>Defoliacion
+									<input type="checkbox" name="Sintoma[]" value="4"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='4'){echo 'checked';} }?>/>Moteado
+									<input type="checkbox" name="Sintoma[]" value="5"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='5'){echo 'checked';} }?>/>Enanismo
+									<input type="checkbox" name="Sintoma[]" value="6"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='6'){echo 'checked';} }?>/>Amarillamiento
+									<input type="checkbox" name="Sintoma[]" value="7"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='7'){echo 'checked';} }?>/>Malformacion
+									<input type="checkbox" name="Sintoma[]" value="8"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='8'){echo 'checked';} }?>/>Mancha
+									<input type="checkbox" name="Sintoma[]" value="9"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='9'){echo 'checked';} }?>/>Marchitamiento
+									<input type="checkbox" name="Sintoma[]" value="10"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='10'){echo 'checked';} }?>/>Muerte regresiva
+									<input type="checkbox" name="Sintoma[]" value="11"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='11'){echo 'checked';} }?>/>Gomosis
+									<input type="checkbox" name="Sintoma[]" value="12"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='12'){echo 'checked';} }?>/>Otros
 									</br></br>
 							<label for="F_sintomas">Fecha de inicio de la sintomatología</label>
 									<select name="Dia2" title="Día">
@@ -319,12 +358,6 @@
 									<option value="4"<?php if($reg[12]=='4'){ echo 'selected'; } ?>>Vivero</option>
 								</select>
 								</br></br>
-							<label for="Tam_lote">Tamaño de Plantación/lote</label>
-									<input type="text" name="Tam_lote" value="<?php echo $reg[13] ?>" id="Tam_lote" title="" maxlength="11" placeholder="" />
-									</br></br>
-							<label for="Nro_plant">Nro de Plantas</label>
-									<input type="num" name="Nro_plant" value="<?php echo $reg[14] ?>" id="Nro_plant" title="" maxlength="11" placeholder="" />		
-									</br></br>
 							<label for="Nro_subm">Nro de Submuestra</label>
 									<input type="num" name="Nro_subm" value="<?php echo $reg[15] ?>" id="Nro_subm" title="" maxlength="11" placeholder="" />		
 									</br></br>
@@ -336,7 +369,7 @@
 									
 							<label for="Pres_microorg">Presentación del microorganismo</label>
 								<select name="Pres_microorg">
-									<option value="">Seleccione</option>
+									<option value="">-----------------Seleccione-----------------</option>
 									<option value="1"<?php if($reg[18]=='1'){ echo 'selected'; } ?>>Líquido</option>
 									<option value="2"<?php if($reg[18]=='2'){ echo 'selected'; } ?>>Biopreparado</option>
 									<option value="3"<?php if($reg[18]=='3'){ echo 'selected'; } ?>>Polvo mojable</option>
@@ -346,7 +379,7 @@
 									</br></br>
 							<label for="Dist_planafect">Distribución de las plantas afectadas</label>
 								<select name="Dist_planafect">
-									<option value="">Seleccione</option>
+									<option value="">-----------------Seleccione-----------------</option>
 									<option value="1"<?php if($reg[19]=='1'){ echo 'selected'; } ?>>Generalizado</option>
 									<option value="2"<?php if($reg[19]=='2'){ echo 'selected'; } ?>>Disperso</option>
 									<option value="3"<?php if($reg[19]=='3'){ echo 'selected'; } ?>>Sectorizado</option>
@@ -410,9 +443,7 @@
 							<label for="Produc_dosisb" title="">Productos ultilizados y dosis</label>
 									<input type="text" name="Produc_dosisb" value="<?php echo $reg[30] ?>" id="Produc_dosisb" title="" maxlength="50" placeholder="" />
 									</br></br>
-							<label for="Cult_ant" title="">Cultivo anterior</label>
-									<input type="text" name="Cult_ant" value="<?php echo $reg[31] ?>" id="Cult_ant" title="" maxlength="20" placeholder="" />
-									</br></br>
+
 							<label for="Cond_agroclima" title="">Condiciones Agroclimáticas</label>
 									<input type="text" name="Cond_agroclima" value="<?php echo $reg[32] ?>" id="Cond_agroclima" title="" maxlength="20" placeholder="" />
 									</br></br>
@@ -429,12 +460,28 @@
 							<label for="Finca" title="">Finca</label>
                     			<select name="finca">
                     				<option value="">Seleccione</option>
-                    				<?php// while ($reg8 = $resfin->fetch_array()) { ?>
+                    				<?php while ($reg8 = $finca->fetch_array()) { ?>
                     				<option value="<?php echo $reg8[0] ?>" <?php if($reg8[0]==$reg[34]){ echo 'selected'; } ?>><?php echo $reg8[2] ?> </option>
-                    				<?php // } ?>
+                    				<?php  } ?>
 
 								</select>
                             </br></br>
+
+                           <label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
+
+                        <div id='analisis1' style='display:none;'>
+						<?php while ($reg2 = $analisis->fetch_array()) { ?>
+							<input type="checkbox" name="analisis1[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
+						<?php } ;?>
+						</div>
+						<div id='analisis2' style='display:none;'>
+						<?php while ($reg5 = $analisis2->fetch_array()) { ?>
+							<input type="checkbox" name="analisis2[]" value="<?php echo $reg5['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg5[0]){echo 'checked';} }?>/><?php echo $reg5['Nom_ana']; ?>
+						<?php } ;?>
+						</div>
+
+
+							     </br
                 
 							     </br></br>
 							     <!--pasamos campos ocultos con codigos nesesarios para el registro de la muestra-->

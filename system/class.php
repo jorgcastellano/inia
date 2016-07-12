@@ -144,6 +144,14 @@ class analisis {
       return $res->fetch_array();
     }
 
+
+    public function consultar_analisis_muestra($mysqli,$Tipo){
+      //buscador para formulario de muestra
+      $sql="SELECT * FROM analisis WHERE analisis.tipo = '$Tipo' AND analisis.estatus = 'On'";
+      return $mysqli->query($sql);
+
+    }
+
     public function cEstatus($mysqli, $v) {
       $sql="SELECT * FROM analisis WHERE Tipo = '$v' ORDER BY Nom_ana ASC";
       return $mysqli->query($sql);
