@@ -237,9 +237,9 @@
 							</select>
 							</br></br>
 					<label for="Practicas">Prácticas realizadas</label>
-							<input type="checkbox" name="Practicas[]" value="1"<?php foreach($practica as $id){ if($id=='1'){echo 'checked';} }?>/>Quimico
-							<input type="checkbox" name="Practicas[]" value="2"<?php foreach($practica as $id){ if($id=='2'){echo 'checked';} }?>/>Fertilizacion
-							<input type="checkbox" name="Practicas[]" value="3"<?php foreach($practica as $id){ if($id=='3'){echo 'checked';} }?>/>Organico
+							<input type="checkbox" name="Practicas[]" value="1"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='1'){echo 'checked';} }?>/>Quimico
+							<input type="checkbox" name="Practicas[]" value="2"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='2'){echo 'checked';} }?>/>Fertilizacion
+							<input type="checkbox" name="Practicas[]" value="3"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='3'){echo 'checked';} }?>/>Organico
 							</br></br>
 					<label for="Produc_dosis" title="">Productos ultilizados y dosis</label>
 							<input type="text" name="Produc_dosis" value="<?php echo $reg[28] ?>" id="Produc_dosis" title="" maxlength="60" placeholder="" />
@@ -389,14 +389,14 @@
 								</select>
 									</br></br>
 							<label for="Part_afect">Partes afectadas</label>
-									<input type="checkbox" name="Part_afect[]" value="1"<?php foreach($partes as $id){ if($id=='1'){echo 'checked';} }?>/>Tallos o Ramas
-									<input type="checkbox" name="Part_afect[]" value="2"<?php foreach($partes as $id){ if($id=='2'){echo 'checked';} }?>/>Bulbos
-									<input type="checkbox" name="Part_afect[]" value="3"<?php foreach($partes as $id){ if($id=='3'){echo 'checked';} }?>/>Raices
-									<input type="checkbox" name="Part_afect[]" value="4"<?php foreach($partes as $id){ if($id=='4'){echo 'checked';} }?>/>Hojas
-									<input type="checkbox" name="Part_afect[]" value="5"<?php foreach($partes as $id){ if($id=='5'){echo 'checked';} }?>/>Flores
-									<input type="checkbox" name="Part_afect[]" value="6"<?php foreach($partes as $id){ if($id=='6'){echo 'checked';} }?>/>Semillas
-									<input type="checkbox" name="Part_afect[]" value="7"<?php foreach($partes as $id){ if($id=='7'){echo 'checked';} }?>/>Frutos
-									<input type="checkbox" name="Part_afect[]" value="8"<?php foreach($partes as $id){ if($id=='8'){echo 'checked';} }?>/>Planta entera
+									<input type="checkbox" name="Part_afect[]" value="1"<?php if (isset($autocompletado)) foreach($partes as $id){ if($id=='1'){echo 'checked';} }?>/>Tallos o Ramas
+									<input type="checkbox" name="Part_afect[]" value="2"<?php if (isset($autocompletado)) foreach($partes as $id){ if($id=='2'){echo 'checked';} }?>/>Bulbos
+									<input type="checkbox" name="Part_afect[]" value="3"<?php if (isset($autocompletado)) foreach($partes as $id){ if($id=='3'){echo 'checked';} }?>/>Raices
+									<input type="checkbox" name="Part_afect[]" value="4"<?php if (isset($autocompletado)) foreach($partes as $id){ if($id=='4'){echo 'checked';} }?>/>Hojas
+									<input type="checkbox" name="Part_afect[]" value="5"<?php if (isset($autocompletado)) foreach($partes as $id){ if($id=='5'){echo 'checked';} }?>/>Flores
+									<input type="checkbox" name="Part_afect[]" value="6"<?php if (isset($autocompletado)) foreach($partes as $id){ if($id=='6'){echo 'checked';} }?>/>Semillas
+									<input type="checkbox" name="Part_afect[]" value="7"<?php if (isset($autocompletado)) foreach($partes as $id){ if($id=='7'){echo 'checked';} }?>/>Frutos
+									<input type="checkbox" name="Part_afect[]" value="8"<?php if (isset($autocompletado)) foreach($partes as $id){ if($id=='8'){echo 'checked';} }?>/>Planta entera
 									</br></br>
 
 	
@@ -434,11 +434,11 @@
 									</br></br>
 	
 							<label for="Control">Control de</label>
-									<input type="checkbox" name="Control[]" value="1"<?php foreach($control as $id){ if($id=='1'){echo 'checked';} }?>/>Malezas
-									<input type="checkbox" name="Control[]" value="2"<?php foreach($control as $id){ if($id=='2'){echo 'checked';} }?>/>Plagas
-									<input type="checkbox" name="Control[]" value="3"<?php foreach($control as $id){ if($id=='3'){echo 'checked';} }?>/>Emfermedades
-									<input type="checkbox" name="Control[]" value="4"<?php foreach($control as $id){ if($id=='4'){echo 'checked';} }?>/>Agroquimicos
-									<input type="checkbox" name="Control[]" value="5"<?php foreach($control as $id){ if($id=='5'){echo 'checked';} }?>/>Biologicos
+									<input type="checkbox" name="Control[]" value="1"<?php if (isset($autocompletado)) foreach($control as $id){ if($id=='1'){echo 'checked';} }?>/>Malezas
+									<input type="checkbox" name="Control[]" value="2"<?php if (isset($autocompletado)) foreach($control as $id){ if($id=='2'){echo 'checked';} }?>/>Plagas
+									<input type="checkbox" name="Control[]" value="3"<?php if (isset($autocompletado)) foreach($control as $id){ if($id=='3'){echo 'checked';} }?>/>Emfermedades
+									<input type="checkbox" name="Control[]" value="4"<?php if (isset($autocompletado)) foreach($control as $id){ if($id=='4'){echo 'checked';} }?>/>Agroquimicos
+									<input type="checkbox" name="Control[]" value="5"<?php if (isset($autocompletado)) foreach($control as $id){ if($id=='5'){echo 'checked';} }?>/>Biologicos
 								</br></br>
 							<label for="Produc_dosisb" title="">Productos ultilizados y dosis</label>
 									<input type="text" name="Produc_dosisb" value="<?php echo $reg[30] ?>" id="Produc_dosisb" title="" maxlength="50" placeholder="" />
@@ -471,12 +471,12 @@
 
                         <div id='analisis1' style='display:none;'>
 						<?php while ($reg2 = $analisis->fetch_array()) { ?>
-							<input type="checkbox" name="analisis1[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
+							<input type="checkbox" name="analisis1[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } ;?>
 						</div>
 						<div id='analisis2' style='display:none;'>
 						<?php while ($reg5 = $analisis2->fetch_array()) { ?>
-							<input type="checkbox" name="analisis2[]" value="<?php echo $reg5['Cod_ana']; ?>"<?php foreach($pre as $id){ if($id==$reg5[0]){echo 'checked';} }?>/><?php echo $reg5['Nom_ana']; ?>
+							<input type="checkbox" name="analisis2[]" value="<?php echo $reg5['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre as $id){ if($id==$reg5[0]){echo 'checked';} }?>/><?php echo $reg5['Nom_ana']; ?>
 						<?php } ;?>
 						</div>
 
