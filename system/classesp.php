@@ -1,11 +1,17 @@
 <?php
 
 	//Esto solamente para verificar si existen privilegios de especialista
-	define("HOSTS", "inia.jcm.co.ve");
-  	define("USERS", "gproyecto");
+	define("HOST", "localhost");
+ 	//define("USER", "sec_user");
+  	define("USER", "gproyecto");
+  	define("PASSWORD", "123456");
+  	//define("PASSWORD", "AHxySPDT7U8mNTdE");
+  	define("DATABASE", "proyecto3");
+	/*define("HOSTS", "31.220.104.130");
+  	define("USERS", "u817028193_uptm");
   	define("PASSWORDS", "123456");
-  	define("DB", "proyecto3");
-
+  	define("DB", "u817028193_uptm");
+*/
   	$mysqli2 = new mysqli(HOSTS, USERS, PASSWORDS, DB);
 
   	if($mysqli2->connect_errno){

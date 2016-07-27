@@ -46,7 +46,7 @@
                   echo "</table>";
                 
         ?>
-        <div>
+        <div class="grupobotones">
              <button type="submit" class="boton" name="procesar" value="procesar"><i class="fa fa-pencil"></i> Procesar</button>
              <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> pagina principal</button>
         </div> 

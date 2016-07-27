@@ -21,7 +21,7 @@
                 
                 <?php include_once 'lib_finca.php'; ?>
 
-                <div align="center">
+                <div class="grupobotones">
                     <input type="hidden" name="Ced_cliente" value="<?php echo $_POST['Finca']; ?>" />
                     <button type="submit" formaction="resultados" name="Ced_cliente" value="" class="boton"><i class="fa fa-left"></i> Regresar</button>
                     <button type="reset" class="boton" name="reset"><i class="fa fa-eraser"></i> Limpiar formulario</button>

@@ -13,6 +13,7 @@
             <div>
                 <?php include '../../layouts/cabecera-body.php' ?>
                 <hgroup>
+                    
                     <h1>Activar/Desactivar laboratorios y análisis</h1>
                 </hgroup>
             </div>
@@ -48,7 +49,7 @@
                     echo "</table>";
                 }
                 $mysqli->close();?>
-                <div align="center">
+                <div  class="grupobotones">
                     <button type="button" name="Regresar atras" class="boton" onclick=location="inicio"><i class="fa fa-arrow-left"></i> Página principal</button>
                     <button type="submit" name="ActualizarEstado" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
                 </div>
