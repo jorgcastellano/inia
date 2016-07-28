@@ -80,7 +80,7 @@
                     <option value="I" <?php if (isset($selected)) echo $selected; ?>>I.V.A.</option>
                     <option value="E" <?php if (isset($selected2)) echo $selected2; ?>>Exento</option>
                 </select>
-                <br>
+                <br/>
                 <div class="grupobotones">
                     <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>

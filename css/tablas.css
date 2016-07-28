@@ -5,6 +5,8 @@ table{
     margin: auto;
     margin-top: 20px;
     border-spacing: 0px; 
+    border: groove 1px grey;  
+    border-radius: 5px;
 }
 table tr td{
     /*border: 1px solid green;*/
@@ -25,6 +27,8 @@ table.estadisticas-caja-2 tr:first-child, table.estadisticas-caja-1 tr:first-chi
     color:#fff;
     background-color: #444444;
     border-bottom: 1px #000000 solid;
+    border: groove 1px grey;  
+    border-radius: 5px;
 }
 table tr:nth-child(even){
     background-color: #CBCBCB;
@@ -37,6 +41,8 @@ table tr:nth-child(odd){
 /*ESTILO PARA LOS CLIENTES*/
 table.tcliente{
     width: 550px;
+    border: groove 1px grey;  
+  border-radius: 5px;
 }
 table.tcliente tr td:first-child{
     width: 40%;
@@ -54,6 +60,9 @@ table.tcliente tr:last-child td:last-child{
 /*ESTILO PARA ESTATUS DE LABORATORIOS Y ANALISIS*/
 table.tstatus{
     width: 500px;
+    border: groove 1px grey;  
+  border-radius: 5px;
+
 }
 table.tstatus tr td:first-child, .tstatus tr td:first-child{
 	width: 490px;

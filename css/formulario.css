@@ -224,5 +224,9 @@ button.boton {
 
     .grupobotones{
         width: fit-content;
+        width: -moz-fit-content;
         margin: 0 auto;
+        white-space:nowrap;
+
+
     }
