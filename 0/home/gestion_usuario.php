@@ -17,6 +17,7 @@
                 </hgroup>
             </div>
             <?php
+                require_once '../../includes/conexion.php';
                 require_once '../../system/classusuario.php';
 
                 extract($_POST);
@@ -25,7 +26,6 @@
                 if (isset($eliminar)) :
                     echo $eliminar;
                     if (isset($dos)) :
-                        require_once '../../system/classesp.php';
                         $especialista = new especialista();
                         $especialista->eliminar($mysqli2, $eliminar);
                     else :

@@ -1,6 +1,6 @@
 <?php       
 
-require_once '../../includes/conexion_bd.php';
+require_once '../../includes/conexion.php';
 
 class producto 
   {

@@ -1,10 +1,11 @@
 <?php
 
 	class especialista{
+		
 		public function verificar_privilegio_2($mysqli, $ced){
 		$sql = "SELECT Ced_esp FROM especialista WHERE Ced_esp = '$ced'";
 		$res = $mysqli->query($sql);
-		if($mysqli2->errno) :
+		if($mysqli->errno) :
 			printf(
 				"<h2>No se ha podido consultar en la base de datos</h2>
 				<b>Numero de error: </b>%d<br />

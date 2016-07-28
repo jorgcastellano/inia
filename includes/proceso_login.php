@@ -1,6 +1,6 @@
 <?php
-	include_once '../system/classusuario.php';
 	require_once '../includes/conexion.php';
+	include_once '../system/classusuario.php';
 	//Validacion de usuario al logearse
 
 	extract ($_POST);
