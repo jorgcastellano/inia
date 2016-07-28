@@ -51,10 +51,8 @@
 					<input required type="text" name="Telf_cliente" id="Telf_cliente" value="<?php echo $reg[5]?>" title="Introduzca un número de teléfono" maxlength="12" placeholder="0000-0000000" pattern="\d{4}-\d{7}" />
                     <span class="form_hint">Debe ingresar su teléfono de la siguiente manera 0000- 0000000"</span><br />
 				<label for="Dire_cliente">Dirección</label>
-					<textarea required name="Dire_cliente" id="Dire_cliente"  title="" cols="30" rows="5" maxlength="100" placeholder="Por Favor Especifique aqui la dirección del cliente"><?php echo $reg[6]?></textarea>
+					<textarea class="areatexto" required name="Dire_cliente" id="Dire_cliente"  title="" cols="30" rows="5" maxlength="100" placeholder="Por Favor Especifique aqui la dirección del cliente"><?php echo $reg[6]?></textarea>
 					</br>
-                 		
-
                 <?php
                 if ($_SESSION['privilegios'] == 1) :
                 	while($reg3 = $reg2->fetch_array()) :

@@ -51,6 +51,7 @@
                         <td>Aceptación</td>
                         <td>Privilegios</td>
                         <td><i class='fa fa-trash-o'></i></td>
+                        
                     </tr>";
 
                 while ($resultado = $reg->fetch_array()) :

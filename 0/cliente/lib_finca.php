@@ -4,7 +4,7 @@
                     <span class="form_hint">Debe contener solo caracteres alfanumericos"</span>
                     <br />
                 <label for="Estado">Estado</label>
-                    <select required name="Estado[]" id="Estado">
+                    <select class="opcion4" required name="Estado[]" id="Estado">
                         <option value="">Seleccione</option>
                         <option value="Amazonas" <?php if($reg3[3]=="Amazonas"){ echo 'selected'; } ?>>Amazonas</option>
                         <option value="Aragua" <?php if($reg3[3]=="Aragua"){ echo 'selected'; } ?>>Aragua</option>
@@ -16,7 +16,7 @@
                     </select>
                     </br>
                 <label for="Municipio">Municipio</label>
-                    <select required name="Municipio[]" id="Municipio">
+                    <select class="opcion4" required name="Municipio[]" id="Municipio">
                         <option value="">Seleccione</option>
                         <option value="mun1" <?php if($reg3[4]=="mun1"){ echo 'selected'; } ?>>mun1</option>
                         <option value="mun2" <?php if($reg3[4]=="mun2"){ echo 'selected'; } ?>>mun2</option>

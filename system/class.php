@@ -57,6 +57,10 @@ class producto
       $res= $mysqli->query($sql);
       return $res->fetch_array();
     }
+    public function eliminar($mysqli, $codigo){
+      $sql = "DELETE FROM producto WHERE Cod_produ = '$codigo'";
+      $mysqli->query($sql);
+    }
 }
 
 class laboratorio {

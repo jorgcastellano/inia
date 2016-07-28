@@ -125,6 +125,42 @@ table.anapro td:last-child{
     width: 60px;
 }
 
+/*ESTILO PARA PRODUCTOS*/
+table.pro{
+    width: 710px;
+}
+table.pro td{
+    text-align: center;
+}
+table.pro tr:first-child td:first-child{
+    border-radius: 5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px; 
+}
+table.pro tr:first-child td:last-child{
+    border-radius: 0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px; 
+}table.pro tr:last-child td:last-child{
+    border-radius: 0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px; 
+}
+table.pro tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px; 
+}
+table.pro td:first-child{
+    width: 70px;
+}
+table.pro td:nth-child(4){
+    width: 11%;
+}
+table.pro td:nth-child(5){
+    width: 13%;
+}
+table.pro td:last-child{
+    width: 5%;
+}
+
+
 /*ESTILO PARA LAS TABLAS DE ACEPTACION DE USUARIOS*/
 table.usuario{
     width: 710px;
