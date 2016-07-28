@@ -87,10 +87,10 @@
                                     echo "
                                         <table class='anapro'>
                                             <tr>
-                                                <td><i class='fa fa-chevron-circle-right'></i> Nombre</td>
-                                                <td>Precio</td>
-                                                <td>Laboratorio</td>
-                                                <td>Estatus</td>
+                                                <td><i class='fa fa-chevron-circle-right'></i> NOMBRE</td>
+                                                <td>PRECIO</td>
+                                                <td>LABORATORIO</td>
+                                                <td>ESTATUS</td>
                                                 <td><i class='fa fa-check-circle'></i></td>
                                             </tr>
                                     ";
@@ -141,7 +141,7 @@
                         echo "</table>";
                     }
                 ?>
-                <div align="center">
+                <div class="grupobotones">
                     <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
                     <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar análisis</button>
                     <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>

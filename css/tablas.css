@@ -20,6 +20,7 @@ table tr td:first-child{
 /*ESTILO PARA LOS ENCABEZADOS DE TODAS LAS TABLAS*/
 table.estadisticas-caja-2 tr:first-child, table.estadisticas-caja-1 tr:first-child,table.usuario2 tr:first-child, table.factura2 tr:first-child,table.facturai tr:first-child, table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child, table.usuario tr:first-child{
     text-align: center;
+    text-transform: uppercase;
     font-weight: bold;
     color:#fff;
     background-color: #444444;

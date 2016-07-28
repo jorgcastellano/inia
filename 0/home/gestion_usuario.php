@@ -115,7 +115,7 @@
                 endwhile;
                 echo "</table>";
             ?>
-            <div align="center">
+            <div class="grupobotones">
                 <button type="button" name="regresar" onclick=location="inicio" class="boton"><i class="fa fa-home"></i> Regresar a inicio</button>
                 <button type="submit" name="guardar" value="guardar" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
             </div>

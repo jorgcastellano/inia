@@ -71,7 +71,7 @@
           endwhile;
           echo "</table>";
         ?>
-        <div align="center">
+        <div class="grupobotones">
           <button type='button' onclick=location='../../0/home/inicio' class="boton"><i class="fa fa-ban"></i> Cancelar</button>
           <button type="submit" formaction="compra_resultados" class="boton" name="compra" value="<?php if(isset($compra)) echo $compra; ?>"><i class="fa fa-pencil"></i> Actualizar compra</button>
           <button type="submit" formaction="compra_productos" class="boton" name="compra" value="<?php if(isset($compra)) echo $compra; ?>"><i class="fa fa-shopping-cart"></i> Agregar o eliminar productos</button>

@@ -1,6 +1,6 @@
 <?php
 	include_once '../system/classusuario.php';
-	require_once '../includes/is-conexion_bd.php';
+	require_once '../includes/conexion.php';
 	//Validacion de usuario al logearse
 
 	extract ($_POST);
@@ -64,7 +64,7 @@
 			        elseif ($_SESSION['privilegios'] == 2) : //Privilegio 2 es especialista
 						include_once '../system/classesp.php';
 			            $objesp = new especialista();
-			            $resultado = $objesp->verificar_privilegio_2($mysqli2, $_SESSION['ci']);
+			            $resultado = $objesp->verificar_privilegio_2($mysqli, $_SESSION['ci']);
 				        if ($resultado[0] == $_SESSION['ci']) :
 							if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
 				        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);

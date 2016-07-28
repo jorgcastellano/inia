@@ -58,10 +58,12 @@
                         <option value="8">¿Dónde fué su bautizo?</option>
                         <option value="9">¿Dónde cursó el primer año escolar?</option>
                     </select>
-                    <input required type="password" name="resp" id="resp" placeholder="Respuesta" /><br />
-                    <button class="boton" type="buttom" onclick=location="index" ><i class="fa fa-arrow-left"></i> Página principal</button>
-                    <button class="boton" type="submit"><i class='fa fa-check'></i> Registrarse</button>
+                    <input required type="password" name="resp" id="resp" placeholder="Respuesta" />
                 </div>
+                 <div class="grupobotones">
+                        <button class="boton" type="buttom" onclick=location="index" ><i class="fa fa-arrow-left"></i> Página principal</button>
+                        <button class="boton" type="submit"><i class='fa fa-check'></i> Registrarse</button>
+                 </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>
         </section>

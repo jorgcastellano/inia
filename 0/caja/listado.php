@@ -75,7 +75,7 @@
                     echo "<h2 align='center'>En estos momentos no se encuentran facturas pendientes</h2>";
                 endif;
         echo "</form>
-        <div align='center'>
+        <div class='grupobotones'>
             <button class='boton' type='button' onclick=location='inicio' ><i class='fa fa-spin fa-refresh'></i> Actualizar</button>
         </div>";
         }

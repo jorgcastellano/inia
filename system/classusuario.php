@@ -1,6 +1,6 @@
 <?php
 
-    include_once '../../includes/is-conexion_bd.php';
+    include_once 'conexion.php';
 
     class inicio_seguro{
 
