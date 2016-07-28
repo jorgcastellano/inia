@@ -14,6 +14,11 @@
 		private $password2 = "123456";
 		private $database2 = "u817028193_uptm";
 
+		private $host0 = "mysql.hostinger.co";
+		private $user0 = "u817028193_inia";
+		private $password0 = "123456";
+		private $database0 = "u817028193_inia";
+
 		public function host($a)
 		{
 			//============HOSTS================//
@@ -22,6 +27,9 @@
 			}
 			else if ($a == "global") {
 				return $this->host2;
+			}
+			else if ($a == "produccion") {
+				return $this->host0;
 			}
 			else
 				return "error";
@@ -36,6 +44,9 @@
 			else if ($a == "global") {
 				return $this->user2;
 			}
+			else if ($a == "produccion") {
+				return $this->user0;
+			}
 			else
 				return "error";
 		}
@@ -48,6 +59,9 @@
 			}
 			else if ($a == "global") {
 				return $this->password2;
+			}
+			else if ($a == "produccion") {
+				return $this->password0;
 			}
 			else
 				return "error";
@@ -62,6 +76,9 @@
 			else if ($a == "global") {
 				return $this->database2;
 			}
+			else if ($a == "produccion") {
+				return $this->database0;
+			}
 			else
 				return "error";
 		}
@@ -73,6 +90,9 @@
 				return $this->database11;
 			}
 			else if ($a == "global") {
+				return $this->database11;
+			}
+			else if ($a == "produccion") {
 				return $this->database11;
 			}
 			else
