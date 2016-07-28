@@ -1,11 +1,9 @@
 <?php
 
-    include_once '../../includes/is-conexion_bd.php';
-
     class inicio_seguro{
 
         //Funciones para la tabla miembros
-        public function consultar_miembro($mysqli) { 
+        public function consultar_miembro($mysqli) {
             $sql = "SELECT * FROM miembros";
             return $mysqli->query($sql);
         }

@@ -1,56 +1,32 @@
 <?php
 
-	//Esto solamente para verificar si existen privilegios de especialista
-	define("HOST", "localhost");
- 	//define("USER", "sec_user");
-  	define("USER", "gproyecto");
-  	define("PASSWORD", "123456");
-  	//define("PASSWORD", "AHxySPDT7U8mNTdE");
-  	define("DATABASE", "proyecto3");
-	/*define("HOSTS", "31.220.104.130");
-  	define("USERS", "u817028193_uptm");
-  	define("PASSWORDS", "123456");
-  	define("DB", "u817028193_uptm");
-*/
-  	$mysqli2 = new mysqli(HOSTS, USERS, PASSWORDS, DB);
-
-  	if($mysqli2->connect_errno){
-		printf(
-			"<h2>No se ha podido conectar a la base de datos</h2>
-			<b>Numero de error: </b>%d<br />
-			<b>Mensaje de error: </b>%s",
-			$mysqli2->connect_errno,
-			$mysqli2->connect_error
-		);
-		exit();
-	}
-
 	class especialista{
-		public function verificar_privilegio_2($mysqli2, $ced){
+		
+		public function verificar_privilegio_2($mysqli, $ced){
 		$sql = "SELECT Ced_esp FROM especialista WHERE Ced_esp = '$ced'";
-		$res = $mysqli2->query($sql);
-		if($mysqli2->errno) :
+		$res = $mysqli->query($sql);
+		if($mysqli->errno) :
 			printf(
 				"<h2>No se ha podido consultar en la base de datos</h2>
 				<b>Numero de error: </b>%d<br />
 				<b>Mensaje de error: </b>%s",
-				$mysqli2->errno,
-				$mysqli2->error);
+				$mysqli->errno,
+				$mysqli->error);
 			exit();
 		endif;
 		return $res->fetch_array();
 		}
 
 	//Clases sin la funcion anterior
-		public function insertar_especialista($mysqli2, $cedula, $laboratorio, $nombre, $apellido, $telefono, $especialidad){
+		public function insertar_especialista($mysqli, $cedula, $laboratorio, $nombre, $apellido, $telefono, $especialidad){
 			$sql = "INSERT INTO especialista(Ced_esp, Cod_lab, Nom_esp, Ape_esp, Telf_esp, Especialidad) VALUES ('$cedula', '$laboratorio', '$nombre', '$apellido', '$telefono', '$especialidad')";
-			$mysqli2->query($sql);
+			$mysqli->query($sql);
 			include 'error_insert';
 		}
 
-		public function eliminar($mysqli2, $cedula){
+		public function eliminar($mysqli, $cedula){
 			$sql = "DELETE FROM especialista WHERE Ced_esp = '$cedula'";
-			$mysqli2->query($sql);
+			$mysqli->query($sql);
 		}
 	}
 ?>
