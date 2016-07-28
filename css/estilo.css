@@ -51,7 +51,9 @@ footer{
 	margin: auto;
 	margin-top: 20px;
 }
-
+input{
+	text-transform: capitalize;
+}
 .bloque{
 	background-color:#FFFFFF;
 	border-left: solid;
