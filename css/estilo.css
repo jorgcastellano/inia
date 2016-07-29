@@ -112,3 +112,9 @@ footer{
     margin-left: 40px;
    
 }
+
+.exclamation {
+	background: transparent;
+    color: #FF9900; 
+    margin-left: 30px;
+}
