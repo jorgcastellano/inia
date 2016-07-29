@@ -24,8 +24,9 @@
                     $command_sql = "INSERT INTO miembros (ci, usuario, apellido, email, password, pregunta, respuesta) VALUES ('$cedula', '$nombre', '$apellido', '$email', '$checksum', '$pregunta', '$resp')";
                     require_once '../../includes/sql.php';
 
-                    echo "<p>Se ha registrado con éxito</p>
-                    <p>Ahora debes indicarle al gerente del sistema que te has registrado, para que seas aprobado y puedes disfrutar de nuestros servicios.</p>";
+                    echo "<span class='notify'><i class='fa fa-check-square'></i> Su registro se realizó de forma exitosa<br /></span></p>
+                    <span class='exclamation'><i class='fa fa-exclamation-triangle'></i> Ahora debes indicarle al gerente del sistema que te has registrado, para que seas aprobado y puedes disfrutar de nuestros servicios.<br /></span></p>";
+               
                 else :
                     header('location: registro');
                 endif;

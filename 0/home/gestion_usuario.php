@@ -29,6 +29,7 @@
                         $especialista = new especialista();
                         $especialista->eliminar($mysqli, $eliminar);
                     else :
+                        echo "<span class='notify'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></span> ";
                         $objinicio -> eliminar_miembros($mysqli, $eliminar);                        
                     endif;
                 elseif (isset($guardar)) :
@@ -36,7 +37,7 @@
                         if (!empty($privilegios[$i])) :
                             $objinicio -> modificar_privilegios($mysqli, $privilegios[$i], $codigos[$i]);
                         else :
-                            echo "<br>Debe seleccionar un privilegio";
+                         echo "<span class='notify_f'><i class='fa fa-times'></i>Debe seleccionar un privilegio para el usuario elegido<br /></span> ";
                         endif;
                     endfor;
                 endif;
@@ -45,7 +46,7 @@
                 echo "<form action='gestion_usuario' method='POST'>
                 <table class='usuario'>
                     <tr>
-                        <td><i class='fa fa-chevron-circle-right'></i> Cédula</td>
+                        <td><i class='fa fa-chevron-circle-right'></i> Cédula </td>
                         <td>Usuario</td>
                         <td>Email</td>
                         <td>Aceptación</td>
@@ -53,7 +54,6 @@
                         <td><i class='fa fa-trash-o'></i></td>
                         
                     </tr>";
-
                 while ($resultado = $reg->fetch_array()) :
 
                     //Verificacion de los seleccionados para ser almacenados
@@ -69,10 +69,12 @@
                                 if ($resultado[9] == "On")
                                     $off = $resultado[0];
                             endif;
+                            echo "<span class='notify'><i class='fa fa-check-square'></i>El privilegio ha sido otorgado al usuario con éxito<br /></span> ";
 
                         if (isset($on)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "On", $on);
                             $resultado[9] = "On";
+                            echo "<span class='notify'><i class='fa fa-check-square'></i>El privilegio ha sido otorgado al usuario con éxito<br /></span> ";
                         elseif (isset($off)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "Off", $off);
                             $resultado[9] = "Off";
@@ -88,6 +90,7 @@
                     elseif ($resultado[9] == "Off") :
                         $checked = "";
                     endif;
+                    /*echo "<span class='notify'><i class='fa fa-check-square'></i>El privilegio ha sido otorgado al usuario con éxito<br /></span> ";*/
 
                     if ($resultado[10] == 1) :
                         $uno = "selected";
@@ -114,6 +117,7 @@
                     </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;
+                if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El privilegio ha sido otorgado al usuario con éxito<br /></span> ";}
                 echo "</table>";
             ?>
             <div class="grupobotones">
