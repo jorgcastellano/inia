@@ -30,8 +30,15 @@
                 <?php
                     extract($_POST);
 
-                    include_once '../../system/class.php';
-                    $objanalisis = new analisis();
+                 include_once '../../system/class.php';
+                $objanalisis = new analisis();
+
+                if (isset($eliminar)) :
+                     $nro1 = count($seleccion);
+                     for ($i = 0; $i < $nro1; $i++) :
+                      $objanalisis->eliminar($mysqli, $seleccion[$i]);
+                    endfor;
+                endif;
                     //buscador de analisis segun sea el caso nombre completo, frase y otros.
                     if (!empty($buscador)) {
 
@@ -66,7 +73,7 @@
                                             echo "<td>".$resultado[2]."</td>";
                                             echo "<td>$laboratorio</td>";
                                             echo "<td>".$resultado[4]."</td>";
-                                            echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td>
+                                            echo "<td><input type='checkbox' name='seleccion[]' title='click aquí para modificar este análisis' value='$resultado[0]'></td>
                                         </tr>";
                                     }
                                     echo "</table>";
@@ -99,7 +106,7 @@
                                         echo "<td>".$resultado[2]."</td>";
                                         echo "<td>".$laboratorio."</td>";
                                         echo "<td>".$resultado[4]."</td>";
-                                        echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td>
+                                        echo "<td><input type='checkbox' name='seleccion[]' value='$resultado[0]'></td>
                                         </tr>
                                     </table>";
                                 }
@@ -135,7 +142,7 @@
                                     echo "<td>".$resultado[2]."</td>";
                                     echo "<td>".$laboratorio."</td>";
                                     echo "<td>".$resultado[4]."</td>";
-                                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='click aquí para modificar este análisis'></td>
+                                    echo "<td><input type='checkbox' name='seleccion[]' value='$resultado[0]' title='click aquí para modificar este análisis'></td>
                                 </tr>";
                         }
                         echo "</table>";
@@ -144,6 +151,7 @@
                 <div class="grupobotones">
                     <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
                     <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar análisis</button>
+                     <button type="submit" class="boton" name="eliminar" value="eliminar" formaction="index" ><i class='fa fa-trash-o'></i> Eliminar Producto</button>
                     <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>
                 </div>
             </form>

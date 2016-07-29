@@ -24,7 +24,7 @@
                     //Seleccion viene desde la pagina index de analisis
                     $seleccion = $_POST['seleccion'];
                     $ana = new analisis();
-                    $reg = $ana->consultar_analisis($mysqli,$seleccion);
+                    $reg = $ana->consultar_analisis($mysqli,$seleccion[0]);
                 elseif (isset($_POST['ana'])) :
                     //Recibe analisis desde resultados
                     $Cod = $_POST['ana'];

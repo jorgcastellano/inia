@@ -193,6 +193,10 @@ class analisis {
       $sql = "SELECT * FROM analisis WHERE Nom_ana LIKE ('%$var%')";
       return $mysqli->query($sql);
     }
+    public function eliminar($mysqli, $codigo){
+      $sql = "DELETE FROM analisis WHERE Cod_ana = '$codigo'";
+      $mysqli->query($sql);
+    }
 }
 
 class cliente {

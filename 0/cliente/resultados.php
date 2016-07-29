@@ -55,10 +55,11 @@
 
                 else : ?>
 
-                    <form class="contact_form" method="post" action="index"  id="">
+                    <form class="" method="post" action="index"  id="">
                         <table class="tcliente">
                             <tr>
                                 <td colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
+
                             </tr>
                             <tr>
                                 <td><b>Cédula de identidad:</b></td>
@@ -95,25 +96,27 @@
                                 <table class="tcliente">
                                     <tr>
                                         <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
+                                        <td ><button class="sinboton"><i class='fa fa-times'></i> </td></button>
+
                                     </tr>
                                     <tr>
         						       <td><b>Nombre de la finca:</b></td>
-        						       <td><?php echo $reg2[2]?></td>
+        						       <td colspan="2"><?php echo $reg2[2]?></td>
         					        </tr>
                                     <tr>
-                                        <td colspan="2" id="center"><b>DIRECCIÓN DE LA FINCA</b></td>
+                                        <td colspan="3" id="center"><b>DIRECCIÓN DE LA FINCA</b></td>
                                     </tr>
                                     <tr>
         						       <td><b>Estado:</b></td>
-        						       <td><?php echo $reg2[3]?></td>
+        						       <td colspan="2"><?php echo $reg2[3]?></td>
         					        </tr>
                                     <tr>
         						       <td><b>Municipio:</b></td>
-        						       <td><?php echo $reg2[4]?></td>
+        						       <td colspan="2"><?php echo $reg2[4]?></td>
         					        </tr>
                                     <tr>
         						       <td><b>Parroquia:</b></td>
-        						       <td><?php echo $reg2[5]?></td>
+        						       <td colspan="2"><?php echo $reg2[5]?></td>
         					        </tr>
                                 </table>
                         <?php
