@@ -270,6 +270,11 @@ class finca {
       $res=$mysqli->query($sql);
       if($mysqli->affected_rows>0){echo "La finca se modifico con exito";} else { echo "No se realizó ningún cambio a la finca";}
     }
+
+    public function eliminar($mysqli, $codigo, $ci){
+      $sql = "DELETE FROM finca WHERE Cod_fin = '$codigo' AND Ced_cliente='$ci'";
+      $mysqli->query($sql);
+    }
 }
 
 class solicitud {
