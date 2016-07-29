@@ -1,12 +1,12 @@
 <?php
 
 
-	define("HOST", "inia.jcm.co.ve");
+	define("HOST", "31.220.104.130");
 	//define("USER", "sec_user");
-	define("USER", "isinia");
-	define("PASSWORD", "1234567890");
+	define("USER", "u817028193_uptm");
+	define("PASSWORD", "123456");
 	//define("PASSWORD", "Qzd7PZHT6fLtLxQm");
-	define("DATABASE", "inicio_seguro");
+	define("DATABASE", "u817028193_uptm");
 
 	define("CAN_REGISTER", "any");
 	define("DEFAULT_ROLE", "member");

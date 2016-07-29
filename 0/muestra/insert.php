@@ -32,9 +32,9 @@
                         
                         include 'lib_muestra.php';//libreria que contiene procedimientos para guardar datos en campos especiales de la BD
                         $suelo = new muestra();
-                        $suelo->registrar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Pract,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Contro,$Produc_dosisb,$Cond_agroclima,$Observaciones);
+                        $suelo->registrar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones);
 
-                       if($RegistrarS=='Inicio')://Condicion que verifica si es la primera muestra de suelo que se registrara 
+                       /*if($RegistrarS=='Inicio')://Condicion que verifica si es la primera muestra de suelo que se registrara 
                         
                         
                         
@@ -59,6 +59,7 @@
             
                         $sol=$reg2[0]+1;//sumar 1 al campo 0 del arreglo obtenido en la consulta a la tabla ayudante
                         $ayuda->actualizar_sol($mysqli,$sol);//Llamado a la funcion que actulizara el campo correspondiente de ayudante al registra una solicitud
+                        */
                         endif;
  ?>
 

@@ -1,10 +1,10 @@
 <?php
 
 	//Esto solamente para verificar si existen privilegios de especialista
-	define("HOSTS", "inia.jcm.co.ve");
-  	define("USERS", "gproyecto");
+	define("HOSTS", "31.220.104.130");
+  	define("USERS", "u817028193_uptm");
   	define("PASSWORDS", "123456");
-  	define("DB", "proyecto3");
+  	define("DB", "u817028193_uptm");
 
   	$mysqli2 = new mysqli(HOSTS, USERS, PASSWORDS, DB);
 

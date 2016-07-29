@@ -15,13 +15,13 @@
 
 
 
-	$practicas = '';
+	$Practicas = '';
 	$s = '|';
-	foreach ($_POST['Practicas'] as $id){  if($practicas == ''){ $practicas =$id; }else{ $practicas .= $s.$id; } }
+	foreach ($_POST['Practica'] as $id){  if($Practicas == ''){ $Practicas =$id; }else{ $Practicas .= $s.$id; } }
 
-	$control = '';
+	$Controles = '';
 	$s = '|';
-	foreach ($_POST['Control'] as $id){  if($control == ''){ $control =$id; }else{ $control .= $s.$id; } }
+	foreach ($_POST['Control'] as $id){  if($Controles == ''){ $Controles =$id; }else{ $Controles .= $s.$id; } }
 
 
 ?>
