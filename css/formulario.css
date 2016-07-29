@@ -3,7 +3,6 @@
    height:45px;
    width: 210px;
    
-
 }
 /* === Remove input autofocus webkit === */
 *:focus {
@@ -86,16 +85,7 @@ body {
     /*border-radius: 20px;*/
 }
 
-.opcion{
 
-    height: 30px;
-    width: 240px;
-}
-.opcion2{
-
-    height: 30px;
-    width: 78px;
-}
 
 .contact_form button {
     margin-left: 156px;
@@ -107,7 +97,7 @@ body {
     border: 1px solid #aaa;
     box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
     border-radius: 2px;
-    padding-right: 30px;
+  
     -moz-transition: padding .25s;
     -webkit-transition: padding .25s;
     -o-transition: padding .25s;
@@ -175,6 +165,38 @@ body {
         color: #28921f;
     }
 
+/* === Select Style === */
+.contact_form select {
+    border: 1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+   
+  
+}
+.opcion{
+
+    height: 30px;
+    width: 240px;
+}
+.opcion2{
+
+    height: 30px;
+    width: 78px;
+}
+.opcion3{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 35px;
+    width: 95px;
+}
+.opcion4{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 220px;
+}
+
+
+/*------------------------------------------------------*/
 
 /* === Button Style === */
 

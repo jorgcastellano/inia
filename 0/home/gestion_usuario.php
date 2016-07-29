@@ -27,7 +27,7 @@
                     echo $eliminar;
                     if (isset($dos)) :
                         $especialista = new especialista();
-                        $especialista->eliminar($mysqli2, $eliminar);
+                        $especialista->eliminar($mysqli, $eliminar);
                     else :
                         echo "<span class='notify'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></span> ";
                         $objinicio -> eliminar_miembros($mysqli, $eliminar);                        
@@ -52,6 +52,7 @@
                         <td>Aceptación</td>
                         <td>Privilegios</td>
                         <td><i class='fa fa-trash-o'></i></td>
+                        
                     </tr>";
                 while ($resultado = $reg->fetch_array()) :
 

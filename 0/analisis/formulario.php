@@ -24,7 +24,7 @@
                     //Seleccion viene desde la pagina index de analisis
                     $seleccion = $_POST['seleccion'];
                     $ana = new analisis();
-                    $reg = $ana->consultar_analisis($mysqli,$seleccion);
+                    $reg = $ana->consultar_analisis($mysqli,$seleccion[0]);
                 elseif (isset($_POST['ana'])) :
                     //Recibe analisis desde resultados
                     $Cod = $_POST['ana'];
@@ -42,7 +42,7 @@
                     <input type="text" name="Precio_ana" value="<?php if(isset($reg)) echo $reg[2]; ?>" />
                     <br>
                 <label for="Tipo"> Laboratorio</label>
-                <select name="Tipo">
+                <select class="opcion4" name="Tipo">
                     <option value="">Seleccione</option>
                     <?php while ($resultado = $reg2->fetch_array()) : ?>
                         <option value="<?php echo $resultado[0]; ?>" <?php if(isset($reg)) if ($resultado[0] == $reg[3]) echo "selected"; echo ">".$resultado[1]; ?></option>

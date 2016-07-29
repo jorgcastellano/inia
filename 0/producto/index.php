@@ -18,22 +18,23 @@
             </div>
             <?php
                 
-               if (isset($_POST['Modificar1'])) :
+            if (isset($_POST['Modificar1'])) :
                 extract($_POST);
                 $Cod_produ=$Modificar1;
                 require_once '../../system/class.php';
                 $pro = new producto();  
                 $reg = $pro->consultar_produc($mysqli,$Cod_produ);
-                endif;
+            endif;
         
                 if (isset($_POST['modificar']) AND empty($_POST['seleccion']))
                     header('location: inve');
+
                 require_once '../../system/class.php';
 
                 if (isset($_POST['seleccion'])) :
                     $seleccion = $_POST['seleccion'];
                     $pro = new producto();  
-                    $reg = $pro->consultar_produc($mysqli,$seleccion);
+                    $reg = $pro->consultar_produc($mysqli,$seleccion[0]);
                 elseif (isset($_POST['pro'])) :
                     $Cod = $_POST['pro'];
                     $pro = new producto();
@@ -48,8 +49,8 @@
             	<label for="Existencia"> Cantidad de Producto </label>
             	<input required type="num" name="Existencia" id="Existencia" value="<?php if(isset($reg)) echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="7" />
                 
-                <select name="um" required>
-                        <option value="">---Seleccione---</option>
+                <select class="opcion3" name="um" required>
+                        <option value="">Seleccione</option>
                         <option value="1"<?php if ($reg[5] == "1") echo "selected"; ?>>Por unidad c/u</option>
                     <optgroup label="Capacidad">
                         <option value="2"<?php if ($reg[5] == "2") echo "selected"; ?>>Mililitro</option>
@@ -75,8 +76,8 @@
                     }
                 ?>
                 <label for="iva">I.V.A. o Exento</label>
-                <select id="iva" name="iva" required>
-                    <option value=""> -- Selecciones --</option>
+                <select class="opcion3" id="iva" name="iva" required>
+                    <option value=""> Selecciones</option>
                     <option value="I" <?php if (isset($selected)) echo $selected; ?>>I.V.A.</option>
                     <option value="E" <?php if (isset($selected2)) echo $selected2; ?>>Exento</option>
                 </select>

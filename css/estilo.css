@@ -51,7 +51,9 @@ footer{
 	margin: auto;
 	margin-top: 20px;
 }
-
+input{
+	text-transform: capitalize;
+}
 .bloque{
 	background-color:#FFFFFF;
 	border-left: solid;
@@ -92,8 +94,10 @@ footer{
 	border: 0px;
 	color: red;
 	cursor: pointer;
+
 	
 }
+
 
 /*ccs para notificaciones exitosas*/
 .notify {
