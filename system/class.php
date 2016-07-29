@@ -63,6 +63,9 @@ class producto
     public function eliminar($mysqli, $codigo){
       $sql = "DELETE FROM producto WHERE Cod_produ = '$codigo'";
       $mysqli->query($sql);
+      require_once 'error_update.php';
+    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El producto seleccionado se ha eliminado con éxito<br /></span> ";} 
+    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido eliminar el producto seleccionado<br /></span> ";}
     }
 }
 

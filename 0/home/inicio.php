@@ -19,9 +19,9 @@
             
             <?php 
             if ($_SESSION['privilegios'] == 1) :
-                echo "Gerente del sistema";
+                echo "<span <i class='fa fa-user-plus'>   Gerente del sistema</i><br /></span> ";
             elseif ($_SESSION['privilegios'] == 2) :
-                echo "Especialista de laboratorios";
+                echo "<span <i class='fa fa-user-plus'>   Especialista de laboratorios</i><br /></span> ";
             elseif ($_SESSION['privilegios'] == 3) :
                 include '../../0/caja/listado.php';
             endif;

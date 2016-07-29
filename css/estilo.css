@@ -101,24 +101,32 @@ input{
 
 /*ccs para notificaciones exitosas*/
 .notify {
-    background: transparent;
-    border-radius: 3px 3px 3px 3px;
-    color: green;
+    background-color: #e6e3df;
+	border: 1.5px solid #61d668;
+	border-radius: 4px 10px 4px 10px;
+    font-family: cursive;
+    font-weight: 900;
+    color: #0220b3;
     margin-left: 40px;
 
 }
 
 /*ccs para notificaciones fallidas*/
 .notify_f {
-    background: transparent;
-    color: red;
-    font-size:16; 
+	background-color: #e6e3df;
+	border: 1.5px solid #61d668;
+	border-radius: 4px 10px 4px 10px;
+    font-family: cursive;
+    font-weight: 900;
+	color: red;
     margin-left: 40px;
-   
 }
 
 .exclamation {
 	background: transparent;
-    color: #FF9900; 
-    margin-left: 30px;
+	font-family: cursive 36px;
+	font-weight: 900;
+	font-size:30;
+    color: #c2a200; 
+    margin-left: 0px;
 }
