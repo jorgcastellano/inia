@@ -18,22 +18,23 @@
             </div>
             <?php
                 
-               if (isset($_POST['Modificar1'])) :
+            if (isset($_POST['Modificar1'])) :
                 extract($_POST);
                 $Cod_produ=$Modificar1;
                 require_once '../../system/class.php';
                 $pro = new producto();  
                 $reg = $pro->consultar_produc($mysqli,$Cod_produ);
-                endif;
+            endif;
         
                 if (isset($_POST['modificar']) AND empty($_POST['seleccion']))
                     header('location: inve');
+
                 require_once '../../system/class.php';
 
                 if (isset($_POST['seleccion'])) :
                     $seleccion = $_POST['seleccion'];
                     $pro = new producto();  
-                    $reg = $pro->consultar_produc($mysqli,$seleccion);
+                    $reg = $pro->consultar_produc($mysqli,$seleccion[0]);
                 elseif (isset($_POST['pro'])) :
                     $Cod = $_POST['pro'];
                     $pro = new producto();

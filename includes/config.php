@@ -8,7 +8,7 @@
 	//produccion = Solo para uso explusivo del hosting
 
 	$datos = new datos_conex();
-	$parametro = "local";
+	$parametro = "desarrollo";
 
 	$host = $datos->host($parametro);
 	$user = $datos->user($parametro);

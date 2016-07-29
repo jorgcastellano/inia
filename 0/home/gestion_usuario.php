@@ -27,7 +27,7 @@
                     echo $eliminar;
                     if (isset($dos)) :
                         $especialista = new especialista();
-                        $especialista->eliminar($mysqli2, $eliminar);
+                        $especialista->eliminar($mysqli, $eliminar);
                     else :
                         $objinicio -> eliminar_miembros($mysqli, $eliminar);                        
                     endif;
