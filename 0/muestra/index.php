@@ -135,17 +135,17 @@
                     
 				?>
 
-			<form  class="contact_form"  action="" method="" name="principal1"><!--Formulario principal que contiene los formularios de suelo y fitopatología-->
-                     <!--Boton de selección para indicar que formulario se cargá -->
-             		<center>
-             		<input type="checkbox" name="formulario" value="primero" id="Conocido" onclick="mostrarformulario();" />suelo
-           			<input type="checkbox" name="formulario" value="segundo" id="Conocido" onclick="mostrarformulario();" />fitopatologia
+			
+
+
+				<form class="contact_form" method="POST" action="insert"  id="" name="principal1"> <!--Formulario de suelo-->
+
+
+					<center>
+             			<input type="checkbox" name="formulario" value="primero" id="Conocido" onclick="mostrarformulario();" />suelo
+           				<input type="checkbox" name="formulario" value="segundo" id="Conocido" onclick="mostrarformulario();" />fitopatologia
              		</center>
              		</br></br>
-
-
-				<form class="contact_form" method="POST" action="insert"  id="" name="formulario1"> <!--Formulario de suelo-->
-
 
 					<div id="ambos" style="display:none;">
 						<label for="Codig">Código de Solicitud</label> 
@@ -168,6 +168,7 @@
 					<!--Listado de los tipos de muestra, la condición if($reg[2]=='x') verifica que tipo precargar en caso de que se este modificando la muestra-->
 									<select class="opcion4" name="Tipo_sue" title="Seleccione el tipo de muestra a registrar">
 										<option value="">Seleccione</option>
+
 										<option value="1"<?php if($reg[2]=='1'){ echo 'selected'; } ?>>Suelo</option>
 										<option value="1"<?php if($reg[2]=='1'){ echo 'selected'; } ?>>Vegetal</option>
 										<option value="2"<?php if($reg[2]=='2'){ echo 'selected'; } ?>>Sustrato</option>
@@ -185,7 +186,7 @@
 							<input type="num" name="Nro_pl" value="<?php echo $reg[14] ?>" id="Nro_pl" title="Indique el número de plantas que tiene cultivadas" maxlength="10" placeholder="" />
 							</br></br>
 					<label for="Edad_cul" title="Edad del cultivo en días, meses o años">Edad del Cultivo</label>
-							<input type="text" name="Edad_fito" value="<?php echo $reg[5] ?>" id="Edad_fito" title="Edad del cultivo en días, meses o años" maxlength="11" placeholder="" />
+							<input type="text" name="Edad_cul" value="<?php echo $reg[5] ?>" id="Edad_cul" title="Edad del cultivo en días, meses o años" maxlength="11" placeholder="" />
 							</br></br>
 					<label for="Tam_lote">Tamaño del lote  (Ha)</label>
 							<input type="num" name="Tam_lote" value="<?php echo $reg[3] ?>" id="Tam_lote" title="Indique el tamaño del terreno en héctareas" maxlength="12" placeholder="0000" />
@@ -236,10 +237,10 @@
 								<?php } ?>
 							</select>
 							</br></br>
-					<label for="Practicas">Prácticas realizadas</label>
-							<input type="checkbox" name="Practicas[]" value="1"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='1'){echo 'checked';} }?>/>Quimico
-							<input type="checkbox" name="Practicas[]" value="2"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='2'){echo 'checked';} }?>/>Fertilizacion
-							<input type="checkbox" name="Practicas[]" value="3"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='3'){echo 'checked';} }?>/>Organico
+					<label for="Practica">Prácticas realizadas</label>
+							<input type="checkbox" name="Practica[]" value="1"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='1'){echo 'checked';} }?>/>Quimico
+							<input type="checkbox" name="Practica[]" value="2"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='2'){echo 'checked';} }?>/>Fertilizacion
+							<input type="checkbox" name="Practica[]" value="3"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='3'){echo 'checked';} }?>/>Organico
 							</br></br>
 					<label for="Produc_dosis" title="">Productos ultilizados y dosis</label>
 							<input type="text" name="Produc_dosis" value="<?php echo $reg[28] ?>" id="Produc_dosis" title="" maxlength="60" placeholder="" />
@@ -488,6 +489,7 @@
 								<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
 								<input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
+
                                 <input type="hidden" name="Cod_fito" value="<?php echo $code1.$reg[0]; ?>" />
 								<div class="grupobotones">
 								<button class="boton" type="reset" value="Borrar" name="reset" id="reset"><i class="fa fa-eraser"></i> Limpiar</button>
@@ -497,7 +499,7 @@
                     			</div>
 							</div>	
 				</form>
-			</form>
+			
             
 			<?php include '../../layouts/layout_p.php'; ?>
         </section>

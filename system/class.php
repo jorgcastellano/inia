@@ -63,6 +63,9 @@ class producto
     public function eliminar($mysqli, $codigo){
       $sql = "DELETE FROM producto WHERE Cod_produ = '$codigo'";
       $mysqli->query($sql);
+      require_once 'error_update.php';
+    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El producto seleccionado se ha eliminado con éxito<br /></span> ";} 
+    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido eliminar el producto seleccionado<br /></span> ";}
     }
 }
 
@@ -274,6 +277,12 @@ class finca {
       if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La Finca se modificó con éxito<br /></span> ";} 
       else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se modificó la finca<br /></span> ";}
     }
+
+    public function eliminar($mysqli, $codigo){
+      $sql = "DELETE FROM finca WHERE Cod_fin = '$codigo'";
+      $mysqli->query($sql);
+      require_once 'error_update.php';
+    }
 }
 
 class solicitud {
@@ -330,23 +339,21 @@ class ayudante
     }
 }
 
-class suelo {
+class muestra {
   
     private $reg;
 
-    public function registrar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Tipo_sue,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion,$finca)
+    public function registrar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones)
     {
 
       
-      $sql="INSERT INTO m_suelo (Cod_suelo,Cod_lab,Tipo_sue,Tam_lote,Profundidad,Carac_terreno,Inundacion,Riego,Criego,F_toma,T_vege,Cultivo,Edad_cult,Dis_siembra,Nro_pl,Cult_antes,Rend_cult,Restos,Fertilizante,Fert_cant,Epoca_aplic,Aplicacion,Cod_fin) 
-            VALUES ('$Cod_suelo','$Cod_lab','$Tipo_sue','$Tam_lote','$Profundidad','$Carac_terreno','$Inundacion','$Riego','$Criego','$F_toma','$T_vege','$Cultivo','$Edad_cult','$Dis_siembra','$Nro_pl','$Cult_antes','$Rend_cult','$Restos','$fertil','$Fert_cantidad','$Epoca_aplic','$Aplicacion','$finca')";
+      $sql="INSERT INTO muestra(Cod_muestra,Tipo_m,Cult_act,Nro_pl,Edad_cul,Tam_lote,Topografia,Dist_siembra,Riego,Cult_ant,F_toma,Practicas,Produc_dosis,Epoca_aplic,Modo_aplic,Pobl_cercana,Profundidad,Inundacion,T_vege,Rend_cult,Restos,Descrip_fito,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Nro_subm,Origen_sem,Pres_microorg,Dist_planafect,Parts_afect,Text_sue,Composicion,Hum_sue,Drenaje,Controles,Produc_dosisb,Cond_agroclima,Observaciones)
+            VALUES ('$Cod_muestra','$Tipo_m','$Cult_act','$Nro_pl','$Edad_cul','$Tam_lote','$Topografia','$Dist_siembra','$Riego','$Cult_ant','$F_toma','$Practicas','$Produc_dosis','$Epoca_aplic','$Modo_aplic','$Pobl_cercana','$Profundidad','$Inundacion','$T_vege','$Rend_cult','$Restos','$Descrip_fito','$Id_microorg','$Sintomas','$F_sintomas','$Causa','$Tipo_plant','$Nro_subm','$Origen_sem','$Pres_microorg','$Dist_planafect','$Parts_afect','$Text_sue','$Composicion','$Hum_sue','$Drenaje','$Controles','$Produc_dosisb','$Cond_agroclima','$Observaciones')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La nueva muestra de suelo se ha registrado con éxito<br /></span> ";} 
-      else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar la nueva muestra de suelo<br /></span> ";}
+      
+
     }
-
-
     public function consultar_suelo($mysqli,$Cod_suelo)
     {
 

@@ -22,7 +22,7 @@
                         extract($_POST);
 
                         $fin = new finca();
-                        $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia);
+                        $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin[0],$Estado[0],$Municipio[0],$Parroquia[0]);
                     endif;
                     header('location: resultados?Ced_cliente='.$Ced_cliente);
                 ?>

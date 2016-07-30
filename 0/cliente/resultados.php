@@ -19,12 +19,25 @@
             <?php
                 extract($_POST);
 
-                require_once '../../system/class.php';
+                require '../../system/class.php';
 
                 if (isset($_GET['Ced_cliente']))
                     $Ced_cliente = $_GET['Ced_cliente'];
 
+                if (isset($eliminar)) :
+                    $finca = new finca();
+                    $finca->eliminar($mysqli, $eliminar);
+                    $Ced_cliente = $ccliente;
+                ?>
+                    <script type="text/javascript">
+                        alert("Se ah eliminado la finca con éxito");
+                    </script>
+                <?php
+                    //header("location: resultados?Ced_cliente=".$ccliente);
+                endif;
+
                 $client = new cliente();
+
                 if (isset($Registrar)) :
                     $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
                     if ($_SESSION['privilegios'] == 1) : 
@@ -37,7 +50,6 @@
 
                     $Id_cliente=$Actualizar;
 
-                    $client = new cliente();
                     $client->modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
                     if ($_SESSION['privilegios'] == 1) : 
                         $fin = new finca();
@@ -96,12 +108,13 @@
                                 <table class="tcliente">
                                     <tr>
                                         <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
-                                        <td ><button class="sinboton"><i class='fa fa-times'></i> </td></button>
+                                        <td><button type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></td></button>
 
                                     </tr>
                                     <tr>
-        						       <td><b>Nombre de la finca:</b></td>
-        						       <td colspan="2"><?php echo $reg2[2]?></td>
+                                        <td><b>Nombre de la finca:</b></td>
+                                        <td colspan="2"><?php echo $reg2[2]?>
+                                        <input type="hidden" name="ccliente" value="<?php echo $reg2[1] ?>"> </td>
         					        </tr>
                                     <tr>
                                         <td colspan="3" id="center"><b>DIRECCIÓN DE LA FINCA</b></td>
