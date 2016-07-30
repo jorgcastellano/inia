@@ -1,3 +1,9 @@
+.areatexto{ 
+   resize: both;
+   height:45px;
+   width: 210px;
+   
+}
 /* === Remove input autofocus webkit === */
 *:focus {
     outline: none;
@@ -33,7 +39,8 @@ body {
 
     .contact_form li:first-child, .contact_form li:last-child {
         border-bottom: 1px solid #777;
-    }
+ }
+
 
 /* === Form Header === */
 .contact_form h2 {
@@ -72,22 +79,13 @@ body {
 }
 
 .contact_form input[type="checkbox"] {
-    height: 20px;
+    
     width: 20px;
     padding: 5px 8px;
     /*border-radius: 20px;*/
 }
 
-.contact_form select {
-    height: 30px;
-    padding: 5px 8px;
-    /*border-radius: 800px;*/
-}
 
-.contact_form textarea {
-    padding: 8px;
-    width: 220px;
-}
 
 .contact_form button {
     margin-left: 156px;
@@ -99,7 +97,7 @@ body {
     border: 1px solid #aaa;
     box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
     border-radius: 2px;
-    padding-right: 30px;
+  
     -moz-transition: padding .25s;
     -webkit-transition: padding .25s;
     -o-transition: padding .25s;
@@ -167,7 +165,41 @@ body {
         color: #28921f;
     }
 
+/* === Select Style === */
+.contact_form select {
+    border: 1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+   
+  
+}
+.opcion{
+
+    height: 30px;
+    width: 240px;
+}
+.opcion2{
+
+    height: 30px;
+    width: 78px;
+}
+.opcion3{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 35px;
+    width: 95px;
+}
+.opcion4{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 220px;
+}
+
+
+/*------------------------------------------------------*/
+
 /* === Button Style === */
+
 button.boton {
     background-color: #68b12f;
     background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
@@ -210,4 +242,13 @@ button.boton {
         -moz-box-shadow: 0 0 10px 5px #356b0b inset;
         -ms-box-shadow: 0 0 10px 5px #356b0b inset;
         -o-box-shadow: 0 0 10px 5px #356b0b inset;
+    }
+
+    .grupobotones{
+        width: fit-content;
+        width: -moz-fit-content;
+        margin: 0 auto;
+        white-space:nowrap;
+
+
     }

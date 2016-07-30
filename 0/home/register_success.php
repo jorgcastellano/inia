@@ -15,7 +15,7 @@
             <?php 
 
                 extract($_POST);
-                include_once '../../includes/is-conexion_bd.php';
+                include_once '../../includes/conexion.php';
 
                 if ($password == $confirmpwd) :
                     $checksum = hash("sha512", $password);

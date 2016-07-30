@@ -17,6 +17,7 @@
                 </hgroup>
             </div>
             <?php
+                require_once '../../includes/conexion.php';
                 require_once '../../system/classusuario.php';
 
                 extract($_POST);
@@ -25,7 +26,6 @@
                 if (isset($eliminar)) :
                     echo $eliminar;
                     if (isset($dos)) :
-                        require_once '../../system/classesp.php';
                         $especialista = new especialista();
                         $especialista->eliminar($mysqli2, $eliminar);
                     else :
@@ -51,6 +51,7 @@
                         <td>Aceptación</td>
                         <td>Privilegios</td>
                         <td><i class='fa fa-trash-o'></i></td>
+                        
                     </tr>";
 
                 while ($resultado = $reg->fetch_array()) :
@@ -115,7 +116,7 @@
                 endwhile;
                 echo "</table>";
             ?>
-            <div align="center">
+            <div class="grupobotones">
                 <button type="button" name="regresar" onclick=location="inicio" class="boton"><i class="fa fa-home"></i> Regresar a inicio</button>
                 <button type="submit" name="guardar" value="guardar" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
             </div>

@@ -120,7 +120,7 @@
                                 $i++;
                             endwhile;
                         endif; ?>
-                        <div align="center">
+                        <div class="grupobotones">
                             <button class="boton" type="button" name="regresar" value="regresar" onclick=location="../../0/home/inicio"><i class="fa fa-ban"></i> Cancelar</button>
                             <button type="submit" name="Modificar" value="<?php echo $reg[1]?>" class="boton" ><i class="fa fa-pencil-square-o"></i> Actualizar datos</button>
                             <?php if ($_SESSION['privilegios'] == 1) : ?>

@@ -5,6 +5,8 @@ table{
     margin: auto;
     margin-top: 20px;
     border-spacing: 0px; 
+    border: groove 1px grey;  
+    border-radius: 5px;
 }
 table tr td{
     /*border: 1px solid green;*/
@@ -20,10 +22,13 @@ table tr td:first-child{
 /*ESTILO PARA LOS ENCABEZADOS DE TODAS LAS TABLAS*/
 table.estadisticas-caja-2 tr:first-child, table.estadisticas-caja-1 tr:first-child,table.usuario2 tr:first-child, table.factura2 tr:first-child,table.facturai tr:first-child, table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child, table.usuario tr:first-child{
     text-align: center;
+    text-transform: uppercase;
     font-weight: bold;
     color:#fff;
     background-color: #444444;
     border-bottom: 1px #000000 solid;
+    border: groove 1px grey;  
+    border-radius: 5px;
 }
 table tr:nth-child(even){
     background-color: #CBCBCB;
@@ -36,6 +41,8 @@ table tr:nth-child(odd){
 /*ESTILO PARA LOS CLIENTES*/
 table.tcliente{
     width: 550px;
+    border: groove 1px grey;  
+  border-radius: 5px;
 }
 table.tcliente tr td:first-child{
     width: 40%;
@@ -53,6 +60,9 @@ table.tcliente tr:last-child td:last-child{
 /*ESTILO PARA ESTATUS DE LABORATORIOS Y ANALISIS*/
 table.tstatus{
     width: 500px;
+    border: groove 1px grey;  
+  border-radius: 5px;
+
 }
 table.tstatus tr td:first-child, .tstatus tr td:first-child{
 	width: 490px;
@@ -114,6 +124,42 @@ table.anapro td:first-child{
 table.anapro td:last-child{
     width: 60px;
 }
+
+/*ESTILO PARA PRODUCTOS*/
+table.pro{
+    width: 710px;
+}
+table.pro td{
+    text-align: center;
+}
+table.pro tr:first-child td:first-child{
+    border-radius: 5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px; 
+}
+table.pro tr:first-child td:last-child{
+    border-radius: 0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px; 
+}table.pro tr:last-child td:last-child{
+    border-radius: 0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px; 
+}
+table.pro tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px; 
+}
+table.pro td:first-child{
+    width: 70px;
+}
+table.pro td:nth-child(4){
+    width: 11%;
+}
+table.pro td:nth-child(5){
+    width: 13%;
+}
+table.pro td:last-child{
+    width: 5%;
+}
+
 
 /*ESTILO PARA LAS TABLAS DE ACEPTACION DE USUARIOS*/
 table.usuario{

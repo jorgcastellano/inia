@@ -48,8 +48,8 @@
             	<label for="Existencia"> Cantidad de Producto </label>
             	<input required type="num" name="Existencia" id="Existencia" value="<?php if(isset($reg)) echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="7" />
                 
-                <select name="um" required>
-                        <option value="">---Seleccione---</option>
+                <select class="opcion3" name="um" required>
+                        <option value="">Seleccione</option>
                         <option value="1"<?php if ($reg[5] == "1") echo "selected"; ?>>Por unidad c/u</option>
                     <optgroup label="Capacidad">
                         <option value="2"<?php if ($reg[5] == "2") echo "selected"; ?>>Mililitro</option>
@@ -75,13 +75,13 @@
                     }
                 ?>
                 <label for="iva">I.V.A. o Exento</label>
-                <select id="iva" name="iva" required>
-                    <option value=""> -- Selecciones --</option>
+                <select class="opcion3" id="iva" name="iva" required>
+                    <option value=""> Selecciones</option>
                     <option value="I" <?php if (isset($selected)) echo $selected; ?>>I.V.A.</option>
                     <option value="E" <?php if (isset($selected2)) echo $selected2; ?>>Exento</option>
                 </select>
-                <br>
-                <div align="center">
+                <br/>
+                <div class="grupobotones">
                     <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>

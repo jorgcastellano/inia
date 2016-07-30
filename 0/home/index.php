@@ -35,7 +35,7 @@
             </article> <!-- FINALIZACION DEL CUERPO O CONTENEDOR DE LA PAGINA -->
 
             <?php
-                include_once '../../includes/conexion_bd.php';
+                include_once '../../includes/conexion.php';
                 $sql = "SELECT * FROM ayudante LIMIT 1";
                 $consulta = $mysqli->query($sql);
                 $res = $consulta->fetch_array();

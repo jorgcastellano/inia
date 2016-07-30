@@ -61,7 +61,7 @@
                   <td>".$resultado[1]."</td>";
                   echo "<td>".$resultado[2]." ".$unidad."</td>";
                   echo "<td>".$resultado[3]." Bs"."</td>";
-                  echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td></tr>";
+                  echo "<td><input type='checkbox' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td></tr>";
                   }
               echo "</table>";
               }
@@ -90,7 +90,7 @@
                           <td>".$resultado[1]."</td>";
                           echo "<td>".$resultado[2]." ".$unidad."</td>";
                           echo "<td>".$resultado[3]." Bs"."</td>";
-                          echo "<td><input type='radio' name='seleccion' value='$resultado[0]'></td></tr>
+                          echo "<td><input type='checkbox' name='seleccion' value='$resultado[0]'></td></tr>
                            </table>";
                                 }
                           break;
@@ -122,14 +122,15 @@
                     <td>".$resultado[1]."</td>";
                     echo "<td>".$resultado[2]." ".$unidad."</td>";
                     echo "<td>".$resultado[3]." Bs"."</td>";
-                    echo "<td><input type='radio' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td></tr>";
+                    echo "<td><input type='checkbox' name='seleccion' title='click aquí para modificar este análisis' value='$resultado[0]'></td></tr>";
                   }
                   echo "</table>";
                 }
         ?>
-        <div align="center">
+        <div class="grupobotones">
              <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
              <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Producto</button>
+               <button type="submit" class="boton" name="modificar" value="eliminar"><i class='fa fa-trash-o'></i> Eliminar Producto</button>
              <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>
         </div> 
       </form>

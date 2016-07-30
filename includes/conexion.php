@@ -1,10 +1,10 @@
-<?php 
+<?php
 
-	include_once 'is-config.php';
-	$mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
+	include 'config.php';
 
-	if($mysqli->connect_errno)
-	{
+  	$mysqli = new mysqli($host, $user, $pass, $db);
+
+  	if($mysqli->connect_errno){
 		printf(
 			"<h2>No se ha podido conectar a la base de datos</h2>
 			<b>Numero de error: </b>%d<br />
@@ -14,5 +14,4 @@
 		);
 		exit();
 	}
-
 ?>

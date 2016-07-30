@@ -52,7 +52,7 @@
           endwhile;
           echo "</table>";
         ?>
-        <div align="center">
+        <div class="grupobotones">
           <button type='button' onclick=location='../../0/home/inicio' class="boton"><i class="fa fa-ban"></i> Página principal</button>
           <button type="submit" name="compra" value="<?php if(isset($compra)) echo $compra; ?>" class="boton" formaction="compra_resultados"><i class="fa fa-shopping-cart"></i> Procesar compra</button>
         </div> 

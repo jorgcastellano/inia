@@ -61,7 +61,7 @@
                 <?php if(isset($modificar)): ?><button type="submit" name="Actualizar" value="<?php if(isset($reg1)) echo $reg1[0]?>" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button>
                 <?php else : ?><button type="submit" name="Registrar" value="Registrar" class="boton" ><i class="fa fa-check"></i> Registrar laboratorio</button><?php endif; ?>
             </div>
-            <div align="center">
+            <div class="grupobotones">
                 <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                 <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar laboratorio</button>
                 <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home" ></i> Página principal</button>

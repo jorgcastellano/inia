@@ -54,7 +54,7 @@
                                 <?php } ?>
                             </select>
 </br>
-                <div align="center">
+                <div class="grupobotones">
                     <button name="atras" type="button" onclick=location="../home/inicio" class="boton"><i class="fa fa-times"></i> Cancelar</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>

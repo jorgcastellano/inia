@@ -1,0 +1,4 @@
+host: mysql.hostinger.co
+user: u817028193_inia
+bd: u817028193_inia
+clave: Jsdxmi9Hcy
