@@ -76,7 +76,7 @@
                     }
                 ?>
                 <label for="iva">I.V.A. o Exento</label>
-                <select class="opcion3" id="iva" name="iva" required>
+                <select class="opcion4" id="iva" name="iva" required>
                     <option value=""> Selecciones</option>
                     <option value="I" <?php if (isset($selected)) echo $selected; ?>>I.V.A.</option>
                     <option value="E" <?php if (isset($selected2)) echo $selected2; ?>>Exento</option>
