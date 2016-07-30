@@ -278,9 +278,10 @@ class finca {
       else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se modificó la finca<br /></span> ";}
     }
 
-    public function eliminar($mysqli, $codigo, $ci){
-      $sql = "DELETE FROM finca WHERE Cod_fin = '$codigo' AND Ced_cliente='$ci'";
+    public function eliminar($mysqli, $codigo){
+      $sql = "DELETE FROM finca WHERE Cod_fin = '$codigo'";
       $mysqli->query($sql);
+      require_once 'error_update.php';
     }
 }
 
