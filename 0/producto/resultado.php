@@ -24,8 +24,6 @@
                     require_once '../../system/class.php';
                     $producto = new producto();
                     $producto->modificar_produ($mysqli,$Cod_produ,$Nom_produ,$Existencia,$Precio_produ, $iva, $um);
-                    if($mysqli->affected_rows>0){ echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo producto se ha registrado con exito</span> ";} 
-                    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar el nuevo producto</span> ";}
                     $reg = $producto->consultar_produc($mysqli,$Cod_produ);
                 endif;
 

@@ -158,7 +158,7 @@
 								</br></br>
 					 </div>
 					 <div id="codigo2" style="display:none;">
-						<label for="Codigo">Código Fitopatologia</label>
+						<label for="Codigo">Código Fitopatología</label>
 								<input type="text" name="Codigo" value="<?php echo $code1.$reg[0]; //Imprimir en este campo el código de muestra de suelo creado previamente por el generador de código. ?>" id="Codigo" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de muestra de suelo-->
 								</br></br>
 					 </div>
@@ -182,7 +182,7 @@
 					<label for="Cult_act" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' ">Cultivo, Especie o Variedad</label>
 							<input type="text" name="Cult_act" value="<?php echo $reg[4] ?>" id="Cult_fito" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' " maxlength="15" placeholder="" />
 							</br></br>
-					<label for="Nro_pl" title="Indique el número de plantas que tiene cultivadas">Nro de plantas</label>
+					<label for="Nro_pl" title="Indique el número de plantas que tiene cultivadas">Número de plantas</label>
 							<input type="num" name="Nro_pl" value="<?php echo $reg[14] ?>" id="Nro_pl" title="Indique el número de plantas que tiene cultivadas" maxlength="10" placeholder="" />
 							</br></br>
 					<label for="Edad_cul" title="Edad del cultivo en días, meses o años">Edad del Cultivo</label>
