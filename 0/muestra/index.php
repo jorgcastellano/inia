@@ -14,7 +14,7 @@
 
 		function mostrarformulario(){
 
-		if (document.principal1.formulario[0].checked == true) {
+		if (document.getElementById('formulario1').checked == true) {
 
 		document.getElementById('ambos').style.display='block';
 		document.getElementById('ambos2').style.display='block';
@@ -22,14 +22,14 @@
 
 		} 
 		
-		if (document.principal1.formulario[1].checked == true) {
+		if (document.getElementById('formulario2').checked == true) {
 
 		document.getElementById('ambos').style.display='block';
 		document.getElementById('ambos2').style.display='block';
 
 		} 
 
-		if (document.principal1.formulario[0].checked == false&&document.principal1.formulario[1].checked == false) {
+		if (document.getElementById('formulario1').checked == false&&document.getElementById('formulario2').checked == false) {
 
 		document.getElementById('ambos').style.display='none';
 		document.getElementById('ambos2').style.display='none';
@@ -42,7 +42,7 @@
 
 
 
-		if (document.principal1.formulario[0].checked == true) {
+		if (document.getElementById('formulario1').checked == true) {
 
 		document.getElementById('codigo1').style.display='block';
 
@@ -51,7 +51,7 @@
 		document.getElementById('codigo1').style.display='none';
 		}
 
-		if (document.principal1.formulario[1].checked == true) {
+		if (document.getElementById('formulario2').checked == true) {
 
 		document.getElementById('codigo2').style.display='block';
 
@@ -62,7 +62,7 @@
 
 		
 
-		if (document.principal1.formulario[0].checked == true) {
+		if (document.getElementById('formulario1').checked == true) {
 
 		document.getElementById('primero1').style.display='block';
 		document.getElementById('analisis1').style.display='block';
@@ -73,7 +73,7 @@
 		document.getElementById('analisis1').style.display='none';
 		}
 
-		if (document.principal1.formulario[1].checked == true) {
+		if (document.getElementById('formulario2').checked == true) {
 
 		document.getElementById('segundo2').style.display='block';
 		document.getElementById('analisis2').style.display='block';
@@ -142,8 +142,8 @@
 
 
 					<center>
-             			<input type="checkbox" name="formulario" value="primero" id="Conocido" onclick="mostrarformulario();" />suelo
-           				<input type="checkbox" name="formulario" value="segundo" id="Conocido" onclick="mostrarformulario();" />fitopatologia
+             			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();" />suelo
+           				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();" />fitopatologia
              		</center>
              		</br></br>
 
@@ -489,10 +489,11 @@
 								<input type="hidden" name="Cod_sol" value="<?php echo $code2.$Cod_sol; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
 								<input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
-                                <input type="hidden" name="Cod_muestra" value="<?php echo $code2.$reg[0]; ?>" />
+                                <input type="hidden" name="Cod_muestra1" value="<?php echo $code2.$reg[0]; ?>" />
+                                <input type="hidden" name="Cod_muestra2" value="<?php echo $code1.$reg[0]; ?>" />
 								<button class="boton" type="reset" value="Borrar" name="reset" id="reset"><i class="fa fa-eraser"></i> Limpiar</button>
-								<?php if($RegistrarF=='ModificarF'): ?><button type="submit" name="ActualizarF" value="ActualizarF" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
-                    			<?php if($RegistrarF=='ContinueF'): ?><button type="submit" name="RegistrarM" value="ContinueF" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
+								<?php if($RegistrarF=='ModificarF'): ?><button type="submit" name="Actualizar" value="Actualizar" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
+                    			<?php if($RegistrarF=='ContinueF'): ?><button type="submit" name="RegistrarM" value="ContinueM" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
                     			<?php// if($RegistrarF=='Inicio'||$RegistrarF=='NoContinueF'): ?><button type="submit" name="RegistrarM" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php// endif; ?>
 							</div>	
 				</form>
