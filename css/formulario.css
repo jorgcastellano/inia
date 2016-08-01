@@ -172,21 +172,11 @@ body {
    
   
 }
-.opcion{
 
-    height: 30px;
-    width: 240px;
-}
-.opcion2{
-
-    height: 30px;
-    width: 78px;
-}
 .opcion3{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    height: 35px;
-    width: 95px;
+    
+    height: 30px;
+    width: 100px;
 }
 .opcion4{
     margin-top: 5px;
@@ -194,7 +184,12 @@ body {
     height: 30px;
     width: 220px;
 }
+.opc
+{
 
+    height: 30px;
+    width: 70px;
+}
 
 /*------------------------------------------------------*/
 
@@ -249,6 +244,5 @@ button.boton {
         width: -moz-fit-content;
         margin: 0 auto;
         white-space:nowrap;
-
 
     }
