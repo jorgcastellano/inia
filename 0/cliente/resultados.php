@@ -137,11 +137,12 @@
                             endwhile;
                         endif; ?>
                         <div class="grupobotones">
+                            <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
                             <button class="boton" type="button" name="regresar" value="regresar" onclick=location="../../0/home/inicio"><i class="fa fa-ban"></i> Cancelar</button>
                             <button type="submit" name="Modificar" value="<?php echo $reg[1]?>" class="boton" ><i class="fa fa-pencil-square-o"></i> Actualizar datos</button>
                             <?php if ($_SESSION['privilegios'] == 1) : ?>
                                 <button type="submit" formaction="finca" name="Finca" value="<?php echo $reg[1]?>" class="boton" ><i class="fa fa-plus"></i> Agregar Finca</button>
-                                <button type="submit" formaction="../muestra/index" name="RegistrarM" value="<?php echo $Ced_cliente; ?>" class="boton" ><i class="fa fa-file-text-o"></i> Nueva solicitud</button>
+                                <button type="submit" formaction="../muestra/index" name="RegistrarM" value="Inicio" class="boton" ><i class="fa fa-file-text-o"></i> Nueva solicitud</button>
                             <?php elseif ($_SESSION['privilegios'] == 3) : ?>
                                 <button type="submit" formaction="../../0/producto/compra_productos" name="compra" value="<?php if (isset($reg)) echo $reg[1]; ?>" class="boton" ><i class="fa fa-shopping-cart"></i> Compra de productos</button>
                             <?php endif; ?>

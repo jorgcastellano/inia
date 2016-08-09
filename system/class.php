@@ -354,20 +354,20 @@ class muestra {
       
 
     }
-    public function consultar_suelo($mysqli,$Cod_suelo)
+    public function consultar_muestra($mysqli,$Cod_muestra)
     {
 
-      $sql="SELECT * FROM m_suelo WHERE m_suelo.Cod_suelo ='$Cod_suelo'";
+      $sql="SELECT * FROM muestra WHERE muestra.Cod_muestra ='$Cod_muestra'";
       $res=$mysqli->query($sql);
       return $this -> reg = mysqli_fetch_array($res);
 
     }
 
 
-    public function modificar_suelo($mysqli,$Cod_suelo,$Cod_lab,$Tipo_sue,$Tam_lote,$Profundidad,$Carac_terreno,$Inundacion,$Riego,$Criego,$F_toma,$T_vege,$Cultivo,$Edad_cult,$Dis_siembra,$Nro_pl,$Cult_antes,$Rend_cult,$Restos,$fertil,$Fert_cantidad,$Epoca_aplic,$Aplicacion,$finca)
+    public function modificar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones)
     {       
 
-      $sql="UPDATE m_suelo SET Cod_lab='$Cod_lab',Tipo_sue='$Tipo_sue',Tam_lote='$Tam_lote',Profundidad='$Profundidad',Carac_terreno='$Carac_terreno',Inundacion='$Inundacion',Riego='$Riego',Criego='$Criego',F_toma='$F_toma',T_vege='$T_vege',Cultivo='$Cultivo',Edad_cult='$Edad_cult',Dis_siembra='$Dis_siembra',Nro_pl='$Nro_pl',Cult_antes='$Cult_antes',Rend_cult='$Rend_cult',Restos='$Restos',Fertilizante='$fertil',Fert_cant='$Fert_cantidad',Epoca_aplic='$Epoca_aplic',Aplicacion='$Aplicacion',Cod_fin='$finca'  WHERE Cod_suelo='$Cod_suelo' ";
+      $sql="UPDATE muestra SET Tipo_m='$Tipo_m',Cult_act='$Cult_act',Nro_pl='$Nro_pl',Edad_cul='$Edad_cul',Tam_lote='$Tam_lote',Topografia='$Topografia',Dist_siembra='$Dist_siembra',Riego='$Riego',Cult_ant='$Cult_ant',F_toma='$F_toma',Practicas='$Practicas',Produc_dosis='$Produc_dosis',Epoca_aplic='$Epoca_aplic',Modo_aplic='$Modo_aplic',Pobl_cercana='$Pobl_cercana',Profundidad='$Profundidad',Inundacion='$Inundacion',T_vege='$T_vege',Rend_cult='$Rend_cult',Restos='$Restos',Descrip_fito='$Descrip_fito',Id_microorg='$Id_microorg',Sintomas='$Sintomas',F_sintomas='$F_sintomas',Causa='$Causa',Tipo_plant='$Tipo_plant',Nro_subm='$Nro_subm',Origen_sem='$Origen_sem',Pres_microorg='$Pres_microorg',Dist_planafect='$Dist_planafect',Parts_afect='$Parts_afect',Text_sue='$Text_sue',Composicion='$Composicion',Hum_sue='$Hum_sue',Drenaje='$Drenaje',Controles='$Controles',Produc_dosisb='$Produc_dosisb',Cond_agroclima='$Cond_agroclima',Observaciones='$Observaciones' WHERE Cod_muestra='$Cod_muestra' ";
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
 
@@ -387,11 +387,11 @@ class solicitud_analisis {
 
 
 
-    public function registrar_solicitud_analisis1($mysqli,$Cod_sol,$Cod_ana,$Cod_suelo,$Cod_fito)
+    public function registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_muestra)
     {
 
 
-      $sql="INSERT INTO `proyecto3`.`solicitud_analisis` (`Id_sa`, `Cod_sol`, `Cod_ana`, `Cod_suelo`, `Cod_fito`) VALUES (NULL, '$Cod_sol', '$Cod_ana', '$Cod_suelo', NULL)";
+      $sql="INSERT INTO solicitud_analisis(Id_sa,Cod_sol,Cod_ana,Cod_muestra) VALUES (NULL, '$Cod_sol', '$Cod_ana', '$Cod_muestra')";
       $res=$mysqli->query($sql);
       //$res=$mysqli_query($mysqli,$sql);
       include_once 'error_insert.php';
@@ -399,22 +399,12 @@ class solicitud_analisis {
       
     }
 
-    public function registrar_solicitud_analisis2($mysqli,$Cod_sol,$Cod_ana,$Cod_suelo,$Cod_fito)
+    
+
+    public function consultar_sam($mysqli,$Cod_muestra)
     {
 
-
-      $sql="INSERT INTO `proyecto3`.`solicitud_analisis` (`Id_sa`, `Cod_sol`, `Cod_ana`, `Cod_suelo`, `Cod_fito`) VALUES (NULL, '$Cod_sol', '$Cod_ana', NULL, '$Cod_fito')";
-      $res=$mysqli->query($sql);
-      //$res=$mysqli_query($mysqli,$sql);
-      include_once 'error_insert.php';
-
-      
-    }
-
-    public function consultar_sam($mysqli,$codm)
-    {
-
-      $sql="SELECT * FROM solicitud_analisis, analisis WHERE Cod_suelo ='$codm'  AND solicitud_analisis.Cod_ana=analisis.Cod_ana OR Cod_fito ='$codm' AND solicitud_analisis.Cod_ana=analisis.Cod_ana";
+      $sql="SELECT * FROM solicitud_analisis, analisis WHERE Cod_muestra ='$Cod_muestra'  AND solicitud_analisis.Cod_ana=analisis.Cod_ana";
       return $mysqli->query($sql);
       
 
