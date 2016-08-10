@@ -21,14 +21,12 @@
                 extract($_POST);//extraer variables del formulario de muestras
                     require_once '../../system/class.php';//Libreria que contiene las clases con sus procedimientos
 
-//####################################################################################################################################################
-//###########################  #  # ## # __ #  __#     # __ #### #######  __# ## # __ # ####    ######################################################
-//########################### # # # ## # __##__  ### ### __ ### # ######__  # ## # __## #### ## ######################################################
-//########################### ### #    #    #    ### ### ### # ### #####    #    #    #    #    ######################################################
-//####################################################################################################################################################
-                    
+                  
+
                     include 'lib_muestra.php';//libreria que contiene procedimientos para guardar datos en campos especiales de la BD
 
+                        
+                        $temporal=$Cod_sol;
                         $ayudante = new ayudante();//Crear el objeto ayudante
                         $reg1=$ayudante->consultar_ayudante($mysqli);//llamado a la funcion que consulta la tabla de la BD "ayudante"
                                                                   //se actualizara esta tabla para llevar estadisticas de los registros realizados
@@ -54,14 +52,30 @@
                                 $ayudante->actualizar_sol($mysqli,$sol);
                             }
 
+                            if(isset($fito)&&!isset($suelo)){ $cambiarcodigos='c';}
+
                         }
 
 
                         if($RegistrarM=='ContinueM'){
 
-                            $temporal=$Cod_sol;
-                            if(isset($BackSuelo)&&!isset($suelo)){ $Cod_sol=$CodeAux}
-                            if(isset($BackFito)&&!isset($Fito)){ }
+                            
+                            if(isset($BackSuelo)&&isset($fito)&&!isset($suelofito)){
+
+                                $solicitud->registrar_solicitud($mysqli,$CodeAux,$Ced_cliente);//Llamado a la funcion que registra una solicitud y envio de los parametros correspondientes
+                                $sol=$reg1[0]+1;
+                                $ayudante->actualizar_sol($mysqli,$sol);
+                                $suelofito='suelofito';
+                            }
+
+                            if(isset($BackFito)&&isset($suelo)&&!isset($suelofito)){
+
+                                $solicitud->registrar_solicitud($mysqli,$CodeAux,$Ced_cliente);//Llamado a la funcion que registra una solicitud y envio de los parametros correspondientes
+                                $sol=$reg1[0]+1;
+                                $ayudante->actualizar_sol($mysqli,$sol);
+                                $suelofito='suelofito';
+                            }
+                          
                         }
 
 
@@ -74,6 +88,9 @@
                             
                                 $sue=$reg1[1]+1;
                                 $ayudante->actualizar_sue($mysqli,$sue);
+
+
+                                if(isset($cambiarcodigos)){ $Cod_sol=$CodeAux; }
                             
                                 foreach ($_POST['analisis1'] as $id){//Este bucle se encargara de extraer los analisis selecionados para la muestra de suelo
 
@@ -82,6 +99,7 @@
                                     $sol_ana1->registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana1,$Cod_muestra1);//Llamado a la funcion que registra los analisis para cada muestra
                                 }
 
+                                $Cod_sol=$temporal;
 
                             }
                         
@@ -92,9 +110,12 @@
                             
                                 $fito=$reg1[2]+1;//sumar 1 al campo 1 del arreglo obtenido en la consulta a la tabla ayudante
                                 $ayudante->actualizar_fito($mysqli,$fito);//Llamado a la funcion que actulizara el campo correspondiente de ayudante al registra una muestra de suelo
-                            
+                                
+                                if(isset($BackAmbos)){ $Cod_sol=$CodeAux;}
+                                if(isset($BackSuelo)){ $Cod_sol=$CodeAux;}
+                                if($BackFito=='suelofito'){ $Cod_sol=$CodeAux;}   
                                 if(isset($suelo)){ $Cod_sol=$CodeAux; }
-                                if(isset($backAmbos)){ $Cod_sol=$CodeAux; }
+                                if(isset($cambiarcodigos)){ $Cod_sol=$temporal;}
                                 
 
                                 foreach ($_POST['analisis2'] as $id){//Este bucle se encargara de extraer los analisis selecionados para la muestra de suelo
@@ -108,12 +129,14 @@
                             }
 
 
-                            if(isset($suelo)){ $Cod_muestra=$Cod_muestra1;}
-                            if(isset($fito)){ $Cod_muestra=$Cod_muestra2;}
-                            if(isset($suelo)&&isset($fito)){ $Cod_muestra=$Cod_muestra1;}
-
+                         if(isset($suelo)){ $Cod_muestra=$Cod_muestra1; }
+                         if(isset($fito)){ $Cod_muestra=$Cod_muestra2; }
+                         if(isset($suelo)&&isset($fito)){ $Cod_muestra=$Cod_muestra1; }
+                        
                         include 'lib_analisis.php';
+                        
                         include 'tabla_muestra.php';
+                    
                     endif;
 
 
@@ -121,8 +144,11 @@
  ?>
 
                     <form action="index" method="post"><!-- los siguientes campos ocultos contienen variables con codigos en caso que se desee modificar una muestra para precargar el formulario -->
-                            <?php if(isset($suelo)){ echo"<input type='hidden' name='suelo' value='$Cod_muestra1' />" }
-                            if(isset($fito)){ echo "<input type='hidden' name='fito' value='$Cod_muestra2' />"}?>
+                            <?php if(isset($suelo)){ echo "<input type='hidden' name='suelo' value='$Cod_muestra1' />"; }
+                            if(isset($fito)){ echo "<input type='hidden' name='fito' value='$Cod_muestra2' />";}
+                            if(isset($suelofito)){ echo "<input type='hidden' name='suelofito' value='suelofito' />";}
+                            if(isset($fito)&&isset($suelo)&&!isset($suelofito)){ echo "<input type='hidden' name='suelofito' value='suelofito' />";}   
+                            if(isset($cambiarcodigos)){ echo "<input type='hidden' name='cambiarcodigos' value='' />";} ?>
                             <input type="hidden" name="Cod_sol" value="<?php echo $Cod_sol; ?>" />
                             <input type="hidden" name="CodeAux" value="<?php echo $CodeAux; ?>" />
                             <input type="hidden" name="codi_analisis1" value="<?php echo $codi_analisis1; ?>" />

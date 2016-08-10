@@ -3,9 +3,9 @@
 
 
     //Consultar la muestra registrada, convertirlos los datos extraidos en informacion entendible al usuario y  ordenarlos en una tabla
-    $reg=$muestra->consultar_muestra($mysqli,$Cod_muestra);
+    //$reg=$muestra->consultar_muestra($mysqli,$Cod_muestra);
 
-    if ($reg[2]=='1') { $tip='Vegetal'; }
+    /*if ($reg[2]=='1') { $tip='Vegetal'; }
     if ($reg[2]=='2') { $tip='De suelo'; }
     if ($reg[2]=='3') { $tip='De sustrato'; }
     if ($reg[2]=='4') { $tip='Lixiviado'; }
@@ -113,53 +113,53 @@
     foreach($co as $id){ if($id=='2') { if($con == ''){ $con='Plagas'; }else{ $con .=$c.'Plagas'; }}}
     foreach($co as $id){ if($id=='3') { if($con == ''){ $con='Enfermedades'; }else{ $con .=$c.'Enfermedades'; }}}
     foreach($co as $id){ if($id=='4') { if($con == ''){ $con='Agroquimicos'; }else{ $con .=$c.'Agroquimicos'; }}}
-    foreach($co as $id){ if($id=='5') { if($con == ''){ $con='Biologicos'; }else{ $con .=$c.'Biologicos'; }}}
+    foreach($co as $id){ if($id=='5') { if($con == ''){ $con='Biologicos'; }else{ $con .=$c.'Biologicos'; }}}*/
             
 
     ?>
 
     <table class="tcliente">
     <tr><th colspan="2"><i class="fa fa-edit"></i> Datos de la muestra</th></tr>
-    <tr><th>Codigo: </th><td><?php echo $reg[1] ?></td></tr>
-    <tr><th>Tipo de muestra: </th><td><?php echo $tip ?></td></tr>
-    <tr><th>Cultivo, especie ó variedad: </th><td><?php echo $reg[3] ?></td></tr>
-    <tr><th>Nro de plantas: </th><td><?php echo $reg[4] ?></td></tr>
-    <tr><th>Edad del cultivo: </th><td><?php echo $reg[5] ?></td></tr>
-    <tr><th>Tamaño del lote: </th><td><?php echo $reg[6] ?></td></tr>
-    <tr><th>Topografia del terreno: </th><td><?php echo $topo ?></td></tr>
-    <tr><th>Distancia siembra: </th><td><?php echo $reg[8] ?></td></tr>
-    <tr><th>Riego: </th><td><?php echo $rie ?></td></tr>
-    <tr><th>Cultivo anterior: </th><td><?php echo $reg[10] ?></td></tr>
-    <tr><th>Fecha de toma de la muestra: </th><td><?php echo $reg[11] ?></td></tr>
-    <tr><th>Practicas realizadas: </th><td><?php echo $pra ?></td></tr>
-    <tr><th>Productos utilizados y dosis: </th><td><?php echo $reg[13] ?></td></tr>
-    <tr><th>Epoca de aplicacion: </th><td><?php echo $reg[14] ?></td></tr>
-    <tr><th>Modo de aplicacion: </th><td><?php echo $reg[15] ?></td></tr>
-    <tr><th>Poblacion más cercana: </th><td><?php echo $reg[16] ?></td></tr>
-    <tr><th>Profundidad de la Muestra: </th><td><?php echo $reg[17] ?></td></tr>
+    <tr><th>Codigo: </th><td><?php echo $reg[1]; ?></td></tr>
+    <tr><th>Tipo de muestra: </th><td><?php echo $tip; ?></td></tr>
+    <tr><th>Cultivo, especie ó variedad: </th><td><?php echo $reg[3]; ?></td></tr>
+    <tr><th>Nro de plantas: </th><td><?php echo $reg[4]; ?></td></tr>
+    <tr><th>Edad del cultivo: </th><td><?php echo $reg[5]; ?></td></tr>
+    <tr><th>Tamaño del lote: </th><td><?php echo $reg[6]; ?></td></tr>
+    <tr><th>Topografia del terreno: </th><td><?php echo $topo; ?></td></tr>
+    <tr><th>Distancia siembra: </th><td><?php echo $reg[8]; ?></td></tr>
+    <tr><th>Riego: </th><td><?php echo $rie; ?></td></tr>
+    <tr><th>Cultivo anterior: </th><td><?php echo $reg[10]; ?></td></tr>
+    <tr><th>Fecha de toma de la muestra: </th><td><?php echo $reg[11]; ?></td></tr>
+    <tr><th>Practicas realizadas: </th><td><?php echo $pra; ?></td></tr>
+    <tr><th>Productos utilizados y dosis: </th><td><?php echo $reg[13]; ?></td></tr>
+    <tr><th>Epoca de aplicacion: </th><td><?php echo $reg[14]; ?></td></tr>
+    <tr><th>Modo de aplicacion: </th><td><?php echo $reg[15]; ?></td></tr>
+    <tr><th>Poblacion más cercana: </th><td><?php echo $reg[16]; ?></td></tr>
+    <tr><th>Profundidad de la Muestra: </th><td><?php echo $reg[17]; ?></td></tr>
     <tr><th>Riesgo de inundacion: </th><td><?php echo $ries; ?></td></tr>
-    <tr><th>Tipo de vegetacion: </th><td><?php echo $reg[19] ?></td></tr>
+    <tr><th>Tipo de vegetacion: </th><td><?php echo $reg[19]; ?></td></tr>
     <tr><th>Rendimiento del cultivo: </th><td><?php echo $ren; ?></td></tr>
     <tr><th>Restos de cosecha: </th><td><?php echo $rest; ?></td></tr>
-    <tr><th>Descripcion: </th><td><?php echo $reg[22] ?></td></tr>
-    <tr><th>Identificacion del microorganismo: </th><td><?php echo $reg[23] ?></td></tr>
-    <tr><th>Sintomas: </th><td><?php echo $sin ?></td></tr>   
-    <tr><th>Fecha de inicio de la sintomatologia: </th><td><?php echo $reg[25] ?></td></tr>
-    <tr><th>Daños causados por: </th><td><?php echo $reg[26] ?></td></tr>
-    <tr><th>Tipo de plantacion: </th><td><?php echo $pla ?></td></tr>
-    <tr><th>Nro de submuestra: </th><td><?php echo $reg[28] ?></td></tr>    
-    <tr><th>Fuente de la semilla: </th><td><?php echo $fue ?></td></tr>
-    <tr><th>presentacion del microorganismo: </th><td><?php echo $pre ?></td></tr>
-    <tr><th>distribucion de las plantas afectadas: </th><td><?php echo $dis ?></td></tr>
-    <tr><th>Partes afectadas: </th><td><?php echo $par ?></td></tr>    
-    <tr><th>Textura de suelo: </th><td><?php echo $tex ?></td></tr>
-    <tr><th>Composicion del suelo: </th><td><?php echo $com ?></td></tr>
-    <tr><th>Humedad del suelo: </th><td><?php echo $hum ?></td></tr>
-    <tr><th>Drenaje: </th><td><?php echo $dre ?></td></tr>
-    <tr><th>Control de: </th><td><?php echo $con ?></td></tr>
-    <tr><th>Productos utilizados y dosis: </th><td><?php echo $reg[38] ?></td></tr>
-    <tr><th>Condiciones agroclimaticas: </th><td><?php echo $reg[39] ?></td></tr>
-    <tr><th>Observaciones: </th><td><?php echo $reg[40] ?></td></tr>
+    <tr><th>Descripcion: </th><td><?php echo $reg[22]; ?></td></tr>
+    <tr><th>Identificacion del microorganismo: </th><td><?php echo $reg[23]; ?></td></tr>
+    <tr><th>Sintomas: </th><td><?php echo $sin; ?></td></tr>   
+    <tr><th>Fecha de inicio de la sintomatologia: </th><td><?php echo $reg[25]; ?></td></tr>
+    <tr><th>Daños causados por: </th><td><?php echo $reg[26]; ?></td></tr>
+    <tr><th>Tipo de plantacion: </th><td><?php echo $pla; ?></td></tr>
+    <tr><th>Nro de submuestra: </th><td><?php echo $reg[28]; ?></td></tr>    
+    <tr><th>Fuente de la semilla: </th><td><?php echo $fue; ?></td></tr>
+    <tr><th>presentacion del microorganismo: </th><td><?php echo $pre; ?></td></tr>
+    <tr><th>distribucion de las plantas afectadas: </th><td><?php echo $dis; ?></td></tr>
+    <tr><th>Partes afectadas: </th><td><?php echo $par; ?></td></tr>    
+    <tr><th>Textura de suelo: </th><td><?php echo $tex; ?></td></tr>
+    <tr><th>Composicion del suelo: </th><td><?php echo $com; ?></td></tr>
+    <tr><th>Humedad del suelo: </th><td><?php echo $hum; ?></td></tr>
+    <tr><th>Drenaje: </th><td><?php echo $dre; ?></td></tr>
+    <tr><th>Control de: </th><td><?php echo $con; ?></td></tr>
+    <tr><th>Productos utilizados y dosis: </th><td><?php echo $reg[38]; ?></td></tr>
+    <tr><th>Condiciones agroclimaticas: </th><td><?php echo $reg[39]; ?></td></tr>
+    <tr><th>Observaciones: </th><td><?php echo $reg[40]; ?></td></tr>
     <tr><th>Análisis a realizar para suelo: </th><td><?php echo $analisis1; ?></td></tr>
     <tr><th>Análisis a realizar fitopatologia: </th><td><?php echo $analisis2; ?></td></tr>
 

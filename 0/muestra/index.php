@@ -128,26 +128,16 @@
 							foreach ($VarAux as $id){  if($CodeAux == ''){ $CodeAux =$id; }else{ $CodeAux .= $s.$id; } }
 						endif;
 
-						if($RegistrarM=='ContinueM'):
-							//if(isset($suelo)&&!isset($fito)):
-							//	$CodeAux=$generar->generarCodigo($z);
-							//endif;
-							//if(isset($fito)&&!isset($suelo))
-							//	$CodeAux=$generar->generarCodigo($z);
-							//endif;
-						endif;
-                    
 
 	                    $tipo1=1;
 	                    $tipo2=2;
-	                    //$Ced_cliente=$RegistrarM;
 	                	$objfinca = new finca();
 	                	$finca=$objfinca->consultar_finca_all($mysqli,$Ced_cliente);
 	                	$objanalisis = new analisis();
 	                	$analisis=$objanalisis->consultar_analisis_muestra($mysqli,$tipo2);
 	                	$analisis2=$objanalisis->consultar_analisis_muestra($mysqli,$tipo1);
                     
-                    
+                    endif;
 				?>
 
 			
@@ -488,7 +478,11 @@
                 
 							     </br></br>
 							     <!--pasamos campos ocultos con codigos nesesarios para el registro de la muestra-->
-							     <?php if(isset($suelo)&&!isset($fito)){echo "<input type='hidden' name='BackSuelo' value='' />";}?>
+							     <?php if(isset($suelo)&&!isset($fito)){echo "<input type='hidden' name='BackSuelo' value='$suelofito' />";}?>
+							     <?php if(!isset($suelo)&&isset($fito)){echo "<input type='hidden' name='BackFito' value='$suelofito' />";}?>
+							     <?php if(isset($suelo)&&isset($fito)){echo "<input type='hidden' name='BackAmbos' value='$suelofito' />";}?>
+							     <?php if(isset($suelofito)){echo "<input type='hidden' name='suelofito' value='' />";}?>
+							     <?php if(isset($cambiarcodigos)){ echo "<input type='hidden' name='cambiarcodigos' value='' />";}?>
 								<input type="hidden" name="Cod_sol" value="<?php echo $code3.$Cod_sol; ?>" />
 								<input type="hidden" name="CodeAux" value="<?php echo $CodeAux; ?>" />
 								<input type="hidden" name="Cod_lab" value="1" />
