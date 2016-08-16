@@ -52,7 +52,7 @@
                                 $ayudante->actualizar_sol($mysqli,$sol);
                             }
 
-                            if(isset($fito)&&!isset($suelo)){ $cambiarcodigos='c';}
+                            if(isset($fito)&&!isset($suelo)){ $cambiarcodigos='';}
 
                         }
 
