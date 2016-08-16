@@ -156,7 +156,7 @@
                             <input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
                             
                             <center>
-                                <button class="boton" type="submit" value="ModificarM" name="ModificarM"><i class="fa fa-edit"></i> Modificar</button>
+                                <button type="submit" class="boton" name="ModificarM" value="ModificarM"><i class="fa fa-edit"></i> Modificar</button>
                                 <button type="submit" class="boton" name="RegistrarM" value="ContinueM" ><i class="fa fa-plus"></i> Nueva muestra</button>
                                 
                             </center>
