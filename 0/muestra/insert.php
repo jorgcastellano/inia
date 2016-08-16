@@ -30,30 +30,29 @@
                         $ayudante = new ayudante();//Crear el objeto ayudante
                         $reg1=$ayudante->consultar_ayudante($mysqli);//llamado a la funcion que consulta la tabla de la BD "ayudante"
                                                                   //se actualizara esta tabla para llevar estadisticas de los registros realizados
+                        $solicitud = new solicitud();//Crear  objeto solicitud
                         
                         foreach($_POST['formulario'] as $id){ if($id=='suelo') { $suelo="suelo"; } if($id=='fito') { $fito="fito"; } }
 
-                        
-
-                            
 
                     if(isset($RegistrarM)) ://Condicion que verifica si los datos obtenidos son para registrar una muestra de suelo
                         
                         if($RegistrarM=='Inicio'){
 
-                            $solicitud = new solicitud();//Crear  objeto solicitud
                             $solicitud->registrar_solicitud($mysqli,$Cod_sol,$Ced_cliente);//Llamado a la funcion que registra una solicitud y envio de los parametros correspondientes
                             $sol=$reg1[0]+1;
                             $ayudante->actualizar_sol($mysqli,$sol);
-                            if(isset($suelo)&&isset($fito)){
+                            if((isset($suelo)&&isset($fito))&&(!empty($suelo)&&!empty($fito))){
 
                                 $solicitud->registrar_solicitud($mysqli,$CodeAux,$Ced_cliente);//Llamado a la funcion que registra una solicitud y envio de los parametros correspondientes
                                 $sol=$reg1[0]+2;
                                 $ayudante->actualizar_sol($mysqli,$sol);
                             }
 
-                            if(isset($fito)&&!isset($suelo)){ $cambiarcodigos='';}
-
+                            if(isset($fito)&&!isset($suelo)) {
+                                $cambiarcodigos='';
+                                echo "cambiarcodigos existe";
+                            }
                         }
 
 
@@ -62,6 +61,7 @@
                             
                             if(isset($BackSuelo)&&isset($fito)&&!isset($suelofito)){
 
+                                echo "$CodeAux $Ced_cliente";
                                 $solicitud->registrar_solicitud($mysqli,$CodeAux,$Ced_cliente);//Llamado a la funcion que registra una solicitud y envio de los parametros correspondientes
                                 $sol=$reg1[0]+1;
                                 $ayudante->actualizar_sol($mysqli,$sol);
@@ -75,12 +75,8 @@
                                 $ayudante->actualizar_sol($mysqli,$sol);
                                 $suelofito='suelofito';
                             }
-                          
                         }
 
-
-
-                            
                                                     
                             if(isset($suelo)) {
                                 $muestra = new muestra();

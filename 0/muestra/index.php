@@ -40,6 +40,8 @@
 
 			document.getElementById('AuxCode').style.display='block';
 
+		} else {
+			document.getElementById('AuxCode').style.display='none';
 		}
 
 		
@@ -155,7 +157,7 @@
 	                    			</br></br>
 	                    <div id="AuxCode" style="display:none;">        	
 	                    	
-	                    	<label for="Codig2">Código Auxiliar</label> 
+	                    	<label for="Codig2">Código de Solicitud 2</label>
 								<input type="text" name="Codig2" value="<?php echo $CodeAux; //Imprimir en este campo el código de la solicitud creado previamente por el generador de código. ?>" id="Codig" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de la solicitud-->
 	                            	</br></br> 
 	                    </div>       
@@ -438,7 +440,6 @@
 								<input type="text" name="Cond_agroclima" value="<?php echo $reg[32] ?>" id="Cond_agroclima" title="" maxlength="20" placeholder="" />
 								</br></br>
 
-
 					</div>
 					<div id="ambos2" style="display:none;">
 
@@ -469,11 +470,9 @@
 							<input type="checkbox" name="analisis2[]" value="<?php echo $reg5['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre as $id){ if($id==$reg5[0]){echo 'checked';} }?>/><?php echo $reg5['Nom_ana']; ?>
 						<?php } ;?>
 						</div>
-
-
-						     </br
-            
-						     </br></br>
+						     </br>
+            				</br>
+						     </br>
 						     <!--pasamos campos ocultos con codigos nesesarios para el registro de la muestra-->
 						     <?php if(isset($suelo)&&!isset($fito)){echo "<input type='hidden' name='BackSuelo' value='$suelofito' />";}?>
 						     <?php if(!isset($suelo)&&isset($fito)){echo "<input type='hidden' name='BackFito' value='$suelofito' />";}?>
@@ -491,9 +490,6 @@
 							<?php if($RegistrarF=='ModificarF'): ?><button type="submit" name="Actualizar" value="Actualizar" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
                 			<?php if($RegistrarM=='ContinueM'): ?><button type="submit" name="RegistrarM" value="ContinueM" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
                 			<?php if($RegistrarM=='Inicio'): ?><button type="submit" name="RegistrarM" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
-
-
-
 
 					</div>	
 				</form>
