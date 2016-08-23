@@ -140,14 +140,26 @@
 	                	$analisis2=$objanalisis->consultar_analisis_muestra($mysqli,$tipo1);
                     
                     endif;
+
+                    if(isset($ModificarM)):
+
+                    	if(isset($suelo)):
+                    		$Cod_muestra=$Cod_muestra1;
+                    	endif;
+                    	if(isset($fito)):
+                    		$Cod_muestra=$Cod_muestra2;
+                    	endif;
+                    	$muestra = new muestra();
+                    	$reg=$muestra->consultar_muestra($mysqli,$Cod_muestra);
+                    endif;	
 				?>
 
 				<form class="contact_form" method="POST" action="insert"  id="" name="principal1"> <!--Formulario de suelo-->
 
 
 					<center>
-             			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();" />suelo
-           				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();" />fitopatologia
+             			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();"<?php if(isset($suelo)&&isset($ModificarM)){ echo"checked"; } ?> />suelo
+           				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();"<?php if(isset($fito)&&isset($ModificarM)){ echo"checked"; } ?> />fitopatologia
              		</center>
              		</br></br>
 
@@ -190,42 +202,42 @@
 										</br></br>
 
 						<label for="Cult_act" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' ">Cultivo, Especie o Variedad</label>
-								<input type="text" name="Cult_act" value="<?php echo $reg[4] ?>" id="Cult_fito" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' " maxlength="15" placeholder="" />
+								<input type="text" name="Cult_act" value="<?php echo $reg[3] ?>" id="Cult_fito" title="Especifique el Cultivo, Especie o Variedad por ejemplo 'Uncaria Tomentosa' " maxlength="15" placeholder="" />
 								</br></br>
 						<label for="Nro_pl" title="Indique el número de plantas que tiene cultivadas">Nro de plantas</label>
-								<input type="num" name="Nro_pl" value="<?php echo $reg[14] ?>" id="Nro_pl" title="Indique el número de plantas que tiene cultivadas" maxlength="10" placeholder="" />
+								<input type="num" name="Nro_pl" value="<?php echo $reg[4] ?>" id="Nro_pl" title="Indique el número de plantas que tiene cultivadas" maxlength="10" placeholder="" />
 								</br></br>
 						<label for="Edad_cul" title="Edad del cultivo en días, meses o años">Edad del Cultivo</label>
 								<input type="text" name="Edad_cul" value="<?php echo $reg[5] ?>" id="Edad_cul" title="Edad del cultivo en días, meses o años" maxlength="11" placeholder="" />
 								</br></br>
 						<label for="Tam_lote">Tamaño del lote  (Ha)</label>
-								<input type="num" name="Tam_lote" value="<?php echo $reg[3] ?>" id="Tam_lote" title="Indique el tamaño del terreno en héctareas" maxlength="12" placeholder="0000" />
+								<input type="num" name="Tam_lote" value="<?php echo $reg[6] ?>" id="Tam_lote" title="Indique el tamaño del terreno en héctareas" maxlength="12" placeholder="0000" />
 								<span class="form_hint">Debe ingresar el tamaño del lote en héctareas de forma numerica"</span><br />
 	                            </br></br>
 						<label for="Topografia">Topografía del terreno</label>
 							<select  class="opcion4" name="Topografia">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[22]=='1'){ echo 'selected'; } ?>>Plano</option>
-								<option value="2"<?php if($reg[22]=='2'){ echo 'selected'; } ?>>Semiplano</option>
-								<option value="3"<?php if($reg[22]=='3'){ echo 'selected'; } ?>>Ladera</option>
-								<option value="4"<?php if($reg[22]=='4'){ echo 'selected'; } ?>>Quebrada</option>
-								<option value="5"<?php if($reg[22]=='5'){ echo 'selected'; } ?>>Cima</option>
+								<option value="1"<?php if($reg[7]=='1'){ echo 'selected'; } ?>>Plano</option>
+								<option value="2"<?php if($reg[7]=='2'){ echo 'selected'; } ?>>Semiplano</option>
+								<option value="3"<?php if($reg[7]=='3'){ echo 'selected'; } ?>>Ladera</option>
+								<option value="4"<?php if($reg[7]=='4'){ echo 'selected'; } ?>>Quebrada</option>
+								<option value="5"<?php if($reg[7]=='5'){ echo 'selected'; } ?>>Cima</option>
 							</select>
 								</br></br>
 	                     <label for="dist_siembra">Distancia Siembra (cm)</label>
-								<input type="text" name="dist_siembra" value="<?php echo $reg[16] ?>" id="dist_f" title="" maxlength="11" placeholder="" />		
+								<input type="text" name="dist_siembra" value="<?php echo $reg[8] ?>" id="dist_f" title="" maxlength="11" placeholder="" />		
 								</br></br>
 						<label for="Riego">Riego</label>
 							<select class="opcion4" name="Riego">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[21]=='1'){ echo 'selected'; } ?>>Aspersión</option>
-								<option value="2"<?php if($reg[21]=='2'){ echo 'selected'; } ?>>Goteo</option>
-								<option value="3"<?php if($reg[21]=='3'){ echo 'selected'; } ?>>Gravedad</option>
-								<option value="4"<?php if($reg[21]=='4'){ echo 'selected'; } ?>>No tiene</option>
+								<option value="1"<?php if($reg[9]=='1'){ echo 'selected'; } ?>>Aspersión</option>
+								<option value="2"<?php if($reg[9]=='2'){ echo 'selected'; } ?>>Goteo</option>
+								<option value="3"<?php if($reg[9]=='3'){ echo 'selected'; } ?>>Gravedad</option>
+								<option value="4"<?php if($reg[9]=='4'){ echo 'selected'; } ?>>No tiene</option>
 							</select>
 								</br></br>
 						<label for="Cult_ant" title="Indique el cultivo anterior de este terreno">Cultivo anterior</label>
-								<input type="text" name="Cult_ant" value="<?php echo $reg[15] ?>" id="Cult_antes" title="Indique el cultivo anterior de este terreno" maxlength="20" placeholder="" />
+								<input type="text" name="Cult_ant" value="<?php echo $reg[10] ?>" id="Cult_antes" title="Indique el cultivo anterior de este terreno" maxlength="20" placeholder="" />
 								</br></br>
 						<label for="F_toma">Fecha de toma de la muestra</label>
 								<select class="opc" name="Dia" title="Dia">
@@ -253,56 +265,56 @@
 								<input type="checkbox" name="Practica[]" value="3"<?php if (isset($autocompletado)) foreach($practica as $id){ if($id=='3'){echo 'checked';} }?>/>Organico
 								</br></br>
 						<label for="Produc_dosis" title="">Productos ultilizados y dosis</label>
-								<input type="text" name="Produc_dosis" value="<?php echo $reg[28] ?>" id="Produc_dosis" title="" maxlength="60" placeholder="" />
+								<input type="text" name="Produc_dosis" value="<?php echo $reg[13] ?>" id="Produc_dosis" title="" maxlength="60" placeholder="" />
 								</br></br>
 						<label for="Epoca_aplic" title="">Época de Aplicación</label>
-								<input type="text" name="Epoca_aplic" value="<?php echo $reg[20] ?>"  id="Epoca_aplic" title="" maxlength="10" placeholder="" />
+								<input type="text" name="Epoca_aplic" value="<?php echo $reg[14] ?>"  id="Epoca_aplic" title="" maxlength="10" placeholder="" />
 								</br></br>	
 						<label for="Modo_aplic" title="">Modo de aplicación</label>
-								<textarea class="areatexto" name="Modo_aplic" id="Aplicacion" title=""  placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[21] ?></textarea>
+								<textarea class="areatexto" name="Modo_aplic" id="Aplicacion" title=""  placeholder="Por Favor Especifique aquí el modo de aplicación del fertilizante"><?php echo $reg[15] ?></textarea>
 	                            </br></br>
 	                    <label for="Pobl_cercana" title="Indique la población mas cercana al lugar del cultivo">Población más Cercana</label>
-								<input type="text" name="Pobl_cercana" value="<?php echo $reg[7] ?>" id="Pobl_cercana" title="Indique la población más cercana al lugar del cultivo" maxlength="15" placeholder="" />
+								<input type="text" name="Pobl_cercana" value="<?php echo $reg[16] ?>" id="Pobl_cercana" title="Indique la población más cercana al lugar del cultivo" maxlength="15" placeholder="" />
 								</br></br>
 					</div>
 
 					<div id="primero1" style="display:none;">
 
 						<label for="Profundidad" title="Indique en Centimetros a que profundidad tomo la muestra">Profundidad de la muestra  (Cm)</label>
-							<input type="num" name="Profundidad" value="<?php echo $reg[4] ?>" id="Profundidad" title="Indique en Centimetros a que profundidad tomo la muestra" maxlength="11" placeholder="" />
+							<input type="num" name="Profundidad" value="<?php echo $reg[17] ?>" id="Profundidad" title="Indique en Centimetros a que profundidad tomo la muestra" maxlength="11" placeholder="" />
 							<span class="form_hint">Debe ingresar de forma numerica la profundidad de la cual tomo la muestra"</span><br />
                             </br></br>	
 					
 						<label for="Inundacion" title="¿Existe riesgo de inundación para el terreno?">Riesgo de inundación</label>
-							<input type="radio" id="Inundacion" name="Inundacion" value="1" title="Si tiene riesgo"<?php if($reg[6]=='1'){ echo 'checked'; } ?>/>Si
-							<input type="radio" id="Inundacion" name="Inundacion" value="0"title="No tiene riesgo"<?php if($reg[6]=='0'){ echo 'checked'; } ?>/>No
+							<input type="radio" id="Inundacion" name="Inundacion" value="1" title="Si tiene riesgo"<?php if($reg[18]=='1'){ echo 'checked'; } ?>/>Si
+							<input type="radio" id="Inundacion" name="Inundacion" value="0"title="No tiene riesgo"<?php if($reg[18]=='0'){ echo 'checked'; } ?>/>No
 							</br></br>
 
 						<label for="T_vege">Tipo de vegetación</label>
-							<textarea class="areatexto" name="T_vege" id="T_vege" title="" maxlength="15" title="Por Favor Especifique aquí el tipo de vegetación" placeholder="Por Favor Especifique aquí el tipo de vegetación"><?php echo $reg[10] ?></textarea>
+							<textarea class="areatexto" name="T_vege" id="T_vege" title="" maxlength="15" title="Por Favor Especifique aquí el tipo de vegetación" placeholder="Por Favor Especifique aquí el tipo de vegetación"><?php echo $reg[19] ?></textarea>
 							</br></br>
 
 						<label for="Rend_cult" title="¿Cómo fue el rendimiento BUENO, REGULAR O MALO? ">Rendimiento del cultivo</label>
-							<input type="radio" name="Rend_cult" value="B" title="Bueno"<?php if($reg[16]=='B'){ echo 'checked'; } ?>/>Bueno
-							<input type="radio" name="Rend_cult" value="R" title="Regular"<?php if($reg[16]=='R'){ echo 'checked'; } ?>/>Regular
-							<input type="radio" name="Rend_cult" value="M" title="Malo"<?php if($reg[16]=='M'){ echo 'checked'; } ?>/>Malo
+							<input type="radio" name="Rend_cult" value="B" title="Bueno"<?php if($reg[20]=='B'){ echo 'checked'; } ?>/>Bueno
+							<input type="radio" name="Rend_cult" value="R" title="Regular"<?php if($reg[20]=='R'){ echo 'checked'; } ?>/>Regular
+							<input type="radio" name="Rend_cult" value="M" title="Malo"<?php if($reg[20]=='M'){ echo 'checked'; } ?>/>Malo
 							</br></br>
 						<label for="Restos" title="¿Hay restos de cosecha del cultivo anterior?">Restos de Cosecha</label>
-							<input type="radio" id="Restos" name="Restos" value="1" title="Si hay restos de cosecha"<?php if($reg[17]=='1'){ echo 'checked'; } ?>/>Si
-							<input type="radio" id="Restos" name="Restos" value="0" title="No hay restos de cosecha"<?php if($reg[17]=='0'){ echo 'checked'; } ?>/>No
+							<input type="radio" id="Restos" name="Restos" value="1" title="Si hay restos de cosecha"<?php if($reg[21]=='1'){ echo 'checked'; } ?>/>Si
+							<input type="radio" id="Restos" name="Restos" value="0" title="No hay restos de cosecha"<?php if($reg[21]=='0'){ echo 'checked'; } ?>/>No
 							</br></br>	
 						</div>
 					
 						<div id='segundo2' style='display:none;'>
 
 						<label for="Descrip_fito">Descripción</label>
-								<textarea class="areatexto" name="Descrip_fito" id="Descrip_fito" title="" maxlength="50" placeholder="Por Favor Describa la muestra"><?php echo $reg[3] ?></textarea>	 
+								<textarea class="areatexto" name="Descrip_fito" id="Descrip_fito" title="" maxlength="50" placeholder="Por Favor Describa la muestra"><?php echo $reg[22] ?></textarea>	 
 								</br></br>
 						
 
 						
 						<label for="Id_microorg">Identificación del microorganismo</label>
-								<input type="text" name="Id_microorg" value="<?php echo $reg[8] ?>" id="Id_microorg" title="" maxlength="20" placeholder="" />
+								<input type="text" name="Id_microorg" value="<?php echo $reg[23] ?>" id="Id_microorg" title="" maxlength="20" placeholder="" />
 								</br></br>
 						<label for="Sintoma">Síntomas</label>
 								<input type="checkbox" name="Sintoma[]" value="1"<?php if (isset($autocompletado)) foreach($sintoma as $id){ if($id=='1'){echo 'checked';} }?>/>Secamiento
@@ -339,45 +351,45 @@
 								</select>
 								</br></br>
 						<label for="Causa">Daños causados por</label>
-								<input type="text" name="Causa" value="<?php echo $reg[11] ?>" id="Causas" title="" maxlength="30" placeholder="" />
+								<input type="text" name="Causa" value="<?php echo $reg[26] ?>" id="Causas" title="" maxlength="30" placeholder="" />
 								</br></br>
 						<label for="Tipo_plant">Tipo de Plantación</label>
 							<select  class="opcion4" name="Tipo_plant">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[12]=='1'){ echo 'selected'; } ?>>Campo</option>
-								<option value="2"<?php if($reg[12]=='2'){ echo 'selected'; } ?>>Semillero</option>
-								<option value="3"<?php if($reg[12]=='3'){ echo 'selected'; } ?>>Invernadero</option>
-								<option value="4"<?php if($reg[12]=='4'){ echo 'selected'; } ?>>Vivero</option>
+								<option value="1"<?php if($reg[27]=='1'){ echo 'selected'; } ?>>Campo</option>
+								<option value="2"<?php if($reg[27]=='2'){ echo 'selected'; } ?>>Semillero</option>
+								<option value="3"<?php if($reg[27]=='3'){ echo 'selected'; } ?>>Invernadero</option>
+								<option value="4"<?php if($reg[27]=='4'){ echo 'selected'; } ?>>Vivero</option>
 							</select>
 							</br></br>
 						<label for="Nro_subm">Nro de Submuestra</label>
-								<input type="num" name="Nro_subm" value="<?php echo $reg[15] ?>" id="Nro_subm" title="" maxlength="11" placeholder="" />		
+								<input type="num" name="Nro_subm" value="<?php echo $reg[28] ?>" id="Nro_subm" title="" maxlength="11" placeholder="" />		
 								</br></br>
 						
 						<label for="Origen_sem">Fuente de la semilla</label>
-								<input type="radio" id="Origen_sem" name="Origen_sem" value="1"<?php if($reg[17]=='1'){ echo 'checked'; } ?>/>Artesanal
-								<input type="radio" id="Origen_sem" name="Origen_sem" value="2"<?php if($reg[17]=='2'){ echo 'checked'; } ?>/>Certificada
+								<input type="radio" id="Origen_sem" name="Origen_sem" value="1"<?php if($reg[29]=='1'){ echo 'checked'; } ?>/>Artesanal
+								<input type="radio" id="Origen_sem" name="Origen_sem" value="2"<?php if($reg[29]=='2'){ echo 'checked'; } ?>/>Certificada
 							    </br></br>
 								
 						<label for="Pres_microorg">Presentación del microorganismo</label>
 							<select class="opcion4" name="Pres_microorg">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[18]=='1'){ echo 'selected'; } ?>>Líquido</option>
-								<option value="2"<?php if($reg[18]=='2'){ echo 'selected'; } ?>>Biopreparado</option>
-								<option value="3"<?php if($reg[18]=='3'){ echo 'selected'; } ?>>Polvo mojable</option>
-								<option value="4"<?php if($reg[18]=='4'){ echo 'selected'; } ?>>Tubo</option>
-								<option value="5"<?php if($reg[18]=='5'){ echo 'selected'; } ?>>Caja de petri</option>
+								<option value="1"<?php if($reg[30]=='1'){ echo 'selected'; } ?>>Líquido</option>
+								<option value="2"<?php if($reg[30]=='2'){ echo 'selected'; } ?>>Biopreparado</option>
+								<option value="3"<?php if($reg[30]=='3'){ echo 'selected'; } ?>>Polvo mojable</option>
+								<option value="4"<?php if($reg[30]=='4'){ echo 'selected'; } ?>>Tubo</option>
+								<option value="5"<?php if($reg[30]=='5'){ echo 'selected'; } ?>>Caja de petri</option>
 							</select>
 								</br></br>
 						<label for="Dist_planafect">Distribución de las plantas afectadas</label>
 							<select class="opcion4" name="Dist_planafect">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[19]=='1'){ echo 'selected'; } ?>>Generalizado</option>
-								<option value="2"<?php if($reg[19]=='2'){ echo 'selected'; } ?>>Disperso</option>
-								<option value="3"<?php if($reg[19]=='3'){ echo 'selected'; } ?>>Sectorizado</option>
-								<option value="4"<?php if($reg[19]=='4'){ echo 'selected'; } ?>>Zona Baja</option>
-								<option value="5"<?php if($reg[19]=='5'){ echo 'selected'; } ?>>Zona Alta</option>
-								<option value="6"<?php if($reg[19]=='6'){ echo 'selected'; } ?>>Orillas</option>
+								<option value="1"<?php if($reg[31]=='1'){ echo 'selected'; } ?>>Generalizado</option>
+								<option value="2"<?php if($reg[31]=='2'){ echo 'selected'; } ?>>Disperso</option>
+								<option value="3"<?php if($reg[31]=='3'){ echo 'selected'; } ?>>Sectorizado</option>
+								<option value="4"<?php if($reg[31]=='4'){ echo 'selected'; } ?>>Zona Baja</option>
+								<option value="5"<?php if($reg[31]=='5'){ echo 'selected'; } ?>>Zona Alta</option>
+								<option value="6"<?php if($reg[31]=='6'){ echo 'selected'; } ?>>Orillas</option>
 							</select>
 								</br></br>
 						<label for="Part_afect">Partes afectadas</label>
@@ -395,33 +407,33 @@
 						<label for="Text_sue">Textura de suelo</label>
 							<select class="opcion4" name="Text_sue">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[23]=='1'){ echo 'selected'; } ?>>Fino</option>
-								<option value="2"<?php if($reg[23]=='2'){ echo 'selected'; } ?>>Medio</option>
-								<option value="3"<?php if($reg[23]=='3'){ echo 'selected'; } ?>>Grueso</option>
+								<option value="1"<?php if($reg[33]=='1'){ echo 'selected'; } ?>>Fino</option>
+								<option value="2"<?php if($reg[33]=='2'){ echo 'selected'; } ?>>Medio</option>
+								<option value="3"<?php if($reg[33]=='3'){ echo 'selected'; } ?>>Grueso</option>
 							</select>
 								</br></br>
 						<label for="Composicion">Composición del suelo</label>
 							<select class="opcion4" name="Composicion">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[24]=='1'){ echo 'selected'; } ?>>Mineral</option>
-								<option value="2"<?php if($reg[24]=='2'){ echo 'selected'; } ?>>Orgánico</option>
-								<option value="3"<?php if($reg[24]=='3'){ echo 'selected'; } ?>>Sustrato</option>
+								<option value="1"<?php if($reg[34]=='1'){ echo 'selected'; } ?>>Mineral</option>
+								<option value="2"<?php if($reg[34]=='2'){ echo 'selected'; } ?>>Orgánico</option>
+								<option value="3"<?php if($reg[34]=='3'){ echo 'selected'; } ?>>Sustrato</option>
 							</select>
 								</br></br>
 						<label for="Hum_sue">Humedad del suelo</label>
 							<select class="opcion4" name="Hum_sue">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[25]=='1'){ echo 'selected'; } ?>>Excesiva</option>
-								<option value="2"<?php if($reg[25]=='2'){ echo 'selected'; } ?>>Deficiente</option>
-								<option value="3"<?php if($reg[25]=='3'){ echo 'selected'; } ?>>Adecuada</option>
+								<option value="1"<?php if($reg[35]=='1'){ echo 'selected'; } ?>>Excesiva</option>
+								<option value="2"<?php if($reg[35]=='2'){ echo 'selected'; } ?>>Deficiente</option>
+								<option value="3"<?php if($reg[35]=='3'){ echo 'selected'; } ?>>Adecuada</option>
 							</select>
 								</br></br>
 						<label for="Drenaje">Drenaje</label>
 							<select class="opcion4" name="Drenaje">
 								<option value="">Seleccione</option>
-								<option value="1"<?php if($reg[26]=='1'){ echo 'selected'; } ?>>Bueno</option>
-								<option value="2"<?php if($reg[26]=='2'){ echo 'selected'; } ?>>Regular</option>
-								<option value="3"<?php if($reg[26]=='3'){ echo 'selected'; } ?>>Deficiente</option>
+								<option value="1"<?php if($reg[36]=='1'){ echo 'selected'; } ?>>Bueno</option>
+								<option value="2"<?php if($reg[36]=='2'){ echo 'selected'; } ?>>Regular</option>
+								<option value="3"<?php if($reg[36]=='3'){ echo 'selected'; } ?>>Deficiente</option>
 							</select>
 								</br></br>
 
@@ -433,18 +445,18 @@
 								<input type="checkbox" name="Control[]" value="5"<?php if (isset($autocompletado)) foreach($control as $id){ if($id=='5'){echo 'checked';} }?>/>Biologicos
 							</br></br>
 						<label for="Produc_dosisb" title="">Productos ultilizados y dosis</label>
-								<input type="text" name="Produc_dosisb" value="<?php echo $reg[30] ?>" id="Produc_dosisb" title="" maxlength="50" placeholder="" />
+								<input type="text" name="Produc_dosisb" value="<?php echo $reg[38] ?>" id="Produc_dosisb" title="" maxlength="50" placeholder="" />
 								</br></br>
 
 						<label for="Cond_agroclima" title="">Condiciones Agroclimáticas</label>
-								<input type="text" name="Cond_agroclima" value="<?php echo $reg[32] ?>" id="Cond_agroclima" title="" maxlength="20" placeholder="" />
+								<input type="text" name="Cond_agroclima" value="<?php echo $reg[39] ?>" id="Cond_agroclima" title="" maxlength="20" placeholder="" />
 								</br></br>
 
 					</div>
 					<div id="ambos2" style="display:none;">
 
 						<label for="Observaciones">Observaciones</label>
-								<textarea class="areatexto" name="Observaciones" id="Observaciones" title="" maxlength="50" placeholder=""><?php echo $reg[33] ?></textarea>	 
+								<textarea class="areatexto" name="Observaciones" id="Observaciones" title="" maxlength="50" placeholder=""><?php echo $reg[40] ?></textarea>	 
 						</br></br>
 						
 						<!-- consultar fincas del cliente para saber de cual proviene la muestra -->
@@ -458,16 +470,20 @@
 							</select>
                         </br></br>
 
+                        <?php 
+                        	$pre1 = explode("|", $codi_analisis1);
+                        	$pre2 = explode("|", $codi_analisis2);
+                        ?>
                        <label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 
                         <div id='analisis1' style='display:none;'>
 						<?php while ($reg2 = $analisis->fetch_array()) { ?>
-							<input type="checkbox" name="analisis1[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre as $id){ if($id==$reg2[0]){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
+							<input type="checkbox" name="analisis1[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre1 as $id){ if($id==$reg2['Cod_ana']){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } ;?>
 						</div>
 						<div id='analisis2' style='display:none;'>
 						<?php while ($reg5 = $analisis2->fetch_array()) { ?>
-							<input type="checkbox" name="analisis2[]" value="<?php echo $reg5['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre as $id){ if($id==$reg5[0]){echo 'checked';} }?>/><?php echo $reg5['Nom_ana']; ?>
+							<input type="checkbox" name="analisis2[]" value="<?php echo $reg5['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre2 as $id){ if($id==$reg5['Cod_ana']){echo 'checked';} }?>/><?php echo $reg5['Nom_ana']; ?>
 						<?php } ;?>
 						</div>
 						     </br>
@@ -487,7 +503,7 @@
                             <input type="hidden" name="Cod_muestra1" value="<?php echo $code2.$reg[0]; ?>" />
                             <input type="hidden" name="Cod_muestra2" value="<?php echo $code1.$reg[0]; ?>" />
 							<button class="boton" type="reset" value="Borrar" name="reset" id="reset"><i class="fa fa-eraser"></i> Limpiar</button>
-							<?php if($RegistrarF=='ModificarF'): ?><button type="submit" name="Actualizar" value="Actualizar" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
+							<?php if($RegistrarF=='ModificarM'): ?><button type="submit" name="ModificarM" value="ModificarM" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
                 			<?php if($RegistrarM=='ContinueM'): ?><button type="submit" name="RegistrarM" value="ContinueM" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
                 			<?php if($RegistrarM=='Inicio'): ?><button type="submit" name="RegistrarM" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 
