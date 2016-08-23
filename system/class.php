@@ -359,7 +359,7 @@ class muestra {
 
       $sql="SELECT * FROM muestra WHERE muestra.Cod_muestra ='$Cod_muestra'";
       $res=$mysqli->query($sql);
-      return $this -> reg = mysqli_fetch_array($res);
+      return $res->fetch_array();
 
     }
 

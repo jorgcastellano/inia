@@ -12,9 +12,24 @@
 	<script type="text/javascript">
 	//scrip de selección que determina cual formulario se desea cargar.
 
+	function clickea() {
+
+		if(document.getElementById('formulario1').defaultChecked == true||document.getElementById('formulario2').defaultChecked == true){
+ 		
+ 			document.getElementById('ambos').style.display='block';
+			document.getElementById('ambos2').style.display='block';
+ 			
+ 		}
+	}
+
+	clickea();
+
+		
+
+
 	function mostrarformulario(){
 
-		if (document.getElementById('formulario1').checked == true) {
+		if (document.getElementById('formulario1').checked == true||document.getElementById('formulario2').checked == true) {
 
 			document.getElementById('ambos').style.display='block';
 			document.getElementById('ambos2').style.display='block';
@@ -22,12 +37,8 @@
 
 		} 
 		
-		if (document.getElementById('formulario2').checked == true) {
 
-			document.getElementById('ambos').style.display='block';
-			document.getElementById('ambos2').style.display='block';
 
-		} 
 
 		if (document.getElementById('formulario1').checked == false&&document.getElementById('formulario2').checked == false) {
 
@@ -144,24 +155,29 @@
                     if(isset($ModificarM)):
 
                     	if(isset($suelo)):
-                    		$Cod_muestra=$Cod_muestra1;
+                    		$Cod_muestra=$suelo;
                     	endif;
                     	if(isset($fito)):
-                    		$Cod_muestra=$Cod_muestra2;
+                    		$Cod_muestra=$fito;
                     	endif;
                     	$muestra = new muestra();
                     	$reg=$muestra->consultar_muestra($mysqli,$Cod_muestra);
+                    	echo "benito: $reg[0]";
                     endif;	
 				?>
+
+				<div id="prueba" style="display:none;">holaa</div>
 
 				<form class="contact_form" method="POST" action="insert"  id="" name="principal1"> <!--Formulario de suelo-->
 
 
 					<center>
+             			<input type="checkbox" name="formulario[]" value="prueba" id="formulario0" onclick="mostrarformulario();"  />prueba
              			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();"<?php if(isset($suelo)&&isset($ModificarM)){ echo"checked"; } ?> />suelo
            				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();"<?php if(isset($fito)&&isset($ModificarM)){ echo"checked"; } ?> />fitopatologia
              		</center>
              		</br></br>
+
 
 					<div id="ambos" style="display:none;">
 							<label for="Codig1">Código de Solicitud</label> 
@@ -225,7 +241,7 @@
 							</select>
 								</br></br>
 	                     <label for="dist_siembra">Distancia Siembra (cm)</label>
-								<input type="text" name="dist_siembra" value="<?php echo $reg[8] ?>" id="dist_f" title="" maxlength="11" placeholder="" />		
+								<input type="text" name="Dist_siembra" value="<?php echo $reg[8] ?>" id="dist_f" title="" maxlength="11" placeholder="" />		
 								</br></br>
 						<label for="Riego">Riego</label>
 							<select class="opcion4" name="Riego">
