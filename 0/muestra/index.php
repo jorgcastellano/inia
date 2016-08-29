@@ -12,14 +12,28 @@
 	<script type="text/javascript">
 	//scrip de selección que determina cual formulario se desea cargar.
 
+	function clickButton(){
+  alert("esto es la simulacion de click sobre el boton...");
+  document.principal1.getElementById('formulario0').click()
+}
+function alertMsg(){
+  alert("El boton fue presionado")
+ }
+
+	clickButton();
+
 	function clickea() {
 
-		if(document.getElementById('formulario1').defaultChecked == true||document.getElementById('formulario2').defaultChecked == true){
+		
+		//alert ("mensaje");
+		document.principal1.micheck.click()
+
+		/*if(document.getElementById('formulario1').defaultChecked == true||document.getElementById('formulario2').defaultChecked == true){
  		
  			document.getElementById('ambos').style.display='block';
 			document.getElementById('ambos2').style.display='block';
  			
- 		}
+ 		}*/
 	}
 
 	clickea();
@@ -172,9 +186,9 @@
 
 
 					<center>
-             			<input type="checkbox" name="formulario[]" value="prueba" id="formulario0" onclick="mostrarformulario();"  />prueba
-             			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();"<?php if(isset($suelo)&&isset($ModificarM)){ echo"checked"; } ?> />suelo
-           				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();"<?php if(isset($fito)&&isset($ModificarM)){ echo"checked"; } ?> />fitopatologia
+             			<input type="checkbox" name="micheck" value="prueba" id="formulario0" onclick="alertMsg();"  />prueba
+             			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();"<?php //if(isset($suelo)&&isset($ModificarM)){ echo"checked"; } ?> />suelo
+           				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();"<?php //if(isset($fito)&&isset($ModificarM)){ echo"checked"; } ?> />fitopatologia
              		</center>
              		</br></br>
 
