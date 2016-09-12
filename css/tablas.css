@@ -40,6 +40,7 @@ table tr:nth-child(odd){
 
 /*ESTILO PARA LOS CLIENTES*/
 table.tcliente{
+    text-transform: capitalize;
     width: 550px;
     border: groove 1px grey;  
 }
@@ -64,6 +65,7 @@ table.tcliente tr:last-child td:last-child{
 
 /*ESTILO PARA ESTATUS DE LABORATORIOS Y ANALISIS*/
 table.tstatus{
+    text-transform: capitalize;
     width: 500px;
     border: groove 1px grey;  
   border-radius: 5px;
@@ -99,6 +101,7 @@ table.tstatus td:last-child{
 
 /*ESTILO PARA ANALISIS Y PRODUCTOS*/
 table.anapro{
+    text-transform: capitalize;
     width: 500px;
 }
 table.anapro td{

@@ -29,15 +29,20 @@
             <form method="POST" action="formulario">
                 <?php
                     extract($_POST);
-
+                    $mensaje="";
+                    if (!empty($mensaje)) 
+                    echo "$mensaje ";
                  include_once '../../system/class.php';
                 $objanalisis = new analisis();
 
                 if (isset($eliminar)) :
                      $nro1 = count($seleccion);
                      for ($i = 0; $i < $nro1; $i++) :
+                     else :
+                        $mensaje="<div class='notify_f'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></div> ";
                       $objanalisis->eliminar($mysqli, $seleccion[$i]);
                     endfor;
+                 
                 endif;
                     //buscador de analisis segun sea el caso nombre completo, frase y otros.
                     if (!empty($buscador)) {
@@ -147,6 +152,7 @@
                         }
                         echo "</table>";
                     }
+
                 ?>
                 <div class="grupobotones">
                     <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>

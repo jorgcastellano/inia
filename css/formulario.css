@@ -1,9 +1,9 @@
 .areatexto{ 
-   resize: both;
    height:45px;
    width: 210px;
-   
+    font-family: arial ,sans-serif;
 }
+
 /* === Remove input autofocus webkit === */
 *:focus {
     outline: none;
@@ -40,7 +40,6 @@ body {
     .contact_form li:first-child, .contact_form li:last-child {
         border-bottom: 1px solid #777;
  }
-
 
 /* === Form Header === */
 .contact_form h2 {
@@ -84,8 +83,6 @@ body {
     padding: 5px 8px;
     /*border-radius: 20px;*/
 }
-
-
 
 .contact_form button {
     margin-left: 156px;

@@ -24,7 +24,7 @@
 	            	if ($_SESSION['privilegios'] == 1 OR $_SESSION['privilegios'] == 3) :
 	        ?>
 		            	<form method="POST" action="../cliente/resultados">
-			                <li><input type="text" name="Ced_cliente" placeholder="Cédula/RIF" pattern="\d{6,8}"></li>
+			                <li><input required type="text" name="Ced_cliente" placeholder="Cédula/RIF" pattern="\d{6,8}"></li>
 			                <div><li><button class="botonmenu" type="submit" name="button"><i class="fa fa-search"></i></button></li></div>
 			            </form>
 		    <?php

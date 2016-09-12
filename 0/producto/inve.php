@@ -28,6 +28,7 @@
 	  <form method="POST" action="index">
 		<?php
 		  extract($_POST);
+		 
 		  include_once '../../system/class.php';
 		  $objproducto = new producto();
 

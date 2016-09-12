@@ -70,11 +70,11 @@
                     <form class="" method="post" action="index"  id="">
                         <table class="tcliente">
                             <tr>
-                                <td colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
+                                <td  colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
 
                             </tr>
                             <tr>
-                                <td><b>Cédula de identidad:</b></td>
+                                <td><b >Cédula de identidad:</b></td>
                                 <td><?php echo $reg[1]?></td>
                             </tr>
                             <tr>

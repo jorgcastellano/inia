@@ -23,21 +23,24 @@
                 extract($_POST);
                 $objinicio = new inicio_seguro();
 
+                $mensaje1="";
+                $mensaje2="";
                 if (isset($eliminar)) :
                     echo $eliminar;
                     if (isset($dos)) :
                         $especialista = new especialista();
                         $especialista->eliminar($mysqli, $eliminar);
                     else :
-                        echo "<span class='notify'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></span> ";
+                        echo "<div class='notify'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></div> ";
                         $objinicio -> eliminar_miembros($mysqli, $eliminar);                        
                     endif;
                 elseif (isset($guardar)) :
                     for ($i=0; $i < count($codigos); $i++) :
                         if (!empty($privilegios[$i])) :
                             $objinicio -> modificar_privilegios($mysqli, $privilegios[$i], $codigos[$i]);
+                            $mensaje1="<div class='notify'><i class='fa fa-check-circle-o'></i> Los privilegios fueron cambiados</div>";
                         else :
-                         echo "<span class='notify_f'><i class='fa fa-times'></i>Debe seleccionar un privilegio para el usuario elegido<br /></span> ";
+                         $mensaje2="Debe seleccionar un privilegio para el usuario elegido";
                         endif;
                     endfor;
                 endif;
@@ -54,6 +57,8 @@
                         <td><i class='fa fa-trash-o'></i></td>
                         
                     </tr>";
+                        $mensaje="";
+                        $mensaje0="";
                 while ($resultado = $reg->fetch_array()) :
 
                     //Verificacion de los seleccionados para ser almacenados
@@ -62,22 +67,25 @@
                             if ($resultado[0] == $cod[$x]) :
                                 if ($resultado[9] == "On")
                                     $x=$temp;
-                                else
+                                else 
                                     $on = $resultado[0];
                                     $x=$temp;
+                                
                             elseif ($x == ($temp-1)) :
-                                if ($resultado[9] == "On")
+                                if ($resultado[9] == "On") 
                                     $off = $resultado[0];
+                                    
                             endif;
-                            echo "<span class='notify'><i class='fa fa-check-square'></i>El privilegio ha sido otorgado al usuario con éxito<br /></span> ";
+                        
 
                         if (isset($on)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "On", $on);
                             $resultado[9] = "On";
-                            echo "<span class='notify'><i class='fa fa-check-square'></i>El privilegio ha sido otorgado al usuario con éxito<br /></span> ";
+                             $mensaje="<div class='notify'><i class='fa fa-check-circle-o'></i> Se activo Usuario</div>";
                         elseif (isset($off)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "Off", $off);
                             $resultado[9] = "Off";
+                            $mensaje0="<div class='notify_f'><i class='fa fa-times'></i>Usuario desactivado </div>";
                         endif;
                         unset($off, $on);
                     endif;
@@ -90,8 +98,7 @@
                     elseif ($resultado[9] == "Off") :
                         $checked = "";
                     endif;
-                    /*echo "<span class='notify'><i class='fa fa-check-square'></i>El privilegio ha sido otorgado al usuario con éxito<br /></span> ";*/
-
+                  
                     if ($resultado[10] == 1) :
                         $uno = "selected";
                     elseif ($resultado[10] == 2) :
@@ -99,6 +106,8 @@
                     elseif ($resultado[10] == 3) :
                         $tres = "selected";
                     endif;
+
+
                     echo "<tr>
                             <td>$resultado[1]
                             <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
@@ -117,7 +126,19 @@
                     </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;
-                if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El privilegio ha sido otorgado al usuario con éxito<br /></span> ";}
+            
+                if (!empty($mensaje0)AND !empty($mensaje1)) 
+                    echo "Se desastivo un usuario y se cambiaron los privilegios";
+                else{
+                 if (!empty($mensaje)) 
+                    echo "$mensaje ";
+                if (!empty($mensaje0)) 
+                    echo "$mensaje0 ";
+                if (!empty($mensaje1)) 
+                    echo "$mensaje1";
+                 if (!empty($mensaje2)) 
+                 echo "$mensaje2";
+                }
                 echo "</table>";
             ?>
             <div class="grupobotones">

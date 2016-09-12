@@ -19,14 +19,15 @@
             </div>
                 <?php
                 require_once '../../system/class.php';
-
+                $mensaje="";
                 $laboratorios = new laboratorio();
                 $reg=$laboratorios->cEstatus($mysqli);
-
+                $mensaje="<div class='notify'><i class='fa fa-check-circle-o'></i> Se desactivo un analisis</div>";
                 ?>
             <form action="cambioestado" method="POST">
-
+    
                 <?php 
+                
                 $v=0;
                 while ($lab = $reg->fetch_array()) {?>
                     <table class="tstatus">
@@ -38,17 +39,21 @@
                             $v++;
                             $analisis = new analisis(); 
                             $reg2=$analisis->cEstatus($mysqli,$v);
-
+                            
                             while($ana = $reg2->fetch_array())
                                 if ($ana[3] == $lab[0]) {
                                 ?>  <tr>
                                         <td><?php echo $ana[1]; ?></td>
-                                        <td><input type="checkbox" name="analisis[]" <?php echo "value='$ana[0]'"; if($ana['estatus']=='On') echo 'checked'; ?> title="click aquí para desactivar este servicio" />
+                                        <td><input type="checkbox" name="analisis[]" <?php echo "value='$ana[0]'"; if($ana['estatus']=='On') {echo 'checked';}
+                                                  ?> title="click aquí para desactivar este servicio" />
                                     </tr>
                         <?php   }
                     echo "</table>";
                 }
+                if (!empty($mensaje)) 
+                    echo "$mensaje ";
                 $mysqli->close();?>
+
                 <div  class="grupobotones">
                     <button type="button" name="Regresar atras" class="boton" onclick=location="inicio"><i class="fa fa-arrow-left"></i> Página principal</button>
                     <button type="submit" name="ActualizarEstado" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
