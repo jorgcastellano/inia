@@ -411,23 +411,15 @@ class solicitud_analisis {
     }
 
 
-    public function eliminar_sams($mysqli,$insert,$Cod_sol,$Cod_suelo)
+    public function eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_muestra)
     {
 
 
-      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_suelo='$Cod_suelo'";
+      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_muestra='$Cod_muestra'";
       $res=$mysqli->query($sql);
 
     }
 
-    public function eliminar_samf($mysqli,$insert,$Cod_sol,$Cod_fito)
-    {
-
-
-      $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_fito='$Cod_fito'";
-      $res=$mysqli->query($sql);
-
-    }
 
   }
 

@@ -141,9 +141,13 @@
 
                     	if(isset($suelo)):
                     		$Cod_muestra=$suelo;
+                    		$code2=$suelo;
+                    		$varsuelo="";
                     	endif;
                     	if(isset($fito)):
                     		$Cod_muestra=$fito;
+                    		$code1=$fito;
+                    		$varfito="";
                     	endif;
                     	$muestra = new muestra();
                     	$reg=$muestra->consultar_muestra($mysqli,$Cod_muestra);
@@ -507,13 +511,15 @@
 						     <?php if(isset($suelo)&&isset($fito)){echo "<input type='hidden' name='BackAmbos' value='$suelofito' />";}?>
 						     <?php if(isset($suelofito)){echo "<input type='hidden' name='suelofito' value='' />";}?>
 						     <?php if(isset($cambiarcodigos)){ echo "<input type='hidden' name='cambiarcodigos' value='' />";}?>
+						     <?php if(isset($varsuelo)){ echo "<input type='hidden' name='suelo' value='' />";}?>
+						     <?php if(isset($varfito)){ echo "<input type='hidden' name='fito' value='' />";}?>
 							<input type="hidden" name="Cod_sol" value="<?php echo $code3.$Cod_sol; ?>" />
 							<input type="hidden" name="CodeAux" value="<?php echo $CodeAux; ?>" />
 							<input type="hidden" name="Cod_lab" value="1" />
 							<input type="hidden" name="Ced_cliente" value="<?php echo $Ced_cliente; ?>" />
 
-                            <input type="hidden" name="Cod_muestra1" value="<?php echo $code2.$reg[0]; ?>" />
-                            <input type="hidden" name="Cod_muestra2" value="<?php echo $code1.$reg[0]; ?>" />
+                            <input type="hidden" name="Cod_muestra1" value="<?php echo $code2; ?>" />
+                            <input type="hidden" name="Cod_muestra2" value="<?php echo $code1; ?>" />
 							<button class="boton" type="reset" value="Borrar" name="reset" id="reset"><i class="fa fa-eraser"></i> Limpiar</button>
 							<?php if(isset($ModificarM)): ?><button type="submit" name="ModificarM" value="ModificarM" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
                 			<?php if($RegistrarM=='ContinueM'): ?><button type="submit" name="RegistrarM" value="ContinueM" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
