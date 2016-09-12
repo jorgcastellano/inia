@@ -10,21 +10,7 @@
         <title>Registro de muestras</title>
         <?php include '../../layouts/head.php'; ?>
 	<script type="text/javascript">
-	//scrip de selección que determina cual formulario se desea cargar.
-
-	function clickea() {
-
-		if(document.getElementById('formulario1').defaultChecked == true||document.getElementById('formulario2').defaultChecked == true){
- 		
- 			document.getElementById('ambos').style.display='block';
-			document.getElementById('ambos2').style.display='block';
- 			
- 		}
-	}
-
-	clickea();
-
-		
+	//scrip de selección que determina cual formulario se desea cargar
 
 
 	function mostrarformulario(){
@@ -141,16 +127,15 @@
 							foreach ($VarAux as $id){  if($CodeAux == ''){ $CodeAux =$id; }else{ $CodeAux .= $s.$id; } }
 						endif;
 
-
-	                    $tipo1=1;
-	                    $tipo2=2;
-	                	$objfinca = new finca();
-	                	$finca=$objfinca->consultar_finca_all($mysqli,$Ced_cliente);
-	                	$objanalisis = new analisis();
-	                	$analisis=$objanalisis->consultar_analisis_muestra($mysqli,$tipo2);
-	                	$analisis2=$objanalisis->consultar_analisis_muestra($mysqli,$tipo1);
-                    
-                    endif;
+					endif;
+	                   
+                    $tipo1=1;
+                    $tipo2=2;
+                	$objfinca = new finca();
+                	$finca=$objfinca->consultar_finca_all($mysqli,$Ced_cliente);
+                	$objanalisis = new analisis();
+                	$analisis=$objanalisis->consultar_analisis_muestra($mysqli,$tipo2);
+                	$analisis2=$objanalisis->consultar_analisis_muestra($mysqli,$tipo1);
 
                     if(isset($ModificarM)):
 
@@ -162,7 +147,19 @@
                     	endif;
                     	$muestra = new muestra();
                     	$reg=$muestra->consultar_muestra($mysqli,$Cod_muestra);
-                    	echo "benito: $reg[0]";
+                    		
+                    		$autocompletado="";
+                    		$fecha = explode("-", $reg[11]);
+                    		$practica = explode("|", $reg[12]);
+                    		$sintoma = explode("|", $reg[24]);
+                    		$fecha2 = explode("-", $reg[25]);
+                    		$partes = explode("|", $reg[32]);
+                    		$control = explode("|", $reg[37]);
+                 
+						    
+						    
+						    
+
                     endif;	
 				?>
 
@@ -172,14 +169,13 @@
 
 
 					<center>
-             			<input type="checkbox" name="formulario[]" value="prueba" id="formulario0" onclick="mostrarformulario();"  />prueba
-             			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();"<?php if(isset($suelo)&&isset($ModificarM)){ echo"checked"; } ?> />suelo
-           				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();"<?php if(isset($fito)&&isset($ModificarM)){ echo"checked"; } ?> />fitopatologia
+             			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();"<?php //if(isset($suelo)&&isset($ModificarM)){ echo"checked"; } ?> />suelo
+           				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();"<?php //if(isset($fito)&&isset($ModificarM)){ echo"checked"; } ?> />fitopatologia
              		</center>
              		</br></br>
 
 
-					<div id="ambos" style="display:none;">
+					<?php if(isset($ModificarM)){ echo "<div id='ambos'>";} else { echo "<div id='ambos' style='display:none;'>";} ?>
 							<label for="Codig1">Código de Solicitud</label> 
 								<input type="text" name="Codig1" value="<?php echo $code3.$Cod_sol; //Imprimir en este campo el código de la solicitud creado previamente por el generador de código. ?>" id="Codig" title="Este campo esta protegido" maxlength="18" placeholder="" disabled/> <!--Este campo se encuentra deshabilitado (disabled) para que no pueda ser modificado o alterado el código de la solicitud-->
 	                    			</br></br>
@@ -294,7 +290,7 @@
 								</br></br>
 					</div>
 
-					<div id="primero1" style="display:none;">
+					<?php if(isset($suelo)&&isset($ModificarM)){ echo "<div id='primero1'>";} else { echo "<div id='primero1' style='display:none;'>"; } ?>
 
 						<label for="Profundidad" title="Indique en Centimetros a que profundidad tomo la muestra">Profundidad de la muestra  (Cm)</label>
 							<input type="num" name="Profundidad" value="<?php echo $reg[17] ?>" id="Profundidad" title="Indique en Centimetros a que profundidad tomo la muestra" maxlength="11" placeholder="" />
@@ -321,7 +317,7 @@
 							</br></br>	
 						</div>
 					
-						<div id='segundo2' style='display:none;'>
+						<?php if(isset($fito)&&isset($ModificarM)){ echo "<div id='segundo2'>";} else { echo "<div id='segundo2' style='display:none;'>"; } ?>
 
 						<label for="Descrip_fito">Descripción</label>
 								<textarea class="areatexto" name="Descrip_fito" id="Descrip_fito" title="" maxlength="50" placeholder="Por Favor Describa la muestra"><?php echo $reg[22] ?></textarea>	 
@@ -469,7 +465,7 @@
 								</br></br>
 
 					</div>
-					<div id="ambos2" style="display:none;">
+					<?php if(isset($ModificarM)){ echo "<div id='ambos2'>";} else { echo "<div id='ambos2' style='display:none;'>";} ?>
 
 						<label for="Observaciones">Observaciones</label>
 								<textarea class="areatexto" name="Observaciones" id="Observaciones" title="" maxlength="50" placeholder=""><?php echo $reg[40] ?></textarea>	 
@@ -492,13 +488,13 @@
                         ?>
                        <label for="analisis" title=""><b>Análisis disponibles</b></label></br></br>
 
-                        <div id='analisis1' style='display:none;'>
-						<?php while ($reg2 = $analisis->fetch_array()) { ?>
+                        <?php if(isset($suelo)&&isset($ModificarM)){ echo "<div id='analisis1'>";} else { echo "<div id='analisis1' style='display:none;'>"; }
+						 while ($reg2 = $analisis->fetch_array()) { ?>
 							<input type="checkbox" name="analisis1[]" value="<?php echo $reg2['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre1 as $id){ if($id==$reg2['Cod_ana']){echo 'checked';} }?>/><?php echo $reg2['Nom_ana']; ?>
 						<?php } ;?>
 						</div>
-						<div id='analisis2' style='display:none;'>
-						<?php while ($reg5 = $analisis2->fetch_array()) { ?>
+						<?php  if(isset($fito)&&isset($ModificarM)){ echo "<div id='analisis2'>";} else { echo "<div id='analisis2' style='display:none;'>"; } 
+						 while ($reg5 = $analisis2->fetch_array()) { ?>
 							<input type="checkbox" name="analisis2[]" value="<?php echo $reg5['Cod_ana']; ?>"<?php if (isset($autocompletado)) foreach($pre2 as $id){ if($id==$reg5['Cod_ana']){echo 'checked';} }?>/><?php echo $reg5['Nom_ana']; ?>
 						<?php } ;?>
 						</div>
@@ -519,7 +515,7 @@
                             <input type="hidden" name="Cod_muestra1" value="<?php echo $code2.$reg[0]; ?>" />
                             <input type="hidden" name="Cod_muestra2" value="<?php echo $code1.$reg[0]; ?>" />
 							<button class="boton" type="reset" value="Borrar" name="reset" id="reset"><i class="fa fa-eraser"></i> Limpiar</button>
-							<?php if($RegistrarF=='ModificarM'): ?><button type="submit" name="ModificarM" value="ModificarM" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
+							<?php if(isset($ModificarM)): ?><button type="submit" name="ModificarM" value="ModificarM" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
                 			<?php if($RegistrarM=='ContinueM'): ?><button type="submit" name="RegistrarM" value="ContinueM" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
                 			<?php if($RegistrarM=='Inicio'): ?><button type="submit" name="RegistrarM" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 
