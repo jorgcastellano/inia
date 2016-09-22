@@ -67,7 +67,7 @@
 
                 else : ?>
 
-                    <form class="" method="post" action="index"  id="" onsubmit="javascript: return enviar_form_cliente();">
+                    <form class="" method="post" action="index"  id="" onsubmit="return enviar_form_cliente();">
                         <table class="tcliente">
                             <tr>
                                 <td  colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
