@@ -67,7 +67,7 @@
 
                 else : ?>
 
-                    <form class="" method="post" action="index"  id="">
+                    <form class="" method="post" action="index"  id="" onsubmit="javascript: return enviar_form_cliente();">
                         <table class="tcliente">
                             <tr>
                                 <td  colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
@@ -108,8 +108,7 @@
                                 <table class="tcliente">
                                     <tr>
                                         <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
-                                        <td><button type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></td></button>
-
+                                        <td><button onclick="aviso_eliminar('la finca')" id="eliminar_buttom" type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
                                     </tr>
                                     <tr>
                                         <td><b>Nombre de la finca:</b></td>

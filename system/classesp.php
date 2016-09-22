@@ -1,27 +1,5 @@
 <?php
-
-<<<<<<< HEAD
 	//Esto solamente para verificar si existen privilegios de especialista
-	define("HOSTS", "31.220.104.130");
-  	define("USERS", "u817028193_uptm");
-  	define("PASSWORDS", "123456");
-  	define("DB", "u817028193_uptm");
-
-  	$mysqli2 = new mysqli(HOSTS, USERS, PASSWORDS, DB);
-
-  	if($mysqli2->connect_errno){
-		printf(
-			"<h2>No se ha podido conectar a la base de datos</h2>
-			<b>Numero de error: </b>%d<br />
-			<b>Mensaje de error: </b>%s",
-			$mysqli2->connect_errno,
-			$mysqli2->connect_error
-		);
-		exit();
-	}
-
-=======
->>>>>>> 498cc81b5c0fc07ba9ed18786c7220c21b76dbbd
 	class especialista{
 		
 		public function verificar_privilegio_2($mysqli, $ced){

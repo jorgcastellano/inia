@@ -16,19 +16,29 @@
         				<h1>Listado de productos</h1>
         			</hgroup>
         		</div>
+      <form method="POST" action="inve">
+        <div class="buscadores">
+          
+        </div>  
+      </form>
       <form method="POST" action="compra_resultados">
         <?php
           extract($_POST);
           include_once '../../system/class.php';
           $objproducto = new producto();
           
-          echo "<table class='anapro'>
+          echo "<table class='anapro' id='tabla'>
                   <tr>
                     <td>NOMBRE</td>
                     <td>EXISTENCIA</td>
                     <td>PRECIO</td>
                     <td>CANTIDAD</td>
-                   </tr> ";
+                   </tr>
+                  <tr>
+                    <td colspan='4'>
+                    <input type='text' name='buscador' placeholder='Buscar producto' id='buscar' style='width: 95%'>
+                    </td>
+                  </tr>";
           $result = $objproducto->consulta_completo($mysqli);
           $i = 0;
           while ($resultado = $result->fetch_array()) :
@@ -59,5 +69,8 @@
       </form>
         <?php include '../../layouts/layout_p.php' ?>
         </section>
+        <script type="text/javascript">
+        busquedas_instantaneas();          
+        </script>
     </body>
 </html>
