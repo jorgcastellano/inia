@@ -165,6 +165,8 @@
 						    
 
                     endif;	
+
+                    
 				?>
 
 				<div id="prueba" style="display:none;">holaa</div>
@@ -173,8 +175,10 @@
 
 
 					<center>
-             			<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();"<?php //if(isset($suelo)&&isset($ModificarM)){ echo"checked"; } ?> />suelo
-           				<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();"<?php //if(isset($fito)&&isset($ModificarM)){ echo"checked"; } ?> />fitopatologia
+						<div id="Seleccion" style="<?php if(isset($ModificarM)){ echo 'display:none;'; } ?>">
+             				<input type="checkbox" name="formulario[]" value="suelo" id="formulario1" onclick="mostrarformulario();"<?php //if(isset($suelo)&&isset($ModificarM)){ echo"checked"; } ?> />suelo
+           					<input type="checkbox" name="formulario[]" value="fito" id="formulario2" onclick="mostrarformulario();"<?php //if(isset($fito)&&isset($ModificarM)){ echo"checked"; } ?> />fitopatologia
+						</div>             		
              		</center>
              		</br></br>
 
@@ -477,10 +481,10 @@
 						
 						<!-- consultar fincas del cliente para saber de cual proviene la muestra -->
 						<label for="Finca" title="">Finca</label>
-                			<select class="opcion4" name="finca">
+                			<select class="opcion4" name="Finca">
                 				<option value="">Seleccione</option>
                 				<?php while ($reg8 = $finca->fetch_array()) { ?>
-                				<option value="<?php echo $reg8[0] ?>" <?php if($reg8[0]==$reg[34]){ echo 'selected'; } ?>><?php echo $reg8[2] ?> </option>
+                				<option value="<?php echo $reg8[0] ?>" <?php if($reg8[0]==$reg[41]){ echo 'selected'; } ?>><?php echo $reg8[2] ?> </option>
                 				<?php  } ?>
 
 							</select>
