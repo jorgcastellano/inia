@@ -4,7 +4,8 @@
 
     //Consultar la muestra registrada, convertirlos los datos extraidos en informacion entendible al usuario y  ordenarlos en una tabla
     $reg=$muestra->consultar_muestra($mysqli,$Cod_muestra);
-
+    $objfinca= new finca();
+    $regf=$objfinca->consultar_finca($mysqli,$Finca);
     if ($reg[2]=='1') { $tip='Vegetal'; }
     if ($reg[2]=='2') { $tip='De suelo'; }
     if ($reg[2]=='3') { $tip='De sustrato'; }
@@ -165,6 +166,7 @@
             <tr><th>Condiciones agroclimaticas: </th><td><?php echo $reg[39]; ?></td></tr>
            <?php endif; 
                 echo "<tr><th>Observaciones: </th><td>$reg[40]</td></tr>";
+                echo "<tr><th>Condiciones agroclimaticas: </th><td>$regf[2]</td></tr>";
                    if(!empty($analisis1)){ echo "<tr><th>Análisis a realizar para suelo: </th><td>$analisis1</td></tr>";}
                    if(!empty($analisis2)){ echo "<tr><th>Análisis a realizar fitopatologia: </th><td>$analisis2</td></tr>";}
            ?> 

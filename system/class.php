@@ -257,9 +257,9 @@ class finca {
       if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La nueva finca se ha registrado con éxito<br /></span> ";} 
       else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar la nueva finca<br /></span> ";}
     }
-    public function consultar_finca($mysqli,$Ced_cliente) {
+    public function consultar_finca($mysqli,$Cod_fin) {
 
-      $sql="SELECT * FROM finca WHERE finca.Ced_cliente ='$Ced_cliente'";
+      $sql="SELECT * FROM finca WHERE finca.Cod_fin ='$Cod_fin'";
       $res=$mysqli->query($sql);
       return  $res->fetch_array();
 
@@ -343,12 +343,12 @@ class muestra {
   
     private $reg;
 
-    public function registrar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones)
+    public function registrar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones,$Finca)
     {
 
       
-      $sql="INSERT INTO muestra(Cod_muestra,Tipo_m,Cult_act,Nro_pl,Edad_cul,Tam_lote,Topografia,Dist_siembra,Riego,Cult_ant,F_toma,Practicas,Produc_dosis,Epoca_aplic,Modo_aplic,Pobl_cercana,Profundidad,Inundacion,T_vege,Rend_cult,Restos,Descrip_fito,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Nro_subm,Origen_sem,Pres_microorg,Dist_planafect,Parts_afect,Text_sue,Composicion,Hum_sue,Drenaje,Controles,Produc_dosisb,Cond_agroclima,Observaciones)
-            VALUES ('$Cod_muestra','$Tipo_m','$Cult_act','$Nro_pl','$Edad_cul','$Tam_lote','$Topografia','$Dist_siembra','$Riego','$Cult_ant','$F_toma','$Practicas','$Produc_dosis','$Epoca_aplic','$Modo_aplic','$Pobl_cercana','$Profundidad','$Inundacion','$T_vege','$Rend_cult','$Restos','$Descrip_fito','$Id_microorg','$Sintomas','$F_sintomas','$Causa','$Tipo_plant','$Nro_subm','$Origen_sem','$Pres_microorg','$Dist_planafect','$Parts_afect','$Text_sue','$Composicion','$Hum_sue','$Drenaje','$Controles','$Produc_dosisb','$Cond_agroclima','$Observaciones')";
+      $sql="INSERT INTO muestra(Cod_muestra,Tipo_m,Cult_act,Nro_pl,Edad_cul,Tam_lote,Topografia,Dist_siembra,Riego,Cult_ant,F_toma,Practicas,Produc_dosis,Epoca_aplic,Modo_aplic,Pobl_cercana,Profundidad,Inundacion,T_vege,Rend_cult,Restos,Descrip_fito,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Nro_subm,Origen_sem,Pres_microorg,Dist_planafect,Parts_afect,Text_sue,Composicion,Hum_sue,Drenaje,Controles,Produc_dosisb,Cond_agroclima,Observaciones,Finca)
+            VALUES ('$Cod_muestra','$Tipo_m','$Cult_act','$Nro_pl','$Edad_cul','$Tam_lote','$Topografia','$Dist_siembra','$Riego','$Cult_ant','$F_toma','$Practicas','$Produc_dosis','$Epoca_aplic','$Modo_aplic','$Pobl_cercana','$Profundidad','$Inundacion','$T_vege','$Rend_cult','$Restos','$Descrip_fito','$Id_microorg','$Sintomas','$F_sintomas','$Causa','$Tipo_plant','$Nro_subm','$Origen_sem','$Pres_microorg','$Dist_planafect','$Parts_afect','$Text_sue','$Composicion','$Hum_sue','$Drenaje','$Controles','$Produc_dosisb','$Cond_agroclima','$Observaciones','$Finca')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
       
@@ -364,10 +364,10 @@ class muestra {
     }
 
 
-    public function modificar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones)
+    public function modificar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones,$Finca)
     {       
 
-      $sql="UPDATE muestra SET Tipo_m='$Tipo_m',Cult_act='$Cult_act',Nro_pl='$Nro_pl',Edad_cul='$Edad_cul',Tam_lote='$Tam_lote',Topografia='$Topografia',Dist_siembra='$Dist_siembra',Riego='$Riego',Cult_ant='$Cult_ant',F_toma='$F_toma',Practicas='$Practicas',Produc_dosis='$Produc_dosis',Epoca_aplic='$Epoca_aplic',Modo_aplic='$Modo_aplic',Pobl_cercana='$Pobl_cercana',Profundidad='$Profundidad',Inundacion='$Inundacion',T_vege='$T_vege',Rend_cult='$Rend_cult',Restos='$Restos',Descrip_fito='$Descrip_fito',Id_microorg='$Id_microorg',Sintomas='$Sintomas',F_sintomas='$F_sintomas',Causa='$Causa',Tipo_plant='$Tipo_plant',Nro_subm='$Nro_subm',Origen_sem='$Origen_sem',Pres_microorg='$Pres_microorg',Dist_planafect='$Dist_planafect',Parts_afect='$Parts_afect',Text_sue='$Text_sue',Composicion='$Composicion',Hum_sue='$Hum_sue',Drenaje='$Drenaje',Controles='$Controles',Produc_dosisb='$Produc_dosisb',Cond_agroclima='$Cond_agroclima',Observaciones='$Observaciones' WHERE Cod_muestra='$Cod_muestra'";
+      $sql="UPDATE muestra SET Tipo_m='$Tipo_m',Cult_act='$Cult_act',Nro_pl='$Nro_pl',Edad_cul='$Edad_cul',Tam_lote='$Tam_lote',Topografia='$Topografia',Dist_siembra='$Dist_siembra',Riego='$Riego',Cult_ant='$Cult_ant',F_toma='$F_toma',Practicas='$Practicas',Produc_dosis='$Produc_dosis',Epoca_aplic='$Epoca_aplic',Modo_aplic='$Modo_aplic',Pobl_cercana='$Pobl_cercana',Profundidad='$Profundidad',Inundacion='$Inundacion',T_vege='$T_vege',Rend_cult='$Rend_cult',Restos='$Restos',Descrip_fito='$Descrip_fito',Id_microorg='$Id_microorg',Sintomas='$Sintomas',F_sintomas='$F_sintomas',Causa='$Causa',Tipo_plant='$Tipo_plant',Nro_subm='$Nro_subm',Origen_sem='$Origen_sem',Pres_microorg='$Pres_microorg',Dist_planafect='$Dist_planafect',Parts_afect='$Parts_afect',Text_sue='$Text_sue',Composicion='$Composicion',Hum_sue='$Hum_sue',Drenaje='$Drenaje',Controles='$Controles',Produc_dosisb='$Produc_dosisb',Cond_agroclima='$Cond_agroclima',Observaciones='$Observaciones',Finca='$Finca' WHERE Cod_muestra='$Cod_muestra'";
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
 
