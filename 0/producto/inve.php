@@ -25,7 +25,7 @@
 			  <input type='radio' name="opc"  value="2" title="click aquí para seleccionar un método de busqueda" <?php if (isset($_POST['opc']) AND isset($_POST['buscador'])) if ($_POST['opc'] == 2 AND !empty($_POST['buscador'])) echo "checked"; ?>/><label> Por Nombre Completo</label>
 		  </div>
 	  </form>
-	  <form method="POST" action="index">
+	  <form method="POST" action="index" onsubmit="return enviar_form_accion()">
 		<?php
 		  extract($_POST);
 

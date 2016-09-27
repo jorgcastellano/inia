@@ -24,16 +24,14 @@ function confirmar_accion(a){
       if (confirmar == false) {
         act_eliminar = false;
       }
+      cambio1 = false;
   } else if(cambio1==false) {
       alert("no hay cambios");
     }
 }
 //function confirmar_accion(a) {
-
   //  var evento = document.getElementById("accion_buttom");
   //  evento.addEventListener("click",function() {escuchador(a);});
-
-
 //}
 
 function enviar_form_accion() {
@@ -63,23 +61,18 @@ function busquedas_instantaneas() {
 
     busqueda.addEventListener('keyup', buscaTabla);
 }
-<<<<<<< HEAD
-=======
 
-function menuOn(profile_styles) {
+function menuOn(barrasMenu) {
   var profile_styles = document.getElementById("profile_styles");
-  var stilosBarras = "-webkit-transition: 1s;-moz-transition: 1s;-o-transition: 1s;transition: 1s;";
+  //var stilosBarras = "-webkit-transition: 1s;-moz-transition: 1s;-o-transition: 1s;transition: 1s;";
   if(profile_styles.style.display == "none") {
     profile_styles.style.display = "block";
-    barrasMenu.style = stilosBarras;
     barrasMenu.className = "fa fa-toggle-up fa-fw";
   } else if (profile_styles.style.display = "block") {
     profile_styles.style.display = "none";
     barrasMenu.className = "fa fa-bars fa-fw";
-    barrasMenu.style = stilosBarras;
   }
 }
 function scriptMenu(barrasMenu) {
   barrasMenu.addEventListener("click", function(){menuOn(barrasMenu);});
 }
->>>>>>> c4879358fe749705535df6d83382322e0f69267b
