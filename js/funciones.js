@@ -1,13 +1,13 @@
-function seleccionar_todo(){ 
-   for (i=0; i<document.f1.elements.length; i++) 
+function seleccionar_todo(){
+   for (i=0; i<document.f1.elements.length; i++)
       if(document.f1.elements[i].type == "checkbox")
-         document.f1.elements[i].checked=1 
+         document.f1.elements[i].checked=1
 }
 
-function deseleccionar_todo(){ 
-   for (i=0; i<document.f1.elements.length; i++) 
+function deseleccionar_todo(){
+   for (i=0; i<document.f1.elements.length; i++)
       if(document.f1.elements[i].type == "checkbox")
-         document.f1.elements[i].checked=0 
+         document.f1.elements[i].checked=0
 }
 var act_eliminar = 0; //No ah clickeado
 function aviso_eliminar(x) {
@@ -49,4 +49,21 @@ function busquedas_instantaneas() {
     }
 
     busqueda.addEventListener('keyup', buscaTabla);
+}
+
+function menuOn(profile_styles) {
+  var profile_styles = document.getElementById("profile_styles");
+  var stilosBarras = "-webkit-transition: 1s;-moz-transition: 1s;-o-transition: 1s;transition: 1s;";
+  if(profile_styles.style.display == "none") {
+    profile_styles.style.display = "block";
+    barrasMenu.style = stilosBarras;
+    barrasMenu.className = "fa fa-toggle-up fa-fw";
+  } else if (profile_styles.style.display = "block") {
+    profile_styles.style.display = "none";
+    barrasMenu.className = "fa fa-bars fa-fw";
+    barrasMenu.style = stilosBarras;
+  }
+}
+function scriptMenu(barrasMenu) {
+  barrasMenu.addEventListener("click", function(){menuOn(barrasMenu);});
 }
