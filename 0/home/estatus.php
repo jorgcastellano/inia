@@ -24,7 +24,7 @@
                 $reg=$laboratorios->cEstatus($mysqli);
                 $mensaje="<div class='notify'><i class='fa fa-check-circle-o'></i> Se desactivo un analisis</div>";
                 ?>
-            <form action="cambioestado" method="POST">
+            <form action="cambioestado" method="POST" onsubmit="return enviar_form_accion();">
     
                 <?php 
                 
@@ -56,11 +56,14 @@
 
                 <div  class="grupobotones">
                     <button type="button" name="Regresar atras" class="boton" onclick=location="inicio"><i class="fa fa-arrow-left"></i> Página principal</button>
-                    <button type="submit" name="ActualizarEstado" class="boton"><i class="fa fa-check"></i> Guardar cambios</button>
+                    <button type="submit" name="ActualizarEstado" class="boton" id="accion_buttom" ><i class="fa fa-check"></i> Guardar cambios</button>
                 </div>
             </form>
             
             <?php include '../../layouts/layout_p.php' ?>
         </section>
+        <script type="text/javascript">
+            confirmar_accion("cambiar el estatus de los analisis?");
+        </script>
     </body>
 </html>

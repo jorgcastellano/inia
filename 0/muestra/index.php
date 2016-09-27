@@ -171,7 +171,7 @@
 
 				<div id="prueba" style="display:none;">holaa</div>
 
-				<form class="contact_form" method="POST" action="insert"  id="" name="principal1"> <!--Formulario de suelo-->
+				<form class="contact_form" method="POST" action="insert"  id="" name="principal1" onsubmit="return enviar_form_accion();"> <!--Formulario de suelo-->
 
 
 					<center>
@@ -525,7 +525,7 @@
                             <input type="hidden" name="Cod_muestra1" value="<?php echo $code2; ?>" />
                             <input type="hidden" name="Cod_muestra2" value="<?php echo $code1; ?>" />
 							<button class="boton" type="reset" value="Borrar" name="reset" id="reset"><i class="fa fa-eraser"></i> Limpiar</button>
-							<?php if(isset($ModificarM)): ?><button type="submit" name="ModificarM" value="ModificarM" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
+							<?php if(isset($ModificarM)): ?><button type="submit" id="accion_buttom" name="ModificarM" value="ModificarM" class="boton" ><i class="fa fa-check"></i> Guardar cambios</button><?php endif; ?>
                 			<?php if($RegistrarM=='ContinueM'): ?><button type="submit" name="RegistrarM" value="ContinueM" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
                 			<?php if($RegistrarM=='Inicio'): ?><button type="submit" name="RegistrarM" value="Inicio" class="boton" ><i class="fa fa-check"></i> Registrar</button><?php endif; ?>
 
@@ -533,5 +533,8 @@
 				</form>
 			<?php include '../../layouts/layout_p.php'; ?>
         </section>
+        <script type="text/javascript">
+            confirmar_accion("modificar la muestra?");
+        </script>
     </body>
 </html>

@@ -67,7 +67,7 @@
 
                 else : ?>
 
-                    <form class="" method="post" action="index"  id="" onsubmit="return enviar_form_cliente();">
+                    <form class="" method="post" action="index"  id="" onsubmit="return enviar_form_accion();">
                         <table class="tcliente">
                             <tr>
                                 <td  colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
@@ -108,7 +108,7 @@
                                 <table class="tcliente">
                                     <tr>
                                         <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
-                                        <td><button onclick="aviso_eliminar('la finca')" id="eliminar_buttom" type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
+                                        <td><button id="accion_buttom" type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
                                     </tr>
                                     <tr>
                                         <td><b>Nombre de la finca:</b></td>
@@ -150,5 +150,8 @@
                 <?php  endif;
                 include_once '../../layouts/layout_p.php'; ?>
         </section>
+        <script type="text/javascript">
+            confirmar_accion("eliminar la finca? \n Recuerda que la accion realizada sera irreversible");
+        </script>
     </body>
 </html>

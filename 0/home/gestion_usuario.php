@@ -26,7 +26,7 @@
                 $mensaje1="";
                 $mensaje2="";
                 if (isset($eliminar)) :
-                    echo $eliminar;
+                    
                     if (isset($dos)) :
                         $especialista = new especialista();
                         $especialista->eliminar($mysqli, $eliminar);
@@ -46,7 +46,7 @@
                 endif;
                 $reg = $objinicio->consultar_miembro($mysqli);
 
-                echo "<form action='gestion_usuario' method='POST'>
+                echo "<form action='gestion_usuario' method='POST' onsubmit='return enviar_form_accion();'>
                 <table class='usuario'>
                     <tr>
                         <td><i class='fa fa-chevron-circle-right'></i> Cédula </td>
@@ -122,7 +122,7 @@
                             <option value='2' $dos  >Especialista</option>
                             <option value='3' $tres >Factura</option>
                         </select></td>
-                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' ><i class='fa fa-trash-o'></button></i></td>
+                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></button></i></td>
                     </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;
@@ -148,5 +148,8 @@
             </form>
             <?php include '../../layouts/layout_p.php' ?>
         </section>
+        <script type="text/javascript">
+            confirmar_accion("eliminar este usuario? \n Recuerde que la accion realizada sera irreversible");
+        </script>
     </body>
 </html>
