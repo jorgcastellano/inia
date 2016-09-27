@@ -3,4 +3,7 @@
         	Desarrollado en plataformas libres apoyando la soberanía e independencia tecnológica
         </aside>
     </footer>
-    
+    <script>
+      var barrasMenu = document.getElementById("barrasMenu");
+      scriptMenu(barrasMenu);
+    </script>
