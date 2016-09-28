@@ -16,7 +16,8 @@ function cambio(){
     alert("hay cambios");
 }
 
-var act_eliminar = true; //No ah clickeado
+var act_eliminar = []; //No ah clickeado
+ 
 function confirmar_accion(a){
   if(cambio1==true){
       var confirmar;
@@ -29,12 +30,27 @@ function confirmar_accion(a){
       alert("no hay cambios");
     }
 }
-//function confirmar_accion(a) {
-  //  var evento = document.getElementById("accion_buttom");
-  //  evento.addEventListener("click",function() {escuchador(a);});
-//}
+
+function escuchador(a,b){
+
+      var confirmar;
+      confirmar = confirm("¿Esta seguro(a) que desea "+a);
+      if (confirmar == false) {
+        act_eliminar = false;
+      }
+}
+function confirmar_accion_2(a,b) {
+
+  for(var i=0;i<b;i++){ act_eliminar[i]=false;  }
+    var evento = document.getElementById("accion_buttom");
+    evento.addEventListener("click",function() {escuchador(a,b);});
+}
+
+
+
 
 function enviar_form_accion() {
+
 	if (act_eliminar == true) {
 		return true;
 	} else {

@@ -12,7 +12,7 @@
         <section class="bloque">
             <div>
                 <?php include_once '../../layouts/cabecera-body.php' ?>
-				<hgroup> 
+				<hgroup>
 					<h1>Ficha del cliente</h1>
 				</hgroup>
 			</div>
@@ -40,7 +40,7 @@
 
                 if (isset($Registrar)) :
                     $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
-                    if ($_SESSION['privilegios'] == 1) : 
+                    if ($_SESSION['privilegios'] == 1) :
                         $fin = new finca();
                         $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia);
                     endif;
@@ -51,7 +51,7 @@
                     $Id_cliente=$Actualizar;
 
                     $client->modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
-                    if ($_SESSION['privilegios'] == 1) : 
+                    if ($_SESSION['privilegios'] == 1) :
                         $fin = new finca();
                         $nume = count($Nom_fin);
                         for ($i=0; $i<$nume; $i++) :
@@ -99,16 +99,18 @@
                             </tr>
                         </table>
                         <?php
-                            if ($_SESSION['privilegios'] == 1) : 
+                            if ($_SESSION['privilegios'] == 1) :
                             $fin = new finca();
                             $reg3 = $fin->consultar_finca_all($mysqli,$Ced_cliente);
                             $i = 1;
+                            $contador=0;
                             while ($reg2 = $reg3->fetch_array()) :
+
                         ?>
                                 <table class="tcliente">
                                     <tr>
                                         <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
-                                        <td><button id="accion_buttom" type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
+                                        <td><button id="<?php echo $contador; ?>" OnClick="confirmar_accion_2('eliminar la finca? \n Recuerda que la accion realizada sera irreversible',<?php echo $contador; ?>);" type="submit" valor="<?php echo $contador; ?>" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
                                     </tr>
                                     <tr>
                                         <td><b>Nombre de la finca:</b></td>
@@ -133,6 +135,7 @@
                                 </table>
                         <?php
                                 $i++;
+                                $contador++;
                             endwhile;
                         endif; ?>
                         <div class="grupobotones">
@@ -151,7 +154,7 @@
                 include_once '../../layouts/layout_p.php'; ?>
         </section>
         <script type="text/javascript">
-            confirmar_accion("eliminar la finca? \n Recuerda que la accion realizada sera irreversible");
+            //confirmar_accion_2("eliminar la finca? \n Recuerda que la accion realizada sera irreversible",<?php echo $contador; ?>);
         </script>
     </body>
 </html>
