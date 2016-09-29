@@ -107,10 +107,14 @@
                             while ($reg2 = $reg3->fetch_array()) :
 
                         ?>
+
+                        <script type="text/javascript">
+                            iniciar_act_eliminar(<?php echo "$contador"; ?>);
+                        </script>
                                 <table class="tcliente">
                                     <tr>
                                         <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
-                                        <td><button id="<?php echo $contador; ?>" OnClick="confirmar_accion_2('eliminar la finca? \n Recuerda que la accion realizada sera irreversible',<?php echo $contador; ?>);" type="submit" valor="<?php echo $contador; ?>" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
+                                        <td><button id="<?php echo $contador; ?>" type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
                                     </tr>
                                     <tr>
                                         <td><b>Nombre de la finca:</b></td>
@@ -135,7 +139,6 @@
                                 </table>
                         <?php
                                 $i++;
-                                $contador++;
                             endwhile;
                         endif; ?>
                         <div class="grupobotones">
@@ -154,7 +157,12 @@
                 include_once '../../layouts/layout_p.php'; ?>
         </section>
         <script type="text/javascript">
-            //confirmar_accion_2("eliminar la finca? \n Recuerda que la accion realizada sera irreversible",<?php echo $contador; ?>);
+          for(var i = 0; i < <?php echo $contador; ?>) {
+              var <?php echo i; ?> = document.getElementById(<?php echo $contador; ?>);
+              var <?php echo i; ?> = false;
+              <?php echo i; ?>.addEventListener('click', confirmar_accion_2, false);
+          }
+          onclick="confirmar_accion_2('eliminar la finca? \n Recuerda que la accion realizada sera irreversible', <?php echo $contador; ?>);"
         </script>
     </body>
 </html>

@@ -1,3 +1,5 @@
+var act_eliminar = false; //No ah clickeado
+
 function seleccionar_todo(){
    for (i=0; i<document.f1.elements.length; i++)
       if(document.f1.elements[i].type == "checkbox")
@@ -16,8 +18,6 @@ function cambio(){
     alert("hay cambios");
 }
 
-var act_eliminar = []; //No ah clickeado
-
 function confirmar_accion(a){
   if(cambio1==true){
       var confirmar;
@@ -31,29 +31,23 @@ function confirmar_accion(a){
     }
 }
 
-function confirmar_accion_2(a,b){
+function iniciar_act_eliminar(cont){
+      var n = parseInt(cont);
+      act_eliminar[n] = false;
+}
 
-      var confirmar;
-      confirmar = confirm("¿Esta seguro(a) que desea "+a);
-      if (confirmar == false) {
-        act_eliminar = false;
+function confirmar_accion_2(msj, cont){
+      var n = parseInt(cont);
+      var confirmar = confirm("¿Esta seguro(a) que desea " + msj);
+      if (confirmar) {
+        this.id = true;
       }
 }
-
-function iniciar_act_eliminar{
-
-    for(var i=0;i<b;i++){ act_eliminar[i]=false;  }
-
-}
 //function confirmar_accion_2(a,b) {
-
 //  for(var i=0;i<b;i++){ act_eliminar[i]=false;  }
 //  var evento = document.getElementById("accion_buttom");
 //  evento.addEventListener("click",function() {escuchador(evento.valor);});
-}
-
-
-
+//}
 
 function enviar_form_accion() {
 
