@@ -17,7 +17,7 @@ function cambio(){
 }
 
 var act_eliminar = []; //No ah clickeado
- 
+
 function confirmar_accion(a){
   if(cambio1==true){
       var confirmar;
@@ -31,7 +31,7 @@ function confirmar_accion(a){
     }
 }
 
-function escuchador(a,b){
+function confirmar_accion_2(a,b){
 
       var confirmar;
       confirmar = confirm("¿Esta seguro(a) que desea "+a);
@@ -39,11 +39,17 @@ function escuchador(a,b){
         act_eliminar = false;
       }
 }
-function confirmar_accion_2(a,b) {
 
-  for(var i=0;i<b;i++){ act_eliminar[i]=false;  }
-    var evento = document.getElementById("accion_buttom");
-    evento.addEventListener("click",function() {escuchador(a,b);});
+function iniciar_act_eliminar{
+
+    for(var i=0;i<b;i++){ act_eliminar[i]=false;  }
+
+}
+//function confirmar_accion_2(a,b) {
+
+//  for(var i=0;i<b;i++){ act_eliminar[i]=false;  }
+//  var evento = document.getElementById("accion_buttom");
+//  evento.addEventListener("click",function() {escuchador(evento.valor);});
 }
 
 
