@@ -1,54 +1,24 @@
-var act_eliminar = false; //No ah clickeado
+var act_eliminar = []; //Array vacio listo para inicializarlo
 
-function seleccionar_todo(){
-   for (i=0; i<document.f1.elements.length; i++)
-      if(document.f1.elements[i].type == "checkbox")
-         document.f1.elements[i].checked=1
+//Estas dos funciones son las que se deben arreglar david
+function iniciar_act_eliminar(b) {
+  for(var i=0; i < b; i++){
+    act_eliminar[i]=false;
+  }
 }
-
-function deseleccionar_todo(){
-   for (i=0; i<document.f1.elements.length; i++)
-      if(document.f1.elements[i].type == "checkbox")
-         document.f1.elements[i].checked=0
-}
-
-var cambio1 = false;//No hay cambios
-function cambio(){
-    cambio1 = true;
-    alert("hay cambios");
-}
-
-function confirmar_accion(a){
-  if(cambio1==true){
+function cambio_eliminar(n){
+      var n = parseInt(n);
       var confirmar;
-      confirmar = confirm("¿Esta seguro(a) que desea "+a);
-      if (confirmar == false) {
-        act_eliminar = false;
+      confirmar = confirm("¿Esta seguro(a) que desea hacerlo?");
+      if (confirmar == true) {
+        act_eliminar[n] = true;
       }
-      cambio1 = false;
-  } else if(cambio1==false) {
-      alert("no hay cambios");
-    }
+      //debugger;
+      console.log(act_eliminar);
 }
+//Hasta aqui david
 
-function iniciar_act_eliminar(cont){
-      var n = parseInt(cont);
-      act_eliminar[n] = false;
-}
-
-function confirmar_accion_2(msj, cont){
-      var n = parseInt(cont);
-      var confirmar = confirm("¿Esta seguro(a) que desea " + msj);
-      if (confirmar) {
-        this.id = true;
-      }
-}
-//function confirmar_accion_2(a,b) {
-//  for(var i=0;i<b;i++){ act_eliminar[i]=false;  }
-//  var evento = document.getElementById("accion_buttom");
-//  evento.addEventListener("click",function() {escuchador(evento.valor);});
-//}
-
+//valida los envios de los formularios al modificar o eliminar productos o fincas
 function enviar_form_accion() {
 
 	if (act_eliminar == true) {
@@ -59,6 +29,7 @@ function enviar_form_accion() {
   }
 }
 
+//Motor de busquedas para inventario en venta
 function busquedas_instantaneas() {
 	var busqueda = document.getElementById('buscar');
     var table = document.getElementById("tabla").tBodies[0];
@@ -74,13 +45,12 @@ function busquedas_instantaneas() {
           row.style.display = 'none';
       }
     }
-
     busqueda.addEventListener('keyup', buscaTabla);
 }
 
+//Funcion para activar o desactivar el sub-menu de config y salida
 function menuOn(barrasMenu) {
   var profile_styles = document.getElementById("profile_styles");
-  //var stilosBarras = "-webkit-transition: 1s;-moz-transition: 1s;-o-transition: 1s;transition: 1s;";
   if(profile_styles.style.display == "none") {
     profile_styles.style.display = "block";
     barrasMenu.className = "fa fa-toggle-up fa-fw";
@@ -89,6 +59,10 @@ function menuOn(barrasMenu) {
     barrasMenu.className = "fa fa-bars fa-fw";
   }
 }
-function scriptMenu(barrasMenu) {
-  barrasMenu.addEventListener("click", function(){menuOn(barrasMenu);});
+function menuOff(barrasMenu) {
+  var profile_styles = document.getElementById("profile_styles");
+  if (profile_styles.style.display = "block") {
+    profile_styles.style.display = "none";
+    barrasMenu.className = "fa fa-bars fa-fw";
+  }
 }

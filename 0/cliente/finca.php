@@ -17,8 +17,8 @@
 				</hgroup>
 			</div>
 
-            <form class="contact_form" method="POST" action="insert_finca.php">
-                
+            <form class="contact_form" method="POST" action="resultados.php">
+
                 <?php include_once 'lib_finca.php'; ?>
 
                 <div class="grupobotones">

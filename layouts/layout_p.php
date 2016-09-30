@@ -4,6 +4,12 @@
         </aside>
     </footer>
     <script>
-      var barrasMenu = document.getElementById("barrasMenu");
-      scriptMenu(barrasMenu);
+
+      function autoCarga(){
+          var barrasMenu = document.getElementById("barrasMenu");
+          barrasMenu.addEventListener("click", function(){menuOn(barrasMenu);});
+          //barrasMenu.addEventListener("click", function(){menuOff(barrasMenu);});
+      }
+      window.onload = autoCarga();
+
     </script>
