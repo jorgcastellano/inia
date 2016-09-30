@@ -17,6 +17,7 @@
                 </hgroup>
             </div>
             <?php
+<<<<<<< HEAD
             require_once '../../system/class.php';
             $pro = new producto();
             $reg1 = $pro->consulta_completo($mysqli);
@@ -29,10 +30,17 @@
             endwhile;
             echo $nombres[1];
 
+=======
+>>>>>>> 8a7c346d6f57acb5ad9efceec8ebfbe73ca1b115
 
             if (isset($_POST['Modificar1'])) :
                 extract($_POST);
                 $Cod_produ=$Modificar1;
+<<<<<<< HEAD
+=======
+                require_once '../../system/class.php';
+                $pro = new producto();
+>>>>>>> 8a7c346d6f57acb5ad9efceec8ebfbe73ca1b115
                 $reg = $pro->consultar_produc($mysqli,$Cod_produ);
             endif;
 
@@ -41,7 +49,11 @@
 
                 if (isset($_POST['seleccion'])) :
                     $seleccion = $_POST['seleccion'];
+<<<<<<< HEAD
 
+=======
+                    $pro = new producto();
+>>>>>>> 8a7c346d6f57acb5ad9efceec8ebfbe73ca1b115
                     $reg = $pro->consultar_produc($mysqli,$seleccion[0]);
                 elseif (isset($_POST['pro'])) :
                     $Cod = $_POST['pro'];
@@ -52,10 +64,12 @@
               ?>
             <form  class="contact_form" method="post" action="resultado" onsubmit="return enviar_form_accion();">
             	<label for="Nom_produ"> Nombre del Producto </label>
-            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"/>
+            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"placeholder="" pattern="([A-Z]{1}[a-zÑñáéíóú]{1,}\s{0,1})+"/>
             	</br>
             	<label for="Existencia"> Cantidad de Producto </label>
+
             	<input required type="num" name="Existencia" id="Existencia" value="<?php if(isset($reg)) echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="7" />
+
 
                 <select class="opcion3" name="um" required>
                         <option value="">Seleccione</option>
@@ -96,7 +110,11 @@
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
                         <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button>
                         <?php else : ?>
+<<<<<<< HEAD
                         <button class="boton" type="submit" id="accion_buttom" name="submit" onclick="comparador()" ><i class="fa fa-check"></i> Registrar Producto</button>
+=======
+                        <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Registrar Producto</button>
+>>>>>>> 8a7c346d6f57acb5ad9efceec8ebfbe73ca1b115
                     <?php endif; ?>
                 </div>
             </form>

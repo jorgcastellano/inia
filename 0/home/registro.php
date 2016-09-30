@@ -33,10 +33,10 @@
                     <input required type="text" name="cedula" id="cedula" placeholder="00 000 000" pattern="\d{6,}" maxlength="8" >
                     <span class="form_hint">Debe contener al menos 6 dígitos</span><br />
                     <label>Primer nombre: </label>
-                    <input required type='text' name='nombre' id='nombre' placeholder="Primer nombre" />
+                    <input required type='text' name='nombre' id='nombre' placeholder="Primer nombre" pattern="([A-Z]{1}[a-zÑñáéíóú]{1,}\s{0,1})+" />
                     <span class="form_hint">Debe tener la primera letra en "Mayúscula"</span><br />
                     <label>Primer apellido</label>
-                    <input required type='text' name='apellido' id='apellido' placeholder="Primer apellido" />
+                    <input required type='text' name='apellido' id='apellido' placeholder="Primer apellido" pattern="([A-Z]{1}[a-zÑñáéíóú]{1,}\s{0,1})+" />
                     <span class="form_hint">Debe tener la primera letra en "Mayúscula"</span><br />
                     <label>Correo electrónico: </label>
                     <input required type="email" name="email" id="email" placeholder="usuario@ejemplo.com" />
