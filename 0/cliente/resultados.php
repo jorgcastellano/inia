@@ -16,10 +16,17 @@
 					<h1>Ficha del cliente</h1>
 				</hgroup>
 			</div>
-            <?php
-                extract($_POST);
+        <?php
+          extract($_POST);
+          require '../../system/class.php';
 
-                require '../../system/class.php';
+            if ($_SESSION['privilegios'] == 1) :
+              if(isset($RegistrarM)) :
+
+                $fin = new finca();
+                $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin[0],$Estado[0],$Municipio[0],$Parroquia[0]);
+              endif;
+            endif;
 
                 if (isset($_GET['Ced_cliente']))
                     $Ced_cliente = $_GET['Ced_cliente'];
@@ -103,18 +110,13 @@
                             $fin = new finca();
                             $reg3 = $fin->consultar_finca_all($mysqli,$Ced_cliente);
                             $i = 1;
-                            $contador=0;
+                            $contador = 0;
                             while ($reg2 = $reg3->fetch_array()) :
-
                         ?>
-
-                        <script type="text/javascript">
-                            iniciar_act_eliminar(<?php echo "$contador"; ?>);
-                        </script>
                                 <table class="tcliente">
                                     <tr>
                                         <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
-                                        <td><button id="<?php echo $contador; ?>" type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
+                                        <td><button id="<?php echo $contador; ?>" onclick="cambio_eliminar(<?php echo $contador; ?>)" type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
                                     </tr>
                                     <tr>
                                         <td><b>Nombre de la finca:</b></td>
@@ -139,6 +141,7 @@
                                 </table>
                         <?php
                                 $i++;
+                                $contador++;
                             endwhile;
                         endif; ?>
                         <div class="grupobotones">
@@ -157,12 +160,7 @@
                 include_once '../../layouts/layout_p.php'; ?>
         </section>
         <script type="text/javascript">
-          for(var i = 0; i < <?php echo $contador; ?>) {
-              var <?php echo i; ?> = document.getElementById(<?php echo $contador; ?>);
-              var <?php echo i; ?> = false;
-              <?php echo i; ?>.addEventListener('click', confirmar_accion_2, false);
-          }
-          onclick="confirmar_accion_2('eliminar la finca? \n Recuerda que la accion realizada sera irreversible', <?php echo $contador; ?>);"
+          iniciar_act_eliminar(<?php echo $contador ?>);
         </script>
     </body>
 </html>
