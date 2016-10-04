@@ -13,21 +13,25 @@
             <div>
                 <?php include '../../layouts/cabecera-body.php' ?>
                 <hgroup>
-                    
+
                     <h1>Activar/Desactivar laboratorios y análisis</h1>
                 </hgroup>
             </div>
                 <?php
+
                 require_once '../../system/class.php';
                 $mensaje="";
                 $laboratorios = new laboratorio();
                 $reg=$laboratorios->cEstatus($mysqli);
-                $mensaje="<div class='notify'><i class='fa fa-check-circle-o'></i> Se desactivo un analisis</div>";
+
+                if (isset($_GET['status']) == 'fine')
+                    echo "<div class='notify'><i class='fa fa-check-circle-o'></i> Se han guardado los cambios con éxito</div>";
+
                 ?>
             <form action="cambioestado" method="POST" onsubmit="return enviar_form_accion();">
-    
-                <?php 
-                
+
+                <?php
+
                 $v=0;
                 while ($lab = $reg->fetch_array()) {?>
                     <table class="tstatus">
@@ -37,9 +41,9 @@
                         </tr>
                         <?php
                             $v++;
-                            $analisis = new analisis(); 
+                            $analisis = new analisis();
                             $reg2=$analisis->cEstatus($mysqli,$v);
-                            
+
                             while($ana = $reg2->fetch_array())
                                 if ($ana[3] == $lab[0]) {
                                 ?>  <tr>
@@ -50,8 +54,6 @@
                         <?php   }
                     echo "</table>";
                 }
-                if (!empty($mensaje)) 
-                    echo "$mensaje ";
                 $mysqli->close();?>
 
                 <div  class="grupobotones">
@@ -59,7 +61,7 @@
                     <button type="submit" name="ActualizarEstado" class="boton" id="accion_buttom" ><i class="fa fa-check"></i> Guardar cambios</button>
                 </div>
             </form>
-            
+
             <?php include '../../layouts/layout_p.php' ?>
         </section>
         <script type="text/javascript">

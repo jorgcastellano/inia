@@ -17,20 +17,10 @@
                 </hgroup>
             </div>
 
-            <form action="index" method="POST">
-                <div class="buscadores">
-                    <input type="text" name="buscador" id="buscador" value="<?php if (isset($_POST['buscador'])) echo $_POST['buscador']; ?>" placeholder="Buscar análisis" />
-                    <button type="submit" class="botonmenu"><i class="fa fa-search"></i> Buscar</button>
-                    <br>
-                    <input type="radio" name="opc" value="1" title="click aquí para seleccionar un método de busqueda" checked />Frase 
-                    <input type="radio" name="opc" value="2" title="click aquí para seleccionar un método de busqueda" <?php if (isset($_POST['opc'])){ if ($_POST['opc'] == 2) echo "checked";}?> />Nombre completo
-                </div>
-            </form>
-            <form method="POST" action="formulario">
                 <?php
                     extract($_POST);
                     $mensaje="";
-                    if (!empty($mensaje)) 
+                    if (!empty($mensaje))
                     echo "$mensaje ";
                  include_once '../../system/class.php';
                 $objanalisis = new analisis();
@@ -38,12 +28,23 @@
                 if (isset($eliminar)) :
                      $nro1 = count($seleccion);
                      for ($i = 0; $i < $nro1; $i++) :
-                     else :
-                        $mensaje="<div class='notify_f'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></div> ";
                       $objanalisis->eliminar($mysqli, $seleccion[$i]);
                     endfor;
-                 
+                   echo ("<div class='notify_f'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></div> ");
                 endif;
+                ?>
+                  <form action="index" method="POST">
+                      <div class="buscadores">
+                          <input type="text" name="buscador" id="buscador" value="<?php if (isset($_POST['buscador'])) echo $_POST['buscador']; ?>" placeholder="Buscar análisis" />
+                          <button type="submit" class="botonmenu"><i class="fa fa-search"></i> Buscar</button>
+                          <br>
+                          <input type="radio" name="opc" value="1" title="click aquí para seleccionar un método de busqueda" checked />Frase
+                          <input type="radio" name="opc" value="2" title="click aquí para seleccionar un método de busqueda" <?php if (isset($_POST['opc'])){ if ($_POST['opc'] == 2) echo "checked";}?> />Nombre completo
+                      </div>
+                  </form>
+
+                  <form method="POST" action="formulario">
+                <?php
                     //buscador de analisis segun sea el caso nombre completo, frase y otros.
                     if (!empty($buscador)) {
 
@@ -121,7 +122,7 @@
                                 break;
                         }
 
-                    //en caso de que no se use el buscador mostrar una lista completa de los analisis    
+                    //en caso de que no se use el buscador mostrar una lista completa de los analisis
                     } elseif (empty($buscador) OR !isset($buscador)) {
                         echo "
                                 <table class='anapro'>

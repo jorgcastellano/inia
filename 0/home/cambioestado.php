@@ -43,7 +43,7 @@
 
 					for ($i=0; $i < count($on); $i++)
 						$objanalisis->modificar_estatus_analisis($mysqli, "On", $on[$i]);
-					
+
 					for ($i=0; $i < count($off); $i++)
 						$objanalisis->modificar_estatus_analisis($mysqli, "Off", $off[$i]);
 
@@ -57,5 +57,5 @@
 			}
 		}
 	}
-	header('location: estatus');
+	header('location: estatus?status=fine');
 ?>
