@@ -17,38 +17,51 @@
                 </hgroup>
             </div>
             <?php
-                
+
+            require_once '../../system/class.php';
+            $pro = new producto();
+            $reg1 = $pro->consulta_completo($mysqli);
+            $nombres=array();
+            $i=0;
+            while ($reg2 = $reg1->fetch_array()):
+
+                $nombres[$i]=$reg2[1];
+                $i++;
+            endwhile;
+            echo $nombres[1];
+
+
+
             if (isset($_POST['Modificar1'])) :
                 extract($_POST);
                 $Cod_produ=$Modificar1;
-                require_once '../../system/class.php';
-                $pro = new producto();  
+
                 $reg = $pro->consultar_produc($mysqli,$Cod_produ);
             endif;
-        
+
                 if (isset($_POST['modificar']) AND empty($_POST['seleccion']))
                     header('location: inve');
 
-                require_once '../../system/class.php';
-
                 if (isset($_POST['seleccion'])) :
                     $seleccion = $_POST['seleccion'];
-                    $pro = new producto();  
+
                     $reg = $pro->consultar_produc($mysqli,$seleccion[0]);
                 elseif (isset($_POST['pro'])) :
                     $Cod = $_POST['pro'];
-                    $pro = new producto();
+
                     $reg = $pro->consultar_produc($mysqli, $Cod);
                 endif;
-               
+
               ?>
-            <form  class="contact_form" method="post" action="resultado">
+            <form  class="contact_form" method="post" action="resultado" onsubmit="return enviar_form_accion();">
             	<label for="Nom_produ"> Nombre del Producto </label>
-            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"/>
+            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"placeholder="" pattern="([A-Z]{1}[a-zÑñáéíóú]{1,}\s{0,1})+"/>
             	</br>
             	<label for="Existencia"> Cantidad de Producto </label>
+
             	<input required type="num" name="Existencia" id="Existencia" value="<?php if(isset($reg)) echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="7" />
-                
+
+
                 <select class="opcion3" name="um" required>
                         <option value="">Seleccione</option>
                         <option value="1"<?php if ($reg[5] == "1") echo "selected"; ?>>Por unidad c/u</option>
@@ -86,13 +99,18 @@
                     <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
-                        <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button> 
+                        <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button>
                         <?php else : ?>
-                        <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Registrar Producto</button> 
+                          
+                        <button class="boton" type="submit" id="accion_buttom" name="submit" onclick="comparador()" ><i class="fa fa-check"></i> Registrar Producto</button>
+
                     <?php endif; ?>
                 </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>
         </section>
+        <script type="text/javascript">
+          comparador();
+        </script>
     </body>
 </html>

@@ -8,7 +8,7 @@
 				$arreglo3 = array();
 				$menu1 = new controladorMenu();
 	            $arreglo1 = $menu1 -> menuHome();
-	            $arreglo2 = $menu1 -> cerrar_sesion();
+	            //$arreglo2 = $menu1 -> cerrar_sesion();
 				if ($logeado == "Off") : ?>
 					<form method="POST" action="../../includes/proceso_login.php">
 		                <li class="users"><input type="email" name="correo" placeholder="Correo electrónico"></li>
@@ -17,7 +17,9 @@
 		            </form>
         	<?php 	elseif ($indexes == "Yes" AND $logeado == "On") :
 	            	echo '<div class="csesion"><li><i class="fa fa-user"></i> Usuario: '.$_SESSION['nombre'].' '.$_SESSION['apellido'].'</li>';
-	            	echo $arreglo2[0]."</li></div>";
+								//echo $arreglo2[0]."</li></div>";
+								include 'menu_profile.php';
+								//echo "</li></div>";
 	        ?>
 	        <?php  	else :
 	            	echo $arreglo1[0]."</li>";
@@ -31,7 +33,8 @@
 		    		endif;
 	            	echo '<div class="csesion">
 	            			<li><i class="fa fa-user"></i> Usuario: '.$_SESSION['nombre'].' '.$_SESSION['apellido'].'</li>';
-	            	echo $arreglo2[0].'</li></div>';
+										include 'menu_profile.php';
+								//echo '</li></div>';
 			endif; ?>
 		</ul>
 	</nav>

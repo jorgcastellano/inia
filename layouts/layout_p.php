@@ -3,4 +3,13 @@
         	Desarrollado en plataformas libres apoyando la soberanía e independencia tecnológica
         </aside>
     </footer>
-    
+    <script>
+
+      function autoCarga(){
+          var barrasMenu = document.getElementById("barrasMenu");
+          barrasMenu.addEventListener("click", function(){menuOn(barrasMenu);});
+          //barrasMenu.addEventListener("click", function(){menuOff(barrasMenu);});
+      }
+      window.onload = autoCarga();
+
+    </script>

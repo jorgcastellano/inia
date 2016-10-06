@@ -12,7 +12,7 @@
 
 		public function mostrar(){
 			$arreglo = array();
-			for ($i=0; $i < count($this->nombre); $i++ ) { 
+			for ($i=0; $i < count($this->nombre); $i++ ) {
             	$arreglo[$i] = '<li>
             						<a href="'.$this->direccion[$i].'">
             							<i class="fa '.$this->icono[$i].' fa-fw"></i>'.$this->nombre[$i].'
@@ -43,9 +43,9 @@
 			$elementos->cargarElemento("fa-search", "../../0/producto/inve", " Inventario");
 			$elementos->cargarElemento("fa-bar-chart", "../../0/caja/estadistica", " Estadísticas");
 			$elementos->cargarElemento("fa-star-o", "#", " Registro");
-			
-			return $elementos -> mostrar();		
-			
+
+			return $elementos -> mostrar();
+
 		}
 		public function menuNivel14($xa){
 			$subElementos = new menu();
@@ -58,7 +58,7 @@
 			}
 		}
 
-		public function menuNivel1(){ 
+		public function menuNivel1(){
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-star-o", "#", " Servicios");
 			$elementos->cargarElemento("fa-shopping-cart", "#", " Productos");
@@ -80,7 +80,7 @@
 					$subElementos->cargarElemento("fa-gift", "../../0/producto/index", " Nuevos productos");
 					return $subElementos->mostrar();
 					break;
-				
+
 				case 3:
 					$subElementos->cargarElemento("fa-list", "../../0/home/gestion_usuario", " Gestion de usuarios");
 					$subElementos->cargarElemento("fa-cloud-download", "../../includes/respaldo", " Respaldar");

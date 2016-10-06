@@ -42,7 +42,7 @@
 	width: 100%;
 	height: 45px;
     z-index: 2000;
-	
+
 	background: rgb(82,177,82); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(82,177,82,1) 0%, rgba(0,87,0,1) 93%, rgba(0,36,0,1) 98%, rgba(219,219,219,1) 99%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(82,177,82,1)), color-stop(93%,rgba(0,87,0,1)), color-stop(98%,rgba(0,36,0,1)), color-stop(99%,rgba(219,219,219,1))); /* Chrome,Safari4+ */
@@ -256,61 +256,57 @@ button.botonmenu {
     background-color: #DDDDDD;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Menu Vertical (Opcional)*/
-/*ACTUALMENTE NO FUNCIONANDO*/
-ul{
-    margin: 10px;
-    margin-left: -21px;
-    padding: 0px;
-    list-style: none;
+#barrasMenu {
+  cursor: pointer;
 }
-.menuVertical{
-    /*margin-bottom: 10px;*/
+#profile_styles {
+  display: none;
+  position: relative;
+  width: 180px;
+  height: 124px;
+  margin: auto;
+  padding: 0;
+  background-color: white;
+  color: #000;
+  border-radius: 5px;
+  border: 1px solid #D8D8D8;
+  top: 40px;
+  right: 7px;
+  margin-right: 4px;
 }
-.menuVertical li{
-    border: 1px solid #999;
-    border-top: transparent;
-    border-left: transparent;
-    width: 150px;
+#profile_styles li {
+  margin: 0;
+  padding: 0;
+  margin-top: -30px;
+  padding-right: 12px;
 }
-.menuVertical li a{
-    color: #999;
-    display: block;
-    padding: 10px 0px 10px 10px;
-    text-decoration: none;
+#profile_styles li ul {
+  width: 100%;
+  padding: 0;
 }
-.menuVertical li:first-child{
-    border-top: 1px solid #999;
-    border-radius: 0px 10px 0px 0px;
+#profile_styles li ul li {
+  width: 100%;
+  margin-left: 0;
+  margin-top: 0px;
 }
-.menuVertical li:last-child{
-    border-radius: 0px 0px 10px 0px;
+#profile_styles li ul li a {
+  color: #000;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-/*.menuVertical li:nth-child(odd){
-    background-color: #f4f4f4;
-}*/
-.menuVertical li:hover{
-    background-color: #B9F6CA;
-    border-left: 1px solid #4BCC40;
-    width: 165px;
+#profile_styles li ul li:hover {
+  background-color: #E5FBE5;
+}
+#profile_styles li ul li:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+#profile_styles li ul li:last-child {
+  border-top: 1px solid #D8D8D8;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }

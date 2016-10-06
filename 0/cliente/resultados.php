@@ -12,14 +12,21 @@
         <section class="bloque">
             <div>
                 <?php include_once '../../layouts/cabecera-body.php' ?>
-				<hgroup> 
+				<hgroup>
 					<h1>Ficha del cliente</h1>
 				</hgroup>
 			</div>
-            <?php
-                extract($_POST);
+        <?php
+          extract($_POST);
+          require '../../system/class.php';
 
-                require '../../system/class.php';
+            if ($_SESSION['privilegios'] == 1) :
+              if(isset($RegistrarM)) :
+
+                $fin = new finca();
+                $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin[0],$Estado[0],$Municipio[0],$Parroquia[0]);
+              endif;
+            endif;
 
                 if (isset($_GET['Ced_cliente']))
                     $Ced_cliente = $_GET['Ced_cliente'];
@@ -40,7 +47,7 @@
 
                 if (isset($Registrar)) :
                     $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
-                    if ($_SESSION['privilegios'] == 1) : 
+                    if ($_SESSION['privilegios'] == 1) :
                         $fin = new finca();
                         $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia);
                     endif;
@@ -51,7 +58,7 @@
                     $Id_cliente=$Actualizar;
 
                     $client->modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
-                    if ($_SESSION['privilegios'] == 1) : 
+                    if ($_SESSION['privilegios'] == 1) :
                         $fin = new finca();
                         $nume = count($Nom_fin);
                         for ($i=0; $i<$nume; $i++) :
@@ -67,7 +74,7 @@
 
                 else : ?>
 
-                    <form class="" method="post" action="index"  id="">
+                    <form class="" method="post" action="index"  id="" onsubmit="return enviar_form_accion();">
                         <table class="tcliente">
                             <tr>
                                 <td  colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
@@ -99,17 +106,17 @@
                             </tr>
                         </table>
                         <?php
-                            if ($_SESSION['privilegios'] == 1) : 
+                            if ($_SESSION['privilegios'] == 1) :
                             $fin = new finca();
                             $reg3 = $fin->consultar_finca_all($mysqli,$Ced_cliente);
                             $i = 1;
+                            $contador = 0;
                             while ($reg2 = $reg3->fetch_array()) :
                         ?>
                                 <table class="tcliente">
                                     <tr>
                                         <td colspan="2"><i class="fa fa-file-text"></i> Datos de la finca <?php echo "$i"; ?></td>
-                                        <td><button type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></td></button>
-
+                                        <td><button id="<?php echo $contador; ?>" onclick="cambio_eliminar(<?php echo $contador; ?>)" type="submit" formaction="resultados" class="sinboton" name="eliminar" value="<?php echo $reg2[0] ?>" ><i class='fa fa-times'></i></button></td>
                                     </tr>
                                     <tr>
                                         <td><b>Nombre de la finca:</b></td>
@@ -134,6 +141,7 @@
                                 </table>
                         <?php
                                 $i++;
+                                $contador++;
                             endwhile;
                         endif; ?>
                         <div class="grupobotones">
@@ -151,5 +159,8 @@
                 <?php  endif;
                 include_once '../../layouts/layout_p.php'; ?>
         </section>
+        <script type="text/javascript">
+          iniciar_act_eliminar(<?php echo $contador ?>);
+        </script>
     </body>
 </html>

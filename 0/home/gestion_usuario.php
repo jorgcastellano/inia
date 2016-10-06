@@ -26,13 +26,13 @@
                 $mensaje1="";
                 $mensaje2="";
                 if (isset($eliminar)) :
-                    echo $eliminar;
+
                     if (isset($dos)) :
                         $especialista = new especialista();
                         $especialista->eliminar($mysqli, $eliminar);
                     else :
                         echo "<div class='notify'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></div> ";
-                        $objinicio -> eliminar_miembros($mysqli, $eliminar);                        
+                        $objinicio -> eliminar_miembros($mysqli, $eliminar);
                     endif;
                 elseif (isset($guardar)) :
                     for ($i=0; $i < count($codigos); $i++) :
@@ -46,7 +46,7 @@
                 endif;
                 $reg = $objinicio->consultar_miembro($mysqli);
 
-                echo "<form action='gestion_usuario' method='POST'>
+                echo "<form action='gestion_usuario' method='POST' onsubmit=''>
                 <table class='usuario'>
                     <tr>
                         <td><i class='fa fa-chevron-circle-right'></i> Cédula </td>
@@ -55,7 +55,7 @@
                         <td>Aceptación</td>
                         <td>Privilegios</td>
                         <td><i class='fa fa-trash-o'></i></td>
-                        
+
                     </tr>";
                         $mensaje="";
                         $mensaje0="";
@@ -67,16 +67,16 @@
                             if ($resultado[0] == $cod[$x]) :
                                 if ($resultado[9] == "On")
                                     $x=$temp;
-                                else 
+                                else
                                     $on = $resultado[0];
                                     $x=$temp;
-                                
+
                             elseif ($x == ($temp-1)) :
-                                if ($resultado[9] == "On") 
+                                if ($resultado[9] == "On")
                                     $off = $resultado[0];
-                                    
+
                             endif;
-                        
+
 
                         if (isset($on)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "On", $on);
@@ -98,7 +98,7 @@
                     elseif ($resultado[9] == "Off") :
                         $checked = "";
                     endif;
-                  
+
                     if ($resultado[10] == 1) :
                         $uno = "selected";
                     elseif ($resultado[10] == 2) :
@@ -122,21 +122,21 @@
                             <option value='2' $dos  >Especialista</option>
                             <option value='3' $tres >Factura</option>
                         </select></td>
-                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' ><i class='fa fa-trash-o'></button></i></td>
+                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></button></i></td>
                     </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;
-            
-                if (!empty($mensaje0)AND !empty($mensaje1)) 
+
+                if (!empty($mensaje0)AND !empty($mensaje1))
                     echo "Se desastivo un usuario y se cambiaron los privilegios";
                 else{
-                 if (!empty($mensaje)) 
+                 if (!empty($mensaje))
                     echo "$mensaje ";
-                if (!empty($mensaje0)) 
+                if (!empty($mensaje0))
                     echo "$mensaje0 ";
-                if (!empty($mensaje1)) 
+                if (!empty($mensaje1))
                     echo "$mensaje1";
-                 if (!empty($mensaje2)) 
+                 if (!empty($mensaje2))
                  echo "$mensaje2";
                 }
                 echo "</table>";
