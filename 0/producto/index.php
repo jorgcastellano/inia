@@ -20,15 +20,12 @@
 
             require_once '../../system/class.php';
             $pro = new producto();
-            $reg1 = $pro->consulta_completo($mysqli);
-            $nombres=array();
-            $i=0;
-            while ($reg2 = $reg1->fetch_array()):
 
-                $nombres[$i]=$reg2[1];
-                $i++;
-            endwhile;
-            echo $nombres[1];
+            extract($_GET);
+
+            if (isset($mensaje)) {
+              echo "la variable mensaje existe";
+            }
 
 
 
@@ -101,16 +98,13 @@
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
                         <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button>
                         <?php else : ?>
-                          
-                        <button class="boton" type="submit" id="accion_buttom" name="submit" onclick="comparador()" ><i class="fa fa-check"></i> Registrar Producto</button>
+
+                        <button class="boton" type="submit" id="accion_buttom" name="submit" ><i class="fa fa-check"></i> Registrar Producto</button>
 
                     <?php endif; ?>
                 </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>
         </section>
-        <script type="text/javascript">
-          comparador();
-        </script>
     </body>
 </html>
