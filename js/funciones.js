@@ -69,16 +69,18 @@ function menuOff(barrasMenu) {
 
 
 
-function comparador(){
-      alert("la funcion ha sido invocada");
+function comparador(nombres,cantidad){
+      //alert("la funcion ha sido invocada");
       var i = 0;
-      var nombre = document.getElementById("Nom_produ");
-    //  for(i=0;i<cantidad;i++)
-      //{
-        //if(nombres[i]==nombre)
-      //  {
-        //  alert("nombre ya existe");
-        //}
-      //}
+      var amb = document.getElementById("arr").value;
+      var nombre = document.getElementById("Nom_produ").value;
+      //alert(cantidad);
+      for(i=0;i<cantidad;i++)
+      {
+        if(nombres[i]==nombre)
+        {
+          alert("nombre ya existe");
+        }
+      }
 
 }
