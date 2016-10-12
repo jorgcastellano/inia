@@ -24,7 +24,7 @@
             extract($_GET);
 
             if (isset($mensaje)) {
-              echo "la variable mensaje existe";
+              echo "<span class='notify_f'><i class='fa fa-times'></i>El producto ya existe</span> ";
             }
 
 

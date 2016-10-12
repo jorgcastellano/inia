@@ -23,16 +23,16 @@
                 require_once '../../system/class.php';
                 $pro = new producto();
                 $reg1 = $pro->consulta_completo($mysqli);
-                $nombres=array();
                 $i=0;
                 while ($reg2 = $reg1->fetch_array()):
-                  if ($Nom_produ=$reg2[1];) {
+                  if ($Nom_produ==$reg2[1]) {
                       header("Location: index.php?mensaje=$mensaje");
+                      exit;
                   }
 
                     $i++;
                 endwhile;
-                echo $nombres[1];
+
 
                 if (isset($modificar)) :
                     $Cod_produ=$modificar;
