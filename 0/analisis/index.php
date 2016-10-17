@@ -148,7 +148,7 @@
                                     echo "<td>".$resultado[2]."</td>";
                                     echo "<td>".$laboratorio."</td>";
                                     echo "<td>".$resultado[4]."</td>";
-                                    echo "<td><input type='checkbox' name='seleccion[]' value='$resultado[0]' title='Click aquí para modificar este análisis'></td>
+                                    echo "<td><input type='radio' name='seleccion' value='$resultado[0]' title='Click aquí para modificar este análisis'></td>
                                 </tr>";
                         }
                         echo "</table>";
@@ -158,7 +158,6 @@
                 <div class="grupobotones">
                     <button type="button" name="insertar" class="boton" onclick=location="formulario"><i class="fa fa-plus"></i> Nuevo análisis</button>
                     <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar análisis</button>
-                     <button type="submit" class="boton" name="eliminar" value="eliminar" formaction="index" ><i class='fa fa-trash-o'></i> Eliminar Producto</button>
                     <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>
                 </div>
             </form>

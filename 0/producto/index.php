@@ -42,7 +42,7 @@
                 if (isset($_POST['seleccion'])) :
                     $seleccion = $_POST['seleccion'];
 
-                    $reg = $pro->consultar_produc($mysqli,$seleccion[0]);
+                    $reg = $pro->consultar_produc($mysqli,$seleccion);
                 elseif (isset($_POST['pro'])) :
                     $Cod = $_POST['pro'];
 
@@ -50,9 +50,9 @@
                 endif;
 
               ?>
-            <form  class="contact_form" method="post" action="resultado" onsubmit="return enviar_form_accion();">
+            <form  class="contact_form" method="post" action="resultado" >
             	<label for="Nom_produ"> Nombre del Producto </label>
-            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"placeholder="" pattern="([A-Z]{1}[a-zÑñáéíóú]{1,}\s{0,1})+"/>
+            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"placeholder="" pattern="([A-ZÑ]{1}[a-zñáéíóú]{1,}\s{0,1})+"/>
             	</br>
             	<label for="Existencia"> Cantidad de Producto </label>
 

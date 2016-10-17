@@ -1,17 +1,16 @@
-<?php       
+<?php
 
 require_once '../../includes/conexion.php';
 
-class producto 
+class producto
   {
   public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ, $iva, $um)
   {
     $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ, I_E, um)
     VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ', '$iva', '$um')";
-  $mysqli->query($sql);  
+  $mysqli->query($sql);
   require_once 'error_insert.php';
-  if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo producto se ha registrado con éxito<br /></span> ";} 
-  else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar el nuevo producto<br /></span> ";}
+
   }
 
   public function consultar_produ($mysqli,$Nom_produ)
@@ -20,7 +19,7 @@ class producto
     $res= $mysqli->query($sql);
     return $res->fetch_array();
   }
-    
+
 
   public function consultar_produc($mysqli,$Cod_produ)
   {
@@ -44,14 +43,13 @@ class producto
     $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ', I_E='$iva', um='$um' WHERE Cod_produ='$Cod_produ'";
     $mysqli->query($sql);
     require_once 'error_update.php';
-    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El producto se ha modificado con éxito<br /></span> ";} 
-    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se modificó el producto<br /></span> ";}
+    
   }
   public function actualizar_existencia($mysqli, $Existencia, $cod){
     $sql = "UPDATE producto SET Existencia='$Existencia' WHERE Cod_produ='$cod'";
     $mysqli->query($sql);
     require_once 'error_update.php';
-    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>Los datos del producto se han modificado con éxito<br /></span> ";} 
+    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>Los datos del producto se han modificado con éxito<br /></span> ";}
     else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido modificar los datos del producto<br /></span> ";}
   }
     public function consultar_ultimo_registro($mysqli) {
@@ -64,24 +62,24 @@ class producto
       $sql = "DELETE FROM producto WHERE Cod_produ = '$codigo'";
       $mysqli->query($sql);
       require_once 'error_update.php';
-    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El producto seleccionado se ha eliminado con éxito<br /></span> ";} 
+    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El producto seleccionado se ha eliminado con éxito<br /></span> ";}
     else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido eliminar el producto seleccionado<br /></span> ";}
     }
 }
 
 class laboratorio {
-  
+
     private $reg;
-   
+
     public function registrar_laboratorio($mysqli,$Nom_lab)
     {
       $sql="INSERT INTO laboratorio (Cod_lab,Nom_lab)
             VALUES ('$Cod_lab','$Nom_lab')";
       $mysqli->query($sql);
-      require_once 'error_insert.php';      
+      require_once 'error_insert.php';
     }
 
-    public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab) 
+    public function modificar_laboratorio($mysqli,$Cod_lab,$Nom_lab)
     {
       $sql="UPDATE laboratorio SET Nom_lab='$Nom_lab' WHERE Cod_lab='$Cod_lab'";
       $mysqli->query($sql);
@@ -118,7 +116,7 @@ class laboratorio {
         $mysqli->query($sql);
         require_once 'error_update.php';
     }
- 
+
 }
 
 class analisis {
@@ -130,7 +128,6 @@ class analisis {
             VALUES ('$Nom_ana','$Precio_ana','$Tipo', 'On')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "El nuevo análisis se ha registrado con éxito";} else { echo "No se ha podido registrar el nuevo análisis";}
 
     }
 
@@ -188,7 +185,7 @@ class analisis {
     {
        $sql = "UPDATE analisis SET estatus='Off'";
         $mysqli->query($sql);
-        require_once 'error_update.php'; 
+        require_once 'error_update.php';
     }
 
     public function consulta_completo($mysqli){
@@ -211,11 +208,11 @@ class cliente {
 
       public function registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente)
       {
-         $sql="INSERT INTO cliente (Ced_cliente,Nom_cliente,Apelli_cliente,Contacto,Telf_cliente,Dire_cliente) 
+         $sql="INSERT INTO cliente (Ced_cliente,Nom_cliente,Apelli_cliente,Contacto,Telf_cliente,Dire_cliente)
                VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente')";
          $mysqli->query($sql);
          include_once 'error_insert.php';
-         if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo cliente se ha registrado con éxito<br /></span> ";} 
+         if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo cliente se ha registrado con éxito<br /></span> ";}
          else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar el nuevo cliente<br /></span> ";}
       }
 
@@ -235,18 +232,18 @@ class cliente {
      }
 
      public function modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente)
-     {       
+     {
 
       $sql="UPDATE cliente SET cliente.Ced_cliente='$Ced_cliente',cliente.Nom_cliente='$Nom_cliente',cliente.Apelli_cliente='$Apelli_cliente',cliente.Contacto='$Contacto',cliente.Telf_cliente='$Telf_cliente',cliente.Dire_cliente='$Dire_cliente' WHERE cliente.Id_cliente='$Id_cliente'";
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El cliente se ha modificado con éxito<br /></span> ";} 
+      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El cliente se ha modificado con éxito<br /></span> ";}
       else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se realizó ningún cambio en el cliente<br /></span> ";}
       }
 }
 
 class finca {
-  
+
     private $reg;
 
     public function registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia) {
@@ -254,7 +251,7 @@ class finca {
             VALUES ('$Ced_cliente','$Nom_fin','$Estado','$Municipio','$Parroquia')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La nueva finca se ha registrado con éxito<br /></span> ";} 
+      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La nueva finca se ha registrado con éxito<br /></span> ";}
       else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar la nueva finca<br /></span> ";}
     }
     public function consultar_finca($mysqli,$Cod_fin) {
@@ -274,7 +271,7 @@ class finca {
 
       $sql="UPDATE finca SET finca.Nom_fin='$Nom_fin',finca.Estado='$Estado',finca.Municipio='$Municipio',finca.Parroquia='$Parroquia'  WHERE finca.Ced_cliente='$Ced_cliente' AND finca.Cod_fin='$cod_finca'";
       $res=$mysqli->query($sql);
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La Finca se modificó con éxito<br /></span> ";} 
+      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La Finca se modificó con éxito<br /></span> ";}
       else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se modificó la finca<br /></span> ";}
     }
 
@@ -293,7 +290,7 @@ class solicitud {
             VALUES ('$Cod_sol','$Ced_cliente')";
       $res=$mysqli->query($sql);
       require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La solicitud se ha registrado con éxito<br /></span> ";} 
+      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La solicitud se ha registrado con éxito<br /></span> ";}
       else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar la nueva solicitud<br /></span> ";}
     }
 }
@@ -340,18 +337,18 @@ class ayudante
 }
 
 class muestra {
-  
+
     private $reg;
 
     public function registrar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones,$Finca)
     {
 
-      
+
       $sql="INSERT INTO muestra(Cod_muestra,Tipo_m,Cult_act,Nro_pl,Edad_cul,Tam_lote,Topografia,Dist_siembra,Riego,Cult_ant,F_toma,Practicas,Produc_dosis,Epoca_aplic,Modo_aplic,Pobl_cercana,Profundidad,Inundacion,T_vege,Rend_cult,Restos,Descrip_fito,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Nro_subm,Origen_sem,Pres_microorg,Dist_planafect,Parts_afect,Text_sue,Composicion,Hum_sue,Drenaje,Controles,Produc_dosisb,Cond_agroclima,Observaciones,Finca)
             VALUES ('$Cod_muestra','$Tipo_m','$Cult_act','$Nro_pl','$Edad_cul','$Tam_lote','$Topografia','$Dist_siembra','$Riego','$Cult_ant','$F_toma','$Practicas','$Produc_dosis','$Epoca_aplic','$Modo_aplic','$Pobl_cercana','$Profundidad','$Inundacion','$T_vege','$Rend_cult','$Restos','$Descrip_fito','$Id_microorg','$Sintomas','$F_sintomas','$Causa','$Tipo_plant','$Nro_subm','$Origen_sem','$Pres_microorg','$Dist_planafect','$Parts_afect','$Text_sue','$Composicion','$Hum_sue','$Drenaje','$Controles','$Produc_dosisb','$Cond_agroclima','$Observaciones','$Finca')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
-      
+
 
     }
     public function consultar_muestra($mysqli,$Cod_muestra)
@@ -365,7 +362,7 @@ class muestra {
 
 
     public function modificar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones,$Finca)
-    {       
+    {
 
       $sql="UPDATE muestra SET Tipo_m='$Tipo_m',Cult_act='$Cult_act',Nro_pl='$Nro_pl',Edad_cul='$Edad_cul',Tam_lote='$Tam_lote',Topografia='$Topografia',Dist_siembra='$Dist_siembra',Riego='$Riego',Cult_ant='$Cult_ant',F_toma='$F_toma',Practicas='$Practicas',Produc_dosis='$Produc_dosis',Epoca_aplic='$Epoca_aplic',Modo_aplic='$Modo_aplic',Pobl_cercana='$Pobl_cercana',Profundidad='$Profundidad',Inundacion='$Inundacion',T_vege='$T_vege',Rend_cult='$Rend_cult',Restos='$Restos',Descrip_fito='$Descrip_fito',Id_microorg='$Id_microorg',Sintomas='$Sintomas',F_sintomas='$F_sintomas',Causa='$Causa',Tipo_plant='$Tipo_plant',Nro_subm='$Nro_subm',Origen_sem='$Origen_sem',Pres_microorg='$Pres_microorg',Dist_planafect='$Dist_planafect',Parts_afect='$Parts_afect',Text_sue='$Text_sue',Composicion='$Composicion',Hum_sue='$Hum_sue',Drenaje='$Drenaje',Controles='$Controles',Produc_dosisb='$Produc_dosisb',Cond_agroclima='$Cond_agroclima',Observaciones='$Observaciones',Finca='$Finca' WHERE Cod_muestra='$Cod_muestra'";
       $res=$mysqli->query($sql);
@@ -381,7 +378,7 @@ class muestra {
     }
 
 
-}  
+}
 
 class solicitud_analisis {
 
@@ -396,17 +393,17 @@ class solicitud_analisis {
       //$res=$mysqli_query($mysqli,$sql);
       include_once 'error_insert.php';
 
-      
+
     }
 
-    
+
 
     public function consultar_sam($mysqli,$Cod_muestra)
     {
 
       $sql="SELECT * FROM solicitud_analisis, analisis WHERE Cod_muestra ='$Cod_muestra'  AND solicitud_analisis.Cod_ana=analisis.Cod_ana";
       return $mysqli->query($sql);
-      
+
 
     }
 
@@ -433,13 +430,13 @@ class fito {
 
   public function registrar_fito($mysqli,$Cod_fito,$Cod_lab,$Tipo_fito,$Descrip_fito,$Cult_fito,$Edad_fito,$F_coleccion,$Pobl_cercana,$Id_microorg,$sintoma,$F_sintomas,$Causa,$Tipo_plant,$Tam_lote,$Nro_plant,$Nro_subm,$dist_f,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parte,$Riego,$Topografia,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$practicas,$Produc_dosis,$control,$Produc_dosisb,$Cult_ant,$Cond_agroclima,$Observaciones,$finca)
   {
-     $sql="INSERT INTO m_fito (Cod_fito,Cod_lab,Tipo_fito,Descrip_fito,Cult_fito,Edad_fito,F_coleccion,Pobl_cercana,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Tam_lote,Nro_plant,Nro_subm,dist_f,Origen_sem,Pres_microorg,Dist_planafect,Part_afect,Riego,Topografia,Text_sue,Composicion,Hum_sue,Drenaje,Practicas,Produc_dosis,Control,Produc_dosisb,Cult_ant,Cond_agroclima,Observaciones,Cod_fin) 
+     $sql="INSERT INTO m_fito (Cod_fito,Cod_lab,Tipo_fito,Descrip_fito,Cult_fito,Edad_fito,F_coleccion,Pobl_cercana,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Tam_lote,Nro_plant,Nro_subm,dist_f,Origen_sem,Pres_microorg,Dist_planafect,Part_afect,Riego,Topografia,Text_sue,Composicion,Hum_sue,Drenaje,Practicas,Produc_dosis,Control,Produc_dosisb,Cult_ant,Cond_agroclima,Observaciones,Cod_fin)
            VALUES ('$Cod_fito','$Cod_lab','$Tipo_fito','$Descrip_fito','$Cult_fito','$Edad_fito','$F_coleccion','$Pobl_cercana','$Id_microorg','$sintoma','$F_sintomas','$Causa','$Tipo_plant','$Tam_lote','$Nro_plant','$Nro_subm','$dist_f','$Origen_sem','$Pres_microorg','$Dist_planafect','$Parte','$Riego','$Topografia','$Text_sue','$Composicion','$Hum_sue','$Drenaje','$practicas','$Produc_dosis','$control','$Produc_dosisb','$Cult_ant','$Cond_agroclima','$Observaciones','$finca')";
      $res=$mysqli->query($sql);
      include_once 'error_insert.php';
 
   }
-  
+
 
   public function consultar_fito($mysqli,$Cod_fito)
   {
@@ -452,7 +449,7 @@ class fito {
   }
 
   public function modificar_fito($mysqli,$Cod_fito,$Cod_lab,$Tipo_fito,$Descrip_fito,$Cult_fito,$Edad_fito,$F_coleccion,$Pobl_cercana,$Id_microorg,$sintoma,$F_sintomas,$Causa,$Tipo_plant,$Tam_lote,$Nro_plant,$Nro_subm,$dist_f,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parte,$Riego,$Topografia,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$practicas,$Produc_dosis,$control,$Produc_dosisb,$Cult_ant,$Cond_agroclima,$Observaciones,$finca)
-  {       
+  {
 
     $sql="UPDATE m_fito SET Tipo_fito='$Tipo_fito',Descrip_fito='$Descrip_fito',Cult_fito='$Cult_fito',Edad_fito='$Edad_fito',F_coleccion='$F_coleccion',Pobl_cercana='$Pobl_cercana',Id_microorg='$Id_microorg',Sintomas='$sintoma',F_sintomas='$F_sintomas',Causa='$Causa',Tipo_plant='$Tipo_plant',Tam_lote='$Tam_lote',Nro_plant='$Nro_plant',Nro_subm='$Nro_subm',dist_f='$dist_f',Origen_sem='$Origen_sem',Pres_microorg='$Pres_microorg',Dist_planafect='$Dist_planafect',Part_afect='$Parte',Riego='$Riego',Topografia='$Topografia',Text_sue='$Text_sue',Composicion='$Composicion',Hum_sue='$Hum_sue',Drenaje='$Drenaje',Practicas='$practicas',Produc_dosis='$Produc_dosis',Control='$control',Produc_dosisb='$Produc_dosisb',Cult_ant='$Cult_ant',Cond_agroclima='$Cond_agroclima',Observaciones='$Observaciones',Cod_fin='$finca' WHERE Cod_fito='$Cod_fito'";
     $res=$mysqli->query($sql);
@@ -558,11 +555,11 @@ class factura {
   public function modificar_factura($mysqli,$codigo,$exento,$base,$iva,$retencion,$alicuota,$total, $observacion, $ivaporciento, $retencionporciento, $tipofactura, $metodo, $bauche) {
     if ($bauche == 0){
     $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche=NULL, exento='$exento',
-                              base='$base', iva='$iva', retencion='$retencion', alicuota='$alicuota',Total='$total', observacion='$observacion', 
+                              base='$base', iva='$iva', retencion='$retencion', alicuota='$alicuota',Total='$total', observacion='$observacion',
                               ivaporc='$ivaporciento', exentoporc='$retencionporciento', Estatus='paga' WHERE Cod_fact='$codigo'";
     } else {
           $sql="UPDATE factura SET Tipo_pago='$tipofactura', Forma_pago='$metodo', Bauche='$bauche', exento='$exento',
-                              base='$base', iva='$iva', retencion='$retencion', alicuota='$alicuota',Total='$total', observacion='$observacion', 
+                              base='$base', iva='$iva', retencion='$retencion', alicuota='$alicuota',Total='$total', observacion='$observacion',
                               ivaporc='$ivaporciento', exentoporc='$retencionporciento', Estatus='paga' WHERE Cod_fact='$codigo'";
     }
     $res=$mysqli->query($sql);
