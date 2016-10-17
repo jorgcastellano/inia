@@ -10,8 +10,7 @@ class producto
     VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ', '$iva', '$um')";
   $mysqli->query($sql);
   require_once 'error_insert.php';
-  if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo producto se ha registrado con éxito<br /></span> ";}
-  else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar el nuevo producto<br /></span> ";}
+
   }
 
   public function consultar_produ($mysqli,$Nom_produ)
@@ -44,8 +43,7 @@ class producto
     $sql="UPDATE producto SET Nom_produ='$Nom_produ', Existencia='$Existencia', Precio_produ='$Precio_produ', I_E='$iva', um='$um' WHERE Cod_produ='$Cod_produ'";
     $mysqli->query($sql);
     require_once 'error_update.php';
-    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El producto se ha modificado con éxito<br /></span> ";}
-    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se modificó el producto<br /></span> ";}
+    
   }
   public function actualizar_existencia($mysqli, $Existencia, $cod){
     $sql = "UPDATE producto SET Existencia='$Existencia' WHERE Cod_produ='$cod'";
@@ -130,7 +128,7 @@ class analisis {
             VALUES ('$Nom_ana','$Precio_ana','$Tipo', 'On')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
-      
+
     }
 
     public function modificar_analisis($mysqli,$Cod_ana,$Nom_ana,$Precio_ana,$Tipo)

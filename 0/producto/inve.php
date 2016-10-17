@@ -33,10 +33,9 @@
 		  $objproducto = new producto();
 
 			if (isset($eliminar)) :
-				$nro1 = count($seleccion);
-				for ($i = 0; $i < $nro1; $i++) :
-					$objproducto->eliminar($mysqli, $seleccion[$i]);
-				endfor;
+
+					$objproducto->eliminar($mysqli, $seleccion);
+
 			endif;
 
 		  if (!empty($buscador)) {
@@ -139,7 +138,7 @@
 		<div class="grupobotones">
 			 <button type="button" name="insertar" class="boton" onclick=location="index"><i class="fa fa-plus"></i> Nuevo Producto</button>
 			 <button type="submit" class="boton" name="modificar" value="modificar"><i class="fa fa-pencil"></i> Modificar Producto</button>
-			   <button type="submit" OnClick="confirmar_accion('eliminar los productos seleccionados? \n Recuerda que la accion realizada sera irreversible');" id="accion_buttom" class="boton" name="eliminar" value="eliminar" formaction="inve" ><i class='fa fa-trash-o'></i> Eliminar Producto</button>
+			   <button type="submit"  id="accion_buttom" class="boton" name="eliminar" value="eliminar" formaction="inve" ><i class='fa fa-trash-o'></i> Eliminar Producto</button>
 			 <button type='button' OnClick=location='../home/inicio' class="boton"><i class="fa fa-home"></i> Página principal</button>
 		</div>
 	  </form>

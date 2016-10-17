@@ -40,11 +40,15 @@
                 if (isset($modificar)) :
                     $Cod_produ=$modificar;
                     $pro->modificar_produ($mysqli,$Cod_produ,$Nom_produ,$Existencia,$Precio_produ, $iva, $um);
+                    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El producto se ha modificado con éxito<br /></span> ";}
+                    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se modificó el producto<br /></span> ";}
                     $reg = $pro->consultar_produc($mysqli,$Cod_produ);
                 endif;
 
                 if (isset($submit)) :
                     $pro -> registrar_produ($mysqli,$Nom_produ,$Existencia,$Precio_produ, $iva, $um);
+                    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo producto se ha registrado con éxito<br /></span> ";}
+                    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar el nuevo producto<br /></span> ";}
                     $reg = $pro->consultar_ultimo_registro($mysqli);
                 endif;
             ?>
