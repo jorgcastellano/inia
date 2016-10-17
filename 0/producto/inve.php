@@ -70,7 +70,7 @@
 				  <td>".$resultado[1]."</td>";
 				  echo "<td>".$resultado[2]." ".$unidad."</td>";
 				  echo "<td>".$resultado[3]." Bs"."</td>";
-				  echo "<td><input type='checkbox' name='seleccion[]' id='check' title='click aquí para modificar este análisis' value='$resultado[0]' ></td></tr>";
+				  echo "<td><input type='radio' name='seleccion' id='check' title='click aquí para modificar este análisis' value='$resultado[0]' ></td></tr>";
 				  }
 			  echo "</table>";
 			  }
@@ -99,7 +99,7 @@
 						  <td>".$resultado[1]."</td>";
 						  echo "<td>".$resultado[2]." ".$unidad."</td>";
 						  echo "<td>".$resultado[3]." Bs"."</td>";
-						  echo "<td><input type='checkbox' name='seleccion[]' id='check' value='$resultado[0]' ></td></tr>
+						  echo "<td><input type='radio' name='seleccion' id='check' value='$resultado[0]' ></td></tr>
 						   </table>";
 								}
 						  break;
@@ -131,7 +131,7 @@
 					<td>".$resultado[1]."</td>";
 					echo "<td>".$resultado[2]." ".$unidad."</td>";
 					echo "<td>".$resultado[3]." Bs"."</td>";
-					echo "<td><input type='checkbox' name='seleccion[]' id='check' title='Selecciona para modificar o eliminar este análisis' value='$resultado[0]' ></td></tr>";
+					echo "<td><input type='radio' name='seleccion' id='check' title='Selecciona para modificar o eliminar este análisis' value='$resultado[0]' ></td></tr>";
 				  }
 				  echo "</table>";
 				}

@@ -25,9 +25,12 @@
                 $reg1 = $pro->consulta_completo($mysqli);
                 $i=0;
                 while ($reg2 = $reg1->fetch_array()):
-                  if ($Nom_produ==$reg2[1]) {
-                      header("Location: index.php?mensaje=$mensaje");
-                      exit;
+                  if (isset($submit)&&$Nom_produ==$reg2[1]) { ?>
+                    <script type="text/javascript">
+                      window.location="http://inia.local/0/producto/index?mensaje";
+                    </script>
+            <?php
+                    exit(1);
                   }
 
                     $i++;
