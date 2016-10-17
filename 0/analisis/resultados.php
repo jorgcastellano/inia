@@ -28,7 +28,7 @@
                 while ($reg1 = $reg2->fetch_array()):
                   if (isset($submit)&&$Nom_ana==$reg1[1]) { ?>
                     <script type="text/javascript">
-                      window.location="http://inia.local/0/analisis/formulario?mensaje";
+                      window.location="formulario?mensaje";
                     </script>
             <?php
                     exit(1);

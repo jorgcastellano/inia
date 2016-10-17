@@ -27,7 +27,7 @@
                 while ($reg2 = $reg1->fetch_array()):
                   if (isset($submit)&&$Nom_produ==$reg2[1]) { ?>
                     <script type="text/javascript">
-                      window.location="http://inia.local/0/producto/index?mensaje";
+                      window.location="index?mensaje";
                     </script>
             <?php
                     exit(1);
