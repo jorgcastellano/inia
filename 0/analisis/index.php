@@ -79,7 +79,7 @@
                                             echo "<td>".$resultado[2]."</td>";
                                             echo "<td>$laboratorio</td>";
                                             echo "<td>".$resultado[4]."</td>";
-                                            echo "<td><input type='checkbox' name='seleccion[]' title='click aquí para modificar este análisis' value='$resultado[0]'></td>
+                                            echo "<td><input type='checkbox' name='seleccion[]' title='Click aquí para modificar este análisis' value='$resultado[0]'></td>
                                         </tr>";
                                     }
                                     echo "</table>";
@@ -148,7 +148,7 @@
                                     echo "<td>".$resultado[2]."</td>";
                                     echo "<td>".$laboratorio."</td>";
                                     echo "<td>".$resultado[4]."</td>";
-                                    echo "<td><input type='checkbox' name='seleccion[]' value='$resultado[0]' title='click aquí para modificar este análisis'></td>
+                                    echo "<td><input type='checkbox' name='seleccion[]' value='$resultado[0]' title='Click aquí para modificar este análisis'></td>
                                 </tr>";
                         }
                         echo "</table>";

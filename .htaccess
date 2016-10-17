@@ -9,12 +9,12 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
 #Redirigir a 0/home al abrir la pagina web
-RewriteCond %{HTTP_HOST} ^inia.jcm.co.ve\.ve$
-RewriteRule (.*) http://inia.jcm.co.ve/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^inia.local\.local$
+RewriteRule (.*) http://inia.local/$1 [R=301,L]
 RewriteRule ^$ 0/home/ [L]
 
 #Redirigir web amigable con SEO
-Redirect 301 0/home/ http://inia.jcm.co.ve
+Redirect 301 0/home/ http://inia.local
 
 #Evitar navegar los directorios
 Options All -Indexes

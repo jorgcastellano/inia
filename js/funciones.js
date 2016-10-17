@@ -67,7 +67,10 @@ function menuOff(barrasMenu) {
   }
 }
 
+//Funcion para validar si clickeo en los opciones
+function confirmar_accion(){
 
+}
 
 function comparador(){
       alert("la funcion ha sido invocada");

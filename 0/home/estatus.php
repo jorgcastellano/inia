@@ -48,13 +48,12 @@
                                 if ($ana[3] == $lab[0]) {
                                 ?>  <tr>
                                         <td><?php echo $ana[1]; ?></td>
-                                        <td><input type="checkbox" name="analisis[]" <?php echo "value='$ana[0]'"; if($ana['estatus']=='On') {echo 'checked';}
-                                                  ?> title="click aquí para desactivar este servicio" />
+                                        <td><input type="checkbox" name="analisis[]" <?php echo "value='$ana[0]'"; if($ana['estatus']=='On') {echo 'checked';} ?> title="click aquí para desactivar este servicio" /></td>
                                     </tr>
                         <?php   }
                     echo "</table>";
                 }
-                $mysqli->close();?>
+                $mysqli->close(); ?>
 
                 <div  class="grupobotones">
                     <button type="button" name="Regresar atras" class="boton" onclick=location="inicio"><i class="fa fa-arrow-left"></i> Página principal</button>
@@ -65,7 +64,7 @@
             <?php include '../../layouts/layout_p.php' ?>
         </section>
         <script type="text/javascript">
-            confirmar_accion("cambiar el estatus de los analisis?");
+            //confirmar_accion("cambiar el estatus de los analisis?");
         </script>
     </body>
 </html>
