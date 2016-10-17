@@ -42,7 +42,7 @@
                 if (isset($_POST['seleccion'])) :
                     $seleccion = $_POST['seleccion'];
 
-                    $reg = $pro->consultar_produc($mysqli,$seleccion[0]);
+                    $reg = $pro->consultar_produc($mysqli,$seleccion);
                 elseif (isset($_POST['pro'])) :
                     $Cod = $_POST['pro'];
 

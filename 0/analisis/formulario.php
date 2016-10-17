@@ -17,6 +17,12 @@
                 </hgroup>
             </div>
             <?php
+
+                extract($_GET);
+
+                if (isset($mensaje)) {
+                  echo "<span class='notify_f'><i class='fa fa-times'></i>El analisis ya existe</span> ";
+                }
                 if (isset($_POST['modificar']) AND empty($_POST['seleccion']))
                     header('location: index');
                 require_once '../../system/class.php';
@@ -24,7 +30,7 @@
                     //Seleccion viene desde la pagina index de analisis
                     $seleccion = $_POST['seleccion'];
                     $ana = new analisis();
-                    $reg = $ana->consultar_analisis($mysqli,$seleccion[0]);
+                    $reg = $ana->consultar_analisis($mysqli,$seleccion);
                 elseif (isset($_POST['ana'])) :
                     //Recibe analisis desde resultados
                     $Cod = $_POST['ana'];
@@ -53,9 +59,9 @@
                     <button name="atras" type="button" onclick=location="index" class="boton"><i class="fa fa-arrow-left"></i> Página anterior</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['ana'])) : ?>
-                        <button class="boton" type="submit" name="modificar" value="<?php echo $reg[0] ?>"><i class="fa fa-check"></i> Guardar cambios</button> 
+                        <button class="boton" type="submit" name="modificar" value="<?php echo $reg[0] ?>"><i class="fa fa-check"></i> Guardar cambios</button>
                         <?php else : ?>
-                        <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Registrar análisis</button> 
+                        <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Registrar análisis</button>
                 </div>
                 <?php endif; ?>
             </form>
