@@ -20,15 +20,12 @@
 
             require_once '../../system/class.php';
             $pro = new producto();
-            $reg1 = $pro->consulta_completo($mysqli);
-            $nombres=array();
-            $i=0;
-            while ($reg2 = $reg1->fetch_array()):
 
-                $nombres[$i]=$reg2[1];
-                $i++;
-            endwhile;
-            echo $nombres[1];
+            extract($_GET);
+
+            if (isset($mensaje)) {
+              echo "<span class='notify_f'><i class='fa fa-times'></i>El producto ya existe</span> ";
+            }
 
 
 
@@ -96,21 +93,21 @@
                 </select>
                 <br/>
                 <div class="grupobotones">
+                    <input type="hidden" name="" value="<?php echo $nombres; ?>" id="arr"/>
                     <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
                         <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button>
                         <?php else : ?>
-                          
-                        <button class="boton" type="submit" id="accion_buttom" name="submit" onclick="comparador()" ><i class="fa fa-check"></i> Registrar Producto</button>
+
+
+                        <button class="boton" type="submit" id="accion_buttom" name="submit" ><i class="fa fa-check"></i> Registrar Producto</button>
+
 
                     <?php endif; ?>
                 </div>
             </form>
             <?php include '../../layouts/layout_p.php' ?>
         </section>
-        <script type="text/javascript">
-          comparador();
-        </script>
     </body>
 </html>

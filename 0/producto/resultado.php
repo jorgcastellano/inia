@@ -19,19 +19,30 @@
 
             <?php
                 extract($_POST);
+
+                require_once '../../system/class.php';
+                $pro = new producto();
+                $reg1 = $pro->consulta_completo($mysqli);
+                $i=0;
+                while ($reg2 = $reg1->fetch_array()):
+                  if ($Nom_produ==$reg2[1]) {
+                      header("Location: index.php?mensaje=$mensaje");
+                      exit;
+                  }
+
+                    $i++;
+                endwhile;
+
+
                 if (isset($modificar)) :
                     $Cod_produ=$modificar;
-                    require_once '../../system/class.php';
-                    $producto = new producto();
-                    $producto->modificar_produ($mysqli,$Cod_produ,$Nom_produ,$Existencia,$Precio_produ, $iva, $um);
-                    $reg = $producto->consultar_produc($mysqli,$Cod_produ);
+                    $pro->modificar_produ($mysqli,$Cod_produ,$Nom_produ,$Existencia,$Precio_produ, $iva, $um);
+                    $reg = $pro->consultar_produc($mysqli,$Cod_produ);
                 endif;
 
                 if (isset($submit)) :
-                    require_once '../../system/class.php';
-                    $producto = new producto();
-                    $producto -> registrar_produ($mysqli,$Nom_produ,$Existencia,$Precio_produ, $iva, $um);
-                    $reg = $producto->consultar_ultimo_registro($mysqli);
+                    $pro -> registrar_produ($mysqli,$Nom_produ,$Existencia,$Precio_produ, $iva, $um);
+                    $reg = $pro->consultar_ultimo_registro($mysqli);
                 endif;
             ?>
 
