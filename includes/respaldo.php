@@ -1,6 +1,5 @@
 <?php
 
-/*
     $host = "localhost";
     $user = "root";
     $pass = "jorgejac";
@@ -18,10 +17,9 @@
     );
     exit();
   }
-*/
 
   //Con el hosting de desarrollo no se permite el comando mysqldump por lo que se usara en local
-  include_once 'conexion.php';
+  //include_once 'conexion.php';
 
   $fechaDeLaCopia = "-".date("d-l-F-Y");
   $nombreBackup = $db.$fechaDeLaCopia.".sql";
