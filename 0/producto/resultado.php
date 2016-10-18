@@ -33,6 +33,13 @@
                     exit(1);
                   }
 
+                  if (isset($modificar)&&$Nom_produ!=$Nom_original&&$Nom_produ==$reg2[1]) { ?>
+                    <script type="text/javascript">
+                      window.location="index?mensaje";
+                    </script>
+            <?php
+                    exit(1);
+                  }
                     $i++;
                 endwhile;
 

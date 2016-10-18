@@ -94,6 +94,7 @@
                 <br/>
                 <div class="grupobotones">
                     <input type="hidden" name="" value="<?php echo $nombres; ?>" id="arr"/>
+                    <input type="hidden" name="Nom_original" id="" value="<?php if(isset($reg)) echo $reg[1] ?>" />
                     <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
