@@ -73,7 +73,7 @@
                     </optgroup>
                 </select>
                 </br>
-                <label for="Precio_produ"> Precio de Producto </label>
+                <label for="Precio_produ"> Precio de Producto (Bs)</label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="7" />
            		</br>
                 <?php if (isset($reg)) {
@@ -94,6 +94,7 @@
                 <br/>
                 <div class="grupobotones">
                     <input type="hidden" name="" value="<?php echo $nombres; ?>" id="arr"/>
+                    <input type="hidden" name="Nom_original" id="" value="<?php if(isset($reg)) echo $reg[1] ?>" />
                     <button name="atras" type="button" onclick=location="inve" class="boton"><i class="fa fa-arrow-left"></i> Ir al Inventario</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
