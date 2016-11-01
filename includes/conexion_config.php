@@ -12,10 +12,10 @@
 		private $database11 = "inicio_seguro";
 
 		//DB desarrollo
-		private $host2 = "31.220.104.130";
-		private $user2 = "u817028193_uptm";
-		private $password2 = "123456";
-		private $database2 = "u817028193_uptm";
+		private $host2 = "31.170.166.58";
+		private $user2 = "u258201550_pst";
+		private $password2 = "123456789";
+		private $database2 = "u258201550_pst";
 
 		//Hosting de produccion
 		private $host0 = "mysql.hostinger.co";
