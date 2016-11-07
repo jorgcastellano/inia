@@ -45,7 +45,7 @@
                     <input type="text" name="Nom_ana" value="<?php if(isset($reg)) echo $reg[1]; ?>" />
                     <br>
                 <label for="Precio_ana">Costo del analisis</label>
-                    <input type="text" name="Precio_ana" value="<?php if(isset($reg)) echo $reg[2]; ?>" />
+                    <input type="text" name="Precio_ana" value="<?php if(isset($reg)) echo $reg[2]; ?>" maxlength="7" placeholder="" pattern="[0-9]+"/>
                     <br>
                 <label for="Tipo"> Laboratorio</label>
                 <select class="opcion4" name="Tipo">
