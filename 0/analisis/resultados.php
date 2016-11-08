@@ -35,6 +35,14 @@
 
                   }
 
+                  if (isset($modificar)&&$Nom_ana!=$Nom_original&&$Nom_ana==$reg1[1]) { ?>
+                    <script type="text/javascript">
+                      window.location="formulario?mensaje";
+                    </script>
+            <?php
+                    exit(1);
+                  }
+
                     $i++;
                 endwhile;
 

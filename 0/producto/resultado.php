@@ -33,6 +33,13 @@
                     exit(1);
                   }
 
+                  if (isset($modificar)&&$Nom_produ!=$Nom_original&&$Nom_produ==$reg2[1]) { ?>
+                    <script type="text/javascript">
+                      window.location="index?mensaje";
+                    </script>
+            <?php
+                    exit(1);
+                  }
                     $i++;
                 endwhile;
 
@@ -73,7 +80,7 @@
                     <tr>
                         <td><?php if(isset($reg)) echo $reg[1]?></td>
                         <td><?php if(isset($reg)) echo "".$reg[2]." ".$unidad; ?></td>
-                        <td><?php if(isset($reg)) echo $reg[3]?></td>
+                        <td><?php if(isset($reg)) echo $reg[3]." Bs";?></td>
                     </tr>
 
                 </table>

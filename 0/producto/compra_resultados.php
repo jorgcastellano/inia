@@ -26,6 +26,15 @@
           $result = $objproducto->consulta_completo($mysqli);
           $i = 0; $total = 0;
           while ($resultado = $result->fetch_array()) :
+
+            if ($cantidad[$i]>$resultado[2])//verificar si el pedido es mayor a la existencia
+                $cantidad[$i]=$resultado[2];
+            endif;
+
+            if ($cantidad[$i]<0)//verificar si el pedido es menor a la existencia
+                $cantidad[$i]=0;
+            endif;
+
             if (!empty($cantidad[$i])) :
               $total += ($resultado[3] * $cantidad[$i]);
             endif;
@@ -45,7 +54,7 @@
                     <td>$ress[1]</td>
                     <td>$total</td>
                   </tr> ";
-          
+
           echo "<table class='anapro'>
                   <tr>
                     <td>NOMBRE</td>
