@@ -73,13 +73,10 @@
                     </optgroup>
                 </select>
                 </br>
-<<<<<<< HEAD
-                <label for="Precio_produ"> Precio de Producto </label>
+                <label for="Precio_produ"> Precio de Producto (Bs) </label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="7" placeholder="" pattern="[0-9]+"/>
-=======
-                <label for="Precio_produ"> Precio de Producto (Bs)</label>
-            	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="7" />
->>>>>>> 0db7db8ee2437d290ad0a24ad1b228060d2d8da1
+                
+
            		</br>
                 <?php if (isset($reg)) {
                         if ($reg[4] == "I"){
