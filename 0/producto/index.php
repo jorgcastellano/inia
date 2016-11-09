@@ -24,7 +24,7 @@
             extract($_GET);
 
             if (isset($mensaje)) {
-              echo "<span class='notify_f'><i class='fa fa-times'></i>El producto ya existe</span> ";
+              echo "<span class='notify_f'><i class='fa fa-times'></i>El producto no se registró porque ya existe<br /></span> ";
             }
 
 
@@ -56,7 +56,7 @@
             	</br>
             	<label for="Existencia"> Cantidad de Producto </label>
 
-            	<input required type="num" name="Existencia" id="Existencia" value="<?php if(isset($reg)) echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="7" />
+            	<input required type="num" name="Existencia" id="Existencia" value="<?php if(isset($reg)) echo $reg[2] ?>" title="Introduzca la cantidad de este producto" maxlength="7" placeholder="" pattern="[0-9]+"/>
 
 
                 <select class="opcion3" name="um" required>
@@ -73,8 +73,13 @@
                     </optgroup>
                 </select>
                 </br>
+<<<<<<< HEAD
+                <label for="Precio_produ"> Precio de Producto </label>
+            	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="7" placeholder="" pattern="[0-9]+"/>
+=======
                 <label for="Precio_produ"> Precio de Producto (Bs)</label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="7" />
+>>>>>>> 0db7db8ee2437d290ad0a24ad1b228060d2d8da1
            		</br>
                 <?php if (isset($reg)) {
                         if ($reg[4] == "I"){

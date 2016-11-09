@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Analisis</title>
+        <title>Análisis</title>
         <?php include '../../layouts/head.php' ?>
     </head>
     <body>
@@ -13,7 +13,7 @@
             <div>
                 <?php include '../../layouts/cabecera-body.php' ?>
                 <hgroup>
-                    <h1>Analisis</h1>
+                    <h1>Análisis</h1>
                 </hgroup>
             </div>
 
@@ -52,8 +52,8 @@
 
                 $ana->modificar_analisis($mysqli,$Cod_ana,$Nom_ana,$Precio_ana,$Tipo);
 
-                if($mysqli->affected_rows>0){ echo "<span class='notify'><i class='fa fa-check-square'></i>El analisis se ha modificado con exito</span> ";}
-                    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se realizo nigun cambio</span> ";}
+                if($mysqli->affected_rows>0){ echo "<span class='notify'><i class='fa fa-check-square'></i>El análisis se ha modificado con exito</span> ";}
+                    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se realizó ningun cambio</span> ";}
                 $reg=$ana->consultar_analisis($mysqli,$Cod_ana);
                 endif;
                 //verificamos si se desea registrar un nuevo analisis
