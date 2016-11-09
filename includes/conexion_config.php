@@ -19,9 +19,9 @@
 
 		//Hosting de produccion
 		private $host0 = "mysql.hostinger.co";
-		private $user0 = "u817028193_inia";
+		private $user0 = "u258201550_inia";
 		private $password0 = "123456";
-		private $database0 = "u817028193_inia";
+		private $database0 = "u258201550_inia";
 
 		public function host($a)
 		{
