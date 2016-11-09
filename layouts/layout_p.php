@@ -7,7 +7,7 @@
 
       function autoCarga(){
           var barrasMenu = document.getElementById("barrasMenu");
-          barrasMenu.addEventListener("click", function(){menuOn(barrasMenu);});
+          barrasMenu.addEventListener("mouseover", function(){menuOn(barrasMenu);});
           //barrasMenu.addEventListener("click", function(){menuOff(barrasMenu);});
       }
       window.onload = autoCarga();
