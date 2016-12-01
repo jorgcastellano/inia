@@ -1,6 +1,6 @@
 <?php
 
-        $estatus="";
+        $estatus="esper_espec";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus);
         $objespecialista = new especialista();

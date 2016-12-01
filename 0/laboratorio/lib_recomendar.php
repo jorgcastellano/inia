@@ -1,6 +1,6 @@
 <?php
 
-        $estatus="";
+        $estatus="recomendar";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus);
 

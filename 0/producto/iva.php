@@ -28,13 +28,13 @@
                 <input type="num" name="ivactual" id="ivactual" value="<?php if(isset($reg)) echo $reg[0]?>" title="IVA actual" maxlength="5" disabled />  % 
                 </br>
                 <label for="nuevoiva"> Nuevo IVA ( % ) </label>
-                <input required type="num" name="nuevoiva" id="nuevoivsa" value="" title="Introduzca el nuevo iva" maxlength="5" />  % 
+                <input required type="num" name="nuevoiva" id="nuevoivsa" value="" title="Introduzca el nuevo iva" maxlength="5" placeholder="" pattern="[0-9]+" />  % 
                 </br>
-                <label for="reten"> Nueva retencion ( % )</label>
-                <input required type="num" name="reten" id="reten" value="" title="Confirme la nueva retencion" maxlength="5" />  % 
+                <label for="reten"> Nueva retención ( % )</label>
+                <input required type="num" name="reten" id="reten" value="" title="Confirme la nueva retención" maxlength="5" placeholder="" pattern="[0-9]+" />  % 
                 </br>
               
-                <label for="F_toma">Fecha de activacion</label>
+                <label for="F_toma">Fecha de activación</label>
                             <select name="Dia" title="Dia">
                                 <option value="">Día</option>
                                 <?php for($i=01;$i<32;$i++) { ?>
