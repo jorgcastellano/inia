@@ -26,7 +26,7 @@
 
 
             ?>
-           <form class="contact_form" method="POST" action="insert"  id="" name="principal1" onsubmit=";"> <!--Formulario de suelo-->
+           <form class="contact_form" method="POST" action="insert"  id="" name="principal1" onsubmit=""> <!--Formulario de suelo-->
 
              <label for=""></label>
              <input type="text" name="" value="" id="" title="" maxlength="" placeholder="" />
