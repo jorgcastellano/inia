@@ -72,12 +72,7 @@
 
                 //<label for="persona" title="Seleccione si es una persona juridica">Persona juridica</label>
 				//<input type="checkbox" name="Nat_jur[]" value="1" title="Seleccione si es una persona juridica"/>
-<<<<<<< HEAD
 
-                ?>
-
-=======
->>>>>>> 4de458e8015636a9869868360a3c2af8db5ee541
 
                 ?>
                 <div class="grupobotones">

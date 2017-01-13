@@ -5,8 +5,8 @@
 	class datos_conex {
 
 		//Datos locales
-		private $host1 = "localhost";
-		private $user1 = "jorge";
+		private $host1 = "192.168.10.225";
+		private $user1 = "root";
 		private $password1 = "jorgejac";
 		private $database1 = "proyecto3";
 		private $database11 = "inicio_seguro";

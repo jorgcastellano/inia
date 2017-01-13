@@ -1,7 +1,7 @@
 <?php
 	//Esto solamente para verificar si existen privilegios de especialista
 	class especialista{
-		
+
 		public function verificar_privilegio_2($mysqli, $ced){
 		$sql = "SELECT Ced_esp FROM especialista WHERE Ced_esp = '$ced'";
 		$res = $mysqli->query($sql);
@@ -22,6 +22,11 @@
 			$sql = "INSERT INTO especialista(Ced_esp, Cod_lab, Nom_esp, Ape_esp, Telf_esp, Especialidad) VALUES ('$cedula', '$laboratorio', '$nombre', '$apellido', '$telefono', '$especialidad')";
 			$mysqli->query($sql);
 			include 'error_insert';
+		}
+
+		public function consulta_completo($mysqli){
+			$sql = "SELECT * FROM especialista";
+			return $mysqli->query($sql);
 		}
 
 		public function eliminar($mysqli, $cedula){
