@@ -25,11 +25,8 @@
 		}
 
 		public function consulta_completo($mysqli){
-
 			$sql = "SELECT * FROM especialista";
 			return $mysqli->query($sql);
-
-
 		}
 
 		public function eliminar($mysqli, $cedula){

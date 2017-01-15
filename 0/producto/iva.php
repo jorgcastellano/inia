@@ -16,7 +16,7 @@
                     <h1>Sistema de Procesos Internos del INIA Mérida (SPIIM)</h1>
                 </hgroup>
             </div>
-           <?php 
+           <?php
                 require_once '../../system/class.php';
                 $ivas = new iva();
                 $iva_actual = $ivas->consultar_iva_actual($mysqli);
@@ -25,15 +25,15 @@
            ?>
             <form  class="contact_form" method="post" action="update">
                 <label for="ivactual"> IVA actual ( % ) </label>
-                <input type="num" name="ivactual" id="ivactual" value="<?php if(isset($reg)) echo $reg[0]?>" title="IVA actual" maxlength="5" disabled />  % 
+                <input type="num" name="ivactual" id="ivactual" value="<?php if(isset($reg)) echo $reg[0]?>" title="IVA actual" maxlength="5" disabled />  %
                 </br>
                 <label for="nuevoiva"> Nuevo IVA ( % ) </label>
-                <input required type="num" name="nuevoiva" id="nuevoivsa" value="" title="Introduzca el nuevo iva" maxlength="5" placeholder="" pattern="[0-9]+" />  % 
+                <input required type="num" name="nuevoiva" id="nuevoivsa" value="" title="Introduzca el nuevo iva" maxlength="5" placeholder="" pattern="[0-9]+" />  %
                 </br>
                 <label for="reten"> Nueva retención ( % )</label>
-                <input required type="num" name="reten" id="reten" value="" title="Confirme la nueva retención" maxlength="5" placeholder="" pattern="[0-9]+" />  % 
+                <input required type="num" name="reten" id="reten" value="" title="Confirme la nueva retención" maxlength="5" placeholder="" pattern="[0-9]+" />  %
                 </br>
-              
+
                 <label for="F_toma">Fecha de activación</label>
                             <select name="Dia" title="Dia">
                                 <option value="">Día</option>
@@ -58,9 +58,9 @@
                     <button name="atras" type="button" onclick=location="../home/inicio" class="boton"><i class="fa fa-times"></i> Cancelar</button>
                     <button  type="reset" name="reset" class="boton"><i class="fa fa-eraser"></i> Limpiar</button>
                     <?php if (isset($_POST['seleccion']) OR isset($_POST['pro']) OR isset($_POST['Modificar1'])) : ?>
-                        <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button> 
+                        <button class="boton" type="submit" name="modificar" value="<?php if(isset($reg)) echo $reg[0] ?>" formaction="resultado"><i class="fa fa-check"></i> Guardar cambios</button>
                         <?php else : ?>
-                        <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Guardar</button> 
+                        <button class="boton" type="submit" name="submit"><i class="fa fa-check"></i> Guardar</button>
                     <?php endif; ?>
                 </div>
             </form>

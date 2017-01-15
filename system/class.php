@@ -206,10 +206,10 @@ class cliente {
 
       private $reg;
 
-      public function registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente)
+      public function registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente, $tipoUser, $tipOrg)
       {
-         $sql="INSERT INTO cliente (Ced_cliente,Nom_cliente,Apelli_cliente,Contacto,Telf_cliente,Dire_cliente)
-               VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente')";
+         $sql="INSERT INTO cliente (Ced_cliente,Nom_cliente,Apelli_cliente,Contacto,Telf_cliente,Dire_cliente,tipoUser,tipOrg)
+               VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente', '$tipoUser', '$tipOrg')";
          $mysqli->query($sql);
          include_once 'error_insert.php';
          if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo cliente se ha registrado con éxito<br /></span> ";}
@@ -231,10 +231,10 @@ class cliente {
       return $res=$mysqli->query($sql);
      }
 
-     public function modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente)
+     public function modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente, $tipoUser, $tipOrg)
      {
 
-      $sql="UPDATE cliente SET cliente.Ced_cliente='$Ced_cliente',cliente.Nom_cliente='$Nom_cliente',cliente.Apelli_cliente='$Apelli_cliente',cliente.Contacto='$Contacto',cliente.Telf_cliente='$Telf_cliente',cliente.Dire_cliente='$Dire_cliente' WHERE cliente.Id_cliente='$Id_cliente'";
+      $sql="UPDATE cliente SET cliente.Ced_cliente='$Ced_cliente',cliente.Nom_cliente='$Nom_cliente',cliente.Apelli_cliente='$Apelli_cliente',cliente.Contacto='$Contacto',cliente.Telf_cliente='$Telf_cliente',cliente.Dire_cliente='$Dire_cliente', cliente.tipoUser='$tipoUser', cliente.tipOrg='$tipOrg' WHERE cliente.Id_cliente='$Id_cliente'";
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
       if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El cliente se ha modificado con éxito<br /></span> ";}
@@ -344,8 +344,12 @@ class muestra {
     {
 
 
-      $sql="INSERT INTO muestra(Cod_muestra,Tipo_m,Cult_act,Nro_pl,Edad_cul,Tam_lote,Topografia,Dist_siembra,Riego,Cult_ant,F_toma,Practicas,Produc_dosis,Epoca_aplic,Modo_aplic,Pobl_cercana,Profundidad,Inundacion,T_vege,Rend_cult,Restos,Descrip_fito,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Nro_subm,Origen_sem,Pres_microorg,Dist_planafect,Parts_afect,Text_sue,Composicion,Hum_sue,Drenaje,Controles,Produc_dosisb,Cond_agroclima,Observaciones,Finca)
-            VALUES ('$Cod_muestra','$Tipo_m','$Cult_act','$Nro_pl','$Edad_cul','$Tam_lote','$Topografia','$Dist_siembra','$Riego','$Cult_ant','$F_toma','$Practicas','$Produc_dosis','$Epoca_aplic','$Modo_aplic','$Pobl_cercana','$Profundidad','$Inundacion','$T_vege','$Rend_cult','$Restos','$Descrip_fito','$Id_microorg','$Sintomas','$F_sintomas','$Causa','$Tipo_plant','$Nro_subm','$Origen_sem','$Pres_microorg','$Dist_planafect','$Parts_afect','$Text_sue','$Composicion','$Hum_sue','$Drenaje','$Controles','$Produc_dosisb','$Cond_agroclima','$Observaciones','$Finca')";
+      $sql="INSERT INTO muestra(Cod_muestra,Tipo_m,Cult_act,Nro_pl,Edad_cul,Tam_lote,Topografia,Dist_siembra,Riego,Cult_ant,F_toma,Practicas,Produc_dosis,Epoca_aplic,Modo_aplic,Pobl_cercana,Profundidad,
+        Inundacion,T_vege,Rend_cult,Restos,Descrip_fito,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Nro_subm,Origen_sem,Pres_microorg,Dist_planafect,Parts_afect,Text_sue,Composicion,Hum_sue,
+        Drenaje,Controles,Produc_dosisb,Cond_agroclima,Observaciones,Finca)
+            VALUES ('$Cod_muestra','$Tipo_m','$Cult_act','$Nro_pl','$Edad_cul','$Tam_lote','$Topografia','$Dist_siembra','$Riego','$Cult_ant','$F_toma','$Practicas','$Produc_dosis','$Epoca_aplic',
+              '$Modo_aplic','$Pobl_cercana','$Profundidad','$Inundacion','$T_vege','$Rend_cult','$Restos','$Descrip_fito','$Id_microorg','$Sintomas','$F_sintomas','$Causa','$Tipo_plant','$Nro_subm',
+              '$Origen_sem','$Pres_microorg','$Dist_planafect','$Parts_afect','$Text_sue','$Composicion','$Hum_sue','$Drenaje','$Controles','$Produc_dosisb','$Cond_agroclima','$Observaciones','$Finca')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
 
