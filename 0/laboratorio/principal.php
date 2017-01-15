@@ -7,6 +7,35 @@
         <title>laboratorio</title>
 
         <?php include '../../layouts/head.php' ?>
+
+        <script type="text/javascript">
+        //scrip de selección que determina cual formulario se desea cargar
+
+
+        function mostrarformulario(){
+
+          if (document.getElementById('formulario1').checked == true) {
+
+            document.getElementById('primero').style.display='block';
+
+          } else {
+
+            document.getElementById('primero').style.display='none';
+            }
+
+          if (document.getElementById('formulario2').checked == true) {
+
+            document.getElementById('segundo').style.display='block';
+
+          } else {
+
+            document.getElementById('segundo').style.display='none';
+          }
+
+
+        }
+
+        </script>
     </head>
     <body>
         <?php include '../../system/menu.php' ?>
@@ -18,13 +47,25 @@
 				</hgroup>
 			</div>
 
+      <?php
+          extract($_POST);
+          require_once '../../system/class.php';
+      ?>
 	        <form action="index" method="post">
-	    	      <?php
-				          extract($_POST);
-                  require_once '../../system/class.php';
 
+            <input type="radio" name="formulario" value="suelo" id="formulario1" onclick="mostrarformulario();"/>
+            <input type="radio" name="formulario" value="fito" id="formulario2" onclick="mostrarformulario();"/>
 
-              ?>
+              <div id='primero' style='display:none;'>
+                <?php
+                echo "holaaa";
+                include 'lib_asig_especialista.php' ?>
+              </div>
+
+              <div id='segundo' style='display:none;'>
+                <?php  include 'lib_asig_recomendador.php';?>
+              </div>
+
           </form>
            <?php include '../../layouts/layout_p.php' ?>
         </section>

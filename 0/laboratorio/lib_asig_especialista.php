@@ -1,8 +1,9 @@
 <?php
-
+  echo "string";
         $estatus="esper_espec";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus);
+
         $objespecialista = new especialista();
         $reg2 = $objespecialista -> consulta_completo($mysqli);
 
@@ -11,27 +12,28 @@
                 <tr>
                     <td><i class='fa fa-chevron-circle-right'></i> Código </td>
                     <td>Tipo</td>
-                    <td>Fecha inicio</td>
-                    <td>Fecha final </td>
+                    <td>cultivo</td>
+                    <td>tamaño</td>
                     <td>Asignar</td>
                 </tr>";
 
     while ($res = $reg -> fetch_array()) :
 
         echo "    <tr>
-                      <td>$res[]</td>
-                      <td>$res[]</td>
-                      <td>$res[]</td>
-                      <td>$res[]</td>
+                      <td>$res[1]</td>
+                      <td>$res[2]</td>
+                      <td>$res[3]</td>
+                      <td>$res[6]</td>
                       <td>
                         <select>
                             <option value='' ></option>"
                           while($res2 = $reg2 -> fetch_array()):
-        echo "              <option value=''></option>";
+        echo "              <option value=''>$res2[2]</option>";
                           endwhile;
         echo "          </select>
                       </td>
                   </tr>";
     endwhile;
+    echo "</table> "
 
  ?>
