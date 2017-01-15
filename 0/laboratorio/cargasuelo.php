@@ -2,8 +2,6 @@
    session_start();
    include_once '../../system/check.php';
 ?>
-<!--Los siguientes formularios son utilizados para el registro  de una muestra y en caso de querer modificar una muestra previa
-   mente registrada estos seran precargados con datos extraidos de la BD-->
 <!DOCTYPE html>
 <html>
    <head>
@@ -16,7 +14,7 @@
            <div>
                <?php include '../../layouts/cabecera-body.php'; ?>
              <hgroup>
-               <h1>Registrar Muestra</h1>
+               <h1>Cargar Resultados Suelo</h1>
              </hgroup>
            </div>
            <?php

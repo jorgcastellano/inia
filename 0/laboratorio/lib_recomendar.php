@@ -1,6 +1,6 @@
 <?php
-
-        $estatus="recomendar";
+      echo "string";
+      /*  $estatus="recomendar";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus);
 
@@ -23,6 +23,6 @@
                       <td>$res[]</td>
                       <td></td>
                   </tr>";
-    endwhile;
+    endwhile;*/
 
  ?>

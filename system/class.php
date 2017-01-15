@@ -381,6 +381,14 @@ class muestra {
 
     }
 
+    public function cambiar_estatus($mysqli,$estatus,$Cod_muestra)
+    {
+
+      $sql="UPDATE muestra SET Estatus='$estatus' WHERE Cod_muestra='$Cod_muestra'";
+      return $mysqli->query($sql);
+
+    }
+
 
 }
 
