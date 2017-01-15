@@ -8,14 +8,14 @@
         <?php include_once '../../layouts/head.php' ?>
     </head>
     <body>
-        <?php include_once '../../system/menu.php' ?>
-        <section class="bloque">
-            <div>
-                <?php include_once '../../layouts/cabecera-body.php' ?>
-				<hgroup>
-					<h1>Ficha del cliente</h1>
-				</hgroup>
-			</div>
+      <?php include_once '../../system/menu.php' ?>
+      <section class="bloque">
+        <div>
+          <?php include_once '../../layouts/cabecera-body.php' ?>
+  				<hgroup>
+  					<h1>Ficha del cliente</h1>
+  				</hgroup>
+  			</div>
         <?php
           extract($_POST);
           require '../../system/class.php';
@@ -46,7 +46,7 @@
                 $client = new cliente();
 
                 if (isset($Registrar)) :
-                    $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
+                    $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente,$tipoUsuario, $tipoOrg);
                     if ($_SESSION['privilegios'] == 1) :
                         $fin = new finca();
                         $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia);
@@ -57,7 +57,7 @@
 
                     $Id_cliente=$Actualizar;
 
-                    $client->modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente);
+                    $client->modificar_cliente($mysqli,$Id_cliente,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente,$tipoUsuario, $tipoOrg);
                     if ($_SESSION['privilegios'] == 1) :
                         $fin = new finca();
                         $nume = count($Nom_fin);
@@ -70,7 +70,11 @@
                 $reg = $client->consultar_cliente($mysqli,$Ced_cliente);
 
                 if (empty($reg)) :
-                    header('Location: index.php?var1='.$_POST['Ced_cliente']);
+                  ?>
+                  <script type="text/javascript">
+                    window.location="index.php?var1=<?php echo $Ced_cliente ?>";
+                  </script>
+                  <?php
 
                 else : ?>
 
@@ -78,7 +82,6 @@
                         <table class="tcliente">
                             <tr>
                                 <td  colspan="2"><i class="fa fa-user"></i> Datos del cliente</td>
-
                             </tr>
                             <tr>
                                 <td><b >Cédula de identidad:</b></td>
@@ -103,6 +106,40 @@
                             <tr>
                                 <td><b>Domicilio:</b></td>
                                 <td><?php echo $reg[6]?></td>
+                            </tr>
+                            <?php
+
+                              if ($reg[8] == 1)
+                                $tUsuario = "Productor";
+
+                             ?>
+                            <tr>
+                              <td><b>Tipo de usuario:</b></td>
+                              <td><?php echo $tUsuario; ?></td>
+                            </tr>
+                            <?php
+
+                              if($reg[9] == 1)
+                                $organizacion = "Productor independiente";
+                              else if($reg[9] == 2)
+                                $organizacion = "Empresas públicas";
+                              else if($reg[9] == 3)
+                                $organizacion = "Empresas privadas";
+                              else if($reg[9] == 4)
+                                $organizacion = "Cooperativas";
+                              else if($reg[9] == 5)
+                                $organizacion = "Organismos bases";
+                              else if($reg[9] == 6)
+                                $organizacion = "Instituciones educativas";
+                              else if($reg[9] == 7)
+                                $organizacion = "Universidades";
+                              else
+                                $organizacion = "Otros";
+
+                            ?>
+                            <tr>
+                              <td><b>Tipo de organización:</b></td>
+                              <td><?php echo $organizacion; ?></td>
                             </tr>
                         </table>
                         <?php

@@ -36,8 +36,8 @@
 			<form class="contact_form" method="post" action="resultados">
 
 				<br><label for="Ced_cliente">Cédula</label>
-                <input required type="num" name="Ced_cliente" id="Ced_cliente" value="<?php echo $reg[1].$var1; ?>" title="Introduzca la cédula " maxlength="8" placeholder="" pattern="\d{6,}" />
-                <span class="form_hint">Debe contener solo caracteres númericos"</span><br />
+                <input required type="text" name="Ced_cliente" id="Ced_cliente" value="<?php echo $reg[1].$var1; ?>" title="Introduzca la cédula " maxlength="8" placeholder="" pattern="\d{6,}" />
+                <span class="form_hint">Debe contener solo caracteres númericos</span><br />
 				<label for="Nom_cliente">Nombres</label>
 					<input required type="text" name="Nom_cliente" id="Nom_cliente" value="<?php echo $reg[2]?>" title="Introduzca los nombres " maxlength="30" placeholder="" pattern="([A-Z]{1}[a-zÑñáéíóú]{1,}\s{0,1})+" />
                     <span class="form_hint">Debe tener siempre la primera letra en "Mayúscula"</span><br />
@@ -52,7 +52,22 @@
                     <span class="form_hint">Debe ingresar su teléfono de la siguiente manera 0000- 0000000"</span><br />
 				<label for="Dire_cliente">Dirección</label>
 					<textarea class="areatexto" required name="Dire_cliente" id="Dire_cliente"  title="" cols="30" rows="5" maxlength="100" placeholder="Por Favor Especifique aqui la dirección del cliente"><?php echo $reg[6]?></textarea>
-					<br />
+          <br><label for="tipoUsuario">Tipo de usuario</label>
+          <select class="opcion4" name="tipoUsuario">
+            <option value="1" <?php if($reg[8] == 1) echo "selected"; ?>>Productor</option>
+          </select><br>
+          <label for="tipoUsuario">Tipo de organización</label>
+          <select class="opcion4" name="tipoOrg">
+            <option value="1" <?php if($reg[9] == 1) echo "selected"; ?> >Productor independiente</option>
+            <option value="2" <?php if($reg[9] == 2) echo "selected"; ?> >Empresas públicas</option>
+            <option value="3" <?php if($reg[9] == 3) echo "selected"; ?> >Empresas privadas</option>
+            <option value="4" <?php if($reg[9] == 4) echo "selected"; ?> >Cooperativas</option>
+            <option value="5" <?php if($reg[9] == 5) echo "selected"; ?> >Organismos bases</option>
+            <option value="6" <?php if($reg[9] == 6) echo "selected"; ?> >Instituciones educativas</option>
+            <option value="7" <?php if($reg[9] == 7) echo "selected"; ?> >Universidades</option>
+            <option value="8" <?php if($reg[9] == 8) echo "selected"; ?> >Otros</option>
+          </select>
+          <br />
                 <?php
                 if ($_SESSION['privilegios'] == 1) :
                   $j = 0;
