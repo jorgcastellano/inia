@@ -46,7 +46,7 @@
                     <label>Confirmar contraseña: </label>
                     <input required type="password" name="confirmpwd" id="confirmpwd" placeholder="Reescriba la contraseña" /><br>
                     <label>Pregunta de seguridad:</label>
-                    <select required name="pregunta" id="pregunta">
+                    <select required name="pregunta" id="pregunta" class="opcion4">
                         <option value="0"> -- seleccione una pregunta -- </option>
                         <option value="1">¿Nombre de su primera mascota?</option>
                         <option value="2">¿Cuál fué su apellido de soltera?</option>

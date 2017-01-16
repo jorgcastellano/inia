@@ -236,9 +236,14 @@ button.boton {
     }
 
     .grupobotones{
-        width: fit-content;
+        width: -webkit-fit-content;
         width: -moz-fit-content;
+        width: -o-fit-content;
+        width: fit-content;
         margin: 0 auto;
         white-space:nowrap;
 
     }
+#Ced_cliente {
+  width: 155px;
+}

@@ -7,7 +7,7 @@
                 <label for="Estado">Estado</label>
                 <select class="opcion4" required name="Estado[]" id="Estado">
                     <option value="">Seleccione</option>
-                    <option value="Amazonas" <?php if($reg3[3]=="Amazonas"){ echo 'selected'; } ?>>Amazonas</option>
+                    <option onclick="municipio" value="Amazonas" <?php if($reg3[3]=="Amazonas"){ echo 'selected'; } ?>>Amazonas</option>
                     <option value="Aragua" <?php if($reg3[3]=="Aragua"){ echo 'selected'; } ?>>Aragua</option>
                     <option value="Bolívar" <?php if($reg3[3]=="Bolívar"){ echo 'selected'; } ?>>Bolívar</option>
                     <option value="Falcon" <?php if($reg3[3]=="Falcon"){ echo 'selected'; } ?>>Falcon</option>

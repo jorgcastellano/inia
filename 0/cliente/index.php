@@ -37,7 +37,7 @@
 
 				<br>
         <label for="Ced_cliente">Cédula / RIF</label>
-          <select class="opc-min" name="">
+          <select class="opc-min" name="naturalidad">
             <option value="V">V</option>
             <option value="E">E</option>
             <option value="J">J</option>
@@ -91,10 +91,6 @@
                     include 'lib_finca.php';
                   }
                 endif;
-
-                //<label for="persona" title="Seleccione si es una persona juridica">Persona juridica</label>
-				//<input type="checkbox" name="Nat_jur[]" value="1" title="Seleccione si es una persona juridica"/>
-
 
                 ?>
                 <div class="grupobotones">

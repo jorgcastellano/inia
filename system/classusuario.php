@@ -17,7 +17,7 @@
             $mysqli->query($sql);
             require_once 'error_update.php';
         }
-        public function consultar_miembro_on($mysqli) { 
+        public function consultar_miembro_on($mysqli) {
             $sql = "SELECT * FROM miembros WHERE aprobacion = 'On'";
             return $mysqli->query($sql);
         }
@@ -39,6 +39,25 @@
         public function consultar_bloqueo($mysqli, $email){
             $sql = "SELECT block FROM miembros WHERE email='$email'";
             return $mysqli->query($sql);
+        }
+        public function consultar_mi_usuario($mysqli, $id) {
+          $sql = "SELECT * FROM miembros WHERE id='$id'";
+          return $mysqli->query($sql);
+        }
+        public function modificar_usuario($mysqli, $id, $email, $pass, $pregunta, $respuesta) {
+          $sql = "UPDATE miembros SET email='$email', password='$pass', pregunta='$pregunta', respuesta='$respuesta' WHERE id='$id'";
+          $mysqli->query($sql);
+          require_once 'error_update.php';
+        }
+        public function modificar_usuario_no_pregunta($mysqli, $id, $email, $pass ) {
+          $sql = "UPDATE miembros SET email='$email', password='$pass' WHERE id='$id'";
+          $mysqli->query($sql);
+          require_once 'error_update.php';
+        }
+        public function modificar_usuario_pregunta($mysqli, $id, $email, $pregunta, $respuesta) {
+          $sql = "UPDATE miembros SET email='$email', pregunta='$pregunta', respuesta='$respuesta' WHERE id='$id'";
+          $mysqli->query($sql);
+          require_once 'error_update.php';
         }
 
         //Funciones para los intentos
