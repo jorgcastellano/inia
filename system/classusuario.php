@@ -59,6 +59,15 @@
           $mysqli->query($sql);
           require_once 'error_update.php';
         }
+        public function reinicio($mysqli, $id, $pass) {
+          $sql = "UPDATE miembros SET password='$pass', block='0' WHERE ci='$id'";
+          $mysqli->query($sql);
+          require_once 'error_update.php';
+        }
+        public function consultar_mi_usuario_ci($mysqli, $id) {
+          $sql = "SELECT * FROM miembros WHERE ci='$id'";
+          return $mysqli->query($sql);
+        }
 
         //Funciones para los intentos
         public function reg_intentos_fallidos($mysqli, $cod){
