@@ -24,7 +24,7 @@
                       <td>$res[2]</td>
                       <td>$res[3]</td>
                       <td>
-                        <select name='Especialista'>
+                        <select name='Ced_esp[]'>
                             <option value=''>--Seleccione--</option>";
                           while($res2 = $reg2 -> fetch_array()):
 
@@ -33,7 +33,7 @@
                           endwhile;
         echo "          </select>
                       </td>
-                      <input type='hidden' name='Cod_muestra' value='$res[1]' />
+                      <input type='hidden' name='idm' value='$res[0]' />
                       <td><button class='sinboton' type='submit' name='eliminar' value='' id='accion_buttom' ><i class='fa fa-trash-o'></button></i></td>
                       <td><button class='sinboton' type='submit' name='Asignar' value='' id='accion_buttom' ><i class='fa fa-arrow-right'></button></i></td>
                   </tr>

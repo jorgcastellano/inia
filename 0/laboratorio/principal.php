@@ -54,8 +54,8 @@
       ?>
 	        <form action="index" method="post">
 
-            <input type="radio" name="formulario" value="suelo" id="formulario1" onclick="mostrarformulario();"/>
-            <input type="radio" name="formulario" value="fito" id="formulario2" onclick="mostrarformulario();"/>
+            <input type="radio" name="formulario" value="suelo" id="formulario1" onclick="mostrarformulario();" checked="checked"/>Asignar muestras
+            <input type="radio" name="formulario" value="fito" id="formulario2" onclick="mostrarformulario();"/>Asignar recomendaciones
           </form>
               <div id='primero' style='display:none;'>
                 <?php
