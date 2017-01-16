@@ -29,6 +29,11 @@
 			return $mysqli->query($sql);
 		}
 
+		public function consulta_especialista($mysqli,$Ced_esp){
+			$sql = "SELECT * FROM especialista WHERE especialista.Ced_esp='$Ced_esp'";
+			return $mysqli->query($sql);
+		}
+
 		public function eliminar($mysqli, $cedula){
 			$sql = "DELETE FROM especialista WHERE Ced_esp = '$cedula'";
 			$mysqli->query($sql);

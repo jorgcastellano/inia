@@ -381,6 +381,36 @@ class muestra {
 
     }
 
+    public function cambiar_estatus($mysqli,$estatus,$idm)
+    {
+
+      $sql="UPDATE muestra SET Estatus='$estatus' WHERE id='$idm'";
+      return $mysqli->query($sql);
+
+    }
+
+    public function asignar_especialista($mysqli,$idm,$Ced_esp)
+    {
+      $sql="INSERT INTO muestra_especialista(id,idm,Ced_esp) VALUES (NULL, '$idm', '$Ced_esp')";
+      return $mysqli->query($sql);
+    }
+    public function consultar_muestra_especialista($mysqli,$idm)
+    {
+      $sql="SELECT * FROM muestra_especialista WHERE muestra_especialista.idm='$idm'";
+      return $mysqli->query($sql);
+    }
+
+    public function consultar_muestra_id($mysqli,$idm)
+    {
+
+      $sql="SELECT * FROM muestra WHERE muestra.id ='$idm'";
+      return $mysqli->query($sql);
+
+
+    }
+
+
+
 
 }
 
