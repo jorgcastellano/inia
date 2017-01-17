@@ -12,7 +12,7 @@
             <div>
                 <?php include '../../layouts/cabecera-body.php' ?>
                 <hgroup>
-                    <h1>¡Te se han otorgado privilegios de especialista!</h1>
+                    <h1>¡Se te han otorgado privilegios de especialista!</h1>
                 </hgroup>
             </div>
             <p><b>Atención</b></p>
@@ -38,10 +38,10 @@
                 <input required type="text" name="telefono" value="" placeholder="0000-0000000">
                 <span class="form_hint">Número de contácto</span><br />
                 <label>Laboratorio: </label>
-                <select name="laboratorio" required>
+                <select name="laboratorio" class="opcion4" required>
                     <option value=""> -- Seleccione -- </option>
                 <?php
-                    include_once '../../system/class.php'; 
+                    include_once '../../system/class.php';
                     $objlab = new laboratorio();
                     $res = $objlab->consultar_completa($mysqli);
                     while ($resultado = $res->fetch_array()){
@@ -51,7 +51,7 @@
                 </select><br>
                 <label>Especialidad: </label>
                 <input required type="text" name="especialidad" value="" placeholder="Solo de contener letras">
-                <span class="form_hint">Especialidad en los análisis</span><br /> 
+                <span class="form_hint">Especialidad en los análisis</span><br />
                 <div class="grupobotones">
                     <button type="button" class="boton" name="cancelar" onclick=location="../home/cerrar_sesion"><i class="fa fa-ban"></i> Cancelar</button>
                     <button type="submit" class="boton" name="submit"><i class="fa fa-check"></i> Completar registro</button>
