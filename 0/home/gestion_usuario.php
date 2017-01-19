@@ -127,7 +127,7 @@
                             <option value=''        >-seleccione-</option>
                             <option value='1' $uno  >Gerente</option>
                             <option value='2' $dos  >Especialista</option>
-                            <option value='3' $tres >Factura</option>
+                            <option value='3' $tres >Caja</option>
                         </select></td>
                         <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></i></button></td>
                     </tr>";
