@@ -46,10 +46,10 @@
                 $client = new cliente();
 
                 if (isset($Registrar)) :
-                    $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente,$tipoUsuario, $tipoOrg);
+                    $client->registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente,$tipoUsuario, $tipoOrg, $naturalidad);
                     if ($_SESSION['privilegios'] == 1) :
                         $fin = new finca();
-                        $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin,$Estado,$Municipio,$Parroquia);
+                        $fin->registrar_finca($mysqli,$Ced_cliente,$Nom_fin[0],$Estado[0],$Municipio[0],$Parroquia[0]);
                     endif;
                 endif;
 
@@ -85,7 +85,7 @@
                             </tr>
                             <tr>
                                 <td><b >Cédula de identidad:</b></td>
-                                <td><?php echo $reg[1]?></td>
+                                <td><?php echo $reg[7]."-".$reg[1]; ?></td>
                             </tr>
                             <tr>
                                 <td><b>Nombres:</b></td>
@@ -96,7 +96,7 @@
                                 <td><?php echo $reg[3]?></td>
                             </tr>
                             <tr>
-                                <td><b>Persona de contacto:</b></td>
+                                <td><b>Referido por:</b></td>
                                 <td><?php echo $reg[4]?></td>
                             </tr>
                             <tr>

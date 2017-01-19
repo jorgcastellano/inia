@@ -25,7 +25,7 @@
 
                 $mensaje1="";
                 $mensaje2="";
-                if (isset($eliminar)) :
+                if (isset($eliminar)) : //Eliminar un usuario
 
                     if (isset($dos)) :
                         $especialista = new especialista();
@@ -34,7 +34,7 @@
                         echo "<div class='notify'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></div> ";
                         $objinicio -> eliminar_miembros($mysqli, $eliminar);
                     endif;
-                elseif (isset($guardar)) :
+                elseif (isset($guardar)) : //
                     for ($i=0; $i < count($codigos); $i++) :
                         if (!empty($privilegios[$i])) :
                             $objinicio -> modificar_privilegios($mysqli, $privilegios[$i], $codigos[$i]);
@@ -43,6 +43,13 @@
                          $mensaje2="Debe seleccionar un privilegio para el usuario elegido";
                         endif;
                     endfor;
+                elseif(isset($reinicio)) :
+                    $pass = hash("sha512", "123456");
+                    $objinicio -> reinicio($mysqli, $reinicio, $pass);
+                    $mensaje2="Se reinicio la contraseña del usuario seleccionado con la clave \"123456\"";
+                    $user = $objinicio -> consultar_mi_usuario_ci($mysqli, $reinicio);
+                    $user = $user -> fetch_array();
+                    $objinicio -> eliminar_intentos($mysqli, $user[4]);
                 endif;
                 $reg = $objinicio->consultar_miembro($mysqli);
 
@@ -51,7 +58,7 @@
                     <tr>
                         <td><i class='fa fa-chevron-circle-right'></i> Cédula </td>
                         <td>Usuario</td>
-                        <td>Email</td>
+                        <td>Reinicio</td>
                         <td>Aceptación</td>
                         <td>Privilegios</td>
                         <td><i class='fa fa-trash-o'></i></td>
@@ -112,7 +119,7 @@
                             <td>$resultado[1]
                             <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
                             <td>$resultado[2] $resultado[3]</td>
-                            <td>$resultado[4]</td>
+                            <td><button class='sinboton' type='submit' name='reinicio' value='$resultado[1]' id='' ><i class='fa fa-repeat'></i></button></td>
                             <td>
                                 <input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/>
                             </td>
@@ -122,7 +129,7 @@
                             <option value='2' $dos  >Especialista</option>
                             <option value='3' $tres >Factura</option>
                         </select></td>
-                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></button></i></td>
+                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></i></button></td>
                     </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;

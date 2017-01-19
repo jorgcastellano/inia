@@ -16,8 +16,8 @@
                     <h1>Sistema de Procesos Internos del INIA Mérida (SPIIM)</h1>
                 </hgroup>
             </div>
-            
-            <?php 
+
+            <?php
             if ($_SESSION['privilegios'] == 1) :
                 echo "<span <i class='fa fa-user-plus'>   Gerente del sistema</i><br /></span> ";
             elseif ($_SESSION['privilegios'] == 2) :
@@ -26,7 +26,7 @@
                 include '../../0/caja/listado.php';
             endif;
             ?>
-            
+
             <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>

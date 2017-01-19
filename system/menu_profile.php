@@ -7,12 +7,7 @@
     <li>
         <ul>
           <li>
-            <a href="#">
-              Cambiar contraseña <i class="fa fa-unlock fa-fw"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
+            <a href="../../0/home/perfil">
               Modificar datos <i class="fa fa-database fa-fw"></i>
             </a>
           </li>

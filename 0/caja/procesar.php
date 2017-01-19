@@ -35,7 +35,7 @@
                 $actual_iva = $actual_iva->fetch_array();
                 $impuesto = $actual_iva[0];
 
-                if (isset($comprado)) :                
+                if (isset($comprado)) :
 
                     //Invocacion de los objetos
                     $objcliente = new cliente();
@@ -50,7 +50,7 @@
                     //Primero hacer la factura básica
                     $objfactura -> facturar($mysqli, $ress[1], $total);
                     $id = $objfactura -> consultar_factura_insertada($mysqli, $ress[1]);
-                    
+
                     //Luego la descripcion o compras actualizando el inventario de una vez
                     $i = 0;
                     while ($resultado = $result->fetch_array()) :
@@ -109,7 +109,7 @@
             }
 
             $subtotal=$iva+$exe;
-            $impuestos=($iva*$impuesto)/100; 
+            $impuestos=($iva*$impuesto)/100;
             $retencion=($impuestos*$retencionporciento)/100;
             $alicuota=$impuestos-$retencion;
             $total=$subtotal+$alicuota;
@@ -141,7 +141,7 @@
                         <option value="COMPRA">Compra</option>
                         <option value="DONACION">Donación</option>
                     </select><br>
-                    
+
                     <label for="metodo">Método de pago</label>
                     <select id="metodo" name="metodo">
                         <option value="NINGUNO">Ninguno</option>
@@ -165,7 +165,7 @@
 
             }else{
                 $observacion="<textarea cols='25' rows='10' name='observacion' value='' placeholder='Observacion' ></textarea>";
-            
+
                 $hidden="<input type='hidden' name='codigo' value='$codigo'/>
                 <input type='hidden' name='impuesto' value='$impuesto' />";
 
@@ -180,7 +180,7 @@
                             <td>$subtotal</td>
                         </tr>
                         <tr>
-                            <td colspan='2'>Adiciones, bonificaciones</td>
+                            <td colspan='2'>Adiciones, descuentos:</td>
                             <td></td>
                         </tr>
                         <tr>
@@ -208,13 +208,13 @@
                             <td><b>$total</b></td>
                         </tr>
                     </table>
-                    
+
                     $hidden
 
                     $formulario2
-                    
+
                     <div align='center'>
-                       $boton 
+                       $boton
                     </div>
                 </form>
               ";

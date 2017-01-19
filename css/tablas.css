@@ -4,8 +4,8 @@
 table{
     margin: auto;
     margin-top: 20px;
-    border-spacing: 0px; 
-    border: groove 1px grey;  
+    border-spacing: 0px;
+    border: groove 1px grey;
     border-radius: 5px;
 }
 table tr td{
@@ -27,7 +27,7 @@ table.estadisticas-caja-2 tr:first-child, table.estadisticas-caja-1 tr:first-chi
     color:#fff;
     background-color: #444444;
     border-bottom: 1px #000000 solid;
-    border: groove 1px grey;  
+    border: groove 1px grey;
     border-radius: 5px;
 }
 table tr:nth-child(even){
@@ -42,7 +42,7 @@ table tr:nth-child(odd){
 table.tcliente{
     text-transform: capitalize;
     width: 550px;
-    border: groove 1px grey;  
+    border: groove 1px grey;
 }
 table.tcliente tr td:first-child{
     width: 40%;
@@ -67,7 +67,7 @@ table.tcliente tr:last-child td:last-child{
 table.tstatus{
     text-transform: capitalize;
     width: 500px;
-    border: groove 1px grey;  
+    border: groove 1px grey;
   border-radius: 5px;
 
 }
@@ -113,24 +113,27 @@ table.anapro tr td:first-child{
 }
 table.anapro tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;
-    -moz-border-radius: 5px 0px 0px 0px; 
+    -moz-border-radius: 5px 0px 0px 0px;
 }
 table.anapro tr:first-child td:last-child{
     border-radius: 0px 5px 0px 0px;
-    -moz-border-radius: 0px 5px 0px 0px; 
+    -moz-border-radius: 0px 5px 0px 0px;
 }table.anapro tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;
-    -moz-border-radius: 0px 0px 5px 0px; 
+    -moz-border-radius: 0px 0px 5px 0px;
 }
 table.anapro tr:last-child td:first-child{
     border-radius: 0px 0px 0px 5px;
-    -moz-border-radius: 0px 0px 0px 5px; 
+    -moz-border-radius: 0px 0px 0px 5px;
 }
 table.anapro td:first-child{
     text-align: left;
 }
 table.anapro td:last-child{
-    width: 60px;
+    width: 120px;
+}
+table.anapro input[type="number"] {
+  width: 60px;
 }
 
 
@@ -143,30 +146,33 @@ table.usuario td{
 }
 table.usuario tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;
-    -moz-border-radius: 5px 0px 0px 0px; 
+    -moz-border-radius: 5px 0px 0px 0px;
 }
 table.usuario tr:first-child td:last-child{
     border-radius: 0px 5px 0px 0px;
-    -moz-border-radius: 0px 5px 0px 0px; 
+    -moz-border-radius: 0px 5px 0px 0px;
 }table.usuario tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;
-    -moz-border-radius: 0px 0px 5px 0px; 
+    -moz-border-radius: 0px 0px 5px 0px;
 }
 table.usuario tr:last-child td:first-child{
     border-radius: 0px 0px 0px 5px;
-    -moz-border-radius: 0px 0px 0px 5px; 
+    -moz-border-radius: 0px 0px 0px 5px;
 }
 table.usuario td:first-child{
     width: 70px;
 }
+table.usuario td:nth-child(2){
+    width: 40%;
+}
 table.usuario td:nth-child(4){
-    width: 11%;
+    width: 17%;
 }
 table.usuario td:nth-child(5){
-    width: 13%;
+    width: 17%;
 }
 table.usuario td:last-child{
-    width: 5%;
+    width: 8%;
 }
 
 /*ESTILO PARA LAS TABLAS DE GESTION DE USUARIOS*/

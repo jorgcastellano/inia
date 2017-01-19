@@ -206,10 +206,10 @@ class cliente {
 
       private $reg;
 
-      public function registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente, $tipoUser, $tipOrg)
+      public function registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente, $tipoUser, $tipOrg, $naturalidad)
       {
-         $sql="INSERT INTO cliente (Ced_cliente,Nom_cliente,Apelli_cliente,Contacto,Telf_cliente,Dire_cliente,tipoUser,tipOrg)
-               VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente', '$tipoUser', '$tipOrg')";
+         $sql="INSERT INTO cliente (Ced_cliente,Nom_cliente,Apelli_cliente,Contacto,Telf_cliente,Dire_cliente,tipoUser,tipOrg,Nat_jur)
+               VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente', '$tipoUser', '$tipOrg', '$naturalidad')";
          $mysqli->query($sql);
          include_once 'error_insert.php';
          if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo cliente se ha registrado con éxito<br /></span> ";}
