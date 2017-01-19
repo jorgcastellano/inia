@@ -61,7 +61,7 @@
                     <input required type="password" name="resp" id="resp" placeholder="Respuesta" />
                 </div>
                  <div class="grupobotones">
-                        <button class="boton" type="buttom" onclick=location="index" ><i class="fa fa-arrow-left"></i> Página principal</button>
+                        <button class="boton" type="button" onclick=location="index" ><i class="fa fa-arrow-left"></i> Página principal</button>
                         <button class="boton" type="submit"><i class='fa fa-check'></i> Registrarse</button>
                  </div>
             </form>
