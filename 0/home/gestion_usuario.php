@@ -39,6 +39,9 @@
                         if (!empty($privilegios[$i])) :
                             $objinicio -> modificar_privilegios($mysqli, $privilegios[$i], $codigos[$i]);
                             $mensaje1="<div class='notify'><i class='fa fa-check-circle-o'></i> Los privilegios fueron cambiados</div>";
+                            if() {
+                              
+                            }
                         else :
                          $mensaje2="Debe seleccionar un privilegio para el usuario elegido";
                         endif;
@@ -56,11 +59,11 @@
                 echo "<form action='gestion_usuario' method='POST' onsubmit=''>
                 <table class='usuario'>
                     <tr>
-                        <td><i class='fa fa-chevron-circle-right'></i> Cédula </td>
-                        <td>Usuario</td>
+                        <td> Nombre y Apellido </td>
                         <td>Reinicio</td>
                         <td>Aceptación</td>
                         <td>Privilegios</td>
+                        <td>Jefe</td>
                         <td><i class='fa fa-trash-o'></i></td>
 
                     </tr>";
@@ -116,19 +119,19 @@
 
 
                     echo "<tr>
-                            <td>$resultado[1]
+                            <td>$resultado[2] $resultado[3]
                             <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
-                            <td>$resultado[2] $resultado[3]</td>
                             <td><button class='sinboton' type='submit' name='reinicio' value='$resultado[1]' id='' ><i class='fa fa-repeat'></i></button></td>
                             <td>
                                 <input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/>
                             </td>
-                            <td><select name='privilegios[]'>
+                            <td><select name='privilegios[]' onchange='jefeOn(this);'>
                             <option value=''        >-seleccione-</option>
                             <option value='1' $uno  >Gerente</option>
                             <option value='2' $dos  >Especialista</option>
                             <option value='3' $tres >Caja</option>
                         </select></td>
+                        <td><input type='checkbox' name='jefe[]' value='$resultado[0]' title='Marca si es jefe de laboratorio, solo se guardara si es especialista'></td>
                         <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></i></button></td>
                     </tr>";
                     unset($uno, $dos, $tres);
@@ -136,15 +139,15 @@
 
                 if (!empty($mensaje0)AND !empty($mensaje1))
                     echo "Se desastivo un usuario y se cambiaron los privilegios";
-                else{
-                 if (!empty($mensaje))
-                    echo "$mensaje ";
-                if (!empty($mensaje0))
-                    echo "$mensaje0 ";
-                if (!empty($mensaje1))
-                    echo "$mensaje1";
-                 if (!empty($mensaje2))
-                 echo "$mensaje2";
+                else {
+                   if (!empty($mensaje))
+                      echo "$mensaje ";
+                  if (!empty($mensaje0))
+                      echo "$mensaje0 ";
+                  if (!empty($mensaje1))
+                      echo "$mensaje1";
+                   if (!empty($mensaje2))
+                   echo "$mensaje2";
                 }
                 echo "</table>";
             ?>
