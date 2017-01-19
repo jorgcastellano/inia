@@ -1,5 +1,5 @@
+<!-- CAJA -->
 <?php   //listar todas las facturas sin pagar////
-
 
         echo " <form method='POST' action='inicio'>
             <div class='buscadores'>
@@ -24,20 +24,20 @@
                                 <td>Procesar</td>
                             </tr>";
                     while($resultado = $res->fetch_array()){
-                    echo "  <tr>
+                      echo "  <tr>
                                 <td>$resultado[1] $resultado[2]</td>
                                 <td>$resultado[0]</td>
                                 <td>$resultado[4]</td>
                                 <td>$resultado[5]</td>
-                                <td><button class='botonmenu' type='submit' name='codigo' value='$resultado[3]' >Procesar <i class='fa fa-arrow-right'></i></button></td>
+                                <td><button class='sinboton' type='submit' name='codigoListado' value='$resultado[3]' ><i class='fa fa-arrow-right'></i></button></td>
                             </tr>";
                     }
                     echo "</table>";
-                
+
                     echo "<div align='center'>
                         <button class='boton' type='button' onclick=location='inicio' ><i class='fa fa-ban'></i> Cancelar</button>
                     </div>";
-                else : 
+                else :
                     echo "<h2 align='center'>No existen registros con el numeros de cédula/RIF</h2>";
                     echo "
                         <div align='center'>
@@ -65,7 +65,7 @@
                             <td>$resultado[0]</td>
                             <td>$resultado[4]</td>
                             <td>$resultado[5]</td>
-                            <td><button class='botonmenu' type='submit' name='codigo' value='$resultado[3]' >Procesar <i class='fa fa-arrow-right'></i></button></td>
+                            <td><button class='sinboton' type='submit' name='codigoListado' value='$resultado[3]' ><i class='fa fa-arrow-right'></i></button></td>
                         </tr>";
                   }
 
