@@ -18,7 +18,7 @@
 
     while ($res = $reg -> fetch_array()) :
       $reg2 = $objespecialista -> consulta_completo($mysqli);
-        echo "  <form action='asig_especialista' method='POST'>
+        echo "
                   <tr>
                       <td>$res[1]</td>
                       <td>$res[2]</td>
@@ -33,12 +33,13 @@
                           endwhile;
         echo "          </select>
                       </td>
+                <form action='asig_especialista' method='POST'>
                       <input type='hidden' name='idm' value='$res[0]' />
                       <td><button class='sinboton' type='submit' name='eliminar' value='' id='accion_buttom' ><i class='fa fa-trash-o'></button></i></td>
                       <td><button class='sinboton' type='submit' name='Asignar' value='' id='accion_buttom' ><i class='fa fa-arrow-right'></button></i></td>
                   </tr>
 
-                  </form>";
+                </form>";
     endwhile;
     echo "  </table>
 
