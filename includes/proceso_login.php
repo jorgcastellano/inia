@@ -46,6 +46,7 @@
 				$_SESSION['respuesta']="$registro[8]";
 				$_SESSION['aprobacion']="$registro[9]";
 				$_SESSION['privilegios']="$registro[10]";
+				$_SESSION['jefe']="$registro[12]";
 
 				//comprueba si ha sido aprobado
 				if ($_SESSION['aprobacion'] == "Off") :

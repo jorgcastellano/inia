@@ -6,6 +6,7 @@
         $_SESSION['privilegios'] = 1;
       else if($privilegioAdmin == "lab") {
         $_SESSION['privilegios'] = 2;
+        $_SESSION['jefe'] = 1;
         if($labSelected == 1)
           $_SESSION['tipoLab'] = 1;
         else
@@ -43,8 +44,8 @@
                 <center>
                   <select class="opcion4" name="labSelected" id ="laboratorioSelect" style="display:none; text-align: center">
                     <option value=""> - - Seleccione - - </option>
-                    <option value="1">Suelo</option>
-                    <option value="2">Fitopatología</option>
+                    <option value="1">Fitopatología</option>
+                    <option value="2">Suelo</option>
                   </select>
                 </center>
                 <button type="submit" name="button" class="boton">Ingresar <i class="fa fa-arrow-right"></i></button>
