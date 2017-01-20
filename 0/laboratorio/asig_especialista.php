@@ -25,8 +25,13 @@
                 if(isset($Asignar)):
                   $estatus="esp_res";
                   $objmuestra = new muestra();
-                  foreach ($_POST['Ced_esp'] as $valor) {  }
-                  $Ced_esp=$valor;
+                  $var= count($_POST['Ced_esp']);
+                  echo $var;
+                  foreach ($_POST['Ced_esp'] as $valor){
+                  if(!empty($valor))
+                  $Ced_esp = $valor;
+                  }
+                  echo $Ced_esp;
                   $objmuestra->cambiar_estatus($mysqli,$estatus,$idm);
                   $objmuestra->asignar_especialista($mysqli,$idm,$Ced_esp);
                   $reg=$objmuestra->consultar_muestra_especialista($mysqli,$idm);
@@ -34,6 +39,13 @@
                   $idm=$res[1];
                   $reg2=$objmuestra->consultar_muestra_id($mysqli,$idm);
                   $res2 = $reg2 -> fetch_array();
+                  if ($res2[2]=='1') { $tip='Vegetal'; }
+                  if ($res2[2]=='2') { $tip='Suelo'; }
+                  if ($res2[2]=='3') { $tip='Sustrato'; }
+                  if ($res2[2]=='4') { $tip='Lixiviado'; }
+                  if ($res2[2]=='5') { $tip='Agua'; }
+                  if ($res2[2]=='6') { $tip='Insectos'; }
+                  if ($res2[2]=='7') { $tip='Otros'; }
                   $Ced_esp=$res[2];
                   $objespecialista= new especialista();
                   $reg3=$objespecialista->consulta_especialista($mysqli,$Ced_esp);
@@ -47,10 +59,10 @@
                             <td>Fecha de asignacion</td>
                           </tr>
                           <tr>
-                            <td>$res2[1]</td>
-                            <td>$res2[2]</td>
-                            <td>$res3[2]</td>
-                            <td>$res[3]</td>
+                            <td>".$res2[1]."</td>
+                            <td>".$tip."</td>
+                            <td>".$res3[2]." ".$res3[3]."</td>
+                            <td>".$res[3]."</td>
                           </tr>
                         </table>
                           ";

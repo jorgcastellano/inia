@@ -33,6 +33,7 @@
       if ($res[2]=='7') { $tip='Otros'; }
         echo "
                   <tr>
+                    <form action='../laboratorio/asig_especialista' method='POST'>
                       <td>$res[1]</td>
                       <td>$tip</td>
                       <td>$res[3]</td>
@@ -42,17 +43,18 @@
                           while($res2 = $reg2 -> fetch_array()):
 
         echo "
-                          <option value='$res2[0]'>".$res2[2]." ".$res2[3]." (".$res2[5].")"."</option>";
+                          <option value='$res2[0]'>".$res2[2]." ".$res2[3]." (".$res2[5].")</option>";
                           endwhile;
         echo "          </select>
                       </td>
-                <form action='../laboratorio/asig_especialista' method='POST'>
+
                       <input type='hidden' name='idm' value='$res[0]' />
-                      <td><button class='sinboton' type='submit' name='eliminar' value='' id='accion_buttom' ><i class='fa fa-trash-o'></button></i></td>
+                      <td><button class='sinboton' type='button' name='eliminar' value='' id='accion_buttom' ><i class='fa fa-trash-o'></button></i></td>
                       <td><button class='sinboton' type='submit' name='Asignar' value='' id='accion_buttom' style='color:#2C872C;' ><i class='fa fa-arrow-right'></button></i></td>
+                    </form>
                   </tr>
 
-                </form>";
+                ";
     endwhile;
     echo "  </table>
 
