@@ -13,7 +13,7 @@
           </li>
           <li>
             <a href="../../0/home/perfil">
-              Modificar datos <i class="fa fa-database fa-fw"></i>
+              Modificar perfil <i class="fa fa-address-card fa-fw"></i>
             </a>
           </li>
           <li>
