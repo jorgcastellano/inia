@@ -2,7 +2,7 @@
 
        $estatus="esper_espec";
         $objmuestra = new muestra();
-        $reg = $objmuestra -> consultar_muestras($mysqli,$estatus);
+        $reg = $objmuestra -> consultar_muestras($mysqli,$estatus,$tipo);
         $objespecialista = new especialista();
 
       echo "
