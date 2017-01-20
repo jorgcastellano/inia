@@ -37,6 +37,16 @@
 			$menuh->cargarElemento("fa-sign-out", "../../0/home/cerrar_sesion", "");
             return $menuh->mostrar();
 		}
+		public function menuNivel15() {
+			$elementos = new menu();
+			$elementos->cargarElemento("fa-money", "../../0/home/inicio", " Asignar");
+			$elementos->cargarElemento("fa-search", "#", " Analizar");
+			$elementos->cargarElemento("fa-bar-chart", "#", " Pendientes");
+			$elementos->cargarElemento("fa-bar-chart", "#", " Recomendar");
+
+			return $elementos -> mostrar();
+
+		}
 		public function menuNivel13() {
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-money", "../../0/home/inicio", " Facturas impagas");

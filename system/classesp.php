@@ -3,7 +3,7 @@
 	class especialista{
 
 		public function verificar_privilegio_2($mysqli, $ced){
-		$sql = "SELECT Ced_esp FROM especialista WHERE Ced_esp = '$ced'";
+		$sql = "SELECT * FROM especialista WHERE Ced_esp = '$ced'";
 		$res = $mysqli->query($sql);
 		if($mysqli->errno) :
 			printf(
