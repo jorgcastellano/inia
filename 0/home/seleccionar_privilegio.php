@@ -12,7 +12,7 @@
           $_SESSION['tipoLab'] = 2;
       } else
         $_SESSION['privilegios'] = 3;
-        header('location: inicio');
+      header('location: inicio');
     }
 ?>
 <!DOCTYPE html>
@@ -64,7 +64,6 @@
             else {
               laboratorioSelect.style.display="none";
               laboratorioSelect.required=false;
-
             }
           }
         </script>

@@ -68,6 +68,7 @@
 			      if ($resultado[0] == $_SESSION['ci']) :
 							if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
 			        	$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+							$_SESSION['tipoLab'] = $resultado[1];
 			        header("location: ../0/home/inicio");
 			        //En caso de no estar registrado el especialista por completo debe culminar su registro, esto sucede despues de estara aprobado
 			      else :
