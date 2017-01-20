@@ -40,9 +40,9 @@
 		public function menuNivel15() {
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-plus", "../../0/home/inicio", " Asignar");
-			$elementos->cargarElemento("fa-search", "#", " Analizar");
-			$elementos->cargarElemento("fa-list-ol", "#", " Pendientes");
-			$elementos->cargarElemento("fa-check", "#", " Recomendar");
+			$elementos->cargarElemento("fa-flask", "#", " Analizar");
+			$elementos->cargarElemento("fa-clock-o", "#", " Pendientes");
+			$elementos->cargarElemento("fa-pencil-square-o", "#", " Recomendar");
 
 			return $elementos -> mostrar();
 
