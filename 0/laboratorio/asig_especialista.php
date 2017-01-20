@@ -16,7 +16,7 @@
              <hgroup>
                <h1>Asignar Especialista</h1>
              </hgroup>
-           </div>
+           </div> 
            <?php
 
                 require_once '../../system/class.php';
@@ -25,7 +25,7 @@
                 if(isset($Asignar)):
                   $estatus="esp_res";
                   $objmuestra = new muestra();
-                  
+
                   foreach ($_POST['Ced_esp'] as $valor){
                   if(!empty($valor))
                   $Ced_esp = $valor;

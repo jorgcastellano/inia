@@ -32,7 +32,7 @@
       if ($res[2]=='6') { $tip='Insectos'; }
       if ($res[2]=='7') { $tip='Otros'; }
         echo "
-                  <tr>
+                  <tr> 
                     <form action='../laboratorio/asig_especialista' method='POST'>
                       <td>$res[1]</td>
                       <td>$tip</td>
