@@ -373,10 +373,10 @@ class muestra {
       include_once 'error_update.php';
 
     }
-    public function consultar_muestras($mysqli,$estatus)
+    public function consultar_muestras($mysqli,$estatus,$tipo)
     {
 
-      $sql="SELECT * FROM muestra WHERE muestra.Estatus ='$estatus'";
+      $sql="SELECT * FROM muestra WHERE muestra.Estatus ='$estatus' AND muestra.Cod_muestra LIKE '%$tipo%'";
       return $mysqli->query($sql);
 
     }

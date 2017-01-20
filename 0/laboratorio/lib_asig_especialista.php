@@ -1,6 +1,10 @@
 <?php
-
-       $estatus="esper_espec";
+        if($_SESSION['tipoLab']==2)
+        $tipo="SUE";
+        else
+        $tipo="FITO";
+          echo $tipo;
+        $estatus="esper_espec";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus,$tipo);
         $objespecialista = new especialista();

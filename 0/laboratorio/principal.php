@@ -24,8 +24,6 @@
                 <?php  //include 'lib_asig_recomendador.php';?>
               </div>
 
-           <?php include '../../layouts/layout_p.php' ?>
-        </section>
         <script type="text/javascript">
           //scrip de selección que determina cual formulario se desea cargar
           function mostrarformulario(x){
