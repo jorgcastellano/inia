@@ -1,5 +1,5 @@
 <?php
-       
+
 
 
     //Consultar la muestra registrada, convertirlos los datos extraidos en informacion entendible al usuario y  ordenarlos en una tabla
@@ -7,13 +7,13 @@
     $objfinca= new finca();
     $regf=$objfinca->consultar_finca($mysqli,$Finca);
     if ($reg[2]=='1') { $tip='Vegetal'; }
-    if ($reg[2]=='2') { $tip='De suelo'; }
-    if ($reg[2]=='3') { $tip='De sustrato'; }
+    if ($reg[2]=='2') { $tip='Suelo'; }
+    if ($reg[2]=='3') { $tip='Sustrato'; }
     if ($reg[2]=='4') { $tip='Lixiviado'; }
-    if ($reg[2]=='5') { $tip='De agua'; }
-    if ($reg[2]=='6') { $tip='De insectos'; }
-    if ($reg[2]=='7') { $tip='otros'; }
-    
+    if ($reg[2]=='5') { $tip='Agua'; }
+    if ($reg[2]=='6') { $tip='Insectos'; }
+    if ($reg[2]=='7') { $tip='Otros'; }
+
     if ($reg[7]=='1') { $topo='Plano'; }
     if ($reg[7]=='2') { $topo='Semi Plano'; }
     if ($reg[7]=='3') { $topo='Ladera'; }
@@ -45,7 +45,7 @@
 
     $sint = explode("|", $reg[24]);
     $sin="";
-    
+
     foreach($sint as $id){ if($id=='1') { $sin='Secamiento'; }}
     foreach($sint as $id){ if($id=='2') { if($sin == ''){ $sin='Callos'; }else{ $sin .=$c.'Callos'; }}}
     foreach($sint as $id){ if($id=='3') { if($sin == ''){ $sin='Defoliacion'; }else{ $sin .=$c.'Defoliacion'; }}}
@@ -116,7 +116,7 @@
     foreach($co as $id){ if($id=='3') { if($con == ''){ $con='Enfermedades'; }else{ $con .=$c.'Enfermedades'; }}}
     foreach($co as $id){ if($id=='4') { if($con == ''){ $con='Agroquimicos'; }else{ $con .=$c.'Agroquimicos'; }}}
     foreach($co as $id){ if($id=='5') { if($con == ''){ $con='Biologicos'; }else{ $con .=$c.'Biologicos'; }}}
-            
+
 
     ?>
 
@@ -138,25 +138,25 @@
             <tr><th>Epoca de aplicacion: </th><td><?php echo $reg[14]; ?></td></tr>
             <tr><th>Modo de aplicacion: </th><td><?php echo $reg[15]; ?></td></tr>
             <tr><th>Poblacion más cercana: </th><td><?php echo $reg[16]; ?></td></tr>
-           <?php  if(!empty($reg[17])): ?> 
+           <?php  if(!empty($reg[17])): ?>
             <tr><th>Profundidad de la Muestra: </th><td><?php echo $reg[17]; ?></td></tr>
             <tr><th>Riesgo de inundacion: </th><td><?php echo $ries; ?></td></tr>
             <tr><th>Tipo de vegetacion: </th><td><?php echo $reg[19]; ?></td></tr>
             <tr><th>Rendimiento del cultivo: </th><td><?php echo $ren; ?></td></tr>
             <tr><th>Restos de cosecha: </th><td><?php echo $rest; ?></td></tr>
            <?php endif;
-           if(!empty($reg[22])):  ?> 
+           if(!empty($reg[22])):  ?>
             <tr><th>Descripcion: </th><td><?php echo $reg[22]; ?></td></tr>
             <tr><th>Identificacion del microorganismo: </th><td><?php echo $reg[23]; ?></td></tr>
-            <tr><th>Sintomas: </th><td><?php echo $sin; ?></td></tr>   
+            <tr><th>Sintomas: </th><td><?php echo $sin; ?></td></tr>
             <tr><th>Fecha de inicio de la sintomatologia: </th><td><?php echo $reg[25]; ?></td></tr>
             <tr><th>Daños causados por: </th><td><?php echo $reg[26]; ?></td></tr>
             <tr><th>Tipo de plantacion: </th><td><?php echo $pla; ?></td></tr>
-            <tr><th>Nro de submuestra: </th><td><?php echo $reg[28]; ?></td></tr>    
+            <tr><th>Nro de submuestra: </th><td><?php echo $reg[28]; ?></td></tr>
             <tr><th>Fuente de la semilla: </th><td><?php echo $fue; ?></td></tr>
             <tr><th>presentacion del microorganismo: </th><td><?php echo $pre; ?></td></tr>
             <tr><th>distribucion de las plantas afectadas: </th><td><?php echo $dis; ?></td></tr>
-            <tr><th>Partes afectadas: </th><td><?php echo $par; ?></td></tr>    
+            <tr><th>Partes afectadas: </th><td><?php echo $par; ?></td></tr>
             <tr><th>Textura de suelo: </th><td><?php echo $tex; ?></td></tr>
             <tr><th>Composicion del suelo: </th><td><?php echo $com; ?></td></tr>
             <tr><th>Humedad del suelo: </th><td><?php echo $hum; ?></td></tr>
@@ -164,10 +164,10 @@
             <tr><th>Control de: </th><td><?php echo $con; ?></td></tr>
             <tr><th>Productos utilizados y dosis: </th><td><?php echo $reg[38]; ?></td></tr>
             <tr><th>Condiciones agroclimaticas: </th><td><?php echo $reg[39]; ?></td></tr>
-           <?php endif; 
+           <?php endif;
                 echo "<tr><th>Observaciones: </th><td>$reg[40]</td></tr>";
                 echo "<tr><th>Condiciones agroclimaticas: </th><td>$regf[2]</td></tr>";
                    if(!empty($analisis1)){ echo "<tr><th>Análisis a realizar para suelo: </th><td>$analisis1</td></tr>";}
                    if(!empty($analisis2)){ echo "<tr><th>Análisis a realizar fitopatologia: </th><td>$analisis2</td></tr>";}
-           ?> 
+           ?>
         </table>

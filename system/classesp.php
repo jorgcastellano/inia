@@ -29,6 +29,11 @@
 			return $mysqli->query($sql);
 		}
 
+		public function consulta_lab($mysqli,$tipo2){
+			$sql = "SELECT * FROM especialista WHERE Cod_lab='$tipo2' ";
+			return $mysqli->query($sql);
+		}
+
 		public function consulta_especialista($mysqli,$Ced_esp){
 			$sql = "SELECT * FROM especialista WHERE especialista.Ced_esp='$Ced_esp'";
 			return $mysqli->query($sql);
