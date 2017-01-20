@@ -3,7 +3,7 @@
 	class especialista{
 
 		public function verificar_privilegio_2($mysqli, $ced){
-		$sql = "SELECT Ced_esp FROM especialista WHERE Ced_esp = '$ced'";
+		$sql = "SELECT * FROM especialista WHERE Ced_esp = '$ced'";
 		$res = $mysqli->query($sql);
 		if($mysqli->errno) :
 			printf(
@@ -26,6 +26,11 @@
 
 		public function consulta_completo($mysqli){
 			$sql = "SELECT * FROM especialista";
+			return $mysqli->query($sql);
+		}
+
+		public function consulta_lab($mysqli,$tipo2){
+			$sql = "SELECT * FROM especialista WHERE Cod_lab='$tipo2' ";
 			return $mysqli->query($sql);
 		}
 

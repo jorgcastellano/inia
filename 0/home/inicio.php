@@ -19,10 +19,13 @@
 
             <?php
             if ($_SESSION['privilegios'] == 1) :
-                echo "<span <i class='fa fa-user-plus'>   Gerente del sistema</i><br /></span> ";
+                echo "<span <i class='fa fa-user-plus'> Gerente del sistema</i><br /></span> ";
             elseif ($_SESSION['privilegios'] == 2) :
-                echo "<span <i class='fa fa-user-plus'>   Especialista de laboratorios</i><br /></span> ";
-            elseif ($_SESSION['privilegios'] == 3) :
+              if($_SESSION['jefe'] == 1)
+                include '../laboratorio/principal.php';
+              else
+                include '../laboratorio/inicio.php';
+            elseif ($_SESSION['privilegios'] == 3) :  //Caja
                 include '../../0/caja/listado.php';
             endif;
             ?>

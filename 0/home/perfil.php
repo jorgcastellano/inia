@@ -25,8 +25,9 @@
                 if(isset($password)) {
                   if($password == $confirmpwd) { //Verifica si son iguales
                     $password = hash("sha512", $password);
+                    $resp = hash("sha512", $resp);
                     if (isset($resp))
-                      $usuario -> modificar_usuario($mysqli, $_SESSION['id'], $email, $password, $pregunta, $respuesta);
+                      $usuario -> modificar_usuario($mysqli, $_SESSION['id'], $email, $password, $pregunta, $resp);
                     else
                       $usuario -> modificar_usuario_no_pregunta($mysqli, $_SESSION['id'], $email, $password);
                   } else {
@@ -34,8 +35,10 @@
                       alert("Las contraseñas no coinciden, vuelve a intentarlo");
                     </script> <?php
                   }
-                } else if (isset($resp))
-                  $usuario -> modificar_usuario_pregunta($mysqli, $_SESSION['id'], $email, $pregunta, $respuesta);
+                } else if (isset($resp)) {
+                  $resp = hash("sha512", $resp);
+                  $usuario -> modificar_usuario_pregunta($mysqli, $_SESSION['id'], $email, $pregunta, $resp);
+                }
               } else {
                 ?> <script type="text/javascript">
                   alert("Contraseña actual incorrecta");

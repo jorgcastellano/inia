@@ -9,7 +9,7 @@
 		//Consultamos al usuario
 		$sql = "SELECT * FROM miembros WHERE email='$correo'";
 		$result = $mysqli->query($sql);
-		
+
 		if($mysqli->errno) :
 			printf(
 				"<h2>No se ha podido consultar en la base de datos</h2>
@@ -20,11 +20,11 @@
 			);
 			exit();
 		endif;
-		
+
 		$registro = $result -> fetch_array();
 
 		$password = hash("sha512", $password);
-		
+
 		//Verifica si los datos concuerdan
 		if (("$correo"=="$registro[4]") AND ("$password"=="$registro[5]")) :
 			$intentos = new inicio_seguro();
@@ -46,6 +46,7 @@
 				$_SESSION['respuesta']="$registro[8]";
 				$_SESSION['aprobacion']="$registro[9]";
 				$_SESSION['privilegios']="$registro[10]";
+				$_SESSION['jefe']="$registro[12]";
 
 				//comprueba si ha sido aprobado
 				if ($_SESSION['aprobacion'] == "Off") :
@@ -58,28 +59,34 @@
 					$n_intentos = $r2 -> fetch_array();
 
 					//Comprobamos privilegios
-				    if ($_SESSION['privilegios'] == 0) : //0 No tiene privilegios
-			        	header("location: ../0/home/noprivilegios");
-			        //Solo para privilegios (2) especialistas
-			        elseif ($_SESSION['privilegios'] == 2) : //Privilegio 2 es especialista
+			    if ($_SESSION['privilegios'] == 0) : //0 No tiene privilegios
+		      	header("location: ../0/home/noprivilegios");
+		      //Solo para privilegios (2) especialistas
+		      elseif ($_SESSION['privilegios'] == 2) : //Privilegio 2 es especialista
 						include_once '../system/classesp.php';
-			            $objesp = new especialista();
-			            $resultado = $objesp->verificar_privilegio_2($mysqli, $_SESSION['ci']);
-				        if ($resultado[0] == $_SESSION['ci']) :
+            $objesp = new especialista();
+            $resultado = $objesp->verificar_privilegio_2($mysqli, $_SESSION['ci']);
+			      if ($resultado[0] == $_SESSION['ci']) :
 							if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
-				        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
-				        	header("location: ../0/home/inicio");
-				        //En caso de no estar registrado el especialista por completo debe culminar su registro, esto sucede despues de estara aprobado
-				        else :
-				        	if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
-				        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
-				        	header("location: ../0/especialista/culminar_registro");
-				    	endif;
-				    //Para el resto de privilegios
-			        else :
+			        	$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+							$_SESSION['tipoLab'] = $resultado[1];
+			        header("location: ../0/home/inicio");
+			        //En caso de no estar registrado el especialista por completo debe culminar su registro, esto sucede despues de estara aprobado
+			      else :
+		        	if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
+		        		$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+		        	header("location: ../0/especialista/culminar_registro");
+			    	endif;
+					elseif ($_SESSION['privilegios'] == 4) : //Solo para administradores total
+						$_SESSION['tipoLab'] = "";
 						if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
-				        	$intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
-						header("location: ../0/home/inicio");
+			        $intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+						header("location: ../0/home/seleccionar_privilegio");
+			    //Para el resto de privilegios
+		      else :
+						if ($n_intentos[0] > 0) //En caso de tener intentos fallidos se eliminan
+			        $intentos -> eliminar_intentos($mysqli, $_SESSION['email']);
+							header("location: ../0/home/inicio");
 					endif;
 				endif;
 			endif;

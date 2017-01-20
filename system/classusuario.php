@@ -26,6 +26,16 @@
             $mysqli->query($sql);
             require_once 'error_update.php';
         }
+        public function modificar_jefe_si($mysqli, $cod) {
+            $sql = "UPDATE miembros SET jefe='1' WHERE id = '$cod'";
+            $mysqli->query($sql);
+            require_once 'error_update.php';
+        }
+        public function modificar_jefe_no($mysqli, $cod) {
+            $sql = "UPDATE miembros SET jefe='0' WHERE id = '$cod'";
+            $mysqli->query($sql);
+            require_once 'error_update.php';
+        }
         public function eliminar_miembros($mysqli, $cod) {
             $sql = "DELETE FROM miembros WHERE ci = '$cod'";
             $mysqli->query($sql);
