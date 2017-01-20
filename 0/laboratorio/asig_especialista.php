@@ -25,8 +25,7 @@
                 if(isset($Asignar)):
                   $estatus="esp_res";
                   $objmuestra = new muestra();
-                  $var= count($_POST['Ced_esp']);
-                  echo $var;
+                  
                   foreach ($_POST['Ced_esp'] as $valor){
                   if(!empty($valor))
                   $Ced_esp = $valor;
