@@ -50,23 +50,22 @@
       <?php
           extract($_POST);
           require_once '../../system/class.php';
+          require_once '../../system/classesp.php';
       ?>
 	        <form action="index" method="post">
 
-            <input type="radio" name="formulario" value="suelo" id="formulario1" onclick="mostrarformulario();"/>
-            <input type="radio" name="formulario" value="fito" id="formulario2" onclick="mostrarformulario();"/>
-
+            <input type="radio" name="formulario" value="suelo" id="formulario1" onclick="mostrarformulario();" checked="checked"/>Asignar muestras
+            <input type="radio" name="formulario" value="fito" id="formulario2" onclick="mostrarformulario();"/>Asignar recomendaciones
+          </form>
               <div id='primero' style='display:none;'>
                 <?php
-                echo "holaaa";
                 include 'lib_asig_especialista.php' ?>
               </div>
 
               <div id='segundo' style='display:none;'>
-                <?php  include 'lib_asig_recomendador.php';?>
+                <?php  //include 'lib_asig_recomendador.php';?>
               </div>
 
-          </form>
            <?php include '../../layouts/layout_p.php' ?>
         </section>
     </body>

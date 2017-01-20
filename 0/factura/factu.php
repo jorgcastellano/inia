@@ -40,7 +40,7 @@ $html='
 	 	<div class="prin">
         <p id="uno">REPÚBLICA BOLIVARIANA DE VENEZUELA<br /> MINISTERIO DEL PODER POPULAR PARA LA AGRICULTURA Y TIERRAS <br /> INSTITUTO NACIONAL DE INVESTIGACIONES AGRÍCOLAS</p>
         <p id="dos"><b>Dirección Fiscal:</b> Av. Universidad vía El Limón Edif. Sede Gcia. Gral. INIA, Maracay- Edo. Aragua <br /> <b>Sucursal:</b> Av. Urdaneta, Edificio INIA, Piso Nº02, Mérida Edo. Mérida</p>
-        <p  id="tres">www.inia.gov.ve<br /><b>RIF:G-20000095-3</p>  
+        <p  id="tres">www.inia.gov.ve<br /><b>RIF:G-20000095-3</p>
 		</div>
         <div class="tres">
            <p><b>FACTURA</b><br /> <b>Nª: '.$codigo.'</b></p>
@@ -54,7 +54,7 @@ $html='
             </tr>
             <tr>
                 <td >Dirección: '.$cliente[6].'</td>
-                <td align="left">C.I./RIF: '.$cliente[1].'</td>
+                <td align="left">C.I./RIF: '.$cliente[7].' - '.$cliente[1].'</td>
             </tr>
          </table>
          <table class="facturat" border="1" cellpadding="0" cellspacing="0">

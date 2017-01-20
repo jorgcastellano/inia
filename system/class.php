@@ -206,10 +206,10 @@ class cliente {
 
       private $reg;
 
-      public function registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente, $tipoUser, $tipOrg)
+      public function registrar_cliente($mysqli,$Ced_cliente,$Nom_cliente,$Apelli_cliente,$Contacto,$Telf_cliente,$Dire_cliente, $tipoUser, $tipOrg, $naturalidad)
       {
-         $sql="INSERT INTO cliente (Ced_cliente,Nom_cliente,Apelli_cliente,Contacto,Telf_cliente,Dire_cliente,tipoUser,tipOrg)
-               VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente', '$tipoUser', '$tipOrg')";
+         $sql="INSERT INTO cliente (Ced_cliente,Nom_cliente,Apelli_cliente,Contacto,Telf_cliente,Dire_cliente,tipoUser,tipOrg,Nat_jur)
+               VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente', '$tipoUser', '$tipOrg', '$naturalidad')";
          $mysqli->query($sql);
          include_once 'error_insert.php';
          if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo cliente se ha registrado con éxito<br /></span> ";}
@@ -381,6 +381,39 @@ class muestra {
 
     }
 
+    public function cambiar_estatus($mysqli,$estatus,$idm)
+    {
+
+      $sql="UPDATE muestra SET Estatus='$estatus' WHERE id='$idm'";
+      return $mysqli->query($sql);
+
+    }
+
+    public function asignar_especialista($mysqli,$idm,$Ced_esp)
+    {
+      $sql="INSERT INTO muestra_especialista(id,idm,Ced_esp) VALUES (NULL, '$idm', '$Ced_esp')";
+      return $mysqli->query($sql);
+    }
+    public function consultar_muestra_especialista($mysqli,$idm)
+    {
+      $sql="SELECT * FROM muestra_especialista WHERE muestra_especialista.idm='$idm'";
+      return $mysqli->query($sql);
+    }
+
+    public function consultar_muestra_id($mysqli,$idm)
+    {
+      $sql="SELECT * FROM muestra WHERE muestra.id ='$idm'";
+      return $mysqli->query($sql);
+    }
+
+    public function consultar_muestra_asignadas($mysqli,$Ced_esp)
+    {
+      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra_especialista.Fecha FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'";
+      return $mysqli->query($sql);
+    }
+
+
+
 
 }
 
@@ -432,28 +465,29 @@ class solicitud_analisis {
 
 class r_suelo {
 
-  public function registrar_r_suelo($mysqli)
+  public function registrar_r_muestra_s($mysqli,$Cod_muestra,$Ced_esp,$Are,$Lim,$Arc,$Tex,$Grup,$Fos,$FosL,$Pot,$PotL,$Ca,$CaL,$Mag,$MagL,$Mat,$MatL,$PH,$PHL,$Con,$ConL,$Alu,$AluL)
   {
 
-    $sql="";
+    $sql="INSERT INTO r_suelo(Cod_rsuelo,Cod_suelo,Ced_esp,Are,Lim,Arc,Tex,Grup,Fos,FosL,Pot,PotL,Ca,CaL,Mag,MagL,Mat,MatL,PH,PHL,Con,ConL,Alu,AluL) VALUES (NULL,'$Cod_muestra','$Ced_esp','$Are','$Lim','$Arc','$Tex','$Grup','$Fos','$FosL','$Pot','$PotL','$Cal','$CalL','$Mag','$MagL','$Mat','$MatL','$PH','$PHL','$Con','$ConL','$Alu','$AluL')";
     $res=$mysqli->query($sql);
-    include_once 'error_insert.php';
+
 
   }
 
-  public function consultar_r_suelo($mysqli)
+  public function consultar_r_muestra_s($mysqli,$Cod_muestra)
   {
 
-    $sql="";
+    $sql="SELECT * FROM r_suelo WHERE r_suelo.Cod_suelo='$Cod_muestra'";
     $res=$mysqli->query($sql);
-    include_once 'error_select.php';
+    return $res->fetch_array();
+    //include_once 'error_select.php';
 
   }
 
-  public function modificar_r_suelo($mysqli)
+  public function modificar_r_muestra_s($mysqli,$Cod_muestra,$Are,$Lim,$Arc,$Tex,$Grup,$Fos,$FosL,$Pot,$PotL,$Ca,$CaL,$Mag,$MagL,$Mat,$MatL,$PH,$PHL,$Con,$ConL,$Alu,$AluL)
   {
 
-    $sql="";
+    $sql="UPDATE r_suelo SET Are='$Are',Lim='$Lim',Arc='$Arc',Tex='$Tex',Grup='$Grup',Fos='$Fos',FosL='$FosL',Pot='$Pot',PotL='$PotL',Ca='$Ca',CaL='$CaL',Mag='$Mag',MagL='$MagL',Mat='$Mat',MatL='$MatL',PH='$PH',PHL='$PHL',Con='$Con',ConL='$ConL',Alu='$Alu',AluL='$AluL' WHERE Cod_muestra='$Cod_muestra'";
     $res=$mysqli->query($sql);
     include_once 'error_update.php';
 
@@ -461,31 +495,7 @@ class r_suelo {
 
 }
 
-class r_fito {
 
-  public function registrar_r_fito($mysqli)
-  {
-
-    $sql="";
-    $res=$mysqli->query($sql);
-    include_once 'error_insert.php';
-
-  }
-
-  public function consultar_r_fito($mysqli) {
-    $sql="";
-    $res=$mysqli->query($sql);
-    include_once 'error_select.php';
-
-  }
-
-  public function modificar_r_fito($mysqli) {
-    $sql="";
-    $res=$mysqli->query($sql);
-    include_once 'error_update.php';
-  }
-
-}
 
 class factura {
   public function facturar($mysqli, $cedula, $subtotal) {

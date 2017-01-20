@@ -25,7 +25,7 @@
 
                 $mensaje1="";
                 $mensaje2="";
-                if (isset($eliminar)) :
+                if (isset($eliminar)) : //Eliminar un usuario
 
                     if (isset($dos)) :
                         $especialista = new especialista();
@@ -34,33 +34,41 @@
                         echo "<div class='notify'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></div> ";
                         $objinicio -> eliminar_miembros($mysqli, $eliminar);
                     endif;
-                elseif (isset($guardar)) :
+                elseif (isset($guardar)) : //
                     for ($i=0; $i < count($codigos); $i++) :
                         if (!empty($privilegios[$i])) :
                             $objinicio -> modificar_privilegios($mysqli, $privilegios[$i], $codigos[$i]);
                             $mensaje1="<div class='notify'><i class='fa fa-check-circle-o'></i> Los privilegios fueron cambiados</div>";
                         else :
-                         $mensaje2="Debe seleccionar un privilegio para el usuario elegido";
+                         $mensaje1="Debe seleccionar un privilegio para el usuario elegido";
                         endif;
                     endfor;
+                elseif(isset($reinicio)) :
+                    $pass = hash("sha512", "123456");
+                    $objinicio -> reinicio($mysqli, $reinicio, $pass);
+                    $mensaje2="Se reinicio la contraseña del usuario seleccionado con la clave \"123456\"";
+                    $user = $objinicio -> consultar_mi_usuario_ci($mysqli, $reinicio);
+                    $user = $user -> fetch_array();
+                    $objinicio -> eliminar_intentos($mysqli, $user[4]);
                 endif;
                 $reg = $objinicio->consultar_miembro($mysqli);
 
                 echo "<form action='gestion_usuario' method='POST' onsubmit=''>
                 <table class='usuario'>
                     <tr>
-                        <td><i class='fa fa-chevron-circle-right'></i> Cédula </td>
-                        <td>Usuario</td>
-                        <td>Email</td>
+                        <td> Nombre y Apellido </td>
+                        <td>Reinicio</td>
                         <td>Aceptación</td>
                         <td>Privilegios</td>
+                        <td>Jefe</td>
                         <td><i class='fa fa-trash-o'></i></td>
 
                     </tr>";
                         $mensaje="";
                         $mensaje0="";
+                        $t = 0;
                 while ($resultado = $reg->fetch_array()) :
-
+                  $t++;
                     //Verificacion de los seleccionados para ser almacenados
                     if (isset($guardar)) :
                         for ($x=0; $x < $temp = count($cod); $x++)
@@ -77,6 +85,28 @@
 
                             endif;
 
+                      //Para jefes de laboratorios
+                      if (isset($guardar)) :
+                        $temp = count($jefe);
+                        if($temp == 0) :
+                          $objinicio->modificar_jefe_no($mysqli, $resultado[0]);
+                          $resultado[12] = 0;
+                        else :
+                          for($t = 0; $t < $temp; $t++) :
+                            if($resultado[0] == $jefe[$t] AND $resultado[10] == 2) :
+                              if($resultado[12] == 0) :
+                                $objinicio->modificar_jefe_si($mysqli, $jefe[$t]);
+                                $resultado[12] = 1;
+                                $t = $temp;
+                              endif;
+                            elseif($resultado[12] == 1 AND $resultado[0] != $jefe[$t]) :
+                              $objinicio->modificar_jefe_no($mysqli, $resultado[0]);
+                              $resultado[12] = 0;
+                            endif;
+                          endfor;
+                        endif;
+                      endif;
+
 
                         if (isset($on)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "On", $on);
@@ -89,55 +119,58 @@
                         endif;
                         unset($off, $on);
                     endif;
+
                     if (isset($guardar) AND !isset($cod)) {
                         $objinicio->modificar_miembros_estatus_all($mysqli, "Off");
                         $resultado[9] = "Off";
                     }
-                    if ($resultado[9] == "On") :
+                    if ($resultado[9] == "On")
                         $checked = "checked";
-                    elseif ($resultado[9] == "Off") :
+                    elseif ($resultado[9] == "Off")
                         $checked = "";
-                    endif;
 
-                    if ($resultado[10] == 1) :
+                    if ($resultado[10] == 1)
                         $uno = "selected";
-                    elseif ($resultado[10] == 2) :
+                    elseif ($resultado[10] == 2)
                         $dos = "selected";
-                    elseif ($resultado[10] == 3) :
+                    elseif ($resultado[10] == 3)
                         $tres = "selected";
-                    endif;
 
+                    if ($resultado[12] == 1)
+                      $jefeOn = "checked";
+                    else
+                      $jefeOn = "";
 
                     echo "<tr>
-                            <td>$resultado[1]
+                            <td>$resultado[2] $resultado[3]
                             <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
-                            <td>$resultado[2] $resultado[3]</td>
-                            <td>$resultado[4]</td>
+                            <td><button class='sinboton' type='submit' name='reinicio' value='$resultado[1]' id='' ><i class='fa fa-repeat'></i></button></td>
                             <td>
                                 <input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/>
                             </td>
-                            <td><select name='privilegios[]'>
+                            <td><select name='privilegios[]' onchange='jefeOn(this);'>
                             <option value=''        >-seleccione-</option>
                             <option value='1' $uno  >Gerente</option>
                             <option value='2' $dos  >Especialista</option>
-                            <option value='3' $tres >Factura</option>
+                            <option value='3' $tres >Caja</option>
                         </select></td>
-                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></button></i></td>
+                        <td><input $jefeOn type='checkbox' name='jefe[]' value='$resultado[0]' title='Marca si es jefe de laboratorio, solo se guardara si es especialista'></td>
+                        <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></i></button></td>
                     </tr>";
                     unset($uno, $dos, $tres);
                 endwhile;
 
                 if (!empty($mensaje0)AND !empty($mensaje1))
                     echo "Se desastivo un usuario y se cambiaron los privilegios";
-                else{
-                 if (!empty($mensaje))
-                    echo "$mensaje ";
-                if (!empty($mensaje0))
-                    echo "$mensaje0 ";
-                if (!empty($mensaje1))
-                    echo "$mensaje1";
-                 if (!empty($mensaje2))
-                 echo "$mensaje2";
+                else {
+                   if (!empty($mensaje))
+                      echo "$mensaje ";
+                  if (!empty($mensaje0))
+                      echo "$mensaje0 ";
+                  if (!empty($mensaje1))
+                      echo "$mensaje1";
+                   if (!empty($mensaje2))
+                   echo "$mensaje2";
                 }
                 echo "</table>";
             ?>

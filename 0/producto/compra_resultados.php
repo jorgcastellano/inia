@@ -29,11 +29,9 @@
 
             if ($cantidad[$i]>$resultado[2])//verificar si el pedido es mayor a la existencia
                 $cantidad[$i]=$resultado[2];
-            endif;
 
             if ($cantidad[$i]<0)//verificar si el pedido es menor a la existencia
                 $cantidad[$i]=0;
-            endif;
 
             if (!empty($cantidad[$i])) :
               $total += ($resultado[3] * $cantidad[$i]);
@@ -72,8 +70,8 @@
               echo "<tr>
                       <td>".$resultado[1]."</td>";
                       echo "<td>".$existencia."</td>";
-                      echo "<td>".$resultado[3]."</td>";
-                      echo "<td><input type='text' name='cantidad[]' size='5' pattern='\d{1,8}' maxlength='8' value='$cantidad[$i]' /></td>
+                      echo "<td>".$resultado[3]."</td>"; $existencia = $existencia + $cantidad[$i];
+                      echo "<td><input type='number' min='0' max='$existencia' name='cantidad[]' size='5' pattern='\d{1,8}' maxlength='8' value='$cantidad[$i]' /></td>
                     </tr>";
             endif;
             $i++;

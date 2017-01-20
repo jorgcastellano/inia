@@ -18,15 +18,15 @@
         		</div>
       <form method="POST" action="inve">
         <div class="buscadores">
-          
-        </div>  
+
+        </div>
       </form>
       <form method="POST" action="compra_resultados">
         <?php
           extract($_POST);
           include_once '../../system/class.php';
           $objproducto = new producto();
-          
+
           echo "<table class='anapro' id='tabla'>
                   <tr>
                     <td>NOMBRE</td>
@@ -56,7 +56,7 @@
               <td>".$resultado[1]."</td>";
               echo "<td>".$resultado[2]." ".$unidad."</td>";
               echo "<td>".$resultado[3]." Bs"."</td>";
-              echo "<td><input type='text' name='cantidad[]' size='5' pattern='\d{1,8}' maxlength='8' value='$cantidad[$i]' /></td></tr>";
+              echo "<td><input type='number' name='cantidad[]' size='5' pattern='\d{1,8}' maxlength='8' min='0' max='$resultado[2]' value='$cantidad[$i]' /></td></tr>";
             endif;
             $i++;
           endwhile;
@@ -65,12 +65,12 @@
         <div class="grupobotones">
           <button type='button' onclick=location='../../0/home/inicio' class="boton"><i class="fa fa-ban"></i> Página principal</button>
           <button type="submit" name="compra" value="<?php if(isset($compra)) echo $compra; ?>" class="boton" formaction="compra_resultados"><i class="fa fa-shopping-cart"></i> Procesar compra</button>
-        </div> 
+        </div>
       </form>
         <?php include '../../layouts/layout_p.php' ?>
         </section>
         <script type="text/javascript">
-        busquedas_instantaneas();          
+        busquedas_instantaneas();
         </script>
     </body>
 </html>

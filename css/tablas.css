@@ -4,8 +4,8 @@
 table{
     margin: auto;
     margin-top: 20px;
-    border-spacing: 0px; 
-    border: groove 1px grey;  
+    border-spacing: 0px;
+    border: groove 1px grey;
     border-radius: 5px;
 }
 table tr td{
@@ -23,11 +23,11 @@ table tr td:first-child{
 table.estadisticas-caja-2 tr:first-child, table.estadisticas-caja-1 tr:first-child,table.usuario2 tr:first-child, table.factura2 tr:first-child,table.facturai tr:first-child, table.tcliente tr:first-child, table.tstatus tr:first-child, table.anapro tr:first-child, table.usuario tr:first-child{
     text-align: center;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: normal;
     color:#fff;
     background-color: #444444;
     border-bottom: 1px #000000 solid;
-    border: groove 1px grey;  
+    border: groove 1px grey;
     border-radius: 5px;
 }
 table tr:nth-child(even){
@@ -42,7 +42,7 @@ table tr:nth-child(odd){
 table.tcliente{
     text-transform: capitalize;
     width: 550px;
-    border: groove 1px grey;  
+    border: groove 1px grey;
 }
 table.tcliente tr td:first-child{
     width: 40%;
@@ -67,7 +67,7 @@ table.tcliente tr:last-child td:last-child{
 table.tstatus{
     text-transform: capitalize;
     width: 500px;
-    border: groove 1px grey;  
+    border: groove 1px grey;
   border-radius: 5px;
 
 }
@@ -113,24 +113,27 @@ table.anapro tr td:first-child{
 }
 table.anapro tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;
-    -moz-border-radius: 5px 0px 0px 0px; 
+    -moz-border-radius: 5px 0px 0px 0px;
 }
 table.anapro tr:first-child td:last-child{
     border-radius: 0px 5px 0px 0px;
-    -moz-border-radius: 0px 5px 0px 0px; 
+    -moz-border-radius: 0px 5px 0px 0px;
 }table.anapro tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;
-    -moz-border-radius: 0px 0px 5px 0px; 
+    -moz-border-radius: 0px 0px 5px 0px;
 }
 table.anapro tr:last-child td:first-child{
     border-radius: 0px 0px 0px 5px;
-    -moz-border-radius: 0px 0px 0px 5px; 
+    -moz-border-radius: 0px 0px 0px 5px;
 }
 table.anapro td:first-child{
     text-align: left;
 }
 table.anapro td:last-child{
-    width: 60px;
+    width: 120px;
+}
+table.anapro input[type="number"] {
+  width: 60px;
 }
 
 
@@ -143,30 +146,33 @@ table.usuario td{
 }
 table.usuario tr:first-child td:first-child{
     border-radius: 5px 0px 0px 0px;
-    -moz-border-radius: 5px 0px 0px 0px; 
+    -moz-border-radius: 5px 0px 0px 0px;
 }
 table.usuario tr:first-child td:last-child{
     border-radius: 0px 5px 0px 0px;
-    -moz-border-radius: 0px 5px 0px 0px; 
+    -moz-border-radius: 0px 5px 0px 0px;
 }table.usuario tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;
-    -moz-border-radius: 0px 0px 5px 0px; 
+    -moz-border-radius: 0px 0px 5px 0px;
 }
 table.usuario tr:last-child td:first-child{
     border-radius: 0px 0px 0px 5px;
-    -moz-border-radius: 0px 0px 0px 5px; 
+    -moz-border-radius: 0px 0px 0px 5px;
 }
-table.usuario td:first-child{
+table.usuario td:nth-child(2){
     width: 70px;
 }
+table.usuario td:nth-child(3){
+    width: 110px;
+}
 table.usuario td:nth-child(4){
-    width: 11%;
+    width: 100px;
 }
 table.usuario td:nth-child(5){
-    width: 13%;
+    width: 45px;
 }
 table.usuario td:last-child{
-    width: 5%;
+    width: 50px;
 }
 
 /*ESTILO PARA LAS TABLAS DE GESTION DE USUARIOS*/
@@ -228,6 +234,7 @@ table.facturai tr:last-child td:last-child{
 /*MODELO DE LAS FACTURAS*/
 table.factura2{
     width: 600px;
+    border-bottom-width: 0px;
 }
 table.factura2 tr:first-child td{
     text-align: center;
@@ -254,12 +261,18 @@ table.factura2 tr:first-child td:first-child{
 table.factura2 tr:first-child td:last-child{
     border-radius: 0px 5px 0px 0px;
 }
+table.factura2 tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 0px !important;
+}
+table.factura2 tr:last-child td:last-child{
+    border-radius: 0px 0px 0px 0px !important;
+}
 table.factura2 td:nth-child(3){
     text-align: center;
 }
 table.factura3{
     width: 600px;
-    border-top: 1px solid #CBCBCB;
+    border-top: 0px solid #CBCBCB;
     margin-top: 0px;
 }
 table.factura3 td:last-child{
@@ -271,7 +284,7 @@ table.factura3 tr:first-child td:first-child{
     padding-left: 6px;
 }
 table.factura3 tr:first-child td:first-child{
-    border-radius: 0px 0px 0px 5px;
+    border-radius: 0px 0px 0px 0px;
 }
 table.factura3 tr:last-child td:last-child{
     border-radius: 0px 0px 5px 0px;

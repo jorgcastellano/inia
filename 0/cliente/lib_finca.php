@@ -1,9 +1,11 @@
-                
+
                 <label for="Nom_fin">Nombre de la finca</label>
-                    <input required type="text" name="Nom_fin[]" id="Nom_fin" value="<?php echo $reg3[2]?>" title="Introduzca el nombre de la finca" maxlength="30" placeholder=""  />
-                    <span class="form_hint">Debe contener solo caracteres alfanumericos"</span>
-                    <br />
+                <input required type="text" name="Nom_fin[]" id="Nom_fin" value="<?php echo $reg3[2]?>" title="Introduzca el nombre de la finca" maxlength="30" placeholder=""  />
+                <span class="form_hint">Debe contener solo caracteres alfanumericos"</span>
+                <br />
+
                 <label for="Estado">Estado</label>
+
                     <select class="opcion4" required name="Estado[]" id="Estado">
                         <option value="">Seleccione</option>
                         <option value="Amazonas" <?php if($reg3[3]=="Amazonas"){ echo 'selected'; } ?>>Amazonas</option>
@@ -339,7 +341,7 @@
                         <option value="Península de Macanao" <?php if($reg3[4]=="Península de Macanao"){ echo 'selected'; } ?>>Península de Macanao</option>
                         <option value="Tubores" <?php if($reg3[4]=="Tubores"){ echo 'selected'; } ?>>Tubores</option>
                         <option value="Villalba" <?php if($reg3[4]=="Villalba"){ echo 'selected'; } ?>>Villalba</option>
-                       
+
                     </select>
                     </br>
 
@@ -360,7 +362,7 @@
                         <option value="Santa Rosalía" <?php if($reg3[4]=="Santa Rosalía"){ echo 'selected'; } ?>>Santa Rosalía</option>
                         <option value="Sucre" <?php if($reg3[4]=="Sucre"){ echo 'selected'; } ?>>Sucre</option>
                         <option value="Turén" <?php if($reg3[4]=="Turén"){ echo 'selected'; } ?>>Turén</option>
-                       
+
                     </select>
                     </br>
 
@@ -379,7 +381,7 @@
                         <option value="Ribero" <?php if($reg3[4]=="Ribero"){ echo 'selected'; } ?>>Ribero</option>
                         <option value="Sucre" <?php if($reg3[4]=="Sucre"){ echo 'selected'; } ?>>Sucre</option>
                         <option value="Valdez" <?php if($reg3[4]=="Valdez"){ echo 'selected'; } ?>>Valdez</option>
-                       
+
                     </select>
                     </br>
 
@@ -414,7 +416,7 @@
                         <option value="Sucre" <?php if($reg3[4]=="Sucre"){ echo 'selected'; } ?>>Sucre</option>
                         <option value="Torbes" <?php if($reg3[4]=="Torbes"){ echo 'selected'; } ?>>Torbes</option>
                         <option value="Uribante" <?php if($reg3[4]=="Uribante"){ echo 'selected'; } ?>>Uribante</option>
-                       
+
                     </select>
                     </br>
 
@@ -456,7 +458,7 @@
                         <option value="Maiquetía" <?php if($reg3[4]=="Maiquetía"){ echo 'selected'; } ?>>Maiquetía</option>
                         <option value="Naiguatá" <?php if($reg3[4]=="Naiguatá"){ echo 'selected'; } ?>>Naiguatá</option>
                         <option value="Urimare" <?php if($reg3[4]=="Urimare"){ echo 'selected'; } ?>>Urimare</option>
-                       
+
                     </select>
                     </br>
 
@@ -503,6 +505,7 @@
                         <option value="Valmore Rodríguez" <?php if($reg3[4]=="Valmore Rodríguez"){ echo 'selected'; } ?>>Valmore Rodríguez</option>
                     </select>
                     </br>
+
 
                 <label for="Direccion2">Parroquia</label>
                     <input type="text" required name="Parroquia[]" value="<?php echo $reg3[5] ?>" id="Direccion2"  title="" cols="30" rows="5" maxlength="60" />

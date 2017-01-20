@@ -28,7 +28,7 @@ aside{
 	margin-bottom: 15px;
 }
 hgroup{
-	
+
 	background-color: #E5FBE5;
 }
 hgroup h1{
@@ -90,7 +90,7 @@ footer{
 	color: red;
 	cursor: pointer;
 
-	
+
 }
 
 
@@ -117,6 +117,31 @@ footer{
 	font-family: cursive 36px;
 	font-weight: 900;
 	font-size:30;
-    color: #c2a200; 
+    color: #c2a200;
     margin-left: 0px;
+}
+.columna1 {
+	width: 50%;
+	height: auto;
+	float: left;
+	position: relative;
+}
+
+.columna2 {
+	width: 50%;
+	height: auto;
+	float: right;
+	position: relative;
+}
+section.section1 {
+	margin: 30px 10px;
+	height: 70px;
+	width: auto;
+	position: relative;
+}
+section.section2 {
+	margin: 30px 10px;
+	height: 250px;
+	width: auto;
+	position: relative;
 }

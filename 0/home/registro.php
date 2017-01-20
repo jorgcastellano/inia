@@ -46,7 +46,7 @@
                     <label>Confirmar contraseña: </label>
                     <input required type="password" name="confirmpwd" id="confirmpwd" placeholder="Reescriba la contraseña" /><br>
                     <label>Pregunta de seguridad:</label>
-                    <select required name="pregunta" id="pregunta">
+                    <select required name="pregunta" id="pregunta" class="opcion4">
                         <option value="0"> -- seleccione una pregunta -- </option>
                         <option value="1">¿Nombre de su primera mascota?</option>
                         <option value="2">¿Cuál fué su apellido de soltera?</option>
@@ -61,7 +61,7 @@
                     <input required type="password" name="resp" id="resp" placeholder="Respuesta" />
                 </div>
                  <div class="grupobotones">
-                        <button class="boton" type="buttom" onclick=location="index" ><i class="fa fa-arrow-left"></i> Página principal</button>
+                        <button class="boton" type="button" onclick=location="index" ><i class="fa fa-arrow-left"></i> Página principal</button>
                         <button class="boton" type="submit"><i class='fa fa-check'></i> Registrarse</button>
                  </div>
             </form>
