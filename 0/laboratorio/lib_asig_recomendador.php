@@ -1,28 +1,55 @@
 <?php
-
-        $estatus="esper_recom";
+        if($_SESSION['tipoLab']==2):
+          $tipo="SUE";
+          $tipo2=2;
+        else:
+          $tipo="FITO";
+          $tipo2=1;
+        endif;
+        $estatus="esper_espec";
         $objmuestra = new muestra();
-        $reg = $objmuestra -> consultar_muestras($mysqli,$estatus);
+        $reg = $objmuestra -> consultar_muestras($mysqli,$estatus,$tipo);
+        $objespecialista = new especialista();
 
-      echo "<form action='' method='POST' onsubmit=''>
+      echo "
               <table class='usuario'>
                 <tr>
-                    <td><i class='fa fa-chevron-circle-right'></i> Código </td>
-                    <td>Tipo</td>
-                    <td>Fecha inicio</td>
-                    <td>Fecha final </td>
+                    <td>Código</td>
+                    <td>Cultivo actual</td>
+                    <td>Cultivo a realizar</td>
+                    <td>Especialista</td>
                     <td>Asignar</td>
                 </tr>";
 
-    while ($res = $reg->fetch_array()) :
+    while ($res = $reg -> fetch_array()) :
+      $reg2 = $objespecialista -> consulta_lab($mysqli,$tipo2);
+        echo "
+                  <tr>
+                    <form action='../laboratorio/asig_especialista' method='POST'>
+                      <td>$res[1]</td>
+                      <td>$res[1]</td>
+                      <td>$res[3]</td>
+                      <td>
+                        <select name='Ced_esp[]'>
+                            <option value=''>--Seleccione--</option>";
+                          while($res2 = $reg2 -> fetch_array()):
 
-        echo "    <tr>
-                      <td>$res[]</td>
-                      <td>$res[]</td>
-                      <td>$res[]</td>
-                      <td>$res[]</td>
-                      <td></td>
-                  </tr>";
+        echo "
+                          <option value='$res2[0]'>".$res2[2]." ".$res2[3]."</option>";
+                          endwhile;
+        echo "          </select>
+                      </td>
+
+                      <input type='hidden' name='idm' value='$res[0]' />
+                      <td><button class='sinboton' type='submit' name='Asignar' value='' id='accion_buttom' style='color:#2C872C;' ><i class='fa fa-arrow-right'></button></i></td>
+                    </form>
+                  </tr>
+
+                ";
     endwhile;
+    echo "  </table>
+
+
+          ";
 
  ?>

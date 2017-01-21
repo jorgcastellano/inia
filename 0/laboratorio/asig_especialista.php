@@ -16,14 +16,14 @@
              <hgroup>
                <h1>Asignar Especialista</h1>
              </hgroup>
-           </div> 
+           </div>
            <?php
 
                 require_once '../../system/class.php';
                 require_once '../../system/classesp.php';//Libreria que contiene las clases.
                 extract($_POST);
                 if(isset($Asignar)):
-                  $estatus="esp_res";
+                  $estatus="esp_ana";
                   $objmuestra = new muestra();
 
                   foreach ($_POST['Ced_esp'] as $valor){
