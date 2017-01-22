@@ -91,6 +91,7 @@
                           <input type='text' name='AluL' value='$reg[23]' id='' title='' maxlength='' placeholder='' />
                           </br></br>
                           <input type='hidden' name='Cod_muestra' value='$Cod_muestra' />
+                          <input type='hidden' name='id' value='$id' />
                           <button class='boton' type='reset' value='Borrar' name='reset' id='reset'><i class='fa fa-eraser'></i> Limpiar</button>
            							  <button type='button' id='accion_buttom' name='Volver' value='Volver' onclick=location='inicio' class='boton' ><i class='fa fa-check'></i> Volver a inicio</button>
                           <button type='submit' name='$accion' value='$accion' class='boton' ><i class='fa fa-check'></i> Guardar</button>

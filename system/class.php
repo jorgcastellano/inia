@@ -406,9 +406,9 @@ class muestra {
       return $mysqli->query($sql);
     }
 
-    public function consultar_muestra_asignadas($mysqli,$Ced_esp)
+    public function consultar_muestra_asignadas($mysqli,$Ced_esp,$estatus)
     {
-      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra_especialista.Fecha FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'";
+      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra.Cult_act, muestra_especialista.Fecha FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'&&muestra.Estatus='$estatus'";
       return $mysqli->query($sql);
     }
 

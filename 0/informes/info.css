@@ -1,0 +1,48 @@
+header{
+	width: 600px;
+	margin-top: -15px;
+	margin-bottom: 0px;
+}
+img{
+	width: 100%;
+}
+table.info{
+border-style: groove;
+border-color: blue;
+}
+table.info tr:first-child td:first-child{
+	background-color: blue;
+text-align: center;
+
+}
+table.info tr:first-child td:nth-child(2){
+	background-color: red;
+text-align: center;
+width: 28%;
+}
+table.info tr:nth-child(2) td:first-child{
+width: 20%;
+}
+table.info tr:nth-child(7) td:first-child{
+text-align: center;
+}
+table.info tr:nth-child(8) td:nth-child(2){
+width: 15%;
+}
+table.info tr:nth-child(8) td:nth-child(3){
+text-align: center;
+}
+table.info tr:nth-child(13) td:first-child{
+text-align: center;
+}
+table.info tr:nth-child(18) td:first-child{
+text-align: center;
+}
+table.info2{
+border-style: groove;
+border-color: blue;
+width: 100%;
+}
+table.info2 tr:first-child td:first-child{
+background-color: blue;
+text-align: center;
