@@ -66,6 +66,10 @@
                     $reg=$ana->consultar_analisis_Cod($mysqli, $Tipo);
                 endif;
 
+                if($reg[3] == 1)
+                  $reg[3] = "Fitopatología";
+                else
+                $reg[3] = "Suelo";
 
             ?>
             <!--mostrar resultados de la modificacion o el registro del analisis-->

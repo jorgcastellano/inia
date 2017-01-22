@@ -52,7 +52,7 @@
               ?>
             <form  class="contact_form" method="post" action="resultado" >
             	<label for="Nom_produ"> Nombre del Producto </label>
-            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"placeholder="" pattern="([A-ZÑ]{1}[a-zñáéíóú]{1,}\s{0,1})+"/>
+            	<input required type="txt" name="Nom_produ" id="Nom_produ" value="<?php if(isset($reg)) echo $reg[1] ?>" title="Introduzca el nombre del producto " maxlength="50"placeholder="" pattern="([A-ZÑ]{1}[a-zñáéíóú]+(\s?[A-ZÑ]{0,1}[a-zñáéíóú]+)*)+"/>
             	</br>
             	<label for="Existencia"> Cantidad de Producto </label>
 
@@ -75,7 +75,7 @@
                 </br>
                 <label for="Precio_produ"> Precio de Producto (Bs) </label>
             	<input required type="num" name="Precio_produ" id="Precio_produ" value="<?php if(isset($reg)) echo $reg[3]; ?>" title="Introduzca el precio por unidad de este producto" maxlength="7" placeholder="" pattern="[0-9]+"/>
-                
+
 
            		</br>
                 <?php if (isset($reg)) {
