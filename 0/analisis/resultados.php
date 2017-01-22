@@ -52,16 +52,16 @@
 
                 $ana->modificar_analisis($mysqli,$Cod_ana,$Nom_ana,$Precio_ana,$Tipo);
 
-                if($mysqli->affected_rows>0){ echo "<span class='notify'><i class='fa fa-check-square'></i>El análisis se ha modificado con exito</span> ";}
-                    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se realizó ningun cambio</span> ";}
+                if($mysqli->affected_rows>0){ echo "<div class='notify'><i class='fa fa-check-circle-o'></i> El análisis se ha modificado con exito</div>";}
+                    else { echo "<div class='notify_f'><i class='fa fa-times'></i> No se realizó ningun cambio</div> ";}
                 $reg=$ana->consultar_analisis($mysqli,$Cod_ana);
                 endif;
                 //verificamos si se desea registrar un nuevo analisis
 
                 if (isset($submit)) :
                     $ana -> registrar_analisis($mysqli,$Nom_ana,$Precio_ana,$Tipo);
-                    if($mysqli->affected_rows>0){ echo "<span class='notify'><i class='fa fa-check-square'></i>El analisis se ha registrado con exito</span> ";}
-                        else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se pudo registrar el analisis</span> ";}
+                    if($mysqli->affected_rows>0){ echo "<div class='notify'><i class='fa fa-check-circle-o'></i> El analisis se ha registrado con exito</div>";}
+                        else { echo "<div class='notify_f'><i class='fa fa-times'></i> No se pudo registrar el analisis</div> ";}
 
                     $reg=$ana->consultar_analisis_Cod($mysqli, $Tipo);
                 endif;

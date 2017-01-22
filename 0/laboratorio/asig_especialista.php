@@ -16,7 +16,7 @@
              <hgroup>
                <h1>Asignar Especialista</h1>
              </hgroup>
-           </div> 
+           </div>
            <?php
 
                 require_once '../../system/class.php';
@@ -27,8 +27,8 @@
                   $objmuestra = new muestra();
 
                   foreach ($_POST['Ced_esp'] as $valor){
-                  if(!empty($valor))
-                  $Ced_esp = $valor;
+                    if(!empty($valor))
+                      $Ced_esp = $valor;
                   }
                   echo $Ced_esp;
                   $objmuestra->cambiar_estatus($mysqli,$estatus,$idm);
