@@ -47,6 +47,16 @@
 			return $elementos -> mostrar();
 
 		}
+		public function menuNivel16() {
+			$elementos = new menu();
+			$elementos->cargarElemento("fa-flask", "../../0/home/inicio", " Analizar");
+			$elementos->cargarElemento("fa-clock-o", "#", " Pendientes");
+			$elementos->cargarElemento("fa-pencil-square-o", "#", " Recomendar");
+			$elementos->cargarElemento("fa-flag-checkered", "../../0/home/inicio", " Finalizadas");
+
+			return $elementos -> mostrar();
+
+		}
 		public function menuNivel13() {
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-money", "../../0/home/inicio", " Facturas impagas");

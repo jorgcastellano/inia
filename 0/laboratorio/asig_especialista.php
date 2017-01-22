@@ -27,8 +27,8 @@
                   $objmuestra = new muestra();
 
                   foreach ($_POST['Ced_esp'] as $valor){
-                  if(!empty($valor))
-                  $Ced_esp = $valor;
+                    if(!empty($valor))
+                      $Ced_esp = $valor;
                   }
                   $t=1;
                   $objmuestra->cambiar_estatus($mysqli,$estatus,$idm);

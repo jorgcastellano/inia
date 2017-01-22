@@ -42,7 +42,7 @@
             ?>
             <form class="contact_form" action="resultados" method="post">
                 <label for="Nom_ana">Nombre del analisis</label>
-                    <input required type="text" name="Nom_ana" value="<?php if(isset($reg)) echo $reg[1]; ?>" maxlength="50"placeholder="" pattern="([A-ZÑ]{1}[a-zñáéíóú]{1,}\s{0,1})+"/>
+                    <input required type="text" name="Nom_ana" value="<?php if(isset($reg)) echo $reg[1]; ?>" maxlength="50"placeholder="" pattern="([A-ZÑ]{1}[a-zñáéíóú]+(\s?[A-ZÑ]{0,1}[a-zñáéíóú]+)*)+"/>
                     <br>
                 <label for="Precio_ana">Costo del analisis</label>
 

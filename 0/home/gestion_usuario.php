@@ -31,7 +31,7 @@
                         $especialista = new especialista();
                         $especialista->eliminar($mysqli, $eliminar);
                     else :
-                        echo "<div class='notify'><i class='fa fa-check-square'></i>El usuario ha sido eliminado de forma exitosa<br /></div> ";
+                        echo "<div class='notify'><i class='fa fa-check-circle-o'></i> El usuario ha sido eliminado de forma exitosa<br /></div> ";
                         $objinicio -> eliminar_miembros($mysqli, $eliminar);
                     endif;
                 elseif (isset($guardar)) : //
@@ -40,13 +40,13 @@
                             $objinicio -> modificar_privilegios($mysqli, $privilegios[$i], $codigos[$i]);
                             $mensaje1="<div class='notify'><i class='fa fa-check-circle-o'></i> Los privilegios fueron cambiados</div>";
                         else :
-                         $mensaje1="Debe seleccionar un privilegio para el usuario elegido";
+                         $mensaje1="<div class='notify'><i class='fa fa-check-square'></i> Debe seleccionar un privilegio para el usuario elegido</div>";
                         endif;
                     endfor;
                 elseif(isset($reinicio)) :
                     $pass = hash("sha512", "123456");
                     $objinicio -> reinicio($mysqli, $reinicio, $pass);
-                    $mensaje2="Se reinicio la contraseña del usuario seleccionado con la clave \"123456\"";
+                    $mensaje2="<div class='notify'><i class='fa fa-check-circle-o'></i> Se reinició la contraseña del usuario con la clave temporal \"123456\"</div>";
                     $user = $objinicio -> consultar_mi_usuario_ci($mysqli, $reinicio);
                     $user = $user -> fetch_array();
                     $objinicio -> eliminar_intentos($mysqli, $user[4]);
@@ -111,11 +111,11 @@
                         if (isset($on)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "On", $on);
                             $resultado[9] = "On";
-                             $mensaje="<div class='notify'><i class='fa fa-check-circle-o'></i> Se activo Usuario</div>";
+                             $mensaje="<div class='notify'><i class='fa fa-check-circle-o'></i> Usuario activado con éxito</div>";
                         elseif (isset($off)) :
                             $objinicio->modificar_miembros_estatus($mysqli, "Off", $off);
                             $resultado[9] = "Off";
-                            $mensaje0="<div class='notify_f'><i class='fa fa-times'></i>Usuario desactivado </div>";
+                            $mensaje0="<div class='notify'><i class='fa fa-check-circle-o'></i></i>Usuario desactivado </div>";
                         endif;
                         unset($off, $on);
                     endif;
@@ -145,6 +145,7 @@
                             <td>$resultado[2] $resultado[3]
                             <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
                             <td><button class='sinboton' type='submit' name='reinicio' value='$resultado[1]' id='' ><i class='fa fa-repeat'></i></button></td>
+
                             <td>
                                 <input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/>
                             </td>
@@ -161,7 +162,7 @@
                 endwhile;
 
                 if (!empty($mensaje0)AND !empty($mensaje1))
-                    echo "Se desastivo un usuario y se cambiaron los privilegios";
+                    echo "<div class='notify'><i class='fa fa-check-circle-o'></i> Se desactivo el usuario y se cambiaron los privilegios con éxito</div>";
                 else {
                    if (!empty($mensaje))
                       echo "$mensaje ";

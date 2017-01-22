@@ -35,19 +35,19 @@
                 </br>
 
                 <label for="F_toma">Fecha de activación</label>
-                            <select name="Dia" title="Dia">
+                            <select name="Dia" title="Dia" class="opc-min1">
                                 <option value="">Día</option>
                                 <?php for($i=01;$i<32;$i++) { ?>
                                     <option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha[0]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
                                 <?php } ?>
                             </select>
-                            <select name="Mes" title="Mes">
+                            <select name="Mes" title="Mes" class="opc-min1">
                                 <option value="">Mes</option>
                                 <?php for($i=01;$i<13;$i++) { ?>
                                     <option value="<?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?>"<?php if($fecha[1]==$i){ echo 'selected'; } ?>><?php if(strlen($i) < 2){ echo  "0"; echo $i; } else {echo $i; } ?></option>
                                 <?php } ?>
                             </select>
-                            <select name="Ano" title="Año">
+                            <select name="Ano" title="Año" class="opc-min1">
                                 <option value="">Año</option>
                                 <?php for($i=1990;$i<2051;$i++) { ?>
                                     <option value="<?php echo $i; ?>"<?php if($fecha[2]==$i){ echo 'selected'; } ?>><?php echo $i; ?></option>

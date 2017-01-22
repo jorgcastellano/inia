@@ -1,7 +1,7 @@
-var act_eliminar = []; //Array vacio listo para inicializarlo
+//var act_eliminar = []; //Array vacio listo para inicializarlo
 
 //Estas dos funciones son las que se deben arreglar david
-function iniciar_act_eliminar(b) {
+/*function iniciar_act_eliminar(b) {
   for(var i=0; i < b; i++){
     act_eliminar[i]=false;
   }
@@ -15,7 +15,7 @@ function cambio_eliminar(n){
       }
       //debugger;
       console.log(act_eliminar);
-}
+}*/
 //Hasta aqui david
 
 //valida los envios de los formularios al modificar o eliminar productos o fincas
@@ -68,9 +68,6 @@ function menuOff(barrasMenu) {
 }
 
 //Funcion para validar si clickeo en los opciones
-function confirmar_accion(){
-
-}
 
 function comparador(nombres,cantidad){
       //alert("la funcion ha sido invocada");

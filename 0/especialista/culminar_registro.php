@@ -10,7 +10,11 @@
     <body>
         <section class="bloque">
             <div>
-                <?php include '../../layouts/cabecera-body.php' ?>
+              <header>
+                  <section>
+                  <img src="../../imgs/logo_new.jpg" />
+                  </section>
+              </header>
                 <hgroup>
                     <h1>¡Se te han otorgado privilegios de especialista!</h1>
                 </hgroup>
