@@ -49,8 +49,6 @@ class producto
     $sql = "UPDATE producto SET Existencia='$Existencia' WHERE Cod_produ='$cod'";
     $mysqli->query($sql);
     require_once 'error_update.php';
-    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>Los datos del producto se han modificado con éxito<br /></span> ";}
-    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido modificar los datos del producto<br /></span> ";}
   }
     public function consultar_ultimo_registro($mysqli) {
       //Ultimo producto insertado
@@ -62,8 +60,6 @@ class producto
       $sql = "DELETE FROM producto WHERE Cod_produ = '$codigo'";
       $mysqli->query($sql);
       require_once 'error_update.php';
-    if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El producto seleccionado se ha eliminado con éxito<br /></span> ";}
-    else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido eliminar el producto seleccionado<br /></span> ";}
     }
 }
 
@@ -212,8 +208,6 @@ class cliente {
                VALUES ('$Ced_cliente','$Nom_cliente','$Apelli_cliente','$Contacto','$Telf_cliente','$Dire_cliente', '$tipoUser', '$tipOrg', '$naturalidad')";
          $mysqli->query($sql);
          include_once 'error_insert.php';
-         if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El nuevo cliente se ha registrado con éxito<br /></span> ";}
-         else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar el nuevo cliente<br /></span> ";}
       }
 
      public function consultar_cliente($mysqli,$Ced_cliente)
@@ -237,8 +231,6 @@ class cliente {
       $sql="UPDATE cliente SET cliente.Ced_cliente='$Ced_cliente',cliente.Nom_cliente='$Nom_cliente',cliente.Apelli_cliente='$Apelli_cliente',cliente.Contacto='$Contacto',cliente.Telf_cliente='$Telf_cliente',cliente.Dire_cliente='$Dire_cliente', cliente.tipoUser='$tipoUser', cliente.tipOrg='$tipOrg' WHERE cliente.Id_cliente='$Id_cliente'";
       $res=$mysqli->query($sql);
       include_once 'error_update.php';
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>El cliente se ha modificado con éxito<br /></span> ";}
-      else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se realizó ningún cambio en el cliente<br /></span> ";}
       }
 }
 
@@ -251,8 +243,6 @@ class finca {
             VALUES ('$Ced_cliente','$Nom_fin','$Estado','$Municipio','$Parroquia')";
       $mysqli->query($sql);
       require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La nueva finca se ha registrado con éxito<br /></span> ";}
-      else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar la nueva finca<br /></span> ";}
     }
     public function consultar_finca($mysqli,$Cod_fin) {
 
@@ -271,8 +261,6 @@ class finca {
 
       $sql="UPDATE finca SET finca.Nom_fin='$Nom_fin',finca.Estado='$Estado',finca.Municipio='$Municipio',finca.Parroquia='$Parroquia'  WHERE finca.Ced_cliente='$Ced_cliente' AND finca.Cod_fin='$cod_finca'";
       $res=$mysqli->query($sql);
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La Finca se modificó con éxito<br /></span> ";}
-      else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se modificó la finca<br /></span> ";}
     }
 
     public function eliminar($mysqli, $codigo){
@@ -290,8 +278,6 @@ class solicitud {
             VALUES ('$Cod_sol','$Ced_cliente')";
       $res=$mysqli->query($sql);
       require_once 'error_insert.php';
-      if($mysqli->affected_rows>0){echo "<span class='notify'><i class='fa fa-check-square'></i>La solicitud se ha registrado con éxito<br /></span> ";}
-      else { echo "<span class='notify_f'><i class='fa fa-times'></i>No se ha podido registrar la nueva solicitud<br /></span> ";}
     }
 }
 
@@ -353,7 +339,6 @@ class muestra {
       $mysqli->query($sql);
       require_once 'error_insert.php';
 
-
     }
     public function consultar_muestra($mysqli,$Cod_muestra)
     {
@@ -412,14 +397,9 @@ class muestra {
       return $mysqli->query($sql);
     }
 
-
-
-
 }
 
 class solicitud_analisis {
-
-
 
     public function registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_muestra)
     {
@@ -429,70 +409,44 @@ class solicitud_analisis {
       $res=$mysqli->query($sql);
       //$res=$mysqli_query($mysqli,$sql);
       include_once 'error_insert.php';
-
-
     }
-
-
 
     public function consultar_sam($mysqli,$Cod_muestra)
     {
 
       $sql="SELECT * FROM solicitud_analisis, analisis WHERE Cod_muestra ='$Cod_muestra'  AND solicitud_analisis.Cod_ana=analisis.Cod_ana";
       return $mysqli->query($sql);
-
-
     }
-
 
     public function eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_muestra)
     {
-
-
       $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_muestra='$Cod_muestra'";
       $res=$mysqli->query($sql);
-
     }
-
-
   }
-
-
-
-
-
-
 
 class r_suelo {
 
   public function registrar_r_muestra_s($mysqli,$Cod_muestra,$Ced_esp,$Are,$Lim,$Arc,$Tex,$Grup,$Fos,$FosL,$Pot,$PotL,$Ca,$CaL,$Mag,$MagL,$Mat,$MatL,$PH,$PHL,$Con,$ConL,$Alu,$AluL)
   {
-
     $sql="INSERT INTO r_suelo(Cod_rsuelo,Cod_suelo,Ced_esp,Are,Lim,Arc,Tex,Grup,Fos,FosL,Pot,PotL,Ca,CaL,Mag,MagL,Mat,MatL,PH,PHL,Con,ConL,Alu,AluL) VALUES (NULL,'$Cod_muestra','$Ced_esp','$Are','$Lim','$Arc','$Tex','$Grup','$Fos','$FosL','$Pot','$PotL','$Cal','$CalL','$Mag','$MagL','$Mat','$MatL','$PH','$PHL','$Con','$ConL','$Alu','$AluL')";
     $res=$mysqli->query($sql);
-
-
   }
 
   public function consultar_r_muestra_s($mysqli,$Cod_muestra)
   {
-
     $sql="SELECT * FROM r_suelo WHERE r_suelo.Cod_suelo='$Cod_muestra'";
     $res=$mysqli->query($sql);
     return $res->fetch_array();
     //include_once 'error_select.php';
-
   }
 
   public function modificar_r_muestra_s($mysqli,$Cod_muestra,$Are,$Lim,$Arc,$Tex,$Grup,$Fos,$FosL,$Pot,$PotL,$Ca,$CaL,$Mag,$MagL,$Mat,$MatL,$PH,$PHL,$Con,$ConL,$Alu,$AluL)
   {
-
     $sql="UPDATE r_suelo SET Are='$Are',Lim='$Lim',Arc='$Arc',Tex='$Tex',Grup='$Grup',Fos='$Fos',FosL='$FosL',Pot='$Pot',PotL='$PotL',Ca='$Ca',CaL='$CaL',Mag='$Mag',MagL='$MagL',Mat='$Mat',MatL='$MatL',PH='$PH',PHL='$PHL',Con='$Con',ConL='$ConL',Alu='$Alu',AluL='$AluL' WHERE Cod_muestra='$Cod_muestra'";
     $res=$mysqli->query($sql);
     include_once 'error_update.php';
-
   }
-
 }
 
 
@@ -565,7 +519,7 @@ class factura_descripcion {
 
   public function consultar_factura($mysqli, $codigo)
   {
-    $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
+    $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E, fact_descripcion.Cod_produ FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
     return $res= $mysqli->query($sql);
   }
 

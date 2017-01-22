@@ -145,6 +145,7 @@
                             <td>$resultado[2] $resultado[3]
                             <input type='hidden' name='codigos[]' value='$resultado[0]' /></td>
                             <td><button class='sinboton' type='submit' name='reinicio' value='$resultado[1]' id='' ><i class='fa fa-repeat'></i></button></td>
+
                             <td>
                                 <input type='checkbox' name='cod[]' value='$resultado[0]' title='click para seleccionar los usuarios que desea aceptar' $checked/>
                             </td>

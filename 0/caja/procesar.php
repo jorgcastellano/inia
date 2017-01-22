@@ -118,7 +118,7 @@
 
             if(isset($procesar)) {
 
-                $hidden="<input type='hidden' name='codigo' value='".$codigoListado."'/>
+                $hidden="<input type='hidden' name='codigo' value='".$id[0]."'/>
                     <input type='hidden' name='exento' value='".$exe."'/>
                     <input type='hidden' name='base' value='".$iva."'/>
                     <input type='hidden' name='iva' value='".$impuestos."'/>
@@ -155,18 +155,18 @@
                 ';
 
                 $boton="
-                <button type='submit' id='botonCancelar' name='borrar' value='".$codigoListado."' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
-                <button type='submit' id='modificarFactura' name='codigoListado' value='".$codigoListado."' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
+                <button type='submit' id='botonCancelar' name='borrar' value='".$id[0]."' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
+                <button type='submit' id='modificarFactura' name='codigoListado' value='".$id[0]."' formaction='../../0/caja/procesar' class='boton'><i class='fa fa-pencil'></i> Modificar factura</button>
                 <button onclick='cambioBotones()' id='botonPagado' type='submit' name='confirmar' value='confirmar' formtarget='_blank' formaction='../../0/factura/factu.php' class='boton'><i class='fa fa-check'></i> Pagado</button>
                 ";
 
             }else{
                 $observacion="<textarea cols='25' rows='10' name='observacion' value='' placeholder='Observacion' ></textarea>";
 
-                $hidden="<input type='hidden' name='codigoListado' value='".$codigoListado."'/>
+                $hidden="<input type='hidden' name='codigoListado' value='".$id[0]."'/>
                 <input type='hidden' name='impuesto' value='".$impuesto."' />";
 
-                $boton="<button type='submit' name='borrar' value='".$codigoListado."' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
+                $boton="<button type='submit' name='borrar' value='".$id[0]."' formaction='cancel.php' class='boton'><i class='fa fa-ban'></i> Cancelar factura</button>
                     <button type='submit' name='procesar' value='procesar' class='boton'><i class='fa fa-check'></i> Guardar cambios</button>";
             }
             echo "</table>
