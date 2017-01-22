@@ -6,7 +6,7 @@
           $tipo="FITO";
           $tipo2=1;
         endif;
-        $estatus="esper_espec";
+        $estatus="esp_rec";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus,$tipo);
         $objespecialista = new especialista();
@@ -27,8 +27,8 @@
                   <tr>
                     <form action='../laboratorio/asig_especialista' method='POST'>
                       <td>$res[1]</td>
-                      <td>$res[1]</td>
                       <td>$res[3]</td>
+                      <td></td>
                       <td>
                         <select name='Ced_esp[]'>
                             <option value=''>--Seleccione--</option>";

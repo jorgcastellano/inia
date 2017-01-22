@@ -30,10 +30,10 @@
                   if(!empty($valor))
                   $Ced_esp = $valor;
                   }
-                  echo $Ced_esp;
+                  $t=1;
                   $objmuestra->cambiar_estatus($mysqli,$estatus,$idm);
-                  $objmuestra->asignar_especialista($mysqli,$idm,$Ced_esp);
-                  $reg=$objmuestra->consultar_muestra_especialista($mysqli,$idm);
+                  $objmuestra->asignar_especialista($mysqli,$idm,$Ced_esp,$t);
+                  $reg=$objmuestra->consultar_muestra_especialista($mysqli,$idm,$t);
                   $res = $reg -> fetch_array();
                   $idm=$res[1];
                   $reg2=$objmuestra->consultar_muestra_id($mysqli,$idm);
@@ -61,7 +61,7 @@
                             <td>".$res2[1]."</td>
                             <td>".$tip."</td>
                             <td>".$res3[2]." ".$res3[3]."</td>
-                            <td>".$res[3]."</td>
+                            <td>".$res[4]."</td>
                           </tr>
                         </table>
                           ";
@@ -78,8 +78,8 @@
 
 
             ?>
-           <form class="contact_form" method="POST" action="insert"  id="" name="principal1" onsubmit=""> <!--Formulario de suelo-->
-
+           <form class="contact_form" method="POST" action="#"  id="" name="principal1"> <!--Formulario de suelo-->
+              <button type='button' id='accion_buttom' name='Volver' value='Volver' onclick=location='../home/inicio' class='boton' ><i class='fa fa-check'></i> Volver a inicio</button>
            </form>
            <?php include '../../layouts/layout_p.php'; ?>
        </section>

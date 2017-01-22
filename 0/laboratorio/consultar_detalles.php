@@ -210,7 +210,7 @@
                     echo "</table>
                       <form action='carga_suelo' method='POST'>
                         <input type='hidden' name='Cod_muestra' value='$Cod_muestra' />
-                        <input type='hidden' name='id' value='$id' />
+                        <input type='hidden' name='id' value='$reg[0]' />
                         <button class='boton' type='button' onclick=location='inicio' ><i class='fa fa-arrow-left'></i> Volver a inicio</button>
                         <button type='submit' name='Cargar' value='Cargar' class='boton' ><i class='fa fa-check'></i> Cargar resultados</button>
                       </form>

@@ -389,14 +389,14 @@ class muestra {
 
     }
 
-    public function asignar_especialista($mysqli,$idm,$Ced_esp)
+    public function asignar_especialista($mysqli,$idm,$Ced_esp,$t)
     {
-      $sql="INSERT INTO muestra_especialista(id,idm,Ced_esp) VALUES (NULL, '$idm', '$Ced_esp')";
+      $sql="INSERT INTO muestra_especialista(id,idm,Ced_esp,Tipo) VALUES (NULL, '$idm', '$Ced_esp', '$t')";
       return $mysqli->query($sql);
     }
-    public function consultar_muestra_especialista($mysqli,$idm)
+    public function consultar_muestra_especialista($mysqli,$idm,$t)
     {
-      $sql="SELECT * FROM muestra_especialista WHERE muestra_especialista.idm='$idm'";
+      $sql="SELECT * FROM muestra_especialista WHERE muestra_especialista.idm='$idm'&&muestra_especialista.Tipo='$t'";
       return $mysqli->query($sql);
     }
 
@@ -406,9 +406,9 @@ class muestra {
       return $mysqli->query($sql);
     }
 
-    public function consultar_muestra_asignadas($mysqli,$Ced_esp,$estatus)
+    public function consultar_muestra_asignadas($mysqli,$Ced_esp,$estatus,$t)
     {
-      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra.Cult_act, muestra_especialista.Fecha FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'&&muestra.Estatus='$estatus'";
+      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra.Cult_act, muestra_especialista.Fecha FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'&&muestra.Estatus='$estatus'&&muestra_especialista.Tipo='$t'";
       return $mysqli->query($sql);
     }
 
@@ -487,7 +487,7 @@ class r_suelo {
   public function modificar_r_muestra_s($mysqli,$Cod_muestra,$Are,$Lim,$Arc,$Tex,$Grup,$Fos,$FosL,$Pot,$PotL,$Ca,$CaL,$Mag,$MagL,$Mat,$MatL,$PH,$PHL,$Con,$ConL,$Alu,$AluL)
   {
 
-    $sql="UPDATE r_suelo SET Are='$Are',Lim='$Lim',Arc='$Arc',Tex='$Tex',Grup='$Grup',Fos='$Fos',FosL='$FosL',Pot='$Pot',PotL='$PotL',Ca='$Ca',CaL='$CaL',Mag='$Mag',MagL='$MagL',Mat='$Mat',MatL='$MatL',PH='$PH',PHL='$PHL',Con='$Con',ConL='$ConL',Alu='$Alu',AluL='$AluL' WHERE Cod_muestra='$Cod_muestra'";
+    $sql="UPDATE r_suelo SET Are='$Are',Lim='$Lim',Arc='$Arc',Tex='$Tex',Grup='$Grup',Fos='$Fos',FosL='$FosL',Pot='$Pot',PotL='$PotL',Ca='$Ca',CaL='$CaL',Mag='$Mag',MagL='$MagL',Mat='$Mat',MatL='$MatL',PH='$PH',PHL='$PHL',Con='$Con',ConL='$ConL',Alu='$Alu',AluL='$AluL' WHERE Cod_suelo='$Cod_muestra'";
     $res=$mysqli->query($sql);
     include_once 'error_update.php';
 
