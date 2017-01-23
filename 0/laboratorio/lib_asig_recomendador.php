@@ -31,7 +31,7 @@
                       <td>$res[3]</td>
                       <td></td>
                       <td>
-                        <select name='Ced_esp[]'>
+                        <select name='Ced_esp[]' required>
                             <option value=''>--Seleccione--</option>";
                           while($res2 = $reg2 -> fetch_array()):
 

@@ -54,7 +54,7 @@
                                   endwhile;
                               echo "</table>";
                         else:
-                          echo "<div class='notify_f'>No hay muestras para analizar</div>";
+                          echo "<div class='notify_f'>No hay muestras pendientes</div>";
                         endif;
 
 

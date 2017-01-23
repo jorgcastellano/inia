@@ -292,6 +292,13 @@ class solicitud {
       $sql = "UPDATE solicitud SET Estatus='fin' WHERE Cod_sol='$cod_sol'";
       $res = $mysqli -> query($sql);
     }
+
+    public function consulta_cliente($mysqli, $Ced_cliente) {
+      $sql = "SELECT * FROM solicitud WHERE Cod_cliente = '$Ced_cliente' LIMIT 5";
+      $res = $mysqli->query($sql);
+      return $res;
+    }
+
 }
 
 class ayudante
@@ -441,7 +448,7 @@ class solicitud_analisis {
     }
     public function consultar_status_muestras_por_sol($mysqli, $cod_sol) {
       $sql = "SELECT s.Cod_sol, s.Cod_muestra, m.Estatus FROM solicitud_analisis s, muestra m WHERE s.Cod_sol = '$cod_sol' AND m.Cod_muestra=s.Cod_muestra";
-      $res = $sql -> query($sql);
+      $res = $mysqli -> query($sql);
       return $res;
     }
   }

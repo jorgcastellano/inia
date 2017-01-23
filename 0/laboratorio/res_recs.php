@@ -32,17 +32,19 @@
                    $cod_sol=$cod_sol_obt1[0];
                    $objSA = new solicitud_analisis();
                    $sa = $objSA -> consultar_status_muestras_por_sol($mysqli, $cod_sol);
-                   echo "hola";
                    $cont = 0;
                    $var = $mysqli->affected_rows;
 
                    for($i = 0; $i < $var; $i++) {
                      $sar = $sa -> fetch_array();
-                     if($sa[2] == "fin")
+                     if($sar[2] == "fin")
                       $cont++;
+
                    }
+                  
                    if($var == $cont)
-                    $objSolicitud -> cambiar_status_fin($mysqli, $cod_sol_obt1[0]);
+                    $objSolicitud -> cambiar_status_fin($mysqli, $cod_sol);
+
 
 
 
