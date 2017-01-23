@@ -393,7 +393,7 @@ class muestra {
 
     public function consultar_muestra_asignadas($mysqli,$Ced_esp,$estatus,$t)
     {
-      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra.Cult_act, muestra_especialista.Fecha FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'&&muestra.Estatus='$estatus'&&muestra_especialista.Tipo='$t'";
+      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra.Cult_act, muestra_especialista.Fecha, muestra.Recomendar FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'&&muestra.Estatus='$estatus'&&muestra_especialista.Tipo='$t'";
       return $mysqli->query($sql);
     }
 
@@ -448,6 +448,30 @@ class r_suelo {
     include_once 'error_update.php';
   }
 }
+
+
+class rec_suelo{
+
+  public function registrar_rec_suelo($mysqli,$Cod_muestra,$Ced_esp,$TituloA,$DescripcionA,$TituloB,$DescripcionB)
+  {
+    $sql="INSERT INTO rec_suelo(id,Cod_suelo,Ced_esp,TituloA,DescripcionA,TituloB,DescripcionB) VALUES (NULL,'$Cod_muestra','$Ced_esp','$TituloA','$DescripcionA','$TituloB','$DescripcionB')";
+    $res=$mysqli->query($sql);
+  }
+
+  public function modificar_rec_suelo($mysqli,$Cod_muestra,$Ced_esp,$TituloA,$DescripcionA,$TituloB,$DescripcionB)
+  {
+    $sql="UPDATE rec_suelo SET TituloA='$TituloA',DescripcionA='$DescripcionA',TituloB='$TituloB',DescripcionB='$DescripcionB' WHERE Cod_suelo='$Cod_muestra'";
+  }
+
+  public function consultar_rec_suelo($mysqli,$Cod_muestra)
+  {
+    $sql="SELECT * FROM rec_suelo WHERE rec_suelo.Cod_suelo='$Cod_muestra'";
+    $res=$mysqli->query($sql);
+    return $res->fetch_array();
+  }
+
+}
+
 
 
 
