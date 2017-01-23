@@ -1,0 +1,33 @@
+header{
+	width: 600px;
+	margin-top: -15px;
+	margin-bottom: 0px;
+}
+img{
+	width: 110%;
+  margin-left: 6%;
+}
+
+div.tres{
+	width: 110%;
+	color: black;
+	font-weight: bold;
+  text-align: center;
+
+}
+div.reco1{
+  height: 10%;
+  width: 105%;
+  margin-left: 5%;
+margin-bottom: 10px;
+border-collapse:collapse !important;
+border: 2px #000000 solid;
+font-size: 80%;
+ }
+ div.reco2{
+   width: 90%;
+   margin-top: 10px;
+   margin-left: 15px;
+ border-collapse:collapse !important;
+ font-size: 80%;
+  }
