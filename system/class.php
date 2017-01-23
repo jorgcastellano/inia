@@ -212,7 +212,6 @@ class cliente {
 
      public function consultar_cliente($mysqli,$Ced_cliente)
      {
-
       $sql="SELECT * FROM cliente WHERE cliente.Ced_cliente ='$Ced_cliente'";
       $res=$mysqli->query($sql);
       return $this -> reg = mysqli_fetch_array($res);
@@ -278,6 +277,11 @@ class solicitud {
             VALUES ('$Cod_sol','$Ced_cliente')";
       $res=$mysqli->query($sql);
       require_once 'error_insert.php';
+    }
+    public function consulta($mysqli, $cod) {
+      $sql = "SELECT * FROM solicitud WHERE Cod_sol = '$cod'";
+      $res = $mysqli->query($sql);
+      return $res;
     }
 }
 
@@ -403,8 +407,6 @@ class solicitud_analisis {
 
     public function registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_muestra)
     {
-
-
       $sql="INSERT INTO solicitud_analisis(Id_sa,Cod_sol,Cod_ana,Cod_muestra) VALUES (NULL, '$Cod_sol', '$Cod_ana', '$Cod_muestra')";
       $res=$mysqli->query($sql);
       //$res=$mysqli_query($mysqli,$sql);
@@ -413,15 +415,20 @@ class solicitud_analisis {
 
     public function consultar_sam($mysqli,$Cod_muestra)
     {
-
       $sql="SELECT * FROM solicitud_analisis, analisis WHERE Cod_muestra ='$Cod_muestra'  AND solicitud_analisis.Cod_ana=analisis.Cod_ana";
-      return $mysqli->query($sql);
+      $res = $mysqli->query($sql);
+      return $res;
     }
 
     public function eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_muestra)
     {
       $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_muestra='$Cod_muestra'";
       $res=$mysqli->query($sql);
+    }
+    public function consultar_sa($mysqli, $cod_sol) {
+      $sql = "SELECT * FROM solicitud_analisis WHERE Cod_sol = '$cod_sol'";
+      $res = $mysqli -> query($sql);
+      return $res;
     }
   }
 
@@ -513,6 +520,11 @@ class factura_descripcion {
 
   public function facturar_productos($mysqli, $id, $descripcion, $cantidad, $costo, $precio, $cod_produ) {
     $sql = "INSERT INTO fact_descripcion (Cod_fact, Descripcion, Cantidad, Costo_unidad, Precio, Cod_produ) VALUES ('$id', '$descripcion', '$cantidad', '$costo', '$precio', '$cod_produ')";
+    $mysqli->query($sql);
+    include_once 'error_insert.php';
+  }
+  public function facturar_analisis($mysqli, $id, $descripcion, $cantidad, $costo, $precio) {
+    $sql = "INSERT INTO fact_descripcion (Cod_fact, Descripcion, Cantidad, Costo_unidad, Precio) VALUES ('$id', '$descripcion', '$cantidad', '$costo', '$precio')";
     $mysqli->query($sql);
     include_once 'error_insert.php';
   }

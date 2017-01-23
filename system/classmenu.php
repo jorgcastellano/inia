@@ -40,7 +40,7 @@
 		public function menuNivel15() {
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-plus", "../../0/home/inicio", " Asignar");
-			$elementos->cargarElemento("fa-flask", "#", " Analizar");
+			$elementos->cargarElemento("fa-flask", "", " Analizar");
 			$elementos->cargarElemento("fa-clock-o", "#", " Pendientes");
 			$elementos->cargarElemento("fa-pencil-square-o", "#", " Recomendar");
 
@@ -50,8 +50,8 @@
 		public function menuNivel16() {
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-flask", "../../0/home/inicio", " Analizar");
-			$elementos->cargarElemento("fa-clock-o", "#", " Pendientes");
-			$elementos->cargarElemento("fa-pencil-square-o", "#", " Recomendar");
+			$elementos->cargarElemento("fa-clock-o", "../../0/laboratorio/pendientes", " Pendientes");
+			$elementos->cargarElemento("fa-pencil-square-o", "../../0/laboratorio/recomendacion", " Recomendar");
 			$elementos->cargarElemento("fa-flag-checkered", "../../0/home/inicio", " Finalizadas");
 
 			return $elementos -> mostrar();
