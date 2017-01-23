@@ -25,7 +25,7 @@
       $reg2 = $objespecialista -> consulta_lab($mysqli,$tipo2);
         echo "
                   <tr>
-                    <form action='../laboratorio/asig_especialista' method='POST'>
+                    <form action='../laboratorio/asig_recomendador' method='POST'>
                       <td>$res[1]</td>
                       <td>$res[3]</td>
                       <td></td>

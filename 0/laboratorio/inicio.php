@@ -20,7 +20,7 @@
                                  <td>Código</td>
                                  <td>Tipo</td>
                                  <td>Cultivo</td>
-                                 <td>Fecha inicio</td>
+                                 <td>Fecha de asignacion</td>
                                  <td>Analizar</td>
                              </tr>";
 
