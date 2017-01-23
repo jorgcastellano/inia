@@ -502,7 +502,8 @@ class factura {
     //Buscdor por cedula
     $sql="SELECT * FROM factura WHERE Cod_fact=(SELECT MAX(Cod_fact) FROM factura WHERE Ced_cliente='$ci')";
     $res= $mysqli->query($sql);
-    return $res->fetch_array();
+    $res = $res->fetch_array();
+    return $res;
   }
      public function buscador_cedula($mysqli, $ci){
     $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente  AND factura.Ced_cliente='$ci' AND factura.Estatus='impaga'";
@@ -565,6 +566,11 @@ class factura_descripcion {
   public function consultar_factura($mysqli, $codigo)
   {
     $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E, fact_descripcion.Cod_produ FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
+    return $res= $mysqli->query($sql);
+  }
+  public function consultar_factura_para_analisis($mysqli, $codigo)
+  {
+    $sql="SELECT * FROM fact_descripcion WHERE fact_descripcion.Cod_fact='$codigo'";
     return $res= $mysqli->query($sql);
   }
 

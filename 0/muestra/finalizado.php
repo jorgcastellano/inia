@@ -127,6 +127,7 @@
                 $objcliente = new cliente();
                 $objproducto = new producto();
                 $objfactura = new factura();
+                $objfactdescrip = new factura_descripcion();
 
                 //Consulta de clientes y productos
                 //$ress = $objcliente->consultar_cliente($mysqli, $comprado);

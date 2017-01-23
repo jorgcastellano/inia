@@ -24,6 +24,17 @@
     $result4 = $resultado->fetch_array();
     $result5 = $resultado->fetch_array();
     $result6 = $resultado->fetch_array();
+    if(empty($result6)) {
+      $resultado = $objfactura_des->consultar_factura_para_analisis($mysqli, $codigo);
+      $result0 = $resultado->fetch_array();
+      $result1 = $resultado->fetch_array();
+      $result2 = $resultado->fetch_array();
+      $result3 = $resultado->fetch_array();
+      $result4 = $resultado->fetch_array();
+      $result5 = $resultado->fetch_array();
+      $result6 = $resultado->fetch_array();
+    }
+
 
     if (!empty($factura[5]))
         $compra123 = $factura[4].', Nro. '.$factura[5];
@@ -43,7 +54,7 @@ $html='
         <p  id="tres">www.inia.gov.ve<br /><b>RIF:G-20000095-3</p>
 		</div>
         <div class="tres">
-           <p><b>FACTURA</b><br /> <b>Nª: '.$codigo.'</b></p>
+           <p><b>FACTURA</b><br /> <b>Nª: '.$factAnalisisOn.'</b></p>
     </div>
 	</header>
     <div class="margenes">
