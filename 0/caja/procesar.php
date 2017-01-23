@@ -68,6 +68,7 @@
             endif;
 
             $res2=$objfactdescrip->consultar_factura($mysqli, $id[0]);
+            $res22=$objfactdescrip->consultar_factura($mysqli, $id[0]);
 
             ?>
 
@@ -85,24 +86,47 @@
 
             $iva = 0;
             $exe = 0;
-            while($resultado = $res2->fetch_array()){
-                if($resultado[6]=='I') {
-                    $iva+=$resultado[5];
-                    $ivad = "Si";
-                }
-                elseif($resultado[6]=='E') {
-                    $exe+=$resultado[5];
-                    $ivad = "No";
-                }
-                echo "
-                  <tr>
-                    <td>".$resultado[3]."</td>
-                    <td>".$resultado[2]."</td>
-                    <td>".$resultado[4]."</td>
-                    <td>".$ivad."</td>
-                    <td>".$resultado[5]."</td>
-                  </tr>";
-                  unset($ivad);
+            $res22 = $res22->fetch_array();
+            if(!empty($res22[7])) {
+              while($resultado = $res2->fetch_array()) {
+                  if($resultado[6]=='I') {
+                      $iva+=$resultado[5];
+                      $ivad = "Si";
+                  }
+                  elseif($resultado[6]=='E') {
+                      $exe+=$resultado[5];
+                      $ivad = "No";
+                  }
+                  echo "
+                    <tr>
+                      <td>".$resultado[3]."</td>
+                      <td>".$resultado[2]."</td>
+                      <td>".$resultado[4]."</td>
+                      <td>".$ivad."</td>
+                      <td>".$resultado[5]."</td>
+                    </tr>";
+                    unset($ivad);
+              }
+            } else {
+              $res2=$objfactdescrip->consultar_factura_para_analisis($mysqli, $id[0]);
+
+              $factAnalisisOn = "<input type='hidden' name='$factAnalisisOn' value='Yes' >";
+
+              while($resultado = $res2->fetch_array()) {
+
+                  $iva+=$resultado[5];
+                  $ivad = "Si";
+
+                  echo "
+                    <tr>
+                      <td>".$resultado[3]."</td>
+                      <td>".$resultado[2]."</td>
+                      <td>".$resultado[4]."</td>
+                      <td>".$ivad."</td>
+                      <td>".$resultado[5]."</td>
+                    </tr>";
+                    unset($ivad);
+              }
             }
 
             $subtotal=$iva+$exe;
