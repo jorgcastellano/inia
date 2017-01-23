@@ -298,7 +298,9 @@ class solicitud {
       $res = $mysqli->query($sql);
       return $res;
     }
-
+    public function consultar_sol_pdf($mysqli, $cod_sol) {
+      $sql = "SELECT * FROM ";
+    }
 }
 
 class ayudante
@@ -368,7 +370,6 @@ class muestra {
       return $res->fetch_array();
 
     }
-
 
     public function modificar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones,$Finca)
     {

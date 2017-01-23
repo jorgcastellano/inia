@@ -1,8 +1,18 @@
 <?php
   require_once("dompdf/dompdf_config.inc.php");
+  include_once '../../system/class.php';
+
+  extract($_POST);
+
+  $objinformes = new solicitud();
+  $datosSolicitud = $objinformes -> consulta($mysqli, $cod_sol_final);
+  $datosSolicitud = $datosSolicitud->fetch_array();
+
+  $objcliente = new cliente();
+  $datosCliente = $objcliente->consultar_cliente($mysqli,$datosSolicitud[2]);
+
 $html='
-<html>'.
-'	<body>
+<html><body>
     <link rel="stylesheet" type="text/css" href="info.css">
     <header>
    <div class="prin">
@@ -19,37 +29,37 @@ $html='
       </tr>
       <tr>
           <td >Nombre:</td>
-          <td colspan="3">Variable</td>
+          <td colspan="3">'.$datosCliente[2].' '.$datosCliente[3].'</td>
           <td colspan="4">Fecha de Recepción de Ítem(s):</td>
-          <td colspan="4">Variable fecha</td>
+          <td colspan="4">'.$datosSolicitud[4].'</td>
       </tr>
       <tr>
           <td>Dirección:</td>
-          <td colspan="3">Variable</td>
+          <td colspan="3">'.$datosCliente[6].'</td>
           <td colspan="4">Código:</td>
-          <td colspan="4">IRE-Variable codigo</td>
+          <td colspan="4">IRE-'.$cod_sol_final.'</td>
       </tr>
       <tr>
           <td>Persona Contacto:</td>
-          <td>Variable</td>
+          <td>'.$datosCliente[4].'</td>
           <td >CI/RIF:</td>
-          <td>Variable</td>
+          <td>'.$datosCliente[7].'-'.$datosCliente[1].'</td>
           <td  colspan="3">Centro:</td>
           <td colspan="5">Mérida</td>
       </tr>
       <tr>
           <td>Telefono:</td>
-          <td>Variable</td>
+          <td>'.$datosCliente[5].'</td>
           <td >FAX:</td>
-          <td>Variable</td>
+          <td> - - </td>
           <td colspan="2">Laboratorio:</td>
-          <td colspan="6">variable</td>
+          <td colspan="6">SUELO</td>
       </tr>
       <tr>
           <td>Correo Electrónico:</td>
-          <td colspan="3">Variable</td>
+          <td colspan="3"> - - </td>
           <td colspan="2">Contrato:</td>
-          <td colspan="6">Variable</td>
+          <td colspan="6"> - - </td>
       </tr>
       <tr>
           <td colspan="12">Análisis con fines de fertilidad</td>
@@ -63,64 +73,84 @@ $html='
           <td colspan="10">Muestra (descripción/identificación del cliente/identificacion de Ítem(s))</td>
       </tr>
       <tr>
-          <td colspan="2">fefes</td>
-          <td colspan="2">fsfs</td>
-          <td colspan="2">fsffs</td>
-          <td colspan="2">fsff</td>
-          <td colspan="2">fssfsff</td>
+          <td colspan="2">SUELO</td>
+          <td colspan="2">SUELO</td>
+          <td colspan="2">SUELO</td>
+          <td colspan="2">SUELO</td>
+          <td colspan="2">SUELO</td>
       </tr>
       <tr>
-          <td colspan="2">ewr</td>
-          <td colspan="2">etrt</td>
-          <td colspan="2">hfh</td>
-          <td colspan="2"></td>
-          <td colspan="2">getg</td>
+          <td colspan="2">M-1</td>
+          <td colspan="2">M-2</td>
+          <td colspan="2">M-3</td>
+          <td colspan="2">M-4</td>
+          <td colspan="2">M-5</td>
       </tr>
-      <tr>
-          <td colspan="2">egeg</td>
-          <td colspan="2">egeg</td>
-          <td colspan="2">ggedg</td>
-          <td colspan="2">gegg</td>
-          <td colspan="2"></td>
+      <tr>';
+
+      $objmuestras = new solicitud_analisis();
+      $listadoMuestras = $objmuestras -> consultar_sa($mysqli, $cod_sol_final);
+      $j=0;
+      $temp = "";
+      $muestrasUnicas = array();
+      while($result111 = $listadoMuestras -> fetch_array()) {
+        if($result111[3] != $temp) {
+          $html .= '<td colspan="2">'.$result111[3].'</td>';
+          $muestrasUnicas[$j] = $result111[3];
+          $j++;
+        }
+        $temp = $result111[3];
+      }
+      for($i = 0; $i < (5 - $j); $i++)
+        $html .= '<td colspan="2"></td>';
+
+      $html .= '
       </tr>
       <tr>
           <td colspan="12">ANALISIS FISICO</td>
       </tr>
-      <tr>
+      <tr>';
+      $rMuestras = new r_suelo();
+      $m1 = $rMuestras -> consultar_r_muestra_s($mysqli, $muestrasUnicas[0]);
+      $m2 = $rMuestras -> consultar_r_muestra_s($mysqli, $muestrasUnicas[1]);
+      $m3 = $rMuestras -> consultar_r_muestra_s($mysqli, $muestrasUnicas[2]);
+      $m4 = $rMuestras -> consultar_r_muestra_s($mysqli, $muestrasUnicas[3]);
+      $m5 = $rMuestras -> consultar_r_muestra_s($mysqli, $muestrasUnicas[4]);
+      $html .= '
           <td>%Arena</td>
-          <td></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
+          <td>SGCL-IA-009</td>
+          <td colspan="2">'.$m1[3].'</td>
+          <td colspan="2">'.$m2[3].'</td>
+          <td colspan="2">'.$m3[3].'</td>
+          <td colspan="2">'.$m4[3].'</td>
+          <td colspan="2">'.$m5[3].'</td>
       </tr>
       <tr>
           <td>%Limo</td>
-          <td ></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
+          <td >SGCL-IA-009</td>
+          <td colspan="2">'.$m1[4].'</td>
+          <td colspan="2">'.$m2[3].'</td>
+          <td colspan="2">'.$m3[3].'</td>
+          <td colspan="2">'.$m4[3].'</td>
+          <td colspan="2">'.$m5[3].'</td>
       </tr>
       <tr>
           <td>%Arcilla</td>
-          <td></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
+          <td>SGCL-IA-009</td>
+          <td colspan="2">'.$m1[5].'</td>
+          <td colspan="2">'.$m2[3].'</td>
+          <td colspan="2">'.$m3[3].'</td>
+          <td colspan="2">'.$m4[3].'</td>
+          <td colspan="2">'.$m5[3].'</td>
       </tr>
       <tr>
           <td>Textura (Bouyoucos)</td>
-          <td></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
-          <td colspan="2"></td>
+          <td>SGCL-IA-009</td>
+          <td colspan="2">'.$m1[6].'</td>
+          <td colspan="2">'.$m2[3].'</td>
+          <td colspan="2">'.$m3[3].'</td>
+          <td colspan="2">'.$m4[3].'</td>
+          <td colspan="2">'.$m5[3].'</td>
       </tr>
       <tr>
           <td colspan="12">ANÁLISIS QUÍMICO</td>

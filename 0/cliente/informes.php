@@ -33,12 +33,17 @@
 
           while ($res=$reg->fetch_array()) {
           echo "
+          <form method='POST' action='../../0/informes/infosu'>
             <tr>
               <td>".$res[1]."</td>
               <td>".$res[4]."</td>
-              <td>".$res[3]."</td>
-              <td><button class='sinboton' type='submit' name='Asignar' value='' id='accion_buttom' ><i class='fa fa-arrow-right'></button></i></td>
-            </tr>";
+              <td>".$res[3]."</td>";
+              if($res[3]=="fin")
+              echo "<td><button class='sinboton' type='submit' name='cod_sol_final' value='".$res[1]."' id='accion_buttom' ><i class='fa fa-arrow-right'></button></i></td>";
+              else
+              echo "<td></td>";
+            echo "</tr>
+            </form>";
           }
 
       echo "</table>";
