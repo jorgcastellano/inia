@@ -26,8 +26,20 @@
                    $reg2=$objmuestra->consultar_muestra($mysqli,$Cod_muestra);
                    $idm=$reg2[0];
                    $objmuestra->cambiar_estatus($mysqli,$estatus,$idm);
+
+                   $objSolicitud = new solicitud();
+                   $cod_sol_obt = $objSolicitud -> sacar_cod_sol($mysqli, $Cod_muestra);
+                   $cod_sol_obt = $cod_sol_obt -> fetch_array();
+
+                   $objSA = new solicitud_analisis();
+                   $sa = $objSA -> consultar_sa($mysqli, $cod_sol_obt[0]);
+                   for($i = 0; $i < $mysqli->affected_rows; $i++) {
+                     $sar = $sa -> fetch_array();
+                   }
+
+
                    $Ced_esp=$_SESSION['ci'];
-                   echo $Ced_esp;
+
                    $objrecomendacion = new rec_suelo();
                    if(isset($Guardar)):
 
@@ -38,14 +50,13 @@
                   endif;
 
                   $reg=$objrecomendacion->consultar_rec_suelo($mysqli,$Cod_muestra);
-                  echo "  <form method='POST' action=''>
+                echo  "  <form method='POST' action=''>
                             <table class='tcliente'>
                               <tr><th colspan='2'><i class='fa fa-edit'></i> Recomendaciones para la muestra</th></tr>
                               <tr><th>Codigo Muestra: </th><td>".$reg[1]."</td></tr>
-                              <tr><th>".$reg[3]."</th></tr>
-                              <tr><td>".$reg[4]."</td></tr>
-                              <tr><th>".$reg[5]."</th></tr>
-                              <tr><td>".$reg[6]."</td></tr>
+                              <tr><th>".$reg[3]."</th><td>".$reg[4]."</td></tr>
+                              <tr><th>".$reg[5]."</th><td>".$reg[6]."</td></tr>
+
                             </table>
                             <input type='hidden' name='id' value='$idm' />
                             <input type='hidden' name='Cod_muestra' value='$Cod_muestra' />

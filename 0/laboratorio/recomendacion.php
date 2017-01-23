@@ -14,7 +14,7 @@
             <div>
                 <?php include '../../layouts/cabecera-body.php'; ?>
 				<hgroup>
-					<h1>Detalles de la muestra</h1>
+					<h1>Recomendar muestras</h1>
 				</hgroup>
 			</div>
             <?php
@@ -39,7 +39,7 @@
                                    <td>Cultivo actual</td>
                                    <td>Nuevo cultivo</td>
                                    <td>Fecha de asignacion</td>
-                                   <td>Analizar</td>
+                                   <td>Recomendar</td>
                                </tr>";
 
                       while ($res = $reg -> fetch_array()) :

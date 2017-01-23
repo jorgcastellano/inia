@@ -39,14 +39,14 @@
                           <input type='text' name='TituloA' value='$reg[3]' id='' title='' maxlength='' placeholder='' />
                           </br></br>
                           <label for=''>Descripcion: </label>
-                          <textarea class='areatexto' name='DescripcionA' id='Aplicacion' title='  placeholder='Por Favor Especifique aquí el modo de aplicación del fertilizante'>$reg[4]</textarea>
+                          <textarea class='areatexto' name='DescripcionA' id='Aplicacion' title='  placeholder='Por Favor Especifique aquí el modo de aplicación del fertilizante'>".$reg[4]."</textarea>
                           </br></br>
 
                           <label for=''>Titulo para el segundo item</label>
                           <input type='text' name='TituloB' value='$reg[5]' id='' title='' maxlength='' placeholder='' />
                           </br></br>
                           <label for=''>Descripcion</label>
-                          <textarea class='areatexto' name='DescripcionB' id='Aplicacion' title='  placeholder='Por Favor Especifique aquí el modo de aplicación del fertilizante'>$reg[6]</textarea>
+                          <textarea class='areatexto' name='DescripcionB' id='Aplicacion' title='  placeholder='Por Favor Especifique aquí el modo de aplicación del fertilizante'>".$reg[6]."</textarea>
                           </br></br>
 
                           <input type='hidden' name='Cod_muestra' value='$Cod_muestra' />

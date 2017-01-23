@@ -82,7 +82,7 @@
 			$elementos = new menu();
 			$elementos->cargarElemento("fa-star-o", "#", " Servicios");
 			$elementos->cargarElemento("fa-shopping-cart", "#", " Productos");
-			$elementos->cargarElemento("fa-bar-chart", "#", " Estadísticas");
+			$elementos->cargarElemento("fa-pencil-square-o", "#", " Informes");
 			$elementos->cargarElemento("fa-gear", "#", " Administración");
 
 			return $elementos -> mostrar();

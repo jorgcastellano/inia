@@ -283,6 +283,11 @@ class solicitud {
       $res = $mysqli->query($sql);
       return $res;
     }
+    public function sacar_cod_sol($mysqli, $cod_muestra) {
+      $sql = "SELECT Cod_sol FROM solicitud_analisis WHERE Cod_muestra='$cod_muestra'";
+      $res = $mysqli -> query($sql);
+      return $res;
+    }
 }
 
 class ayudante
@@ -430,6 +435,9 @@ class solicitud_analisis {
       $res = $mysqli -> query($sql);
       return $res;
     }
+    public function consultar_status_muestras_por_sol() {
+      $sql = "SELECT s.Cod_sol, s.Cod_muestra, m.Estatus FROM solicitud_analisis s, muestra m WHERE s.Cod_sol = 'SSS-MER-2017-8' AND m.Cod_muestra=s.Cod_muestra";
+    }
   }
 
 class r_suelo {
@@ -468,6 +476,7 @@ class rec_suelo{
   public function modificar_rec_suelo($mysqli,$Cod_muestra,$Ced_esp,$TituloA,$DescripcionA,$TituloB,$DescripcionB)
   {
     $sql="UPDATE rec_suelo SET TituloA='$TituloA',DescripcionA='$DescripcionA',TituloB='$TituloB',DescripcionB='$DescripcionB' WHERE Cod_suelo='$Cod_muestra'";
+    $res=$mysqli->query($sql);
   }
 
   public function consultar_rec_suelo($mysqli,$Cod_muestra)

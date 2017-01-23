@@ -4,11 +4,13 @@
           extract($_POST);
           extract($_GET);
           if(isset($var1)):
+
             echo "<div class='notify' style='text-align: center;'><i>Los resultados se han enviado con exito</i></div>";
           endif;
           require_once '../../system/class.php';
             $estatus="esp_ana";
             $t=1;
+            
             $Ced_esp=$_SESSION['ci'];
             $objmuestra = new muestra();
             $reg = $objmuestra -> consultar_muestra_asignadas($mysqli,$Ced_esp,$estatus,$t);
