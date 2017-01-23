@@ -288,6 +288,10 @@ class solicitud {
       $res = $mysqli -> query($sql);
       return $res;
     }
+    public function cambiar_status_fin($mysqli, $cod_sol) {
+      $sql = "UPDATE solicitud SET Estatus='fin' WHERE Cod_sol='$cod_sol'";
+      $res = $mysqli -> query($sql);
+    }
 }
 
 class ayudante
@@ -435,8 +439,10 @@ class solicitud_analisis {
       $res = $mysqli -> query($sql);
       return $res;
     }
-    public function consultar_status_muestras_por_sol() {
-      $sql = "SELECT s.Cod_sol, s.Cod_muestra, m.Estatus FROM solicitud_analisis s, muestra m WHERE s.Cod_sol = 'SSS-MER-2017-8' AND m.Cod_muestra=s.Cod_muestra";
+    public function consultar_status_muestras_por_sol($mysqli, $cod_sol) {
+      $sql = "SELECT s.Cod_sol, s.Cod_muestra, m.Estatus FROM solicitud_analisis s, muestra m WHERE s.Cod_sol = '$cod_sol' AND m.Cod_muestra=s.Cod_muestra";
+      $res = $sql -> query($sql);
+      return $res;
     }
   }
 

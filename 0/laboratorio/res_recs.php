@@ -26,16 +26,24 @@
                    $reg2=$objmuestra->consultar_muestra($mysqli,$Cod_muestra);
                    $idm=$reg2[0];
                    $objmuestra->cambiar_estatus($mysqli,$estatus,$idm);
-
                    $objSolicitud = new solicitud();
                    $cod_sol_obt = $objSolicitud -> sacar_cod_sol($mysqli, $Cod_muestra);
-                   $cod_sol_obt = $cod_sol_obt -> fetch_array();
-
+                   $cod_sol_obt1 = $cod_sol_obt -> fetch_array();
+                   $cod_sol=$cod_sol_obt1[0];
                    $objSA = new solicitud_analisis();
-                   $sa = $objSA -> consultar_sa($mysqli, $cod_sol_obt[0]);
-                   for($i = 0; $i < $mysqli->affected_rows; $i++) {
+                   $sa = $objSA -> consultar_status_muestras_por_sol($mysqli, $cod_sol);
+                   echo "hola";
+                   $cont = 0;
+                   $var = $mysqli->affected_rows;
+
+                   for($i = 0; $i < $var; $i++) {
                      $sar = $sa -> fetch_array();
+                     if($sa[2] == "fin")
+                      $cont++;
                    }
+                   if($var == $cont)
+                    $objSolicitud -> cambiar_status_fin($mysqli, $cod_sol_obt1[0]);
+
 
 
                    $Ced_esp=$_SESSION['ci'];
