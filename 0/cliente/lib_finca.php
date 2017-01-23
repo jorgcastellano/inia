@@ -47,7 +47,7 @@
                     </select>
                     </br>
 
-                      <select class="opcion4" required name="Municipio[]" id="Municipio">
+                      <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Anzoátegui</option>
                         <option value="Anaco" <?php if($reg3[4]=="Anaco"){ echo 'selected'; } ?>>Anaco</option>
                         <option value="Aragua" <?php if($reg3[4]=="Aragua"){ echo 'selected'; } ?>>Aragua</option>
@@ -72,7 +72,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Apure</option>
                         <option value="Achaguas" <?php if($reg3[4]=="Achaguas"){ echo 'selected'; } ?>>Achaguas</option>
                         <option value="Biruaca" <?php if($reg3[4]=="Biruaca"){ echo 'selected'; } ?>>Biruaca</option>
@@ -84,7 +84,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Aragua</option>
                         <option value="Bolívar" <?php if($reg3[4]=="Bolívar"){ echo 'selected'; } ?>>Bolívar</option>
                         <option value="Camatagua" <?php if($reg3[4]=="Camatagua"){ echo 'selected'; } ?>>Camatagua</option>
@@ -108,7 +108,7 @@
                     </select>
                     </br>
 
-                     <select class="opcion4" required name="Municipio[]" id="Municipio">
+                     <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Barinas</option>
                         <option value="Andrés Eloy Blanco" <?php if($reg3[4]=="Andrés Eloy Blanco"){ echo 'selected'; } ?>>Andrés Eloy Blanco</option>
                         <option value="Antonio José de Sucre" <?php if($reg3[4]=="Antonio José de Sucre"){ echo 'selected'; } ?>>Antonio José de Sucre</option>
@@ -126,7 +126,7 @@
                     </select>
                     </br>
 
-                      <select class="opcion4" required name="Municipio[]" id="Municipio">
+                      <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Bolivar</option>
                         <option value="Angostura" <?php if($reg3[4]=="Angostura"){ echo 'selected'; } ?>>Angostura</option>
                         <option value="Caroní" <?php if($reg3[4]=="Caroní"){ echo 'selected'; } ?>>Caroní</option>
@@ -142,7 +142,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4" id="Municipio">
                         <option value="">Seleccione Carabobo</option>
                         <option value="Bejuma" <?php if($reg3[4]=="Bejuma"){ echo 'selected'; } ?>>Bejuma</option>
                         <option value="Carlos Arvelo" <?php if($reg3[4]=="Carlos Arvelo"){ echo 'selected'; } ?>>Carlos Arvelo</option>
@@ -161,7 +161,7 @@
                     </select>
                     </br>
 
-                     <select class="opcion4" required name="Municipio[]" id="Municipio">
+                     <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Cajedes</option>
                         <option value="Anzoátegui" <?php if($reg3[4]=="Anzoátegui"){ echo 'selected'; } ?>>Anzoátegui</option>
                         <option value="Ezequiel Zamora" <?php if($reg3[4]=="Ezequiel Zamora"){ echo 'selected'; } ?>>Ezequiel Zamora</option>
@@ -175,7 +175,7 @@
                     </select>
                     </br>
 
-                       <select class="opcion4" required name="Municipio[]" id="Municipio">
+                       <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Delta Amacuro</option>
                         <option value="Antonio Díaz" <?php if($reg3[4]=="Antonio Díaz"){ echo 'selected'; } ?>>Antonio Díaz</option>
                         <option value="Casacoima" <?php if($reg3[4]=="Casacoima"){ echo 'selected'; } ?>>Casacoima</option>
@@ -184,13 +184,13 @@
                     </select>
                     </br>
 
-                     <select class="opcion4" required name="Municipio[]" id="Municipio">
+                     <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Distrito Capital</option>
                         <option value="Libertador" <?php if($reg3[4]=="Libertador"){ echo 'selected'; } ?>>Libertador</option>
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Falcón</option>
                         <option value="Acosta" <?php if($reg3[4]=="Acosta"){ echo 'selected'; } ?>>Acosta</option>
                         <option value="Bolívar" <?php if($reg3[4]=="Bolívar"){ echo 'selected'; } ?>>Bolívar</option>
@@ -219,7 +219,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Guárico</option>
                         <option value="Camaguán" <?php if($reg3[4]=="Camaguán"){ echo 'selected'; } ?>>Camaguán</option>
                         <option value="Chaguaramas" <?php if($reg3[4]=="Chaguaramas"){ echo 'selected'; } ?>>Chaguaramas</option>
@@ -240,7 +240,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4" id="Municipio">
                         <option value="">Seleccione Lara</option>
                         <option value="Andrés Eloy Blanco" <?php if($reg3[4]=="Andrés Eloy Blanco"){ echo 'selected'; } ?>>Andrés Eloy Blanco</option>
                         <option value="Crespo" <?php if($reg3[4]=="Crespo"){ echo 'selected'; } ?>>Crespo</option>
@@ -255,7 +255,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4" id="Municipio">
                         <option value="">Seleccione Mérida</option>
                         <option value="Alberto Adriani" <?php if($reg3[4]=="Alberto Adriani"){ echo 'selected'; } ?>>Alberto Adriani</option>
                         <option value="Antonio Pinto Salinas" <?php if($reg3[4]=="Antonio Pinto Salinas"){ echo 'selected'; } ?>>Antonio Pinto Salinas</option>
@@ -284,7 +284,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Miranda</option>
                         <option value="Acevedo" <?php if($reg3[4]=="Acevedo"){ echo 'selected'; } ?>>Acevedo</option>
                         <option value="Andrés Bello" <?php if($reg3[4]=="Andrés Bello"){ echo 'selected'; } ?>>Andrés Bello</option>
@@ -310,7 +310,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Monagas</option>
                         <option value="Acosta" <?php if($reg3[4]=="Acosta"){ echo 'selected'; } ?>>Acosta</option>
                         <option value="Aguasay" <?php if($reg3[4]=="Aguasay"){ echo 'selected'; } ?>>Aguasay</option>
@@ -328,7 +328,7 @@
                     </select>
                     </br>
 
-                     <select class="opcion4" required name="Municipio[]" id="Municipio">
+                     <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Nueva Esparta</option>
                         <option value="Antolín del Campo" <?php if($reg3[4]=="Antolín del Campo"){ echo 'selected'; } ?>>Antolín del Campo</option>
                         <option value="Arismendi" <?php if($reg3[4]=="Arismendi"){ echo 'selected'; } ?>>Arismendi</option>
@@ -345,7 +345,7 @@
                     </select>
                     </br>
 
-                     <select class="opcion4" required name="Municipio[]" id="Municipio">
+                     <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Portuguesa</option>
                         <option value="Agua Blanca" <?php if($reg3[4]=="Agua Blanca"){ echo 'selected'; } ?>>Agua Blanca</option>
                         <option value="Araure" <?php if($reg3[4]=="Araure"){ echo 'selected'; } ?>>Araure</option>
@@ -366,7 +366,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Sucre</option>
                         <option value="Andrés Mata" <?php if($reg3[4]=="Andrés Mata"){ echo 'selected'; } ?>>Andrés Mata</option>
                         <option value="Arismendi Benítez" <?php if($reg3[4]=="Arismendi Benítez"){ echo 'selected'; } ?>>Arismendi Benítez</option>
@@ -385,7 +385,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Tachira</option>
                         <option value="Andrés Bello" <?php if($reg3[4]=="Andrés Bello"){ echo 'selected'; } ?>>Andrés Bello</option>
                         <option value="Arismendi Benítez" <?php if($reg3[4]=="Arismendi Benítez"){ echo 'selected'; } ?>>Arismendi Benítez</option>
@@ -420,7 +420,7 @@
                     </select>
                     </br>
 
-                     <select class="opcion4" required name="Municipio[]" id="Municipio">
+                     <select class="opcion4"   id="Municipio">
                         <option value="">Seleccione Trujillo</option>
                         <option value="Andrés Bello" <?php if($reg3[4]=="Andrés Bello"){ echo 'selected'; } ?>>Andrés Bello</option>
                         <option value="Boconó" <?php if($reg3[4]=="Boconó"){ echo 'selected'; } ?>>Boconó</option>
@@ -445,7 +445,7 @@
                     </select>
                     </br>
 
-                     <select class="opcion4" required name="Municipio[]" id="Municipio">
+                     <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Vargas</option>
                         <option value="Caraballeda" <?php if($reg3[4]=="Caraballeda"){ echo 'selected'; } ?>>Caraballeda</option>
                         <option value="Carayaca" <?php if($reg3[4]=="Carayaca"){ echo 'selected'; } ?>>Carayaca</option>
@@ -462,7 +462,7 @@
                     </select>
                     </br>
 
-                    <select class="opcion4" required name="Municipio[]" id="Municipio">
+                    <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Yaracuy</option>
                         <option value="Arístides Bastidas" <?php if($reg3[4]=="Arístides Bastidas"){ echo 'selected'; } ?>>Arístides Bastidas</option>
                         <option value="Bruzual" <?php if($reg3[4]=="Bruzual"){ echo 'selected'; } ?>>Bruzual</option>
@@ -480,7 +480,7 @@
                     </select>
                     </br>
 
-                     <select class="opcion4" required name="Municipio[]" id="Municipio">
+                     <select class="opcion4"  id="Municipio">
                         <option value="">Seleccione Zulia</option>
                         <option value="Almirante Padilla" <?php if($reg3[4]=="Almirante Padilla"){ echo 'selected'; } ?>>Almirante Padilla</option>
                         <option value="Baralt" <?php if($reg3[4]=="Baralt"){ echo 'selected'; } ?>>Baralt</option>
