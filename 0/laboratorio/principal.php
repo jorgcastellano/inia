@@ -21,7 +21,7 @@
               </div>
 
               <div id='segundo' style='display:none;'>
-                <?php  //include 'lib_asig_recomendador.php';?>
+                <?php  include 'lib_asig_recomendador.php';?>
               </div>
 
         <script type="text/javascript">

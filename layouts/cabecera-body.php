@@ -27,10 +27,15 @@
 		echo '</ul>';
 	}
 	elseif (($logeado == 'On') AND ($_SESSION['privilegios'] == 2)) {
+
 		echo '<ul class="menuHorizontal">';
 		$array1 = array();
 		$menu3 = new controladorMenu();
-      $array1 = $menu3->menuNivel15();
+
+		if($_SESSION['jefe'] == 1)
+			$array1 = $menu3->menuNivel15();
+		else
+			$array1 = $menu3->menuNivel16();
 
 		for ($i=0; $i < count($array1); $i++)
       echo $array1[$i].'</li>';
