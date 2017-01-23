@@ -9,6 +9,7 @@
         $estatus="esp_rec";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus,$tipo);
+        if($mysqli->affected_rows > 0) {
         $objespecialista = new especialista();
 
       echo "
@@ -48,8 +49,7 @@
                 ";
     endwhile;
     echo "  </table>
-
-
           ";
-
+} else
+  echo "<div class='notify_f'>No hay muestras para recomendar</div>";
  ?>
