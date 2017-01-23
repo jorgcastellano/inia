@@ -9,6 +9,7 @@
         $estatus="esper_espec";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus,$tipo);
+        if($mysqli->affected_rows > 0) {
         $objespecialista = new especialista();
 
       echo "
@@ -32,7 +33,7 @@
       if ($res[2]=='6') { $tip='Insectos'; }
       if ($res[2]=='7') { $tip='Otros'; }
         echo "
-                  <tr> 
+                  <tr>
                     <form action='../laboratorio/asig_especialista' method='POST'>
                       <td>$res[1]</td>
                       <td>$tip</td>
@@ -58,7 +59,8 @@
     endwhile;
     echo "  </table>
 
-
           ";
+} else
+  echo "<div class='notify_f'>No hay muestras para asignar</div>";
 
  ?>

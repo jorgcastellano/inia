@@ -9,6 +9,7 @@
         $estatus="esp_rec";
         $objmuestra = new muestra();
         $reg = $objmuestra -> consultar_muestras($mysqli,$estatus,$tipo);
+        if($mysqli->affected_rows > 0) {
         $objespecialista = new especialista();
 
       echo "
@@ -25,7 +26,7 @@
       $reg2 = $objespecialista -> consulta_lab($mysqli,$tipo2);
         echo "
                   <tr>
-                    <form action='../laboratorio/asig_especialista' method='POST'>
+                    <form action='../laboratorio/asig_recomendador' method='POST'>
                       <td>$res[1]</td>
                       <td>$res[3]</td>
                       <td></td>
@@ -48,8 +49,7 @@
                 ";
     endwhile;
     echo "  </table>
-
-
           ";
-
+} else
+  echo "<div class='notify_f'>No hay muestras para recomendar</div>";
  ?>

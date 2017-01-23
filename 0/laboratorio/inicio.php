@@ -4,11 +4,13 @@
           extract($_POST);
           extract($_GET);
           if(isset($var1)):
-            echo "<div class='notify' style='text-align: center;'><i>Los resultados se han enviado con exito</i></div>";
+
+            echo "<div class='notify' style='text-align: center;'>Los resultados se han enviado con exito</div>";
           endif;
           require_once '../../system/class.php';
             $estatus="esp_ana";
             $t=1;
+
             $Ced_esp=$_SESSION['ci'];
             $objmuestra = new muestra();
             $reg = $objmuestra -> consultar_muestra_asignadas($mysqli,$Ced_esp,$estatus,$t);
@@ -20,7 +22,7 @@
                                  <td>Código</td>
                                  <td>Tipo</td>
                                  <td>Cultivo</td>
-                                 <td>Fecha inicio</td>
+                                 <td>Fecha de asignacion</td>
                                  <td>Analizar</td>
                              </tr>";
 

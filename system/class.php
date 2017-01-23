@@ -212,7 +212,6 @@ class cliente {
 
      public function consultar_cliente($mysqli,$Ced_cliente)
      {
-
       $sql="SELECT * FROM cliente WHERE cliente.Ced_cliente ='$Ced_cliente'";
       $res=$mysqli->query($sql);
       return $this -> reg = mysqli_fetch_array($res);
@@ -278,6 +277,20 @@ class solicitud {
             VALUES ('$Cod_sol','$Ced_cliente')";
       $res=$mysqli->query($sql);
       require_once 'error_insert.php';
+    }
+    public function consulta($mysqli, $cod) {
+      $sql = "SELECT * FROM solicitud WHERE Cod_sol = '$cod'";
+      $res = $mysqli->query($sql);
+      return $res;
+    }
+    public function sacar_cod_sol($mysqli, $cod_muestra) {
+      $sql = "SELECT Cod_sol FROM solicitud_analisis WHERE Cod_muestra='$cod_muestra'";
+      $res = $mysqli -> query($sql);
+      return $res;
+    }
+    public function cambiar_status_fin($mysqli, $cod_sol) {
+      $sql = "UPDATE solicitud SET Estatus='fin' WHERE Cod_sol='$cod_sol'";
+      $res = $mysqli -> query($sql);
     }
 }
 
@@ -393,7 +406,7 @@ class muestra {
 
     public function consultar_muestra_asignadas($mysqli,$Ced_esp,$estatus,$t)
     {
-      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra.Cult_act, muestra_especialista.Fecha FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'&&muestra.Estatus='$estatus'&&muestra_especialista.Tipo='$t'";
+      $sql="SELECT muestra.Cod_muestra, muestra.Tipo_m, muestra.Cult_act, muestra_especialista.Fecha, muestra.Recomendar FROM muestra, muestra_especialista WHERE muestra.id=muestra_especialista.idm&&muestra_especialista.Ced_esp ='$Ced_esp'&&muestra.Estatus='$estatus'&&muestra_especialista.Tipo='$t'";
       return $mysqli->query($sql);
     }
 
@@ -403,8 +416,6 @@ class solicitud_analisis {
 
     public function registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_muestra)
     {
-
-
       $sql="INSERT INTO solicitud_analisis(Id_sa,Cod_sol,Cod_ana,Cod_muestra) VALUES (NULL, '$Cod_sol', '$Cod_ana', '$Cod_muestra')";
       $res=$mysqli->query($sql);
       //$res=$mysqli_query($mysqli,$sql);
@@ -413,15 +424,25 @@ class solicitud_analisis {
 
     public function consultar_sam($mysqli,$Cod_muestra)
     {
-
       $sql="SELECT * FROM solicitud_analisis, analisis WHERE Cod_muestra ='$Cod_muestra'  AND solicitud_analisis.Cod_ana=analisis.Cod_ana";
-      return $mysqli->query($sql);
+      $res = $mysqli->query($sql);
+      return $res;
     }
 
     public function eliminar_sam($mysqli,$insert,$Cod_sol,$Cod_muestra)
     {
       $sql="DELETE FROM solicitud_analisis WHERE Cod_sol='$Cod_sol' AND Cod_ana='$insert' AND Cod_muestra='$Cod_muestra'";
       $res=$mysqli->query($sql);
+    }
+    public function consultar_sa($mysqli, $cod_sol) {
+      $sql = "SELECT * FROM solicitud_analisis WHERE Cod_sol = '$cod_sol'";
+      $res = $mysqli -> query($sql);
+      return $res;
+    }
+    public function consultar_status_muestras_por_sol($mysqli, $cod_sol) {
+      $sql = "SELECT s.Cod_sol, s.Cod_muestra, m.Estatus FROM solicitud_analisis s, muestra m WHERE s.Cod_sol = '$cod_sol' AND m.Cod_muestra=s.Cod_muestra";
+      $res = $sql -> query($sql);
+      return $res;
     }
   }
 
@@ -450,6 +471,31 @@ class r_suelo {
 }
 
 
+class rec_suelo{
+
+  public function registrar_rec_suelo($mysqli,$Cod_muestra,$Ced_esp,$TituloA,$DescripcionA,$TituloB,$DescripcionB)
+  {
+    $sql="INSERT INTO rec_suelo(id,Cod_suelo,Ced_esp,TituloA,DescripcionA,TituloB,DescripcionB) VALUES (NULL,'$Cod_muestra','$Ced_esp','$TituloA','$DescripcionA','$TituloB','$DescripcionB')";
+    $res=$mysqli->query($sql);
+  }
+
+  public function modificar_rec_suelo($mysqli,$Cod_muestra,$Ced_esp,$TituloA,$DescripcionA,$TituloB,$DescripcionB)
+  {
+    $sql="UPDATE rec_suelo SET TituloA='$TituloA',DescripcionA='$DescripcionA',TituloB='$TituloB',DescripcionB='$DescripcionB' WHERE Cod_suelo='$Cod_muestra'";
+    $res=$mysqli->query($sql);
+  }
+
+  public function consultar_rec_suelo($mysqli,$Cod_muestra)
+  {
+    $sql="SELECT * FROM rec_suelo WHERE rec_suelo.Cod_suelo='$Cod_muestra'";
+    $res=$mysqli->query($sql);
+    return $res->fetch_array();
+  }
+
+}
+
+
+
 
 class factura {
   public function facturar($mysqli, $cedula, $subtotal) {
@@ -462,7 +508,8 @@ class factura {
     //Buscdor por cedula
     $sql="SELECT * FROM factura WHERE Cod_fact=(SELECT MAX(Cod_fact) FROM factura WHERE Ced_cliente='$ci')";
     $res= $mysqli->query($sql);
-    return $res->fetch_array();
+    $res = $res->fetch_array();
+    return $res;
   }
      public function buscador_cedula($mysqli, $ci){
     $sql="SELECT cliente.Ced_cliente, cliente.Nom_cliente, cliente.Apelli_cliente, factura.Cod_fact, factura.Fecha, factura.subtotal FROM cliente, factura WHERE cliente.Ced_cliente=factura.Ced_cliente  AND factura.Ced_cliente='$ci' AND factura.Estatus='impaga'";
@@ -516,10 +563,20 @@ class factura_descripcion {
     $mysqli->query($sql);
     include_once 'error_insert.php';
   }
+  public function facturar_analisis($mysqli, $id, $descripcion, $cantidad, $costo, $precio) {
+    $sql = "INSERT INTO fact_descripcion (Cod_fact, Descripcion, Cantidad, Costo_unidad, Precio) VALUES ('$id', '$descripcion', '$cantidad', '$costo', '$precio')";
+    $mysqli->query($sql);
+    include_once 'error_insert.php';
+  }
 
   public function consultar_factura($mysqli, $codigo)
   {
     $sql="SELECT fact_descripcion.Id_fact_produc, fact_descripcion.Cod_fact, fact_descripcion.Descripcion, fact_descripcion.Cantidad, fact_descripcion.Costo_unidad, fact_descripcion.Precio, producto.I_E, fact_descripcion.Cod_produ FROM fact_descripcion, producto WHERE fact_descripcion.Cod_produ=producto.Cod_produ AND fact_descripcion.Cod_fact='$codigo'";
+    return $res= $mysqli->query($sql);
+  }
+  public function consultar_factura_para_analisis($mysqli, $codigo)
+  {
+    $sql="SELECT * FROM fact_descripcion WHERE fact_descripcion.Cod_fact='$codigo'";
     return $res= $mysqli->query($sql);
   }
 
