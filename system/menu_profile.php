@@ -12,6 +12,16 @@
             </a>
           </li>
           <li>
+            <a target="_blank" href="../../manuales/MANUAL_DE_SISTEMA.pdf">
+              Manual del sistema <i class="fa fa-book fa-fw"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="../../manuales/MANUAL_DE_USUARIO.pdf">
+              Manual de usuario <i class="fa fa-book fa-fw"></i>
+            </a>
+          </li>
+          <li>
             <a href="../../0/home/perfil">
               Modificar perfil <i class="fa fa-address-card fa-fw"></i>
             </a>

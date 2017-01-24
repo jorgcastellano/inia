@@ -39,7 +39,7 @@
               <td>".$res[4]."</td>
               <td>".$res[3]."</td>";
               if($res[3]=="fin")
-              echo "<td><button class='sinboton' type='submit' name='cod_sol_final' value='".$res[1]."' id='accion_buttom' ><i class='fa fa-arrow-right'></button></i></td>";
+              echo "<td><button class='sinboton' formtarget='_blank' type='submit' name='cod_sol_final' value='".$res[1]."' id='accion_buttom' ><i class='fa fa-arrow-right'></button></i></td>";
               else
               echo "<td></td>";
             echo "</tr>
