@@ -420,6 +420,14 @@ class muestra {
 
 }
 
+class especialista {
+  public function consulta($mysqli, $cod_esp) {
+    $sql = "SELECT * FROM especialista WHERE Ced_esp='$cod_esp'";
+    $res = $mysqli->query($sql);
+    return $res;
+  }
+}
+
 class solicitud_analisis {
 
     public function registrar_solicitud_analisis($mysqli,$Cod_sol,$Cod_ana,$Cod_muestra)

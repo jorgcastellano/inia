@@ -40,18 +40,16 @@ $html='
           <td colspan="4">IRE-'.$cod_sol_final.'</td>
       </tr>
       <tr>
-          <td>Persona Contacto:</td>
-          <td>'.$datosCliente[4].'</td>
+          <td>Telefono:</td>
+          <td>'.$datosCliente[5].'</td>
           <td >CI/RIF:</td>
           <td>'.$datosCliente[7].'-'.$datosCliente[1].'</td>
           <td  colspan="3">Centro:</td>
           <td colspan="5">Mérida</td>
       </tr>
       <tr>
-          <td>Telefono:</td>
-          <td>'.$datosCliente[5].'</td>
-          <td >FAX:</td>
-          <td> - - </td>
+          <td>Persona de contacto:</td>
+          <td colspan="3">'.$datosCliente[4].'</td>
           <td colspan="2">Laboratorio:</td>
           <td colspan="6">SUELO</td>
       </tr>
@@ -110,6 +108,16 @@ $html='
           <td colspan="12">ANALISIS FISICO</td>
       </tr>
       <tr>';
+
+      $objmuestra = new muestra();
+      $datosMuestra = $objmuestra -> consultar_muestra($mysqli, $muestrasUnicas[0]); //Con el codigo de la muestra
+      $espAsignado = $objmuestra -> consultar_muestra_especialista($mysqli, $datosMuestra[0], 2); //Tenemos la id de la muestra|
+      $espAsignado = $espAsignado -> fetch_array();
+
+      $objespecialista = new especialista();
+      $datosEsp = $objespecialista -> consulta($mysqli, $espAsignado[2]);
+      $datosEsp = $datosEsp -> fetch_array();
+
       $rMuestras = new r_suelo();
       $m1 = $rMuestras -> consultar_r_muestra_s($mysqli, $muestrasUnicas[0]);
       $m2 = $rMuestras -> consultar_r_muestra_s($mysqli, $muestrasUnicas[1]);
@@ -129,143 +137,143 @@ $html='
           <td>%Limo</td>
           <td >SGCL-IA-009</td>
           <td colspan="2">'.$m1[4].'</td>
-          <td colspan="2">'.$m2[3].'</td>
-          <td colspan="2">'.$m3[3].'</td>
-          <td colspan="2">'.$m4[3].'</td>
-          <td colspan="2">'.$m5[3].'</td>
+          <td colspan="2">'.$m2[4].'</td>
+          <td colspan="2">'.$m3[4].'</td>
+          <td colspan="2">'.$m4[4].'</td>
+          <td colspan="2">'.$m5[4].'</td>
       </tr>
       <tr>
           <td>%Arcilla</td>
           <td>SGCL-IA-009</td>
           <td colspan="2">'.$m1[5].'</td>
-          <td colspan="2">'.$m2[3].'</td>
-          <td colspan="2">'.$m3[3].'</td>
-          <td colspan="2">'.$m4[3].'</td>
-          <td colspan="2">'.$m5[3].'</td>
+          <td colspan="2">'.$m2[5].'</td>
+          <td colspan="2">'.$m3[5].'</td>
+          <td colspan="2">'.$m4[5].'</td>
+          <td colspan="2">'.$m5[5].'</td>
       </tr>
       <tr>
           <td>Textura (Bouyoucos)</td>
           <td>SGCL-IA-009</td>
           <td colspan="2">'.$m1[6].'</td>
-          <td colspan="2">'.$m2[3].'</td>
-          <td colspan="2">'.$m3[3].'</td>
-          <td colspan="2">'.$m4[3].'</td>
-          <td colspan="2">'.$m5[3].'</td>
+          <td colspan="2">'.$m2[6].'</td>
+          <td colspan="2">'.$m3[6].'</td>
+          <td colspan="2">'.$m4[6].'</td>
+          <td colspan="2">'.$m5[6].'</td>
       </tr>
       <tr>
           <td colspan="12">ANÁLISIS QUÍMICO</td>
       </tr>
       <tr>
           <td>Fósforo Olsen (ppm)</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td ></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>SGCL-IA-001</td>
+          <td>'.$m1[8].'</td>
+          <td>'.$m1[9].'</td>
+          <td>'.$m2[8].'</td>
+          <td>'.$m2[9].'</td>
+          <td>'.$m3[8].'</td>
+          <td>'.$m3[9].'</td>
+          <td>'.$m4[8].'</td>
+          <td>'.$m4[9].'</td>
+          <td>'.$m5[8].'</td>
+          <td>'.$m5[9].'</td>
       </tr>
       <tr>
           <td>Potasio Olsen (ppm)</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>SGCL-IA-005</td>
+          <td>'.$m1[10].'</td>
+          <td>'.$m1[11].'</td>
+          <td>'.$m2[10].'</td>
+          <td>'.$m2[11].'</td>
+          <td>'.$m3[10].'</td>
+          <td>'.$m3[11].'</td>
+          <td>'.$m4[10].'</td>
+          <td>'.$m4[11].'</td>
+          <td>'.$m5[10].'</td>
+          <td>'.$m5[11].'</td>
       </tr>
       <tr>
           <td>Calcio Morgan  (ppm)</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-            <td></td>
+          <td>SGCL-IA-007</td>
+          <td>'.$m1[12].'</td>
+          <td>'.$m1[13].'</td>
+          <td>'.$m2[12].'</td>
+          <td>'.$m2[13].'</td>
+          <td>'.$m3[12].'</td>
+          <td>'.$m3[13].'</td>
+          <td>'.$m4[12].'</td>
+          <td>'.$m4[13].'</td>
+          <td>'.$m5[12].'</td>
+          <td>'.$m5[13].'</td>
       </tr>
       <tr>
           <td>Magnesio Morgan (ppm)</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>SGCL-IA-006</td>
+          <td>'.$m1[14].'</td>
+          <td>'.$m1[15].'</td>
+          <td>'.$m2[14].'</td>
+          <td>'.$m2[15].'</td>
+          <td>'.$m3[14].'</td>
+          <td>'.$m3[15].'</td>
+          <td>'.$m4[14].'</td>
+          <td>'.$m4[15].'</td>
+          <td>'.$m5[14].'</td>
+          <td>'.$m5[15].'</td>
       </tr>
       <tr>
           <td>%  Materia Orgánica (Walkley-Black)</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-            <td></td>
+          <td>SGCL-IA-010</td>
+          <td>'.$m1[16].'</td>
+          <td>'.$m1[17].'</td>
+          <td>'.$m2[16].'</td>
+          <td>'.$m2[17].'</td>
+          <td>'.$m3[16].'</td>
+          <td>'.$m3[17].'</td>
+          <td>'.$m4[16].'</td>
+          <td>'.$m4[17].'</td>
+          <td>'.$m5[16].'</td>
+          <td>'.$m5[17].'</td>
       </tr>
       <tr>
           <td>pH 1:2,5</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>SGCL-IA-002</td>
+          <td>'.$m1[18].'</td>
+          <td>'.$m1[19].'</td>
+          <td>'.$m2[18].'</td>
+          <td>'.$m2[19].'</td>
+          <td>'.$m3[18].'</td>
+          <td>'.$m3[19].'</td>
+          <td>'.$m4[18].'</td>
+          <td>'.$m4[19].'</td>
+          <td>'.$m5[18].'</td>
+          <td>'.$m5[19].'</td>
       </tr>
       <tr>
           <td>Conductividad Eléctrica dS*m-1</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>SGCL-IA-008</td>
+          <td>'.$m1[20].'</td>
+          <td>'.$m1[21].'</td>
+          <td>'.$m2[20].'</td>
+          <td>'.$m2[21].'</td>
+          <td>'.$m3[20].'</td>
+          <td>'.$m3[21].'</td>
+          <td>'.$m4[20].'</td>
+          <td>'.$m4[21].'</td>
+          <td>'.$m5[20].'</td>
+          <td>'.$m5[21].'</td>
       </tr>
       <tr>
           <td>Aluminio (meq/100 g suelo)</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-            <td></td>
+          <td>Manual de Laboratorio</td>
+          <td>'.$m1[22].'</td>
+          <td>'.$m1[23].'</td>
+          <td>'.$m2[22].'</td>
+          <td>'.$m2[23].'</td>
+          <td>'.$m3[22].'</td>
+          <td>'.$m3[23].'</td>
+          <td>'.$m4[22].'</td>
+          <td>'.$m4[23].'</td>
+          <td>'.$m5[22].'</td>
+          <td>'.$m5[23].'</td>
       </tr>
       <tr>
           <td colspan="2">Cultivo</td>
@@ -274,13 +282,13 @@ $html='
       <tr>
           <td colspan="3"><b>FECHA DE REALIZACIÓN DE ENSAYOS:</b></td>
           <td><b>Inicio:</b></td>
-          <td colspan="2">Variable Fecha</td>
+          <td colspan="2"></td>
           <td><b>Final</b></td>
-          <td colspan="5">Variable Fecha</td>
+          <td colspan="5"></td>
       </tr>
       <tr>
           <td colspan="3"><b>NOMBRE Y APELLIDO DEL JEFE DEL LABORATORIO:</b></td>
-          <td colspan="9">Variable</td>
+          <td colspan="9">'.$datosEsp[2].' '.$datosEsp[3].'</td>
       </tr>
       <tr>
           <td colspan="3"><b>FIRMA DEL JEFE DEL LABORATORIO:</b></td>
