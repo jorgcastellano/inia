@@ -277,7 +277,7 @@ $html='
       </tr>
       <tr>
           <td colspan="2">Cultivo</td>
-          <td colspan="10"> Variable</td>
+          <td colspan="10">'.$datosMuestra[3].'</td>
       </tr>
       <tr>
           <td colspan="3"><b>FECHA DE REALIZACIÓN DE ENSAYOS:</b></td>
