@@ -114,7 +114,7 @@ $html='
       $espAsignado = $objmuestra -> consultar_muestra_especialista($mysqli, $datosMuestra[0], 2); //Tenemos la id de la muestra|
       $espAsignado = $espAsignado -> fetch_array();
 
-      $objespecialista = new especialista();
+      $objespecialista = new especialista2();
       $datosEsp = $objespecialista -> consulta($mysqli, $espAsignado[2]);
       $datosEsp = $datosEsp -> fetch_array();
 

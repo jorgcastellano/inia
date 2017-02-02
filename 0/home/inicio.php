@@ -45,12 +45,15 @@
               </table>
             <?php
             elseif ($_SESSION['privilegios'] == 2) :
-              if($_SESSION['jefe'] == 1)
-                include '../laboratorio/principal.php';
-              else
-                include '../laboratorio/inicio.php';
+                  if($_SESSION['jefe'] == 1) :
+                      include '../../0/laboratorio/principal.php';
+                  else :
+                      include '../../0/laboratorio/inicio.php';
+                  endif;
             elseif ($_SESSION['privilegios'] == 3) :  //Caja
                 include '../../0/caja/listado.php';
+            else :
+              echo "Error de usuario en la base de datos";
             endif;
             ?>
 

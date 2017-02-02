@@ -2,15 +2,13 @@
 
 require_once '../../includes/conexion.php';
 
-class producto
-  {
-  public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ, $iva, $um)
-  {
+class producto{
+
+  public function registrar_produ($mysqli, $Nom_produ, $Existencia, $Precio_produ, $iva, $um) {
     $sql="INSERT INTO producto(Cod_produ,Nom_produ,Existencia,Precio_produ, I_E, um)
     VALUES ('$Cod_produ','$Nom_produ','$Existencia','$Precio_produ', '$iva', '$um')";
-  $mysqli->query($sql);
-  require_once 'error_insert.php';
-
+    $mysqli->query($sql);
+    require_once 'error_insert.php';
   }
 
   public function consultar_produ($mysqli,$Nom_produ)
@@ -26,7 +24,6 @@ class producto
     $sql="SELECT * FROM producto WHERE Cod_produ ='$Cod_produ'";
     $res= $mysqli->query($sql);
     return $res->fetch_array();
-
   }
 
     public function consulta_completo($mysqli) {
@@ -248,16 +245,15 @@ class finca {
       $sql="SELECT * FROM finca WHERE finca.Cod_fin ='$Cod_fin'";
       $res=$mysqli->query($sql);
       return  $res->fetch_array();
-
     }
+
     public function consultar_finca_all($mysqli,$Ced_cliente) {
 
       $sql="SELECT * FROM finca WHERE finca.Ced_cliente ='$Ced_cliente'";
       return $mysqli->query($sql);
-
     }
-    public function modificar_finca($mysqli, $Ced_cliente, $cod_finca, $Nom_fin, $Estado, $Municipio,$Parroquia) {
 
+    public function modificar_finca($mysqli, $Ced_cliente, $cod_finca, $Nom_fin, $Estado, $Municipio,$Parroquia) {
       $sql="UPDATE finca SET finca.Nom_fin='$Nom_fin',finca.Estado='$Estado',finca.Municipio='$Municipio',finca.Parroquia='$Parroquia'  WHERE finca.Ced_cliente='$Ced_cliente' AND finca.Cod_fin='$cod_finca'";
       $res=$mysqli->query($sql);
     }
@@ -350,8 +346,6 @@ class muestra {
 
     public function registrar_muestra($mysqli,$Cod_muestra,$Tipo_m,$Cult_act,$Nro_pl,$Edad_cul,$Tam_lote,$Topografia,$Dist_siembra,$Riego,$Cult_ant,$F_toma,$Practicas,$Produc_dosis,$Epoca_aplic,$Modo_aplic,$Pobl_cercana,$Profundidad,$Inundacion,$T_vege,$Rend_cult,$Restos,$Descrip_fito,$Id_microorg,$Sintomas,$F_sintomas,$Causa,$Tipo_plant,$Nro_subm,$Origen_sem,$Pres_microorg,$Dist_planafect,$Parts_afect,$Text_sue,$Composicion,$Hum_sue,$Drenaje,$Controles,$Produc_dosisb,$Cond_agroclima,$Observaciones,$Finca)
     {
-
-
       $sql="INSERT INTO muestra(Cod_muestra,Tipo_m,Cult_act,Nro_pl,Edad_cul,Tam_lote,Topografia,Dist_siembra,Riego,Cult_ant,F_toma,Practicas,Produc_dosis,Epoca_aplic,Modo_aplic,Pobl_cercana,Profundidad,
         Inundacion,T_vege,Rend_cult,Restos,Descrip_fito,Id_microorg,Sintomas,F_sintomas,Causa,Tipo_plant,Nro_subm,Origen_sem,Pres_microorg,Dist_planafect,Parts_afect,Text_sue,Composicion,Hum_sue,
         Drenaje,Controles,Produc_dosisb,Cond_agroclima,Observaciones,Finca)
@@ -420,7 +414,7 @@ class muestra {
 
 }
 
-class especialista {
+class especialista2 {
   public function consulta($mysqli, $cod_esp) {
     $sql = "SELECT * FROM especialista WHERE Ced_esp='$cod_esp'";
     $res = $mysqli->query($sql);
