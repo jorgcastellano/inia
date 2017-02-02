@@ -135,6 +135,8 @@
                         $dos = "selected";
                     elseif ($resultado[10] == 3)
                         $tres = "selected";
+                    elseif ($resultado[10] == 4)
+                        $cuatro = "<option value='4' selected >Admin</option>";
 
                     if ($resultado[12] == 1)
                       $jefeOn = "checked";
@@ -151,6 +153,7 @@
                             </td>
                             <td><select name='privilegios[]' onchange='jefeOn(this);'>
                             <option value=''        >-seleccione-</option>
+                            ".$cuatro."
                             <option value='1' $uno  >Gerente</option>
                             <option value='2' $dos  >Especialista</option>
                             <option value='3' $tres >Caja</option>
@@ -158,9 +161,8 @@
                         <td><input $jefeOn type='checkbox' name='jefe[]' value='$resultado[0]' title='Marca si es jefe de laboratorio, solo se guardara si es especialista'></td>
                         <td><button class='sinboton' type='submit' name='eliminar' value='$resultado[1]' id='accion_buttom' ><i class='fa fa-trash-o'></i></button></td>
                     </tr>";
-                    unset($uno, $dos, $tres);
+                    unset($uno, $dos, $tres, $cuatro);
                 endwhile;
-
                 if (!empty($mensaje0)AND !empty($mensaje1))
                     echo "<div class='notify'><i class='fa fa-check-circle-o'></i> Se desactivo el usuario y se cambiaron los privilegios con éxito</div>";
                 else {
