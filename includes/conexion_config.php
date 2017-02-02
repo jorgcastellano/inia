@@ -7,8 +7,8 @@
 		//Datos locales
 		private $host1 = "localhost";
 		private $user1 = "root";
-		private $password1 = "deepin010300666";
-		private $database1 = "inia";
+		private $password1 = "jorgejac";
+		private $database1 = "proyecto3";
 		private $database11 = "inicio_seguro";
 
 		//DB desarrollo
