@@ -24,7 +24,7 @@
             <div>
             <?php include_once '../../layouts/cabecera-body.php' ?>
                 <hgroup>
-                    <h1>Sistema de Procesos Internos del INIA Mérida (SPIIM)</h1>
+                    <h1>Sistema de Procesos IntErnos del INIA Mérida (SPIIM)</h1>
                 </hgroup>
             </div>
             <article>
